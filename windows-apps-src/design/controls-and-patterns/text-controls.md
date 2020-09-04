@@ -1,15 +1,11 @@
 ---
-author: Jwmsft
 Description: Consider how often we read text in our daily lives - in email, a book, a road sign, the prices on a menu, tire pressure markings, or posters on a street pole.
 title: Text controls
 ms.assetid: 43DC68BF-FA86-43D2-8807-70A359453048
 label: Text controls
 template: detail.hbs
-ms.author: jimwalk
-ms.date: 05/19/2017
+ms.date: 10/01/2018
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp
 pm-contact: miguelrb
 design-contact: ksulliv
@@ -18,15 +14,12 @@ ms.localizationpriority: medium
 ---
 # Text controls
 
- 
-
 Text controls consist of text input boxes, password boxes, auto-suggest boxes, and text blocks. The XAML framework provides several controls for rendering, entering, and editing text, and a set of properties for formatting the text.
 
 - The controls for displaying read-only text are [TextBlock](text-block.md) and [RichTextBlock](rich-text-block.md).
-- The controls for text entry and editing are: [TextBox](text-box.md), [AutoSuggestBox](auto-suggest-box.md), [PasswordBox](password-box.md), and [RichEditBox](rich-edit-box.md).
+- The controls for text entry and editing are: [TextBox](text-box.md), [RichEditBox](rich-edit-box.md), [AutoSuggestBox](auto-suggest-box.md), and [PasswordBox](password-box.md).
 
-> **Important APIs**: [AutoSuggestBox class](https://msdn.microsoft.com/library/windows/apps/xaml/windows.ui.xaml.controls.autosuggestbox.aspx), [PasswordBox class](https://msdn.microsoft.com/library/windows/apps/xaml/windows.ui.xaml.controls.passwordbox.aspx), [RichEditBox class](https://msdn.microsoft.com/library/windows/apps/xaml/windows.ui.xaml.controls.richeditbox.aspx), [RichTextBlock class](https://msdn.microsoft.com/library/windows/apps/xaml/windows.ui.xaml.controls.richtextblock.aspx), [TextBlock class](https://msdn.microsoft.com/library/windows/apps/xaml/windows.ui.xaml.controls.textblock.aspx), [TextBox class](https://msdn.microsoft.com/library/windows/apps/xaml/windows.ui.xaml.controls.textbox.aspx)
-
+> **Important APIs**: [TextBlock class](/uwp/api/Windows.UI.Xaml.Controls.TextBlock), [RichTextBlock class](/uwp/api/Windows.UI.Xaml.Controls.RichTextBlock), [TextBox class](/uwp/api/Windows.UI.Xaml.Controls.TextBox), [RichEditBox class](/uwp/api/Windows.UI.Xaml.Controls.RichEditBox), [AutoSuggestBox class](/uwp/api/Windows.UI.Xaml.Controls.AutoSuggestBox), [PasswordBox class](/uwp/api/Windows.UI.Xaml.Controls.PasswordBox)
 
 ## Is this the right control?
 
@@ -36,17 +29,17 @@ The text control you use depends on your scenario. Use this info to pick the rig
 
 Use a **TextBlock** to display most read-only text in your app. You can use it to display single-line or multi-line text, inline hyperlinks, and text with formatting like bold, italic, or underlined.
 
-TextBlock is typically easier to use and provides better text rendering performance than RichTextBlock, so it's preferred for most app UI text. You can easily access and use text from a TextBlock in your app by getting the value of the [Text](https://msdn.microsoft.com/library/windows/apps/xaml/windows.ui.xaml.controls.textblock.text.aspx) property.
+TextBlock is typically easier to use and provides better text rendering performance than RichTextBlock, so it's preferred for most app UI text. You can easily access and use text from a TextBlock in your app by getting the value of the [Text](/uwp/api/windows.ui.xaml.controls.textblock.text) property.
 
-It also provides many of the same formatting options for customizing how your text is rendered. Although you can put line breaks in the text, TextBlock is designed to display a single paragraph and doesn’t support text indentation.
+It also provides many of the same formatting options for customizing how your text is rendered. Although you can put line breaks in the text, TextBlock is designed to display a single paragraph and doesn't support text indentation.
 
 Use a **RichTextBlock** when you need support for multiple paragraphs, multi-column text or other complex text layouts, or inline UI elements like images. RichTextBlock provides several features for advanced text layout.
 
-The content property of RichTextBlock is the [Blocks](https://msdn.microsoft.com/library/windows/apps/xaml/windows.ui.xaml.controls.richtextblock.blocks.aspx) property, which supports paragraph based text via the [Paragraph](https://msdn.microsoft.com/library/windows/apps/xaml/windows.ui.xaml.documents.paragraph.aspx) element. It doesn't have a **Text** property that you can use to easily access the control's text content in your app.  
+The content property of RichTextBlock is the [Blocks](/uwp/api/windows.ui.xaml.controls.richtextblock.blocks) property, which supports paragraph based text via the [Paragraph](/uwp/api/Windows.UI.Xaml.Documents.Paragraph) element. It doesn't have a **Text** property that you can use to easily access the control's text content in your app.  
 
 ### Text input
 
-Use a **TextBox** control to let a user enter and edit unformatted text, such as in a form. You can use the [Text](https://msdn.microsoft.com/library/windows/apps/xaml/windows.ui.xaml.controls.textbox.text.aspx) property to get and set the text in a TextBox.
+Use a **TextBox** control to let a user enter and edit unformatted text, such as in a form. You can use the [Text](/uwp/api/windows.ui.xaml.controls.textbox.text) property to get and set the text in a TextBox.
 
 You can make a TextBox read-only, but this should be a temporary, conditional state. If the text is never editable, consider using a TextBlock instead.
 
@@ -65,7 +58,7 @@ There are many ways you can get user input in your app. These questions will hel
 -   **Is it practical to efficiently enumerate all valid values?** If so, consider using one of the selection controls, such as a [check box](checkbox.md), [drop-down list](lists.md), list box, [radio button](radio-button.md), [slider](slider.md), [toggle switch](toggles.md), [date picker](date-and-time.md), or time picker.
 -   **Is there a fairly small set of valid values?** If so, consider a [drop-down list](lists.md) or a list box, especially if the values are more than a few characters long.
 -   **Is the valid data completely unconstrained? Or is the valid data only constrained by format (constrained length or character types)?** If so, use a text input control. You can limit the number of characters that can be entered, and you can validate the format in your app code.
--   **Does the value represent a data type that has a specialized common control?** If so, use the appropriate control instead of a text input control. For example, use a [DatePicker](https://msdn.microsoft.com/library/windows/apps/br211681) instead of a text input control to accept a date entry.
+-   **Does the value represent a data type that has a specialized common control?** If so, use the appropriate control instead of a text input control. For example, use a [DatePicker](/previous-versions/windows/apps/br211681(v=win.10)) instead of a text input control to accept a date entry.
 -   If the data is strictly numeric:
     -   **Is the value being entered approximate and/or relative to another quantity on the same page?** If so, use a [slider](slider.md).
     -   **Would the user benefit from instant feedback on the effect of setting changes?** If so, use a [slider](slider.md), possibly with an accompanying control.
@@ -76,12 +69,12 @@ There are many ways you can get user input in your app. These questions will hel
 <table>
 <th align="left">XAML Controls Gallery<th>
 <tr>
-<td><img src="images/xaml-controls-gallery-sm.png" alt="XAML controls gallery"></img></td>
+<td><img src="images/xaml-controls-gallery-app-icon-sm.png" alt="XAML controls gallery"></img></td>
 <td>
     <p>If you have the <strong style="font-weight: semi-bold">XAML Controls Gallery</strong> app installed, click here to <a href="xamlcontrolsgallery:/category/Text">open the app and see the text controls in action</a>.</p>
     <ul>
     <li><a href="https://www.microsoft.com/store/productId/9MSVH128X2ZT">Get the XAML Controls Gallery app (Microsoft Store)</a></li>
-    <li><a href="https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/XamlUIBasics">Get the source code (GitHub)</a></li>
+    <li><a href="https://github.com/Microsoft/Xaml-Controls-Gallery">Get the source code (GitHub)</a></li>
     </ul>
 </td>
 </tr>
@@ -118,28 +111,13 @@ See these articles for font guidelines:
 
 ## Pen input
 
-> The pen input feature is currently available only in the Windows Insider Preview. Feature names, terminology, and functionality are not final.
-
 **Applies to:** TextBox, RichEditBox, AutoSuggestBox
 
 Starting with Windows 10, version 1803, XAML text input boxes feature embedded support for pen input using [Windows Ink](../input/pen-and-stylus-interactions.md). When a user taps into a text input box using a Windows pen, the text box transforms to let the user write directly into it with a pen, rather than opening a separate input panel.
 
-![Text box expands when tapped with pen](images/pen-input-expand.gif)
+![Text box expands when tapped with pen](images/handwritingview/handwritingview2.gif)
 
-Text is recognized as the user writes anywhere in the text box, and a candidate windows shows the recognition results. The user can tap a result to choose it, or continue writing to accept the proposed candidate. The literal (letter-by-letter) recognition results are included in the candidate window, so recognition is not restricted to words in a dictionary. As the user writes, the accepted text input is converted to a script font that retains the feel of natural writing.
-
-![Text box with pen input](images/pen-input-1.png)
-
-A user can edit their text using standard gestures and actions, like these:
-
-- _strike through_ or _scratch out_ - draw through to delete a word or part of a word
-- _join_ - draw an arc between words to delete the space between them
-- _insert_ - draw a caret symbol to insert a space
-- _overwrite_ - write over existing text to replace it
-
-![Overwrite pen input](images/pen-input-2.png)
-
-Embedded text input is enabled by default when your app targets and is running on Windows 10, version 1803 or later. You can opt-out on a per-text box basis to disable the feature and revert to a text input panel. To disable embedded text input, set the text control's **IsHandwritingViewEnabled** property to **false**.
+For more info, see [Text input with the handwriting view](text-handwriting-view.md).
 
 ## Choose the right keyboard for your text control
 
@@ -152,12 +130,12 @@ To help users to enter data using the touch keyboard, or Soft Input Panel (SIP),
 
 The touch keyboard can be used for text entry when your app runs on a device with a touch screen. The touch keyboard is invoked when the user taps on an editable input field, such as a TextBox or RichEditBox. You can make it much faster and easier for users to enter data in your app by setting the input scope of the text control to match the kind of data you expect the user to enter. The input scope provides a hint to the system about the type of text input expected by the control so the system can provide a specialized touch keyboard layout for the input type.
 
-For example, if a text box is used only to enter a 4-digit PIN, set the [InputScope](https://msdn.microsoft.com/library/windows/apps/xaml/windows.ui.xaml.controls.textbox.inputscope.aspx) property to **Number**. This tells the system to show the number keypad layout, which makes it easier for the user to enter the PIN.
+For example, if a text box is used only to enter a 4-digit PIN, set the [InputScope](/uwp/api/windows.ui.xaml.controls.textbox.inputscope) property to **Number**. This tells the system to show the number keypad layout, which makes it easier for the user to enter the PIN.
 
 >Important  
 >The input scope does not cause any input validation to be performed, and does not prevent the user from providing any input through a hardware keyboard or other input device. You are still responsible for validating the input in your code as needed.
 
-For more info, see [Use input scope to change the touch keyboard](https://msdn.microsoft.com/library/windows/apps/mt280229).
+For more info, see [Use input scope to change the touch keyboard](../input/use-input-scope-to-change-the-touch-keyboard.md).
 
 ## Color fonts
 
@@ -175,7 +153,7 @@ The rendered text looks like this:
 
 ![Text block with color font](images/text-block-color-fonts.png)
 
-For more info, see the [IsColorFontEnabled](https://msdn.microsoft.com/library/windows/apps/xaml/windows.ui.xaml.controls.textblock.iscolorfontenabled.aspx) property.
+For more info, see the [IsColorFontEnabled](/uwp/api/windows.ui.xaml.controls.textblock.iscolorfontenabled) property.
 
 ## Guidelines for line and paragraph separators
 
@@ -220,9 +198,9 @@ For TextBox and RichEditBox controls, spell checking is turned on by default. Yo
 **For designers**
 - [Typography guidelines](../style/typography.md)
 - [Segoe MDL2 icon list and guidelines](../style/segoe-ui-symbol-font.md)
-- [Adding search](https://msdn.microsoft.com/library/windows/apps/hh465231)
+- [Adding search](/previous-versions/windows/apps/hh465231(v=win.10))
 
 **For developers (XAML)**
-- [TextBox class](https://msdn.microsoft.com/library/windows/apps/br209683)
-- [Windows.UI.Xaml.Controls PasswordBox class](https://msdn.microsoft.com/library/windows/apps/br227519)
-- [String.Length property](https://msdn.microsoft.com/library/system.string.length.aspx)
+- [TextBox class](/uwp/api/Windows.UI.Xaml.Controls.TextBox)
+- [Windows.UI.Xaml.Controls PasswordBox class](/uwp/api/Windows.UI.Xaml.Controls.PasswordBox)
+- [String.Length property](/dotnet/api/system.string.length)

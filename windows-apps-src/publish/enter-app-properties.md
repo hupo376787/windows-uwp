@@ -1,17 +1,12 @@
-﻿---
-author: jnHs
+---
 Description: The App properties page of the app submission process lets you define your app's category and indicate hardware preferences or other declarations.
 title: Enter app properties
 ms.assetid: CDE4AF96-95A0-4635-9D07-A27B810CAE26
-ms.author: wdg-dev-content
-ms.date: 08/07/2018
+ms.date: 10/31/2018
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp, game settings, display mode, system requirements, hardware requirements, minimum hardware, recommended hardware, privacy policy, support contact info, app website, support info
 ms.localizationpriority: medium
 ---
-
 # Enter app properties
 
 The **Properties** page of the [app submission process](app-submissions.md) is where you define your app's category and enter other info and declarations. Be sure to provide complete and accurate details about your app on this page.
@@ -32,12 +27,12 @@ This section lets you provide info to help customers understand more about your 
 
 You are responsible for ensuring your app complies with privacy laws and regulations, and for providing a valid privacy policy URL here if required.
 
-In this section, you must indicate whether or not your app accesses, collects, or transmits any [personal information](https://docs.microsoft.com/legal/windows/agreements/store-policies#105-personal-information). If you answer **Yes**, a privacy policy URL is required. Otherwise, it is optional (though if we determine that your app requires a privacy policy, and you have not provided one, your submission may fail certification).
+In this section, you must indicate whether or not your app accesses, collects, or transmits any [personal information](/legal/windows/agreements/store-policies#105-personal-information). If you answer **Yes**, a privacy policy URL is required. Otherwise, it is optional (though if we determine that your app requires a privacy policy, and you have not provided one, your submission may fail certification).
 
 > [!NOTE]
 > If we detect that your packages declare [capabilities](../packaging/app-capability-declarations.md) that could allow personal information to be accessed, transmitted, or collected, we will mark this question as **Yes**, and you will be required to enter a privacy policy URL.
 
-To help you determine if your app requires a privacy policy, review the [App Developer Agreement](https://docs.microsoft.com/legal/windows/agreements/app-developer-agreement) and the [Microsoft Store Policies](https://docs.microsoft.com/legal/windows/agreements/store-policies#105-personal-information). 
+To help you determine if your app requires a privacy policy, review the [App Developer Agreement](/legal/windows/agreements/app-developer-agreement) and the [Microsoft Store Policies](/legal/windows/agreements/store-policies#105-personal-information). 
 
 > [!NOTE]
 > Microsoft doesn't provide a default privacy policy for your app. Likewise, your app is not covered by any Microsoft privacy policy. 
@@ -57,7 +52,7 @@ Enter the URL of the web page where your customers can go for support with your 
 
 ## Game settings
 
-This section will only appear if you selected **Games** as your product’s category. Here you can specify which features your game supports. All of the information that you provide in this section will be displayed on the product’s Store listing.
+This section will only appear if you selected **Games** as your product’s category. Here you can specify which features your game supports. The information that you provide in this section will be displayed on the product’s Store listing.
 
 If your game supports any of the multiplayer options, be sure to indicate the minimum and maximum number of players for a session. You can't enter more than 1,000 minimum or maximum players.
 
@@ -66,7 +61,7 @@ If your game supports any of the multiplayer options, be sure to indicate the mi
 
 ## Display mode
 
-This section lets you indicate whether your product is designed to run in an immersive (not a 2D) view for [Windows Mixed Reality](https://developer.microsoft.com/windows/mixed-reality) on PC and/or HoloLens devices. If you indicate that it is, you'll also need to:
+This section lets you indicate whether your product is designed to run in an immersive (not a 2D) view for [Windows Mixed Reality](https://developer.microsoft.com/mixed-reality) on PC and/or HoloLens devices. If you indicate that it is, you'll also need to:
 - Select either **Minimum hardware** or **Recommended hardware** for **Windows Mixed Reality immersive headset** in the [System requirements](#system-requirements) section that appears lower on the **Properties** page.
 - Specify the **Boundary setup** (if PC is selected) so that users know whether it's meant to be used in a seated or standing position only, or whether it allows (or requires) the user to move around while using it. 
 
@@ -79,7 +74,7 @@ If your product does not support any of these display mode options, leave all of
 
 You can check boxes in this section to indicate if any of the declarations apply to your app. This may affect the way your app is displayed, whether it is offered to certain customers, or how customers can use it.
 
-For more info, see [Product declarations](app-declarations.md).
+For more info, see [Product declarations](./product-declarations.md).
 
 ## System requirements
 
@@ -100,12 +95,7 @@ The behavior for customers will vary depending on the specific requirements and 
 - **For customers on Windows 8.x and earlier or Windows Phone 8.x and earlier:**
      - If you check the **Minimum hardware** box for **Touch screen**, this requirement will be displayed in your app's Store listing, and customers on devices without a touch screen will see a warning if they try to download the app. No other requirements will be verified or displayed in your Store listing.
 
-We also recommend adding runtime checks for the specified hardware into your app, since the Store may not always be able to detect that a customer's device is missing the selected feature(s) and they could still be able to download your app even if a warning is displayed. If you want to completely prevent your UWP app from being downloaded on a device which doesn't meet minimum requirements for memory or DirectX level, you can designate the minimum requirements in a [StoreManifest XML file](https://docs.microsoft.com/uwp/schemas/storemanifest/storemanifestschema2015/schema-root).
+We also recommend adding runtime checks for the specified hardware into your app, since the Store may not always be able to detect that a customer's device is missing the selected feature(s) and they could still be able to download your app even if a warning is displayed. If you want to completely prevent your UWP app from being downloaded on a device which doesn't meet minimum requirements for memory or DirectX level, you can designate the minimum requirements in a [StoreManifest XML file](/uwp/schemas/storemanifest/storemanifestschema2015/schema-root).
 
 > [!TIP]
 > If your product requires additional items that aren't listed in this section in order to run properly, such as 3D printers or USB devices, you can also enter [additional system requirements](create-app-store-listings.md#additional-system-requirements) when you create your Store listing.
-
-
-
-
-

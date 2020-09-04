@@ -1,12 +1,8 @@
 ---
-author: Mtoepke
 title: Known issues with UWP on Xbox Developer Program
-description: Lists the known issues for the UWP on Xbox developer program.
-ms.author: mstahl
+description: Learn about some known issues with the UWP on Xbox One Developer Program, and see how to access other help resources.
 ms.date: 03/29/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp
 ms.assetid: a7b82570-1f99-4bc3-ac78-412f6360e936
 ms.localizationpriority: medium
@@ -17,9 +13,9 @@ ms.localizationpriority: medium
 This topic describes known issues with the UWP on Xbox One Developer Program. 
 For more information about this program, see [UWP on Xbox](index.md). 
 
-\[If you came here from a link in an API reference topic, and are looking for Universal device family API information, please see [UWP features that aren't yet supported on Xbox](http://go.microsoft.com/fwlink/?LinkID=760755).\]
+\[If you came here from a link in an API reference topic, and are looking for Universal device family API information, see [UWP features not supported on Xbox](/uwp/extension-sdks/uwp-limitations-on-xbox).\]
 
-The following list highlights some known issues that you may encounter, but this list is not exhaustive. 
+The following list highlights some known issues that you may encounter, but this list is not exhaustive.
 
 **We want to get your feedback**, so please report any issues that you find on the [Developing Universal Windows Platform apps](https://social.msdn.microsoft.com/forums/windowsapps/home?forum=wpdevelop) forum. 
 
@@ -62,12 +58,11 @@ Universal Windows Platform (UWP) apps on Xbox One devices are restricted from bi
 Although binding to these ports might appear to succeed at run-time, network traffic can be silently dropped before reaching your app. 
 Your app should bind to port 0 wherever possible, which allows the system to select the local port. 
 If you need to use a specific port, the port number must be in the range [1025, 49151], and you should check and avoid conflicts with the IANA registry. 
-For more information, see the [Service Name and Transport Protocol Port Number Registry](http://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml).
+For more information, see the [Service Name and Transport Protocol Port Number Registry](https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml).
 
-## UWP API coverage
+## Windows Runtime API coverage
 
-Not all UWP APIs are supported on Xbox. For the list of APIs that we know don’t work, see [UWP features that aren't yet supported on Xbox](http://go.microsoft.com/fwlink/p/?LinkId=760755). If you find issues with other APIs, please report them on the forums. 
-
+Not all Windows Runtime APIs are supported on Xbox. For the list of APIs that we know don't work, see [UWP features not supported on Xbox](/uwp/extension-sdks/uwp-limitations-on-xbox). If you find issues with other APIs, please report them on the forums.
 
 ## Navigating to WDP causes a certificate warning
 

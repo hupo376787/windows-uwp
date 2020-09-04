@@ -1,26 +1,21 @@
 ---
-author: mijacobs
 Description: Use fade animations to bring items into a view or to take items out of a view. The two common fade animations are fade-in and fade-out.
-title: Fade animations in UWP apps
+title: Fade animations
 ms.assetid: 975E5EE3-EFBE-4159-8D10-3C94143DD07F
 label: Motion--fades
 template: detail.hbs
-ms.author: mijacobs
 ms.date: 05/19/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp
 ms.localizationpriority: medium
 ---
-
 # Fade animations
 
 
 
 Use fade animations to bring items into a view or to take items out of a view. The two common fade animations are fade-in and fade-out.
 
-> **Important APIs**: [**FadeInThemeAnimation class**](https://msdn.microsoft.com/library/windows/apps/br210298), [**FadeOutThemeAnimation class**](https://msdn.microsoft.com/library/windows/apps/br210302)
+> **Important APIs**: [**FadeInThemeAnimation class**](/uwp/api/Windows.UI.Xaml.Media.Animation.FadeInThemeAnimation), [**FadeOutThemeAnimation class**](/uwp/api/Windows.UI.Xaml.Media.Animation.FadeOutThemeAnimation)
 
 
 ## Do's and don'ts
@@ -33,16 +28,12 @@ Use fade animations to bring items into a view or to take items out of a view. T
 -   Fade-out is a subtle way to remove an element.
 ## Related articles
 
-* [Animations overview](https://msdn.microsoft.com/library/windows/apps/mt187350)
-* [Animating fades](https://msdn.microsoft.com/library/windows/apps/xaml/jj649429)
-* [Quickstart: Animating your UI using library animations](https://msdn.microsoft.com/library/windows/apps/xaml/hh452703)
-* [**FadeInThemeAnimation class**](https://msdn.microsoft.com/library/windows/apps/br210298)
-* [**FadeOutThemeAnimation class**](https://msdn.microsoft.com/library/windows/apps/br210302)
+* [Animations overview](./xaml-animation.md)
+* [Animating fades](/previous-versions/windows/apps/jj649429(v=win.10))
+* [Quickstart: Animating your UI using library animations](/previous-versions/windows/apps/hh452703(v=win.10))
+* [**FadeInThemeAnimation class**](/uwp/api/Windows.UI.Xaml.Media.Animation.FadeInThemeAnimation)
+* [**FadeOutThemeAnimation class**](/uwp/api/Windows.UI.Xaml.Media.Animation.FadeOutThemeAnimation)
 
  
 
  
-
-
-
-

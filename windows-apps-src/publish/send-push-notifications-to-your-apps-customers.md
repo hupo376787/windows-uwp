@@ -1,28 +1,23 @@
-﻿---
-author: JnHs
-Description: Learn how to send notifications from Windows Dev Center to your app to encourage groups of customers to take an action, such as rating an app or buying an add-on.
+---
+Description: Learn how to send notifications from Partner Center to your app to encourage groups of customers to take an action, such as rating an app or buying an add-on.
 title: Send targeted push notifications to your app's customers
-ms.author: wdg-dev-content
-ms.date: 08/07/2018
+ms.date: 10/31/2018
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp, targeted notifications, push notifications, toast, tile
 ms.assetid: 16386c81-702d-47cd-9f91-67659f5dca73
 ms.localizationpriority: medium
 ---
-
 # Send notifications to your app's customers
 
 Engaging with your customers at the right time and with the right message is key to your success as an app developer. Notifications can encourage your customers to take an action, such as rating an app, buying an add-on, trying a new feature, or downloading another app (perhaps for free with a [promotional code](generate-promotional-codes.md) that you provide).
 
-Windows Dev Center provides a data-driven customer engagement platform you can use to send notifications to all of your app's customers, or only targeted to a subset of your app's Windows 10 customers who meet the criteria you’ve defined in a [customer segment](create-customer-segments.md). <!-- You can also send a single notification to all of the customers for multiple apps. -->
+[Partner Center](https://partner.microsoft.com/dashboard) provides a data-driven customer engagement platform you can use to send notifications to all of your app's customers, or only targeted to a subset of your app's Windows 10 customers who meet the criteria you’ve defined in a [customer segment](create-customer-segments.md). You can also create a notification to be sent to customers of more than one of your apps.
 
 > [!IMPORTANT]
 > These notifications can only be used with UWP apps.
 
 When considering the content of your notifications, keep in mind:
-- The content in your notifications must comply with the Store [Content Policies](https://docs.microsoft.com/legal/windows/agreements/store-policies#content_policies).
+- The content in your notifications must comply with the Store [Content Policies](/legal/windows/agreements/store-policies#content_policies).
 - Your notification content should not include confidential or potentially sensitive info.
 - While we’ll make every effort to deliver your notification as scheduled, there may occasionally be latency issues that impact delivery.
 - Be sure not to send notifications too often. More than once every 30 minutes can seem intrusive (and for many scenarios, less frequently than that is preferable).
@@ -34,19 +29,19 @@ When considering the content of your notifications, keep in mind:
 
 At a high-level, you need to do three things to use notifications to engage with your customers.
 
-1. **Register your app to receive push notifications.** You do this by adding a reference to the Microsoft Store Services SDK in your app and then adding a few lines of code that registers a notification channel between the Dev Center and your app. We’ll use that channel to deliver your notifications to your customers. For details, see [Configure your app for targeted push notifications](../monetize/configure-your-app-to-receive-dev-center-notifications.md).
+1. **Register your app to receive push notifications.** You do this by adding a reference to the Microsoft Store Services SDK in your app and then adding a few lines of code that registers a notification channel between Partner Center and your app. We’ll use that channel to deliver your notifications to your customers. For details, see [Configure your app for targeted push notifications](../monetize/configure-your-app-to-receive-dev-center-notifications.md).
 2. **Decide which customers to target.** You can send your notification to all of your app's customers, or (for notifications created for a single app) to a group of customers called a *segment*, which you can define based on demographic or revenue criteria. For more info, see [Create customer segments](create-customer-segments.md).
 3. **Create your notification content and send it out.** For example, you might create a notification that encourages new customers to rate your app, or send a notification promoting a special deal to purchase an add-on.
 
 
 ## To create and send a notification
 
-Follow these steps to create a notification in the dashboard and send it to a particular customer segment.
+Follow these steps to create a notification in Partner Center and send it to a particular customer segment.
 
 > [!NOTE]
-> Before an app can receive notifications from Dev Center, you must first call the [RegisterNotificationChannelAsync](https://docs.microsoft.com/uwp/api/microsoft.services.store.engagement.storeservicesengagementmanager.registernotificationchannelasync) method in your app to register your app to receive notifications. This method is available in the [Microsoft Store Services SDK](http://aka.ms/store-em-sdk). For more information about how to call this method, including a code example, see [Configure your app for targeted push notifications](../monetize/configure-your-app-to-receive-dev-center-notifications.md).
+> Before an app can receive notifications from Partner Center, you must first call the [RegisterNotificationChannelAsync](/uwp/api/microsoft.services.store.engagement.storeservicesengagementmanager.registernotificationchannelasync) method in your app to register your app to receive notifications. This method is available in the [Microsoft Store Services SDK](https://marketplace.visualstudio.com/items?itemName=AdMediator.MicrosoftStoreServicesSDK). For more information about how to call this method, including a code example, see [Configure your app for targeted push notifications](../monetize/configure-your-app-to-receive-dev-center-notifications.md).
 
-1. In the [Windows Dev Center dashboard](https://partner.microsoft.com/dashboard/), expand the **Engage** section, and then select **Notifications**.
+1. In [Partner Center](https://partner.microsoft.com/dashboard), expand the **Engage** section, and then select **Notifications**.
 2. On the **Notifications** page, select **New notification**.
 3. In the **Select a template** section, choose the [type of notification](#notification-template-types) you want to send and then click **OK**.
 4. On the next page, use the drop-down menu to choose either a **Single app** or **Multiple apps** for which you want to generate a notification. You can only select apps that have been [configured to receive notifications using the Microsoft Store Services SDK](../monetize/configure-your-app-to-receive-dev-center-notifications.md).
@@ -65,11 +60,11 @@ Follow these steps to create a notification in the dashboard and send it to a pa
     * **Track app launch rate** (interactive toast type). If you want to measure how well you’re engaging with your customers through each notification, select this checkbox. For more details, see [Measure notification performance](#measure-notification-performance).
     * **Duration** (interactive toast type). You can choose **Short** or **Long**.
     * **Scenario** (interactive toast type). You can choose **Default**, **Alarm**, **Reminder**, or **Incoming call**.
-    * **Base URI** (interactive toast type). For more details, see [BaseUri](https://docs.microsoft.com/uwp/api/windows.ui.xaml.frameworkelement.baseuri#Windows_UI_Xaml_FrameworkElement_BaseUri).
-    * **Add image query** (interactive toast type). For more details, see [addImageQuery](https://docs.microsoft.com/uwp/schemas/tiles/toastschema/element-visual#attributes-and-elements).
-    * **Visual**. An image, video, or sound. For more details, see [visual](https://docs.microsoft.com/uwp/schemas/tiles/toastschema/element-visual).
+    * **Base URI** (interactive toast type). For more details, see [BaseUri](/uwp/api/windows.ui.xaml.frameworkelement.baseuri#Windows_UI_Xaml_FrameworkElement_BaseUri).
+    * **Add image query** (interactive toast type). For more details, see [addImageQuery](/uwp/schemas/tiles/toastschema/element-visual#attributes-and-elements).
+    * **Visual**. An image, video, or sound. For more details, see [visual](/uwp/schemas/tiles/toastschema/element-visual).
     * **Input**/**Action**/**Selection** (interactive toast type). Allows you to let users interact with the notification. For more info, see [Adaptive and interactive toast notifications](../design/shell/tiles-and-notifications/adaptive-interactive-toasts.md).
-    * **Binding** (interactive tile type). The toast template. For more details, see [binding](https://docs.microsoft.com/uwp/schemas/tiles/toastschema/element-binding).
+    * **Binding** (interactive tile type). The toast template. For more details, see [binding](/uwp/schemas/tiles/toastschema/element-binding).
 
     > [!TIP]
     > Try using the [Notifications Visualizer](https://www.microsoft.com/store/apps/9nblggh5xsl1) app to design and test your adaptive tiles and interactive toast notifications.
@@ -108,20 +103,20 @@ You can measure how well you’re engaging with your customers through each noti
 ### To measure notification performance
 
 1.	When you create a notification, in the **Notification content** section, select the **Track app launch rate** checkbox.
-2.	In your app, call the [ParseArgumentsAndTrackAppLaunch](https://docs.microsoft.com/uwp/api/microsoft.services.store.engagement.storeservicesengagementmanager.parseargumentsandtrackapplaunch) method to notify Dev Center that your app was launched in response to a targeted notification. This method is provided by the Microsoft Store Services SDK. For more information about how to call this method, see [Configure your app to receive Dev Center notifications](../monetize/configure-your-app-to-receive-dev-center-notifications.md).
+2.	In your app, call the [ParseArgumentsAndTrackAppLaunch](/uwp/api/microsoft.services.store.engagement.storeservicesengagementmanager.parseargumentsandtrackapplaunch) method to notify Partner Center that your app was launched in response to a targeted notification. This method is provided by the Microsoft Store Services SDK. For more information about how to call this method, see [Configure your app to receive Partner Center notifications](../monetize/configure-your-app-to-receive-dev-center-notifications.md).
 
 
 ### To view notification performance
 
-When you’ve configured the notification and your app to measure notification performance as described above, you can use the dashboard to see how well your notifications are performing.
+When you’ve configured the notification and your app to measure notification performance as described above, you can see how well your notifications are performing.
 
 To review detailed data for each notification:
 
-1.	In the Windows Dev Center dashboard, expand the **Engage** section and select **Notifications**.
+1.	In Partner Center, expand the **Engage** section and select **Notifications**.
 2.  In the table of existing notifications, select **In progress** or **Completed**, and then look at the **Delivery rate** and **App launch rate** columns to see the high-level performance of each notification.
 3.  To see more granular performance details, select a notification name. In the **Delivery statistics** section, you can view **Count** and **Percentage** info for the following notification **Status** types:
     * **Failed**: The notification was not delivered for some reason. This can happen, for example, if an issue occurs in the Windows Notification Service.
-    * **Channel expiration failure**: The notification could not be delivered because the channel between the app and Dev Center has expired. This can happen, for example, if the customer has not opened your app in a long time.
+    * **Channel expiration failure**: The notification could not be delivered because the channel between the app and Partner Center has expired. This can happen, for example, if the customer has not opened your app in a long time.
     * **Sending**: The notification is in the queue to be sent.
     * **Sent**: The notification was sent.
     * **Launches**: The notification was sent, the customer clicked it, and your app was opened as a result. Note that this only tracks app launches. Notifications that invite the customer to take other actions, such as launching the Store to leave a rating, are not included in this status.
@@ -129,7 +124,7 @@ To review detailed data for each notification:
 
 To analyze user activity data for all your notifications:
 
-1.  In the Windows Dev Center dashboard, expand the **Engage** section and select **Notifications**.
+1.  In Partner Center, expand the **Engage** section and select **Notifications**.
 2.  On the **Notifications** page, click the **Analyze** tab. This tab displays the following data:
     * Graph views of the various user action states for your toasts and action center notifications.
     * World map views of the click-through-rates for your toasts and action center notifications.
@@ -137,7 +132,7 @@ To analyze user activity data for all your notifications:
 
 ## Translate your notifications
 
-To maximize the impact of your notifications, consider translating them into the languages that your customers prefer. Dev Center makes it easy for you to translate your notifications automatically by leveraging the power of the [Microsoft Translator](https://www.microsoft.com/translator/home.aspx) service.
+To maximize the impact of your notifications, consider translating them into the languages that your customers prefer. Partner Center makes it easy for you to translate your notifications automatically by leveraging the power of the [Microsoft Translator](https://www.microsoft.com/translator/home.aspx) service.
 
 1.	After you’ve written your notification in your default language, select **Add languages** (beneath the **Languages** menu in the **Notification content** section).
 2.	In the **Add languages** window, select the additional languages that you want your notifications to appear in, and then select **Update**.
@@ -153,4 +148,4 @@ Things to keep in mind about translation:
 - [Tiles for UWP apps](../design/shell/tiles-and-notifications/creating-tiles.md)
 - [Windows Push Notification Services (WNS) overview](../design/shell/tiles-and-notifications/windows-push-notification-services--wns--overview.md)
 - [Notifications Visualizer app](https://www.microsoft.com/store/apps/9nblggh5xsl1)
-- [StoreServicesEngagementManager.RegisterNotificationChannelAsync() | registerNotificationChannelAsync() method](https://docs.microsoft.com/uwp/api/microsoft.services.store.engagement.storeservicesengagementmanager.registernotificationchannelasync)
+- [StoreServicesEngagementManager.RegisterNotificationChannelAsync() | registerNotificationChannelAsync() method](/uwp/api/microsoft.services.store.engagement.storeservicesengagementmanager.registernotificationchannelasync)

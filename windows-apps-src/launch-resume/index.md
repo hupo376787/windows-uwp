@@ -1,17 +1,12 @@
 ---
-author: TylerMSFT
 title: Launching, resuming, and background tasks
 description: This section describes what happens when a Universal Windows Platform (UWP) app is started, suspended, resumed, and terminated.
 ms.assetid: 75011D52-1511-4ECF-9DF6-52CBBDB15BD7
-ms.author: twhitney
 ms.date: 10/04/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
-keywords: windows 10, uwp
+keywords: windows 10, uwp, background task, app service, connected devices, remote systems
 ms.localizationpriority: medium
 ---
-
 # Launching, resuming, and background tasks
 
 
@@ -94,25 +89,26 @@ The [Background tasks](support-your-app-with-background-tasks.md) section shows 
 | Topic | Description |
 |-------|-------------|
 | [Guidelines for background tasks](guidelines-for-background-tasks.md)                                       | Ensure your app meets the requirements for running background tasks. |
-| [Access sensors and devices from a background task](access-sensors-and-devices-from-a-background-task.md)   | [**DeviceUseTrigger**](https://msdn.microsoft.com/library/windows/apps/dn297337) lets your Universal Windows app access sensors and peripheral devices in the background, even when your foreground app is suspended. |
+| [Access sensors and devices from a background task](access-sensors-and-devices-from-a-background-task.md)   | [**DeviceUseTrigger**](/uwp/api/Windows.ApplicationModel.Background.DeviceUseTrigger) lets your Universal Windows app access sensors and peripheral devices in the background, even when your foreground app is suspended. |
 | [Create and register an in-process background task](create-and-register-an-inproc-background-task.md)       | Create and register a background task that runs in the same process as your foreground app. |
 | [Create and register an out-of-process background task](create-and-register-a-background-task.md)           | Create and register a background task that that runs in a separate process from your app, and register it to run when your app is not in the foreground. |
-| [Convert an out-of-process background task to an in-process background task](convert-out-of-process-background-task.md) | Learn how to convert an out-of-process background task into an in-process background task that runs in the same process as your foreground app.|
+| [Create and register a COM background task for a winmain app](create-and-register-a-winmain-background-task.md) | Create a COM background task that can run in your main process or out-of-process when your packaged winmain app may not be running. |
+| [Port an out-of-process background task to an in-process background task](convert-out-of-process-background-task.md) | Learn how to port an out-of-process background task to an in-process background task that runs in the same process as your foreground app.|
 | [Debug a background task](debug-a-background-task.md)                                                       | Learn how to debug a background task, including background task activation and debug tracing in the Windows event log. |
 | [Declare background tasks in the application manifest](declare-background-tasks-in-the-application-manifest.md) | Enable the use of background tasks by declaring them as extensions in the app manifest. |
 | [Group background task registration](group-background-tasks.md)                                             | Isolate background task registration with groups. |
 | [Handle a cancelled background task](handle-a-cancelled-background-task.md)                                 | Learn how to make a background task that recognizes cancellation requests and stops work, reporting the cancellation to the app using persistent storage. |
 | [Monitor background task progress and completion](monitor-background-task-progress-and-completion.md)       | Learn how your app can recognize background task progress and completion. |
-| [Optimize background activity](https://docs.microsoft.com/windows/uwp/debug-test-perf/optimize-background-activity) |Learn how to reduce the energy used in the background and interact with user settings for background activity. |
+| [Optimize background activity](../debug-test-perf/optimize-background-activity.md) |Learn how to reduce the energy used in the background and interact with user settings for background activity. |
 | [Register a background task](register-a-background-task.md)                                                 | Learn how to create a function that can be re-used to safely register most background tasks. |
-| [Respond to system events with background tasks](respond-to-system-events-with-background-tasks.md)         | Learn how to create a background task that responds to [**SystemTrigger**](https://msdn.microsoft.com/library/windows/apps/br224839) events. |
+| [Respond to system events with background tasks](respond-to-system-events-with-background-tasks.md)         | Learn how to create a background task that responds to [**SystemTrigger**](/uwp/api/Windows.ApplicationModel.Background.SystemTriggerType) events. |
 | [Run a background task on a timer](run-a-background-task-on-a-timer-.md)                                    | Learn how to schedule a one-time background task, or run a periodic background task. |
 | [Run in the background indefinitely](run-in-the-background-indefinetly.md)                                    | Use a capability to run a background task or extended execution session in the background indefinitely. |
-| [Trigger a background task from within your app](trigger-background-task-from-app.md) | Learn how to use the [ApplicationTrigger](https://docs.microsoft.com/uwp/api/Windows.ApplicationModel.Background.ApplicationTrigger) to activate a background task from within your app.|
+| [Trigger a background task from within your app](trigger-background-task-from-app.md) | Learn how to use the [ApplicationTrigger](/uwp/api/Windows.ApplicationModel.Background.ApplicationTrigger) to activate a background task from within your app.|
 | [Set conditions for running a background task](set-conditions-for-running-a-background-task.md)             | Learn how to set conditions that control when your background task will run. |
-| [Transfer data in the background](https://msdn.microsoft.com/library/windows/apps/mt280377)                 | Use the background transfer API to copy files in the background. |
+| [Transfer data in the background](../networking/background-transfers.md)                 | Use the background transfer API to copy files in the background. |
 | [Update a live tile from a background task](update-a-live-tile-from-a-background-task.md)                   | Use a background task to update your app's live tile with fresh content. |
-| [Use a maintenance trigger](use-a-maintenance-trigger.md)                                                   | Learn how to use the [**MaintenanceTrigger**](https://msdn.microsoft.com/library/windows/apps/hh700517) class to run lightweight code in the background while the device is plugged in. |
+| [Use a maintenance trigger](use-a-maintenance-trigger.md)                                                   | Learn how to use the [**MaintenanceTrigger**](/uwp/api/Windows.ApplicationModel.Background.MaintenanceTrigger) class to run lightweight code in the background while the device is plugged in. |
 
 ## Remote Systems
 

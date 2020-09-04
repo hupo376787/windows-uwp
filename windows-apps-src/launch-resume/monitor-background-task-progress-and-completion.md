@@ -1,28 +1,23 @@
 ---
-author: TylerMSFT
 title: Monitor background task progress and completion
 description: Learn how your app can recognize progress and completion reported by a background task.
 ms.assetid: 17544FD7-A336-4254-97DC-2BF8994FF9B2
-ms.author: twhitney
 ms.date: 07/06/2018
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
-keywords: windows 10, uwp
+keywords: windows 10, uwp, background task
 ms.localizationpriority: medium
 dev_langs:
 - csharp
 - cppwinrt
 - cpp
 ---
-
 # Monitor background task progress and completion
 
 **Important APIs**
 
-- [**BackgroundTaskRegistration**](https://msdn.microsoft.com/library/windows/apps/br224786)
-- [**BackgroundTaskProgressEventHandler**](https://msdn.microsoft.com/library/windows/apps/br224785)
-- [**BackgroundTaskCompletedEventHandler**](https://msdn.microsoft.com/library/windows/apps/br224781)
+- [**BackgroundTaskRegistration**](/uwp/api/Windows.ApplicationModel.Background.BackgroundTaskRegistration)
+- [**BackgroundTaskProgressEventHandler**](/uwp/api/windows.applicationmodel.background.backgroundtaskprogresseventhandler)
+- [**BackgroundTaskCompletedEventHandler**](/uwp/api/windows.applicationmodel.background.backgroundtaskcompletedeventhandler)
 
 Learn how your app can recognize progress and completion reported by a background task that runs out-of-process. (For in-process background tasks, you can set shared variables to signify progress and completion.)
 
@@ -33,7 +28,7 @@ Background task progress and completion can be monitored by app code. To do so, 
 ## Create an event handler to handle completed background tasks
 
 ### Step 1
-Create an event handler function to handle completed background tasks. This code needs to follow a specific footprint, which takes an [**IBackgroundTaskRegistration**](https://msdn.microsoft.com/library/windows/apps/br224803) object and a [**BackgroundTaskCompletedEventArgs**](https://msdn.microsoft.com/library/windows/apps/br224778) object.
+Create an event handler function to handle completed background tasks. This code needs to follow a specific footprint, which takes an [**IBackgroundTaskRegistration**](/uwp/api/Windows.ApplicationModel.Background.IBackgroundTaskRegistration) object and a [**BackgroundTaskCompletedEventArgs**](/uwp/api/Windows.ApplicationModel.Background.BackgroundTaskCompletedEventArgs) object.
 
 Use the following footprint for the **OnCompleted** background task event handler method.
 
@@ -63,7 +58,7 @@ auto completed = [this](BackgroundTaskRegistration^ task, BackgroundTaskComplete
 ### Step 2
 Add code to the event handler that deals with the background task completion.
 
-For example, the [background task sample](http://go.microsoft.com/fwlink/p/?LinkId=618666) updates the UI.
+For example, the [background task sample](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/BackgroundTask) updates the UI.
 
 ```csharp
 private void OnCompleted(IBackgroundTaskRegistration task, BackgroundTaskCompletedEventArgs args)
@@ -91,7 +86,7 @@ auto completed = [this](BackgroundTaskRegistration^ task, BackgroundTaskComplete
 ## Create an event handler function to handle background task progress
 
 ### Step 1
-Create an event handler function to handle completed background tasks. This code needs to follow a specific footprint, which takes in an [**IBackgroundTaskRegistration**](https://msdn.microsoft.com/library/windows/apps/br224803) object and a [**BackgroundTaskProgressEventArgs**](https://msdn.microsoft.com/library/windows/apps/br224782) object:
+Create an event handler function to handle completed background tasks. This code needs to follow a specific footprint, which takes in an [**IBackgroundTaskRegistration**](/uwp/api/Windows.ApplicationModel.Background.IBackgroundTaskRegistration) object and a [**BackgroundTaskProgressEventArgs**](/uwp/api/Windows.ApplicationModel.Background.BackgroundTaskProgressEventArgs) object:
 
 Use the following footprint for the OnProgress background task event handler method:
 
@@ -121,7 +116,7 @@ auto progress = [this](BackgroundTaskRegistration^ task, BackgroundTaskProgressE
 ### Step 2
 Add code to the event handler that deals with the background task completion.
 
-For example, the [background task sample](http://go.microsoft.com/fwlink/p/?LinkId=618666) updates the UI with the progress status passed in via the *args* parameter:
+For example, the [background task sample](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/BackgroundTask) updates the UI with the progress status passed in via the *args* parameter:
 
 ```csharp
 private void OnProgress(IBackgroundTaskRegistration task, BackgroundTaskProgressEventArgs args)
@@ -157,7 +152,7 @@ auto progress = [this](BackgroundTaskRegistration^ task, BackgroundTaskProgressE
 ### Step 1
 When the app registers a background task for the first time, it should register to receive progress and completion updates for it, in case the task runs while the app is still active in the foreground.
 
-For example, the [background task sample](http://go.microsoft.com/fwlink/p/?LinkId=618666) calls the following function on each background task that it registers:
+For example, the [background task sample](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/BackgroundTask) calls the following function on each background task that it registers:
 
 ```csharp
 private void AttachProgressAndCompletedHandlers(IBackgroundTaskRegistration task)
@@ -214,9 +209,9 @@ void SampleBackgroundTask::AttachProgressAndCompletedHandlers(IBackgroundTaskReg
 ```
 
 ### Step 2
-When the app launches, or navigates to a new page where background task status is relevant, it should get a list of background tasks currently registered and associate them with the progress and completion event handler functions. The list of background tasks currently registered by the application is kept in the [**BackgroundTaskRegistration**](https://msdn.microsoft.com/library/windows/apps/br224786).[**AllTasks**](https://msdn.microsoft.com/library/windows/apps/br224787) property.
+When the app launches, or navigates to a new page where background task status is relevant, it should get a list of background tasks currently registered and associate them with the progress and completion event handler functions. The list of background tasks currently registered by the application is kept in the [**BackgroundTaskRegistration**](/uwp/api/Windows.ApplicationModel.Background.BackgroundTaskRegistration).[**AllTasks**](/uwp/api/windows.applicationmodel.background.backgroundtaskregistration.alltasks) property.
 
-For example, the [background task sample](http://go.microsoft.com/fwlink/p/?LinkId=618666) uses the following code to attach event handlers when the SampleBackgroundTask page is navigated to:
+For example, the [background task sample](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/BackgroundTask) uses the following code to attach event handlers when the SampleBackgroundTask page is navigated to:
 
 ```csharp
 protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -298,4 +293,4 @@ void SampleBackgroundTask::OnNavigatedTo(NavigationEventArgs^ e)
 * [Run a background task on a timer](run-a-background-task-on-a-timer-.md)
 * [Guidelines for background tasks](guidelines-for-background-tasks.md)
 * [Debug a background task](debug-a-background-task.md)
-* [How to trigger suspend, resume, and background events in UWP apps (when debugging)](http://go.microsoft.com/fwlink/p/?linkid=254345)
+* [How to trigger suspend, resume, and background events in UWP apps (when debugging)](/previous-versions/hh974425(v=vs.110))

@@ -1,39 +1,36 @@
 ---
-author: msatranjr
-title: Creating a Windows Runtime component in C++/CX, and calling it from JavaScript or C#
-description: This walkthrough shows how to create a basic Windows Runtime Component DLL that's callable from JavaScript, C#, or Visual Basic.
+title: Walkthrough of creating a C++/CX Windows Runtime component, and calling it from JavaScript or C#
+description: This walkthrough shows how to create a basic Windows Runtime component DLL that's callable from JavaScript, C#, or Visual Basic.
 ms.assetid: 764CD9C6-3565-4DFF-88D7-D92185C7E452
-ms.author: misatran
 ms.date: 05/14/2018
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp
 ms.localizationpriority: medium
 ---
 
-# Walkthrough: Creating a Windows Runtime component in C++/CX, and calling it from JavaScript or C#
-> [!NOTE]
-> This topic exists to help you maintain your C++/CX application. But we recommend that you use [C++/WinRT](../cpp-and-winrt-apis/intro-to-using-cpp-with-winrt.md) for new applications. C++/WinRT is an entirely standard modern C++17 language projection for Windows Runtime (WinRT) APIs, implemented as a header-file-based library, and designed to provide you with first-class access to the modern Windows API. To learn how to create a Windows Runtime Component using C++/WinRT, see [Author events in C++/WinRT](../cpp-and-winrt-apis/author-events.md).
+# Walkthrough of creating a C++/CX Windows Runtime component, and calling it from JavaScript or C#
 
-This walkthrough shows how to create a basic Windows Runtime Component DLL that's callable from JavaScript, C#, or Visual Basic. Before you begin this walkthrough, make sure that you understand concepts such as the Abstract Binary Interface (ABI), ref classes, and the Visual C++ Component Extensions that make working with ref classes easier. For more information, see [Creating Windows Runtime Components in C++](creating-windows-runtime-components-in-cpp.md) and [Visual C++ Language Reference (C++/CX)](https://msdn.microsoft.com/library/windows/apps/xaml/hh699871.aspx).
+> [!NOTE]
+> This topic exists to help you maintain your C++/CX application. But we recommend that you use [C++/WinRT](../cpp-and-winrt-apis/intro-to-using-cpp-with-winrt.md) for new applications. C++/WinRT is an entirely standard modern C++17 language projection for Windows Runtime (WinRT) APIs, implemented as a header-file-based library, and designed to provide you with first-class access to the modern Windows API. To learn how to create a Windows Runtime component using C++/WinRT, see [Windows Runtime components with C++/WinRT](./create-a-windows-runtime-component-in-cppwinrt.md).
+
+This walkthrough shows how to create a basic Windows Runtime component DLL that's callable from JavaScript, C#, or Visual Basic. Before you begin this walkthrough, make sure that you understand concepts such as the Abstract Binary Interface (ABI), ref classes, and the Visual C++ Component Extensions that make working with ref classes easier. For more information, see [Windows Runtime components with C++/CX](creating-windows-runtime-components-in-cpp.md) and [Visual C++ Language Reference (C++/CX)](/cpp/cppcx/visual-c-language-reference-c-cx).
 
 ## Creating the C++ component DLL
 In this example, we create the component project first, but you could create the JavaScript project first. The order doesn’t matter.
 
 Notice that the main class of the component contains examples of property and method definitions, and an event declaration. These are provided just to show you how it's done. They are not required, and in this example, we'll replace all of the generated code with our own code.
 
-## **To create the C++ component project**
-On the Visual Studio menu bar, choose **File, New, Project**.
+### **To create the C++ component project**
+1. On the Visual Studio menu bar, choose **File, New, Project**.
 
-In the **New Project** dialog box, in the left pane, expand **Visual C++** and then select the node for Universal Windows apps.
+2. In the **New Project** dialog box, in the left pane, expand **Visual C++** and then select the node for Universal Windows apps.
 
-In the center pane, select **Windows Runtime Component** and then name the project WinRT\_CPP.
+3. In the center pane, select **Windows Runtime Component** and then name the project WinRT\_CPP.
 
-Choose the **OK** button.
+4. Choose the **OK** button.
 
 ## **To add an activatable class to the component**
-An activatable class is one that client code can create by using a **new** expression (**New** in Visual Basic, or **ref new** in C++). In your component, you declare it as **public ref class sealed**. In fact, the Class1.h and .cpp files already have a ref class. You can change the name, but in this example we’ll use the default name—Class1. You can define additional ref classes or regular classes in your component if they are required. For more information about ref classes, see [Type System (C++/CX)](https://msdn.microsoft.com/library/windows/apps/hh755822.aspx).
+An activatable class is one that client code can create by using a **new** expression (**New** in Visual Basic, or **ref new** in C++). In your component, you declare it as **public ref class sealed**. In fact, the Class1.h and .cpp files already have a ref class. You can change the name, but in this example we’ll use the default name—Class1. You can define additional ref classes or regular classes in your component if they are required. For more information about ref classes, see [Type System (C++/CX)](/cpp/cppcx/type-system-c-cx).
 
 Add these \#include directives to Class1.h:
 
@@ -84,15 +81,15 @@ private:
         Windows::UI::Core::CoreDispatcher^ m_dispatcher;
 ```
 
-## To add the header and namespace directives
-In Class1.cpp, add these #include directives:
+### To add the header and namespace directives
+1. In Class1.cpp, add these #include directives:
 
 ```cpp
 #include <ppltasks.h>
 #include <concurrent_vector.h>
 ```
 
-Now add these using statements to pull in the required namespaces:
+2. Now add these using statements to pull in the required namespaces:
 
 ```cpp
 using namespace concurrency;
@@ -114,7 +111,7 @@ IVector<double>^ Class1::ComputeResult(double input)
     float numbers[] = { 1.0, 10.0, 60.0, 100.0, 600.0, 10000.0 };
     array_view<float, 1> logs(6, numbers);
 
-    // See http://msdn.microsoft.com/en-us/library/hh305254.aspx
+    // See http://msdn.microsoft.com/library/hh305254.aspx
     parallel_for_each(
         logs.extent,
         [=] (index<1> idx) restrict(amp)
@@ -265,25 +262,29 @@ IAsyncActionWithProgress<double>^ Class1::GetPrimesUnordered(int first, int last
 }
 ```
 
-## Creating a JavaScript client app
-If you just want to create a C# client, you can skip this section.
+## Creating a JavaScript client app (Visual Studio 2017)
 
-## To create a JavaScript project
-In Solution Explorer, open the shortcut menu for the Solution node and choose **Add, New Project**.
+If you want to create a C# client, then you can skip this section.
 
-Expand JavaScript (it might be nested under **Other Languages**) and choose **Blank App (Universal Windows)**.
+> [!NOTE]
+> Universal Windows Platform (UWP) projects are not supported in Visual Studio 2019. See [JavaScript and TypeScript in Visual Studio 2019](/visualstudio/javascript/javascript-in-vs-2019?view=vs-2019#projects). To follow along with this section, we recommend that you use Visual Studio 2017. See [JavaScript in Visual Studio 2017](/visualstudio/javascript/javascript-in-vs-2017).
 
-Accept the default name—App1—by choosing the **OK** button.
+### To create a JavaScript project
+1. In Solution Explorer (in Visual Studio 2017; see **Note** above), open the shortcut menu for the Solution node and choose **Add, New Project**.
 
-Open the shortcut menu for the App1 project node and choose **Set as Startup Project**.
+2. Expand JavaScript (it might be nested under **Other Languages**) and choose **Blank App (Universal Windows)**.
 
-Add a project reference to WinRT_CPP:
+3. Accept the default name&mdash;App1&mdash;by choosing the **OK** button.
 
-Open the shortcut menu for the References node and choose **Add Reference**.
+4. Open the shortcut menu for the App1 project node and choose **Set as Startup Project**.
 
-In the left pane of the References Manager dialog box, select **Projects** and then select **Solution**.
+5. Add a project reference to WinRT_CPP:
 
-In the center pane, select WinRT_CPP and then choose the **OK** button
+6. Open the shortcut menu for the References node and choose **Add Reference**.
+
+7. In the left pane of the References Manager dialog box, select **Projects** and then select **Solution**.
+
+8. In the center pane, select WinRT_CPP and then choose the **OK** button
 
 ## To add the HTML that invokes the JavaScript event handlers
 Paste this HTML into the <body> node of the default.html page:
@@ -420,7 +421,7 @@ function ButtonClear_Click() {
 }
 ```
 
-Add code to add the event listeners by replacing the existing call to WinJS.UI.processAll in app.onactivated in default.js with the following code that implements event registration in a then block. For a detailed explanation of this, see Create a "Hello World" app (JS).
+Add code to add the event listeners by replacing the existing call to WinJS.UI.processAll in app.onactivated in default.js with the following code that implements event registration in a then block. For a detailed explanation of this, see [Create a "Hello, World" app (JS)](../get-started/create-a-hello-world-app-js-uwp.md).
 
 ```JavaScript
 args.setPromise(WinJS.UI.processAll().then( function completed() {
@@ -439,22 +440,22 @@ Press F5 to run the app.
 
 ## Creating a C# client app
 
-## To create a C# project
-In Solution Explorer, open the shortcut menu for the Solution node and then choose **Add, New Project**.
+### To create a C# project
+1. In Solution Explorer, open the shortcut menu for the Solution node and then choose **Add, New Project**.
 
-Expand Visual C# (it might be nested under **Other Languages**), select **Windows** and then **Universal** in the left pane, and then select **Blank App** in the middle pane.
+2. Expand Visual C# (it might be nested under **Other Languages**), select **Windows** and then **Universal** in the left pane, and then select **Blank App** in the middle pane.
 
-Name this app CS_Client and then choose the **OK** button.
+3. Name this app CS_Client and then choose the **OK** button.
 
-Open the shortcut menu for the CS_Client project node and choose **Set as Startup Project**.
+4. Open the shortcut menu for the CS_Client project node and choose **Set as Startup Project**.
 
-Add a project reference to WinRT_CPP:
+5. Add a project reference to WinRT_CPP:
 
-Open the shortcut menu for the **References** node and choose **Add Reference**.
+   - Open the shortcut menu for the **References** node and choose **Add Reference**.
 
-In the left pane of the **References Manager** dialog box, select **Projects** and then select **Solution**.
+   - In the left pane of the **References Manager** dialog box, select **Projects** and then select **Solution**.
 
-In the center pane, select WinRT_CPP and then choose the **OK** button.
+   - In the center pane, select WinRT_CPP and then choose the **OK** button.
 
 ## To add the XAML that defines the user interface
 Copy the following code into the Grid element in MainPage.xaml.
@@ -583,20 +584,20 @@ Select either the C# project or JavaScript project as the startup project by ope
 ## Inspecting your component in Object Browser (optional)
 In Object Browser, you can inspect all Windows Runtime types that are defined in .winmd files. This includes the types in the Platform namespace and the default namespace. However, because the types in the Platform::Collections namespace are defined in the header file collections.h, not in a winmd file, they don’t appear in Object Browser.
 
-## **To inspect a component**
-On the menu bar, choose **View, Object Browser** (Ctrl+Alt+J).
+### **To inspect a component**
+1. On the menu bar, choose **View, Object Browser** (Ctrl+Alt+J).
 
-In the left pane of the Object Browser, expand the WinRT\_CPP node to show the types and methods that are defined on your component.
+2. In the left pane of the Object Browser, expand the WinRT\_CPP node to show the types and methods that are defined on your component.
 
 ## Debugging tips
 For a better debugging experience, download the debugging symbols from the public Microsoft symbol servers:
 
-## **To download debugging symbols**
-On the menu bar, choose **Tools, Options**.
+### **To download debugging symbols**
+1. On the menu bar, choose **Tools, Options**.
 
-In the **Options** dialog box, expand **Debugging** and select **Symbols**.
+2. In the **Options** dialog box, expand **Debugging** and select **Symbols**.
 
-Select **Microsoft Symbol Servers** and the choose the **OK** button.
+3. Select **Microsoft Symbol Servers** and the choose the **OK** button.
 
 It might take some time to download the symbols the first time. For faster performance the next time you press F5, specify a local directory in which to cache the symbols.
 
@@ -606,7 +607,7 @@ Be sure to select appropriate capabilities in the package designer. You can open
 
 If your JavaScript code doesn't recognize the public properties or methods in the component, make sure that in JavaScript you are using camel casing. For example, the `ComputeResult` C++ method must be referenced as `computeResult` in JavaScript.
 
-If you remove a C++ Windows Runtime Component project from a solution, you must also manually remove the project reference from the JavaScript project. Failure to do so prevents subsequent debug or build operations. If necessary, you can then add an assembly reference to the DLL.
+If you remove a C++ Windows Runtime component project from a solution, you must also manually remove the project reference from the JavaScript project. Failure to do so prevents subsequent debug or build operations. If necessary, you can then add an assembly reference to the DLL.
 
 ## Related topics
-* [Creating Windows Runtime Components in C++/CX](creating-windows-runtime-components-in-cpp.md)
+* [Windows Runtime components with C++/CX](creating-windows-runtime-components-in-cpp.md)

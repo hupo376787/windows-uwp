@@ -1,22 +1,16 @@
 ---
-author: QuinnRadich
 Description: These guidelines describe how to design effective Help content for your app.
 title: Guidelines for app help
 label: Guidelines for app help
 template: detail.hbs
-ms.author: quradic
 ms.date: 02/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp
 ms.assetid: c3e73f9b-4839-4804-b379-c95b0ca4fbe8
 ms.localizationpriority: medium
 ---
 
-# Guidelines for App Help
-
-
+# Guidelines for app help
 
 Applications can be complex, and providing effective help for your users can greatly improve their experience. Not all applications need to provide help for their users, and what sort of help should be provided can vary greatly, depending on the application.
 

@@ -1,21 +1,18 @@
 ---
-author: QuinnRadich
 title: What's New in Windows Docs in July 2017 - Develop UWP apps
 description: New features, samples, and developer guidance has been added to the Windows 10 developer documentation for July 2017
 keywords: what's new, update, features, developer guidance, Windows 10
-ms.author: quradic
 ms.date: 07/05/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
+
+
 ms.localizationpriority: medium
 ---
-
 # What's New in the Windows Developer Docs in July 2017
 
 The Windows Developer Documentation is constantly being updated with information on new features available to developers across the Windows platform. The following feature overviews, developer guidance, and code samples have recently been made available, containing new and updated information for Windows developers.
 
-[Install the tools and SDK](http://go.microsoft.com/fwlink/?LinkId=821431) on Windows 10 and you’re ready to either [create a new Universal Windows app](../get-started/your-first-app.md) or explore how you can use your [existing app code on Windows](../porting/index.md).
+[Install the tools and SDK](https://developer.microsoft.com/windows/downloads#_blank) on Windows 10 and you’re ready to either [create a new Universal Windows app](../get-started/your-first-app.md) or explore how you can use your [existing app code on Windows](../porting/index.md).
 
 ## Features
 
@@ -97,22 +94,21 @@ Available to [Windows Insiders](https://insider.windows.com/) in SDK Preview Bui
 
 ### Media Playback
 
-New sections have been added to the basic media playback article, [Play audio and video with MediaPlayer](../audio-video-camera/play-audio-and-video-with-mediaplayer.md). The section [Play spherical video with MediaPlayer](../audio-video-camera/play-audio-and-video-with-mediaplayer.md) shows you how to playback spherically encodeded video, including adjusting the field of view and view orientation for supported formats. The section [Use MediaPlayer in frame server mode](../audio-video-camera/play-audio-and-video-with-mediaplayer.md#use-mediaplayer-in-frame-server-mode) shows you how to copy frames from media played back with [MediaPlayer](https://docs.microsoft.com/uwp/api/Windows.Media.Playback.MediaPlayer) to a Direct3D surface. This enables scenarios such as applying real-time effects with pixel shaders. The example code shows a quick implementation of a blur effect for video playback using Win2D.
+New sections have been added to the basic media playback article, [Play audio and video with MediaPlayer](../audio-video-camera/play-audio-and-video-with-mediaplayer.md). The section [Play spherical video with MediaPlayer](../audio-video-camera/play-audio-and-video-with-mediaplayer.md) shows you how to playback spherically encodeded video, including adjusting the field of view and view orientation for supported formats. The section [Use MediaPlayer in frame server mode](../audio-video-camera/play-audio-and-video-with-mediaplayer.md#use-mediaplayer-in-frame-server-mode) shows you how to copy frames from media played back with [MediaPlayer](/uwp/api/Windows.Media.Playback.MediaPlayer) to a Direct3D surface. This enables scenarios such as applying real-time effects with pixel shaders. The example code shows a quick implementation of a blur effect for video playback using Win2D.
 
 ### Media Capture
 
-The article [Process media frames with MediaFrameReader](../audio-video-camera/process-media-frames-with-mediaframereader.md) has been updated to show the usage of the new [Multi​Source​Media​Frame​Reader](https://docs.microsoft.com/uwp/api/windows.media.capture.frames.multisourcemediaframereader) class, which allows you to obtain time-correlated frames from multiple media sources. This is useful if you need to process frames from different sources, such as a depth camera and an color camera, and you need to make sure that the frames from each source were captured close to each other in time. For more information, see [Use MultiSourceMediaFrameReader to get time-corellated frames from multiple sources](../audio-video-camera/process-media-frames-with-mediaframereader.md#use-multisourcemediaframereader-to-get-time-corellated-frames-from-multiple-sources).
+The article [Process media frames with MediaFrameReader](../audio-video-camera/process-media-frames-with-mediaframereader.md) has been updated to show the usage of the new [Multi​Source​Media​Frame​Reader](/uwp/api/windows.media.capture.frames.multisourcemediaframereader) class, which allows you to obtain time-correlated frames from multiple media sources. This is useful if you need to process frames from different sources, such as a depth camera and an color camera, and you need to make sure that the frames from each source were captured close to each other in time. For more information, see [Use MultiSourceMediaFrameReader to get time-corellated frames from multiple sources](../audio-video-camera/process-media-frames-with-mediaframereader.md#use-multisourcemediaframereader-to-get-time-corellated-frames-from-multiple-sources).
 
 ### Scoped Search
 
-A "UWP" scope has been added to the [UWP conceptual](../get-started/universal-application-platform-guide.md) and [API reference](https://docs.microsoft.com/en-us/uwp/api/) documentation on docs.microsoft.com. Unless this scope is deactivated, searches made from within these areas will return UWP docs only.
+A "UWP" scope has been added to the [UWP conceptual](../get-started/universal-application-platform-guide.md) and [API reference](/uwp/api/) documentation on docs.microsoft.com. Unless this scope is deactivated, searches made from within these areas will return UWP docs only.
 
 ![Scoped Search](images/scoped-search.png)
 
 ### Test your Windows app for Windows 10 S
 
-Test your Windows app to ensure that it will operate correctly on devices that run Windows S. 
-Use [this new guide](../porting/desktop-to-uwp-test-windows-s.md) to learn how. 
+Test your Windows app to ensure that it will operate correctly on devices that run Windows S. Use [this new guide](/windows/msix/desktop/desktop-to-uwp-test-windows-s) to learn how.
 
 ## Samples
 
@@ -124,7 +120,7 @@ Use [this new guide](../porting/desktop-to-uwp-test-windows-s.md) to learn how.
 
 ### Shopping app sample
 
-[A mini-app that presents a basic shopping experience where a user can buy emoji](https://github.com/Microsoft/Windows-appsample-shopping). This app shows how to use the [Payment Request APIs](https://docs.microsoft.com/uwp/api/windows.applicationmodel.payments) to implement the checkout experience.
+[A mini-app that presents a basic shopping experience where a user can buy emoji](https://github.com/Microsoft/Windows-appsample-shopping). This app shows how to use the [Payment Request APIs](/uwp/api/windows.applicationmodel.payments) to implement the checkout experience.
 
 ![Screenshot of shopping app sample](images/shoppingcart.png)  
 
@@ -132,7 +128,7 @@ Use [this new guide](../porting/desktop-to-uwp-test-windows-s.md) to learn how.
 
 ### Accessibility
 
-Building accessibility into your apps opens them up to a much wider audience. [Watch the video](https://channel9.msdn.com/Blogs/One-Dev-Minute/Developing-Apps-for-Accessibility), then learn more about [developing apps for accessibility](https://developer.microsoft.com/en-us/windows/accessible-apps).
+Building accessibility into your apps opens them up to a much wider audience. [Watch the video](https://channel9.msdn.com/Blogs/One-Dev-Minute/Developing-Apps-for-Accessibility), then learn more about [developing apps for accessibility](https://developer.microsoft.com/windows/accessible-apps).
 
 ### Payments Request API
 
@@ -140,4 +136,4 @@ The Payment Request API helps custoemrs and sellers seamlessly complete the onli
 
 ### Windows 10 IoT Core
 
-With Windows 10 IoT Core and the Universal Windows Platform, you can quickly protoype and build projects with vision and component connections, such as this Pet Recognition Door. [Watch the video](https://channel9.msdn.com/Blogs/One-Dev-Minute/Building-a-Pet-Recognition-Door-Using-Windows-10-IoT-Core), then learn more about how to [get started with Windows 10 IoT Core](https://developer.microsoft.com/en-us/windows/iot).
+With Windows 10 IoT Core and the Universal Windows Platform, you can quickly protoype and build projects with vision and component connections, such as this Pet Recognition Door. [Watch the video](https://channel9.msdn.com/Blogs/One-Dev-Minute/Building-a-Pet-Recognition-Door-Using-Windows-10-IoT-Core), then learn more about how to [get started with Windows 10 IoT Core](https://developer.microsoft.com/windows/iot).

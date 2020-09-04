@@ -4,21 +4,18 @@ description: The Pixel Shader (PS) stage receives interpolated data for a primit
 ms.assetid: 0AEBFDFB-0AD8-4633-AE4E-A44004B57745
 keywords:
 - Pixel Shader (PS) stage
-author: michaelfromredmond
-ms.author: mithom
 ms.date: 02/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
+
+
 ms.localizationpriority: medium
 ---
-
 # Pixel Shader (PS) stage
 
 
 The Pixel Shader (PS) stage receives interpolated data for a primitive, and generates per-pixel data such as color.
 
-This is a programmable shader stage; it is shown as a rounded block in the [graphics pipeline](graphics-pipeline.md) diagram. This shader stage exposes its own unique functionality, built on the shader model 4.0 [common-shader core](https://msdn.microsoft.com/library/windows/desktop/bb509580).
+This is a programmable shader stage; it is shown as a rounded block in the [graphics pipeline](graphics-pipeline.md) diagram. This shader stage exposes its own unique functionality, built on the shader model 4.0 [common-shader core](/windows/desktop/direct3dhlsl/dx-graphics-hlsl-common-core).
 
 The Pixel Shader (PS) stage enables rich shading techniques such as per-pixel lighting and post-processing. A pixel shader is a program that combines constant variables, texture data, interpolated per-vertex values, and other data to produce per-pixel outputs. The [Rasterizer (RS) stage](rasterizer-stage--rs-.md) invokes a pixel shader once for each pixel covered by a primitive, however, it is possible to specify a **NULL** shader to avoid running a shader.
 
@@ -33,9 +30,9 @@ When the pipeline is configured without a geometry shader, a pixel shader is lim
 
 Pixel shader input data includes vertex attributes (that can be interpolated with or without perspective correction) or can be treated as per-primitive constants. Pixel shader inputs are interpolated from the vertex attributes of the primitive being rasterized, based on the interpolation mode declared. If a primitive gets clipped before rasterization, the interpolation mode is honored during the clipping process as well.
 
-Vertex attributes are interpolated (or evaluated) at pixel shader center locations. Pixel shader attribute interpolation modes are declared in an input register declaration, on a per-element basis in either an [argument](https://msdn.microsoft.com/library/windows/desktop/bb509606) or an [input structure](https://msdn.microsoft.com/library/windows/desktop/bb509668). Attributes can be interpolated linearly, or with centroid sampling. See the section "Centroid Sampling of Attributes when Multisample Antialiasing" in [Rasterization rules](rasterization-rules.md). Centroid evaluation is relevant only during multisampling to cover cases where a pixel is covered by a primitive but a pixel center may not be; centroid evaluation occurs as close as possible to the (non-covered) pixel center.
+Vertex attributes are interpolated (or evaluated) at pixel shader center locations. Pixel shader attribute interpolation modes are declared in an input register declaration, on a per-element basis in either an [argument](/windows/desktop/direct3dhlsl/dx-graphics-hlsl-function-parameters) or an [input structure](/windows/desktop/direct3dhlsl/dx-graphics-hlsl-struct). Attributes can be interpolated linearly, or with centroid sampling. See the section "Centroid Sampling of Attributes when Multisample Antialiasing" in [Rasterization rules](rasterization-rules.md). Centroid evaluation is relevant only during multisampling to cover cases where a pixel is covered by a primitive but a pixel center may not be; centroid evaluation occurs as close as possible to the (non-covered) pixel center.
 
-Inputs may also be declared with a [system-value semantic](https://msdn.microsoft.com/library/windows/desktop/bb509647), which marks a parameter that is consumed by other pipeline stages. For instance, a pixel position should be marked with the SV\_Position semantic. The [Input Assembler (IA) stage](input-assembler-stage--ia-.md) can produce one scalar for a pixel shader (using SV\_PrimitiveID); the [Rasterizer (RS) stage](rasterizer-stage--rs-.md) can also generate one scalar for a pixel shader (using SV\_IsFrontFace).
+Inputs may also be declared with a [system-value semantic](/windows/desktop/direct3dhlsl/dx-graphics-hlsl-semantics), which marks a parameter that is consumed by other pipeline stages. For instance, a pixel position should be marked with the SV\_Position semantic. The [Input Assembler (IA) stage](input-assembler-stage--ia-.md) can produce one scalar for a pixel shader (using SV\_PrimitiveID); the [Rasterizer (RS) stage](rasterizer-stage--rs-.md) can also generate one scalar for a pixel shader (using SV\_IsFrontFace).
 
 ## <span id="Outputs"></span><span id="outputs"></span><span id="OUTPUTS"></span>Outputs
 
@@ -54,7 +51,3 @@ A pixel shader cannot output a stencil value.
  
 
  
-
-
-
-

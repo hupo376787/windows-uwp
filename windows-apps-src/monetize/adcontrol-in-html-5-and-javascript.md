@@ -1,26 +1,24 @@
 ---
-author: mcleanbyron
 ms.assetid: adb2fa45-e18f-4254-bd8b-a749a386e3b4
 description: Learn how to use the AdControl class to display banner ads in a JavaScript/HTML app for Windows 10 (UWP).
 title: AdControl in HTML 5 and JavaScript
-ms.author: mcleans
-ms.date: 03/22/2018
+ms.date: 02/18/2020
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp, ads, advertising, AdControl, ad control, javascript, HTML
 ms.localizationpriority: medium
 ---
-
 # AdControl in HTML 5 and JavaScript
 
-This walkthrough shows how to use the [AdControl](https://docs.microsoft.com/uwp/api/microsoft.advertising.winrt.ui.adcontrol) class to display banner ads in a Universal Windows Platform (UWP) JavaScript/HTML app for Windows 10.
+>[!WARNING]
+> As of June 1, 2020, the Microsoft Ad Monetization platform for Windows UWP apps will be shut down. [Learn more](https://social.msdn.microsoft.com/Forums/windowsapps/en-US/db8d44cb-1381-47f7-94d3-c6ded3fea36f/microsoft-ad-monetization-platform-shutting-down-june-1st?forum=aiamgr)
 
-For a complete sample project that demonstrates how to add banner ads to a JavaScript/HTML app, see the [advertising samples on GitHub](http://aka.ms/githubads).
+This walkthrough shows how to use the [AdControl](/uwp/api/microsoft.advertising.winrt.ui.adcontrol) class to display banner ads in a Universal Windows Platform (UWP) JavaScript/HTML app for Windows 10.
+
+For a complete sample project that demonstrates how to add banner ads to a JavaScript/HTML app, see the [advertising samples on GitHub](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/Advertising).
 
 ## Prerequisites
 
-* Install the [Microsoft Advertising SDK](http://aka.ms/ads-sdk-uwp) with Visual Studio 2015 or a later release of Visual Studio. For installation instructions, see [this article](install-the-microsoft-advertising-libraries.md).
+* Install the [Microsoft Advertising SDK](https://marketplace.visualstudio.com/items?itemName=AdMediator.MicrosoftAdvertisingSDK) with Visual Studio 2015 or a later release of Visual Studio. For installation instructions, see [this article](install-the-microsoft-advertising-libraries.md).
 
 > [!NOTE]
 > If you have installed the Windows 10 SDK version 10.0.14393 (Anniversary Update) or a later version of the Windows SDK, you must also install the [WinJS](https://github.com/winjs/winjs) library. This library used to be included in previous versions of the Windows SDK for Windows 10, but starting with the Windows 10 SDK version 10.0.14393 (Anniversary Update) this library must be installed separately. 
@@ -55,7 +53,7 @@ For a complete sample project that demonstrates how to add banner ads to a JavaS
 8.  Modify the **&lt;body&gt;** section in the default.html file (or other html file as appropriate for your project) to include the **div** for the **AdControl**. Assign the **applicationId** and **adUnitId** properties of the **AdControl** to the [test ad unit values](set-up-ad-units-in-your-app.md#test-ad-units). Also adjust the **height** and **width** so the control is one of the [supported ad sizes for banner ads](supported-ad-sizes-for-banner-ads.md).
 
     > [!NOTE]
-    > Every **AdControl** has a corresponding *ad unit* that is used by our services to serve ads to the control, and every ad unit consists of an *ad unit ID* and *application ID*. In these steps, you assign test ad unit ID and application ID values to your control. These test values can only be used in a test version of your app. Before you publish your app to the Store, you must [replace these test values with live values](#release) from Windows Dev Center.
+    > Every **AdControl** has a corresponding *ad unit* that is used by our services to serve ads to the control, and every ad unit consists of an *ad unit ID* and *application ID*. In these steps, you assign test ad unit ID and application ID values to your control. These test values can only be used in a test version of your app. Before you publish your app to the Store, you must [replace these test values with live values](#release) from Partner Center.
 
     ``` HTML
     <div id="myAd" style="position: absolute; top: 50px; left: 0px; width: 300px; height: 250px; z-index: 1"
@@ -99,14 +97,14 @@ The following example shows the complete index.html for a simple app.
 The previous steps show how to declare an **AdControl** in your HTML markup. Alternatively, you can programmatically create an **AdControl** using JavaScript. This example assumes that you are using an existing **div** in your HTML with the ID **myAd**.
 
 > [!div class="tabbedCodeSnippets"]
-[!code-javascript[AdControl](./code/AdvertisingSamples/AdControlSamples/js/main.js#DeclareAdControl)]
+:::code language="javascript" source="~/../snippets-windows/windows-uwp/monetize/AdvertisingSamples/AdControlSamples/js/main.js" id="DeclareAdControl":::
 
 This example assumes that you have already declared event handler methods named **myAdError**, **myAdRefreshed**, and **myAdEngagedChanged**.
 
 If you use this code and do not see ads, you can try inserting an attribute of **position:relative** in the **div** that contains the **AdControl**. This will override the default setting of the **IFrame**. Ads will be displayed correctly, unless they are not being shown due to the value of this attribute. Note that new ad units may not be available for up to 30 minutes.
 
 > [!NOTE]
-> The *applicationId* and *adUnitId* values shown in this example are [test mode values](set-up-ad-units-in-your-app.md#test-ad-units). You must [replace these values with live values](set-up-ad-units-in-your-app.md#live-ad-units) from Windows Dev Center before submitting your app for submission.
+> The *applicationId* and *adUnitId* values shown in this example are [test mode values](set-up-ad-units-in-your-app.md#test-ad-units). You must [replace these values with live values](set-up-ad-units-in-your-app.md#live-ad-units) from Partner Center before submitting your app for submission.
 
 <span id="release" />
 
@@ -114,17 +112,17 @@ If you use this code and do not see ads, you can try inserting an attribute of *
 
 1. Make sure your use of banner ads in your app follows our [guidelines for banner ads](ui-and-user-experience-guidelines.md#guidelines-for-banner-ads).
 
-1.  In the Dev Center dashboard, go to the [In-app ads](../publish/in-app-ads.md) page and [create an ad unit](set-up-ad-units-in-your-app.md#live-ad-units). For the ad unit type, specify **Banner**. Make note of both the ad unit ID and the application ID.
+1.  In Partner Center, go to the [In-app ads](../publish/in-app-ads.md) page and [create an ad unit](set-up-ad-units-in-your-app.md#live-ad-units). For the ad unit type, specify **Banner**. Make note of both the ad unit ID and the application ID.
     > [!NOTE]
-    > The application ID values for test ad units and live UWP ad units have different formats. Test application ID values are GUIDs. When you create a live UWP ad unit in the dashboard, the application ID value for the ad unit always matches the Store ID for your app (an example Store ID value looks like 9NBLGGH4R315).
+    > The application ID values for test ad units and live UWP ad units have different formats. Test application ID values are GUIDs. When you create a live UWP ad unit in Partner Center, the application ID value for the ad unit always matches the Store ID for your app (an example Store ID value looks like 9NBLGGH4R315).
 
 2. You can optionally enable ad mediation for the **AdControl** by configuring the settings in the [Mediation settings](../publish/in-app-ads.md#mediation) section on the [In-app ads](../publish/in-app-ads.md) page. Ad mediation enables you to maximize your ad revenue and app promotion capabilities by displaying ads from multiple ad networks, including ads from other paid ad networks such as Taboola and Smaato and ads for Microsoft app promotion campaigns.
 
-3.  In your code, replace the test ad unit values (**applicationId** and **adUnitId**) with the live values you generated in Dev Center.
+3.  In your code, replace the test ad unit values (**applicationId** and **adUnitId**) with the live values you generated in Partner Center.
 
-4.  [Submit your app](../publish/app-submissions.md) to the Store using the Dev Center dashboard.
+4.  [Submit your app](../publish/app-submissions.md) to the Store using Partner Center.
 
-5.  Review your [advertising performance reports](../publish/advertising-performance-report.md) in the Dev Center dashboard.             
+5.  Review your [advertising performance reports](../publish/advertising-performance-report.md) in Partner Center.             
 
 <span id="manage" />
 
@@ -138,6 +136,6 @@ You can use multiple **AdControl** objects in a single app (for example, each pa
 ## Related topics
 
 * [Guidelines for banner ads](ui-and-user-experience-guidelines.md#guidelines-for-banner-ads)
-* [Advertising samples on GitHub](http://aka.ms/githubads)
+* [Advertising samples on GitHub](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/Advertising)
 * [Set up ad units for your app](set-up-ad-units-in-your-app.md)
 * [Error handling in JavaScript walkthrough](error-handling-in-javascript-walkthrough.md)

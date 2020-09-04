@@ -1,28 +1,23 @@
 ---
-author: anbare
 Description: Learn how to use Notification Listener to access all of the user's notifications.
 title: Notification listener
 ms.assetid: E9AB7156-A29E-4ED7-B286-DA4A6E683638
 label: Chaseable tiles
 template: detail.hbs
-ms.author: mijacobs
 ms.date: 06/13/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp, notification listener, usernotificationlistener, documentation, access notifications
 ms.localizationpriority: medium
 ---
-
 # Notification listener: Access all notifications
 
-The notification listener provides access to a user's notifications. Smartwatches and other wearables can use the notification listener to send the phone's notifications to the wearable device. Home automation apps can use notification listener to perform specific actions when notifications are received, such as making the lights blink when you recieve a call. 
+The notification listener provides access to a user's notifications. Smartwatches and other wearables can use the notification listener to send the phone's notifications to the wearable device. Home automation apps can use notification listener to perform specific actions when notifications are received, such as making the lights blink when you receive a call. 
 
 > [!IMPORTANT]
 > **Requires Anniversary Update**: You must target SDK 14393 and be running build 14393 or higher to use Notification Listener.
 
 
-> **Important APIs**: [UserNotificationListener class](https://docs.microsoft.com/uwp/api/Windows.UI.Notifications.Management.UserNotificationListener), [UserNotificationChangedTrigger class](https://docs.microsoft.com/uwp/api/Windows.ApplicationModel.Background.UserNotificationChangedTrigger)
+> **Important APIs**: [UserNotificationListener class](/uwp/api/Windows.UI.Notifications.Management.UserNotificationListener), [UserNotificationChangedTrigger class](/uwp/api/Windows.ApplicationModel.Background.UserNotificationChangedTrigger)
 
 
 ## Enable the listener by adding the User Notification capability 
@@ -36,7 +31,7 @@ To use the notification listener, you must add the User Notification Listener ca
 
 ## Check whether the listener is supported
 
-If your app supports older versions of Windows 10, you need to use the [ApiInformation class](https://docs.microsoft.com/uwp/api/Windows.Foundation.Metadata.ApiInformation) to check whether the listener is supported.  If the listener isn't supported, avoid executing any calls to the listener APIs.
+If your app supports older versions of Windows 10, you need to use the [ApiInformation class](/uwp/api/Windows.Foundation.Metadata.ApiInformation) to check whether the listener is supported.  If the listener isn't supported, avoid executing any calls to the listener APIs.
 
 ```csharp
 if (ApiInformation.IsTypePresent("Windows.UI.Notifications.Management.UserNotificationListener"))
@@ -53,7 +48,7 @@ else
 
 ## Requesting access to the listener
 
-Since the listener allows access to the user's notifications, users must give your app permission to access their notifications. During your app's first-run experience, you should request access to use the notification listener. If you want, you can show some preliminary UI that explains why your app needs access to the user's notifications before you call [RequestAccessAsync](https://docs.microsoft.com/uwp/api/windows.ui.notifications.management.usernotificationlistener.RequestAccessAsync), so that the user understands why they should allow access.
+Since the listener allows access to the user's notifications, users must give your app permission to access their notifications. During your app's first-run experience, you should request access to use the notification listener. If you want, you can show some preliminary UI that explains why your app needs access to the user's notifications before you call [RequestAccessAsync](/uwp/api/windows.ui.notifications.management.usernotificationlistener.RequestAccessAsync), so that the user understands why they should allow access.
 
 ```csharp
 // Get the listener
@@ -90,12 +85,12 @@ switch (accessStatus)
 }
 ```
 
-The user can revoke access at any time via Windows Settings. Therefore, your app should always check the access status via the [GetAccessStatus](https://docs.microsoft.com/uwp/api/windows.ui.notifications.management.usernotificationlistener.GetAccessStatus) method before executing code that uses the notfication listener. If the user revokes access, the APIs will silently fail rather than throwing an exception (for example, the API to get all notifications will simply return an empty list).
+The user can revoke access at any time via Windows Settings. Therefore, your app should always check the access status via the [GetAccessStatus](/uwp/api/windows.ui.notifications.management.usernotificationlistener.GetAccessStatus) method before executing code that uses the notification listener. If the user revokes access, the APIs will silently fail rather than throwing an exception (for example, the API to get all notifications will simply return an empty list).
 
 
 ## Access the user's notifications
 
-With the notification listener, you can get a list of the user's current notifications. Simply call the [GetNotificationsAsync](https://docs.microsoft.com/uwp/api/windows.ui.notifications.management.usernotificationlistener.GetNotificationsAsync) method, and specify the type of notifications you want to get (currently, the only type of notifications supported are toast notifications).
+With the notification listener, you can get a list of the user's current notifications. Simply call the [GetNotificationsAsync](/uwp/api/windows.ui.notifications.management.usernotificationlistener.GetNotificationsAsync) method, and specify the type of notifications you want to get (currently, the only type of notifications supported are toast notifications).
 
 ```csharp
 // Get the toast notifications
@@ -105,7 +100,7 @@ IReadOnlyList<UserNotification> notifs = await listener.GetNotificationsAsync(No
 
 ## Displaying the notifications
 
-Each notification is represented as a [UserNotification](https://docs.microsoft.com/uwp/api/windows.ui.notifications.usernotification), which provides information about the app that the notification is from, the time the notification was created, the notification's ID, and the notification itself.
+Each notification is represented as a [UserNotification](/uwp/api/windows.ui.notifications.usernotification), which provides information about the app that the notification is from, the time the notification was created, the notification's ID, and the notification itself.
 
 ```csharp
 public sealed class UserNotification
@@ -117,7 +112,7 @@ public sealed class UserNotification
 }
 ```
 
-The [AppInfo](https://docs.microsoft.com/uwp/api/windows.ui.notifications.usernotification.AppInfo) property provides the info you need to display the notification.
+The [AppInfo](/uwp/api/windows.ui.notifications.usernotification.AppInfo) property provides the info you need to display the notification.
 
 > [!NOTE]
 > We recommend surrounding all your code for processing a single notification in a try/catch, in case an unexpected exception occurs when you are capturing a single notification. You shouldn't completely fail to display other notifications just because of an issue with one specific notification.
@@ -135,7 +130,7 @@ RandomAccessStreamReference appLogoStream = notif.AppInfo.DisplayInfo.GetLogo(ne
 await appLogo.SetSourceAsync(await appLogoStream.OpenReadAsync());
 ```
 
-The content of the notification itself, such as the notification text, is contained in the [Notification](https://docs.microsoft.com/uwp/api/windows.ui.notifications.usernotification.Notification) property. This property contains the visual portion of the notification. (If you are familiar with sending notifications on Windows, you will notice that the [Visual](https://docs.microsoft.com/uwp/api/windows.ui.notifications.notification.Visual) and [Visual.Bindings](https://docs.microsoft.com/uwp/api/windows.ui.notifications.notificationvisual.Bindings) properties in the [Notification](https://docs.microsoft.com/uwp/api/windows.ui.notifications.notification) object correspond to what developers send when popping a notification.)
+The content of the notification itself, such as the notification text, is contained in the [Notification](/uwp/api/windows.ui.notifications.usernotification.Notification) property. This property contains the visual portion of the notification. (If you are familiar with sending notifications on Windows, you will notice that the [Visual](/uwp/api/windows.ui.notifications.notification.Visual) and [Visual.Bindings](/uwp/api/windows.ui.notifications.notificationvisual.Bindings) properties in the [Notification](/uwp/api/windows.ui.notifications.notification) object correspond to what developers send when popping a notification.)
 
 We want to look for the toast binding (for error-proof code, you should check that the binding isn't null). From the binding, you can obtain the text elements. You can choose to display as many text elements as you would like. (Ideally, you should display them all.) You can choose to treat the text elements differently; for example, treat the first one as title text, and subsequent elements as body text.
 
@@ -160,7 +155,7 @@ if (toastBinding != null)
 
 ## Remove a specific notification
 
-If your wearable or service allows the user to dismiss notifications, you can remove the actual notification so the user doesn't see it later on their phone or PC. Simply provide the notification ID (obtained from the [UserNotification](https://docs.microsoft.com/uwp/api/windows.ui.notifications.usernotification) object) of the notification you'd like to remove: 
+If your wearable or service allows the user to dismiss notifications, you can remove the actual notification so the user doesn't see it later on their phone or PC. Simply provide the notification ID (obtained from the [UserNotification](/uwp/api/windows.ui.notifications.usernotification) object) of the notification you'd like to remove: 
 
 ```csharp
 // Remove the notification
@@ -170,7 +165,7 @@ listener.RemoveNotification(notifId);
 
 ## Clear all notifications
 
-The [UserNotificationListener.ClearNotifications](https://docs.microsoft.com/uwp/api/windows.ui.notifications.management.usernotificationlistener.ClearNotifications) method clears all the user's notifications. Use this method with caution. You should only clear all notifications if your wearable or service displays ALL notifications. If your wearable or service only displays certain notifications, when the user clicks your "Clear notifications" button, the user is only expecting those specific notifications to be removed; however, calling the [ClearNotifications](https://docs.microsoft.com/uwp/api/windows.ui.notifications.management.usernotificationlistener.ClearNotifications) method would actually cause all the notifications, including ones that your wearable or service wasn't displaying, to be removed.
+The [UserNotificationListener.ClearNotifications](/uwp/api/windows.ui.notifications.management.usernotificationlistener.ClearNotifications) method clears all the user's notifications. Use this method with caution. You should only clear all notifications if your wearable or service displays ALL notifications. If your wearable or service only displays certain notifications, when the user clicks your "Clear notifications" button, the user is only expecting those specific notifications to be removed; however, calling the [ClearNotifications](/uwp/api/windows.ui.notifications.management.usernotificationlistener.ClearNotifications) method would actually cause all the notifications, including ones that your wearable or service wasn't displaying, to be removed.
 
 ```csharp
 // Clear all notifications. Use with caution.
@@ -182,7 +177,7 @@ listener.ClearNotifications();
 
 A common way to enable an app to listen to notifications is to set up a background task, so that you can know when a notification was added or dismissed regardless of whether your app is currently running.
 
-Thanks to the [single process model](../../../launch-resume/create-and-register-an-inproc-background-task.md) added in the Anniversary Update, adding background tasks is fairly simple. In your main app's code, after you have obtained the user's access to Notification Listener and obtained access to run background tasks, simply register a new background task, and set the [UserNotificationChangedTrigger](https://docs.microsoft.com/uwp/api/windows.applicationmodel.background.usernotificationchangedtrigger) using the [Toast notification kind](https://docs.microsoft.com/uwp/api/windows.ui.notifications.notificationkinds).
+Thanks to the [single process model](../../../launch-resume/create-and-register-an-inproc-background-task.md) added in the Anniversary Update, adding background tasks is fairly simple. In your main app's code, after you have obtained the user's access to Notification Listener and obtained access to run background tasks, simply register a new background task, and set the [UserNotificationChangedTrigger](/uwp/api/windows.applicationmodel.background.usernotificationchangedtrigger) using the [Toast notification kind](/uwp/api/windows.ui.notifications.notificationkinds).
 
 ```csharp
 // TODO: Request/check Listener access via UserNotificationListener.Current.RequestAccessAsync
@@ -206,7 +201,7 @@ if (!BackgroundTaskRegistration.AllTasks.Any(i => i.Value.Name.Equals("UserNotif
 }
 ```
 
-Then, in your App.xaml.cs, override the [OnBackgroundActivated](https://docs.microsoft.com/uwp/api/windows.ui.xaml.application.OnBackgroundActivated) method if you haven't yet, and use a switch statement on the task name to determine which of your many background task triggers was invoked.
+Then, in your App.xaml.cs, override the [OnBackgroundActivated](/uwp/api/windows.ui.xaml.application.OnBackgroundActivated) method if you haven't yet, and use a switch statement on the task name to determine which of your many background task triggers was invoked.
 
 ```csharp
 protected override async void OnBackgroundActivated(BackgroundActivatedEventArgs args)
@@ -256,7 +251,7 @@ foreach (UserNotification userNotification in userNotifications)
         toBeRemoved.Remove(userNotification.Id);
     }
  
-    // Othwerise it's a new notification
+    // Otherwise it's a new notification
     else
     {
         // Display it on the Wearable
@@ -276,21 +271,21 @@ foreach (uint id in toBeRemoved)
 ## Foreground event for notification added/dismissed
 
 > [!IMPORTANT] 
-> Known issue: The foreground event will cause a CPU loop on recent versions of Windows, and previously did not work before that. Do NOT use the foreground event. In an upcoming update to Windows, we will fix this.
+> Known issue: In builds before Build 17763 / October 2018 Update / Version 1809, The foreground event will cause a CPU loop and/or didn't work. If you need support on those earlier builds, use the background task instead.
 
-Instead of using the foreground event, use the code shown earlier for a [single process model](../../../launch-resume/create-and-register-an-inproc-background-task.md) background task. The background task will also allow you to receive change event notifications both while your app is closed or running.
+You can also listen to notifications from an in-memory event handler...
 
 ```csharp
-// Subscribe to foreground event (DON'T USE THIS)
+// Subscribe to foreground event
 listener.NotificationChanged += Listener_NotificationChanged;
  
 private void Listener_NotificationChanged(UserNotificationListener sender, UserNotificationChangedEventArgs args)
 {
-    // NOTE: This event WILL CAUSE CPU LOOPS, DO NOT USE. Use the background task instead.
+    // Your code for handling the notification
 }
 ```
 
 
 ## How to fix delays in the background task
 
-When testing your app, you might notice that the background task is sometimes delayed, and doesn't trigger for several minutes. To fix this, you'll want to prompt the user to go to the system settings -> System -> Battery -> Battery usage by app, find your app in the list, select it, and change it to be "Always allowed in background". After this, the background task should always be triggered within around a second of the notification being received.
+When testing your app, you might notice that the background task is sometimes delayed and doesn't trigger for several minutes. To fix the delay, prompt the user to go to the system settings -> System -> Battery -> Battery usage by app, find your app in the list, select it, and set it to be "Always allowed in background." After this, the background task should always be triggered within around a second of the notification being received.

@@ -1,17 +1,12 @@
 ---
-author: mijacobs
 Description: Use cross-slide to support selection with the swipe gesture and drag (move) interactions with the slide gesture.
 title: Guidelines for cross-slide
 ms.assetid: 897555e2-c567-4bbe-b600-553daeb223d5
-ms.author: kbridge
 ms.date: 10/25/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp
 ms.localizationpriority: medium
 ---
-
 # Guidelines for cross-slide
 
 
@@ -19,9 +14,9 @@ ms.localizationpriority: medium
 
 **Important APIs**
 
--   [**CrossSliding**](https://msdn.microsoft.com/library/windows/apps/br241942)
--   [**CrossSlideThresholds**](https://msdn.microsoft.com/library/windows/apps/br241941)
--   [**Windows.UI.Input**](https://msdn.microsoft.com/library/windows/apps/br242084)
+-   [**CrossSliding**](/uwp/api/windows.ui.input.gesturerecognizer.crosssliding)
+-   [**CrossSlideThresholds**](/uwp/api/windows.ui.input.gesturerecognizer.crossslidethresholds)
+-   [**Windows.UI.Input**](/uwp/api/Windows.UI.Input)
 
 Use cross-slide to support selection with the swipe gesture and drag (move) interactions with the slide gesture.
 
@@ -53,7 +48,7 @@ This image shows how a user touches an element in the UI, but moves their finger
 
 Here are some guidelines to consider when including cross-slide functionality in your app.
 
-Use cross-slide for lists or collections that scroll in a single direction. For more information, see [Adding ListView controls](https://msdn.microsoft.com/library/windows/apps/hh465382).
+Use cross-slide for lists or collections that scroll in a single direction. For more information, see [Adding ListView controls](/previous-versions/windows/apps/hh465382(v=win.10)).
 
 **Note**  In cases where the content area can be panned in two directions, such as web browsers or e-readers, the press-and-hold timed interaction should be used to invoke the context menu for objects such as images and hyperlinks.
 
@@ -128,27 +123,25 @@ Use drag to move one or more objects from one location to another.
 
 If more than one object needs to be moved, let users select multiple items and then drag all at one time.
 
-## <span id="related_topics"></span>Related articles
+## Related articles
 
+### Samples
 
-**Samples**
-* [Basic input sample](http://go.microsoft.com/fwlink/p/?LinkID=620302)
-* [Low latency input sample](http://go.microsoft.com/fwlink/p/?LinkID=620304)
-* [User interaction mode sample](http://go.microsoft.com/fwlink/p/?LinkID=619894)
-* [Focus visuals sample](http://go.microsoft.com/fwlink/p/?LinkID=619895)
-**Archive samples**
-* [Input: XAML user input events sample](http://go.microsoft.com/fwlink/p/?linkid=226855)
-* [Input: Device capabilities sample](http://go.microsoft.com/fwlink/p/?linkid=231530)
-* [Input: Touch hit testing sample](http://go.microsoft.com/fwlink/p/?linkid=231590)
-* [XAML scrolling, panning, and zooming sample](http://go.microsoft.com/fwlink/p/?linkid=251717)
-* [Input: Simplified ink sample](http://go.microsoft.com/fwlink/p/?linkid=246570)
-* [Input: Windows 8 gestures sample](http://go.microsoft.com/fwlink/p/?LinkId=264995)
-* [Input: Manipulations and gestures (C++) sample](http://go.microsoft.com/fwlink/p/?linkid=231605)
-* [DirectX touch input sample](http://go.microsoft.com/fwlink/p/?LinkID=231627)
+- [Basic input sample](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/BasicInput)
+- [Low latency input sample](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/LowLatencyInput)
+- [User interaction mode sample](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/UserInteractionMode)
+- [Focus visuals sample](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/XamlFocusVisuals)
+
+### Archive samples
+
+- [Input: XAML user input events sample](https://github.com/microsoftarchive/msdn-code-gallery-microsoft/tree/411c271e537727d737a53fa2cbe99eaecac00cc0/Official%20Windows%20Platform%20Sample/Input%20XAML%20user%20input%20events%20sample)
+- [Input: Device capabilities sample](https://github.com/microsoftarchive/msdn-code-gallery-microsoft/tree/411c271e537727d737a53fa2cbe99eaecac00cc0/Official%20Windows%20Platform%20Sample/Windows%208%20app%20samples/%5BC%23%5D-Windows%208%20app%20samples/C%23/Windows%208%20app%20samples/Input%20Device%20capabilities%20sample%20(Windows%208))
+- [Input: Touch hit testing sample](https://github.com/microsoftarchive/msdn-code-gallery-microsoft/tree/411c271e537727d737a53fa2cbe99eaecac00cc0/Official%20Windows%20Platform%20Sample/Windows%208%20desktop%20samples/%5BC%2B%2B%5D-Windows%208%20desktop%20samples/C%2B%2B/Windows%208%20desktop%20samples/Input%20Touch%20hit%20testing%20sample)
+- [XAML scrolling, panning, and zooming sample](https://github.com/microsoftarchive/msdn-code-gallery-microsoft/tree/411c271e537727d737a53fa2cbe99eaecac00cc0/Official%20Windows%20Platform%20Sample/Universal%20Windows%20app%20samples/111487-Universal%20Windows%20app%20samples/XAML%20scrolling%2C%20panning%2C%20and%20zooming%20sample)
+- [Input: Simplified ink sample](https://github.com/microsoftarchive/msdn-code-gallery-microsoft/tree/411c271e537727d737a53fa2cbe99eaecac00cc0/Official%20Windows%20Platform%20Sample/Input%20Simplified%20ink%20sample)
+- [Input: Windows 8 gestures sample](/samples/browse/?redirectedfrom=MSDN-samples)
+- [Input: Manipulations and gestures sample](https://github.com/microsoftarchive/msdn-code-gallery-microsoft/tree/411c271e537727d737a53fa2cbe99eaecac00cc0/Official%20Windows%20Platform%20Sample/Input%20Gestures%20and%20manipulations%20with%20GestureRecognizer)
+- [DirectX touch input sample](https://github.com/microsoftarchive/msdn-code-gallery-microsoft/tree/411c271e537727d737a53fa2cbe99eaecac00cc0/Official%20Windows%20Platform%20Sample/Windows%208%20app%20samples/%5BC%2B%2B%5D-Windows%208%20app%20samples/C%2B%2B/Windows%208%20app%20samples/DirectX%20touch%20input%20sample%20(Windows%208))
  
 
  
-
-
-
-

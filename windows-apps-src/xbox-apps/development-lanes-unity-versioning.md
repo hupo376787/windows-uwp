@@ -1,10 +1,10 @@
 ---
-author: JordanEllis6809
 title: Unity - Version control your UWP project
-description: Version your Unity UWP project.
+description: Learn how to use version control with a Unity game for Xbox using the Universal Windows Platform (UWP).
 ms.localizationpriority: medium
+ms.topic: article
+ms.date: 02/08/2017
 ---
-
 # Unity: Version control your UWP project
 
 Still haven't built your Unity game for Xbox using the Universal Windows Platform (UWP)?  First see [Bringing Unity games to UWP on Xbox](development-lanes-unity.md).
@@ -54,7 +54,7 @@ We're going to want to select a few different files and folders from within the 
 ## Files  
 
 `App.cs` | ***Include*** | Entry point for your UWP application; this can be modified and extended with other source files  
-`Package.appxmanifest` | ***Include*** | App package manifest source file for your AppX  
+`Package.appxmanifest` | ***Include*** | App package manifest source file for your .msix or .appx package  
 `project.json` | ***Include*** | Describes the NuGet packages your `*.csproj` depends on  
 `ScrapyardPhoenix.csproj` | ***Include*** | Describes your UWP build target; if you add additional dependencies to your UWP project, this `*.csproj` file will contain that information  
 `ScrapyardPhoenix.csproj.user` | ***Ignore*** | This file contains local user information

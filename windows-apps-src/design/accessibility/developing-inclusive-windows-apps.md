@@ -1,22 +1,17 @@
 ---
-author: Xansky
-Description: Learn to develop accessible Windows 10 UWP apps that include keyboard navigation, color and contrast settings, and support for assistive technologies.
+Description: Learn to develop accessible Windows apps that include keyboard navigation, color and contrast settings, and support for assistive technologies.
 ms.assetid: 9311D23A-B340-42F0-BEFE-9261442AF108
 title: Developing inclusive Windows 10 apps
 label: Developing inclusive Windows 10 apps
 template: detail.hbs
-ms.author: mhopkins
 ms.date: 02/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp
 ms.localizationpriority: medium
 ---
-
 # Developing inclusive Windows apps  
 
-This article discusses how to develop accessible Universal Windows Platform (UWP) apps. Specifically, it assumes that you understand how to design the logical hierarchy for your app. Learn to develop accessible Windows 10 UWP apps that include keyboard navigation, color and contrast settings, and support for assistive technologies.
+This article discusses how to develop accessible Windows apps. Specifically, it assumes that you understand how to design the logical hierarchy for your app. Learn to develop accessible Windows apps that include keyboard navigation, color and contrast settings, and support for assistive technologies.
 
 If you have not yet done so, please start by reading [Designing inclusive software](designing-inclusive-software.md).
 
@@ -81,8 +76,8 @@ For more detail, please see the full [Accessibility checklist](accessibility-che
 
 ## Related topics  
 * [Designing inclusive software](designing-inclusive-software.md)  
-* [Inclusive design](http://design.microsoft.com/inclusive)
+* [Inclusive design](https://www.microsoft.com/design/inclusive/)
 * [Accessibility practices to avoid](practices-to-avoid.md)
 * [Engineering Software for Accessibility](https://www.microsoft.com/download/details.aspx?id=19262)
-* [Microsoft accessibility developer hub](https://msdn.microsoft.com/enable)
+* [Microsoft accessibility developer hub](https://developer.microsoft.com/windows/accessible-apps)
 * [Accessibility](accessibility.md)

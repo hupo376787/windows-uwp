@@ -1,12 +1,8 @@
 ---
-author: jwmsft
 title: Relation based animations
-description: Create motion based on a property on another object.
-ms.author: jimwalk
+description: Learn how to use ExpressionAnimations to create relation-based animations when motion depends on a property of another object.
 ms.date: 10/10/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp, animation
 ms.localizationpriority: medium
 ---
@@ -44,16 +40,16 @@ When building the mathematical relationship of an Expression, there are several 
 
 - Parameters – values representing constant values or references to other Composition objects.
 - Mathematical Operators – the typical mathematical operators plus(+), minus(-), multiply(*), divide(/) that join together parameters to form an equation. Also included are conditional operators such as greater than(>), equal(==), ternary operator (condition ? ifTrue : ifFalse), etc.
-- Mathematical Functions – mathematical functions/shortcuts based on System.Numerics. For a full list of supported functions, see [ExpressionAnimation](https://docs.microsoft.com/uwp/api/Windows.UI.Composition.ExpressionAnimation).
+- Mathematical Functions – mathematical functions/shortcuts based on System.Numerics. For a full list of supported functions, see [ExpressionAnimation](/uwp/api/Windows.UI.Composition.ExpressionAnimation).
 
-Expressions also support a set of keywords – special phrases that have distinct meaning only within the ExpressionAnimation system. These are listed (along with the full list of math functions) in the [ExpressionAnimation](https://docs.microsoft.com/uwp/api/Windows.UI.Composition.ExpressionAnimation) documentation.
+Expressions also support a set of keywords – special phrases that have distinct meaning only within the ExpressionAnimation system. These are listed (along with the full list of math functions) in the [ExpressionAnimation](/uwp/api/Windows.UI.Composition.ExpressionAnimation) documentation.
 
 ### Creating Expressions with ExpressionBuilder
 
 There are two options for building Expressions in their UWP app:
 
 1. Building the equation as a string via the official, public API.
-1. Building the equation in a type-safe object model via the open source ExpressionBuilder tool. See the [Github source and documentation](https://github.com/Microsoft/WindowsUIDevLabs/tree/master/ExpressionBuilder).
+1. Building the equation in a type-safe object model via the open source ExpressionBuilder tool. See the [Github source and documentation](https://github.com/microsoft/WindowsCompositionSamples/tree/master/ExpressionBuilder).
 
 For the sake of this document, we will define our Expressions using ExpressionBuilder.
 

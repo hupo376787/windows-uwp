@@ -1,23 +1,19 @@
 ---
-author: mijacobs
-Description: A tile is an app's representation on the Start menu. Every app has a tile. When you create a new Universal Windows Platform (UWP) app project in Microsoft Visual Studio, it includes a default tile that displays your app's name and logo.
-title: Tiles
+Description: A tile is an app's representation on the Start menu. Every app has a tile. When you create a new Windows app project in Microsoft Visual Studio, it includes a default tile that displays your app's name and logo.
+title: Tiles for Windows apps
 ms.assetid: 09C7E1B1-F78D-4659-8086-2E428E797653
 label: Tiles
 template: detail.hbs
-ms.author: mijacobs
 ms.date: 05/19/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp
 ms.localizationpriority: medium
 ---
-# Tiles for UWP apps
+# Tiles for Windows apps
 
  
 
-A *tile* is an app's representation on the Start menu. Every app has a tile. When you create a new Universal Windows Platform (UWP) app project in Microsoft Visual Studio, it includes a default tile that displays your app's name and logo. Windows displays this tile when your app is first installed. After your app is installed, you can change your tile's content through notifications; for example, you can change the tile to communicate new information to the user, such as news headlines, or the subject of the most recent unread message.
+A *tile* is an app's representation on the Start menu. Every app has a tile. When you create a new Windows app project in Microsoft Visual Studio, it includes a default tile that displays your app's name and logo. Windows displays this tile when your app is first installed. After your app is installed, you can change your tile's content through notifications; for example, you can change the tile to communicate new information to the user, such as news headlines, or the subject of the most recent unread message.
 
 ## Configure the default tile
 
@@ -49,7 +45,7 @@ There are a few items you should update:
 -   ShortName: Because there is limited room for your display name to fit on tiles, we recommend that you to specify a ShortName as well, to make sure your app's name doesn’t get truncated.
 -   Logo images:
 
-    You should replace these images with your own. You have the option of supplying images for different visual scales, but you are not required to supply them all. To ensure that you app looks good on a range of devices, we recommend that you provide 100%, 200%, and 400% scale versions of each image. See [Tile and icon assets](app-assets.md) to learn more about generating these assets.
+    You should replace these images with your own. You have the option of supplying images for different visual scales, but you are not required to supply them all. To ensure that you app looks good on a range of devices, we recommend that you provide 100%, 200%, and 400% scale versions of each image. See [App icons and logos](../../style/app-icons-and-logos.md) to learn more about generating these assets.
 
     Scaled images follow this naming convention:
     

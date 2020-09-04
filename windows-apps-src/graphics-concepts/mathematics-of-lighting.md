@@ -4,24 +4,19 @@ description: The Direct3D Light Model covers ambient, diffuse, specular, and emi
 ms.assetid: D0521F56-050D-4EDF-9BD1-34748E94B873
 keywords:
 - Mathematics of lighting
-author: michaelfromredmond
-ms.author: mithom
 ms.date: 02/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 ms.localizationpriority: medium
 ---
 
 # Mathematics of lighting
 
-
 The Direct3D Light Model covers ambient, diffuse, specular, and emissive lighting. This is enough flexibility to solve a wide range of lighting situations. The total amount of light in a scene is called the *global illumination*.
 
 The global illumination is computed as follows:
 
-```
-Global Illumination = Ambient Light + Diffuse Light + Specular Light + Emissive Light 
+```cpp
+global_illumination = ambient_lighting + diffuse_lighting + specular_lighting + emissive_lighting;
 ```
 
 [Ambient lighting](ambient-lighting.md) is constant lighting. Ambient lighting is constant in all directions and it colors all pixels of an object the same. It is fast to calculate but leaves objects looking flat and unrealistic.

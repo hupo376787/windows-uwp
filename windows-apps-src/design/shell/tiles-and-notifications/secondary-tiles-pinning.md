@@ -1,22 +1,18 @@
 ---
-author: anbare
-Description: Learn how to pin a secondary tile from your UWP app.
-title: Pin secondary tiles
-label: Pin secondary tiles
+description: Learn how to create a secondary tile and pin it to the Start menu programmatically from a Universal Windows Platform (UWP) app.
+title: Pin secondary tiles to Start
+label: Pin secondary tiles to Start
 template: detail.hbs
-ms.author: wdg-dev-content
 ms.date: 05/25/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp, secondary tiles, pin, pinning, quickstart, code sample, example, secondarytile
 ms.localizationpriority: medium
 ---
 
-# Pin secondary tiles
+# Pin secondary tiles to Start
 
 
-This topic walks you through the steps to create a secondary tile for your UWP app and pin it to the Start menu.
+This topic walks you through the steps to create a secondary tile for your Windows app and pin it to the Start menu.
 
 ![Screenshot of secondary tiles](images/secondarytiles.png)
 
@@ -180,6 +176,6 @@ To learn how to display rich content on your tile via tile notifications, please
 
 * [Secondary tiles overview](secondary-tiles.md)
 * [Secondary tiles guidance](secondary-tiles-guidance.md)
-* [Tile assets](app-assets.md)
+* [Tile assets](../../style/app-icons-and-logos.md)
 * [Tile content documentation](create-adaptive-tiles.md)
 * [Send a local tile notification](sending-a-local-tile-notification.md)

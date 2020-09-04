@@ -1,37 +1,34 @@
 ---
-author: mijacobs
 description: Learn how to use typography in your app to help users understand content easily.
-title: Typography in UWP apps
-ms.author: mijacobs
+title: Typography in Windows apps
 ms.date: 04/06/2018
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp
 ms.localizationpriority: medium
+ms.custom: RS5
 ---
-# Typography
+# Typography in Windows Apps
 
 ![hero image](images/header-typography.svg)
 
-As the visual representation of language, typography’s main task is to communicate information. Its style should never get in the way of that goal. In this article, we'll discuss how to style typography in your UWP app to help users understand content easily and efficiently.
+As the visual representation of language, typography’s main task is to communicate information. Its style should never get in the way of that goal. In this article, we'll discuss how to style typography in your Windows app to help users understand content easily and efficiently.
 
 ## Font
 
-You should use one font throughout your app's UI, and we recommend sticking with the default font for UWP apps, **Segoe UI**. It's designed to maintain optimal legibility across sizes and pixel densities and offers a clean, light, and open aesthetic that complements the content of the system.
+You should use one font throughout your app's UI, and we recommend sticking with the default font for Windows apps, **Segoe UI**. It's designed to maintain optimal legibility across sizes and pixel densities and offers a clean, light, and open aesthetic that complements the content of the system.
 
 ![Sample text of Segoe UI font](images/type/segoe-sample.svg)
 
-To display non-English languages or to select a different font for your app, please see [Languages](#Languages) and [Fonts](#Fonts) for our recommended fonts for UWP apps.
+To display non-English languages or to select a different font for your app, please see [Languages](#languages) and [Fonts](#fonts) for our recommended fonts for Windows apps.
 
 :::row:::
     :::column:::
-        ![do](images/do.svg)
-        Pick one font for your UI.
+![do](images/do.svg)
+Pick one font for your UI.
     :::column-end:::
     :::column:::
-        ![don't](images/dont.svg)
-        Don't mix multiple fonts.
+![don't](images/dont.svg)
+Don't mix multiple fonts.
     :::column-end:::
 :::row-end:::
 
@@ -45,12 +42,12 @@ Because of how the scaling system works, you're designing in effective pixels, n
 
 :::row:::
     :::column:::
-        ![do](images/do.svg)
-        Follow the UWP [type ramp](#type-ramp) sizing.
+![do](images/do.svg)
+Follow the Windows [type ramp](#type-ramp) sizing.
     :::column-end:::
     :::column:::
-        ![don't](images/dont.svg)
-        Use a font size smaller than 12 px.
+![don't](images/dont.svg)
+Use a font size smaller than 12 px.
     :::column-end:::
 :::row-end:::
 
@@ -58,27 +55,27 @@ Because of how the scaling system works, you're designing in effective pixels, n
 
 :::row:::
     :::column:::
-        Users rely on visual hierarchy when scanning a page: headers summarize content, and body text provides more detail. To create a clear visual hierarchy in your app, follow the UWP type ramp.
+Users rely on visual hierarchy when scanning a page: headers summarize content, and body text provides more detail. To create a clear visual hierarchy in your app, follow the Windows type ramp.
     :::column-end:::
     :::column:::
-        ![text block styles](images/type/type-hierarchy.svg)
+![text block styles](images/type/type-hierarchy.svg)
     :::column-end:::
 :::row-end:::
 
 ### Type ramp
 
-The UWP type ramp establishes crucial relationships between the type styles on a page, helping users read content easily. All sizes are in effective pixels and are optimized for UWP apps running on all devices.
+The Windows type ramp establishes crucial relationships between the type styles on a page, helping users read content easily. All sizes are in effective pixels and are optimized for UWP apps running on all devices.
 
-![Type ramp](images/type/type-ramp.svg)
+![Type ramp](images/type/type-ramp.png)
 
 ### Using the type ramp
 
 :::row:::
     :::column:::
-        You can access levels of the type ramp as XAML [static resources](../controls-and-patterns/xaml-theme-resources.md#the-xaml-type-ramp). The styles follow the `*TextBlockStyle` naming convention.
+You can access levels of the type ramp as XAML [static resources](../controls-and-patterns/xaml-theme-resources.md#the-xaml-type-ramp). The styles follow the `*TextBlockStyle` naming convention.
     :::column-end:::
     :::column:::
-        ![text block styles](images/type/text-block-type-ramp.svg)
+![text block styles](images/type/text-block-type-ramp.svg)
     :::column-end:::
 :::row-end:::
 
@@ -94,22 +91,22 @@ The UWP type ramp establishes crucial relationships between the type styles on a
 
 :::row:::
     :::column:::
-        ![do](images/do.svg)
-        Use "Body" for most text.
+![do](images/do.svg)
+Use "Body" for most text.
 
-        Use "Base" for titles when space is constrained.
+Use "Base" for titles when space is constrained.
     :::column-end:::
     :::column:::
-        ![don't](images/dont.svg)
-        Use "Caption" for primary action or any long strings.
+![don't](images/dont.svg)
+Use "Caption" for primary action or any long strings.
 
-        Use "Header" or "Subheader" if text needs to wrap.
+Use "Header" or "Subheader" if text needs to wrap.
     :::column-end:::
 :::row-end:::
 
 ## Alignment
 
-The default [TextAlignment](https://docs.microsoft.com/uwp/api/windows.ui.xaml.textalignment) is Left, and in most instances, flush-left and ragged right provides consistent anchoring of the content and a uniform layout. For RTL languages, see [Adjusting layout and fonts to support globalization](../globalizing/adjust-layout-and-fonts--and-support-rtl.md).
+The default [TextAlignment](/uwp/api/windows.ui.xaml.textalignment) is Left, and in most instances, flush-left and ragged right provides consistent anchoring of the content and a uniform layout. For RTL languages, see [Adjusting layout and fonts to support globalization](../globalizing/adjust-layout-and-fonts--and-support-rtl.md).
 
 ![Shows flush-left text.](images/type/alignment.svg)
 
@@ -121,12 +118,12 @@ The default [TextAlignment](https://docs.microsoft.com/uwp/api/windows.ui.xaml.t
 
 :::row:::
     :::column:::
-        ![do](images/do.svg)
-        Keep to 50–60 letters per line for ease of reading.
+![do](images/do.svg)
+Keep to 50–60 letters per line for ease of reading.
     :::column-end:::
     :::column:::
-        ![don't](images/dont.svg)
-        Less than 20 characters or more than 60 characters per line is difficult to read.
+![don't](images/dont.svg)
+Less than 20 characters or more than 60 characters per line is difficult to read.
     :::column-end:::
 :::row-end:::
 
@@ -142,16 +139,16 @@ When the amount of text extends beyond the space available, we recommend clippin
 
 :::row:::
     :::column:::
-        ![do](images/do.svg)
-        Clip text, and wrap if multiple lines are enabled.
+![do](images/do.svg)
+Clip text, and wrap if multiple lines are enabled.
     :::column-end:::
     :::column:::
-        ![don't](images/dont.svg)
-        Use ellipses to avoid visual clutter.
+![don't](images/dont.svg)
+Use ellipses to avoid visual clutter.
     :::column-end:::
 :::row-end:::
 
-**Note**: If containers are not well-defined (e.g. no differentiating background color), or when there is a link to see more text, then use ellipses.
+**Note**: If containers are not well-defined (for example, no differentiating background color), or when there is a link to see more text, then use ellipses.
 
 ## Languages 
 
@@ -159,7 +156,7 @@ Segoe UI is our font for English, European languages, Greek, Hebrew, Armenian, G
 
 ### Globalizing/localizing fonts
 
-Use the [LanguageFont font-mapping APIs](https://docs.microsoft.com/uwp/api/Windows.Globalization.Fonts.LanguageFont) for programmatic access to the recommended font family, size, weight, and style for a particular language. The LanguageFont object provides access to the correct font info for various categories of content including UI headers, notifications, body text, and user-editable document body fonts. For more info, see [Adjusting layout and fonts to support globalization](../globalizing/adjust-layout-and-fonts--and-support-rtl.md).
+Use the [LanguageFont font-mapping APIs](/uwp/api/Windows.Globalization.Fonts.LanguageFont) for programmatic access to the recommended font family, size, weight, and style for a particular language. The LanguageFont object provides access to the correct font info for various categories of content including UI headers, notifications, body text, and user-editable document body fonts. For more info, see [Adjusting layout and fonts to support globalization](../globalizing/adjust-layout-and-fonts--and-support-rtl.md).
 
 ### Fonts for non-Latin languages
 
@@ -347,4 +344,4 @@ Serif fonts are good for presenting large amounts of text.
 * [Text controls](../controls-and-patterns/text-controls.md)
 * [XAML theme resources](../controls-and-patterns/xaml-theme-resources.md#the-xaml-type-ramp)
 * [XAML styles](../controls-and-patterns/xaml-styles.md)
-* [Microsoft Typography](https://docs.microsoft.com/typography/)
+* [Microsoft Typography](/typography/)

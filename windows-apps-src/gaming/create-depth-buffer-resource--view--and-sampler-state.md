@@ -1,17 +1,12 @@
 ---
-author: mtoepke
 title: Create depth buffer device resources
 description: Learn how to create the Direct3D device resources necessary to support depth testing for shadow volumes.
 ms.assetid: 86d5791b-1faa-17e4-44a8-bbba07062756
-ms.author: mtoepke
 ms.date: 02/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp, games, direct3d, depth buffer
 ms.localizationpriority: medium
 ---
-
 # Create depth buffer device resources
 
 
@@ -37,7 +32,7 @@ Note that creation of these resources needs to be included in a device-dependent
 ## Check feature support
 
 
-Before creating the depth map, call the [**CheckFeatureSupport**](https://msdn.microsoft.com/library/windows/desktop/ff476497) method on the Direct3D device, request **D3D11\_FEATURE\_D3D9\_SHADOW\_SUPPORT**, and provide a [**D3D11\_FEATURE\_DATA\_D3D9\_SHADOW\_SUPPORT**](https://msdn.microsoft.com/library/windows/desktop/jj247569) structure.
+Before creating the depth map, call the [**CheckFeatureSupport**](/windows/desktop/api/d3d11/nf-d3d11-id3d11device-checkfeaturesupport) method on the Direct3D device, request **D3D11\_FEATURE\_D3D9\_SHADOW\_SUPPORT**, and provide a [**D3D11\_FEATURE\_DATA\_D3D9\_SHADOW\_SUPPORT**](/windows/desktop/api/d3d11/ns-d3d11-d3d11_feature_data_d3d9_shadow_support) structure.
 
 ```cpp
 D3D11_FEATURE_DATA_D3D9_SHADOW_SUPPORT isD3D9ShadowSupported;
@@ -81,7 +76,7 @@ HRESULT hr = pD3DDevice->CreateTexture2D(
     );
 ```
 
-Then create the resource views. Set the mip slice to zero on the depth stencil view and set mip levels to 1 on the shader resource view. Both have a texture dimension of TEXTURE2D, and both need to use a matching [**DXGI\_FORMAT**](https://msdn.microsoft.com/library/windows/desktop/bb173059).
+Then create the resource views. Set the mip slice to zero on the depth stencil view and set mip levels to 1 on the shader resource view. Both have a texture dimension of TEXTURE2D, and both need to use a matching [**DXGI\_FORMAT**](/windows/desktop/api/dxgiformat/ne-dxgiformat-dxgi_format).
 
 ```cpp
 D3D11_DEPTH_STENCIL_VIEW_DESC depthStencilViewDesc;
@@ -260,7 +255,3 @@ In the next part of this walkthrough, learn how to create the shadow map by [ren
  
 
  
-
-
-
-

@@ -1,17 +1,12 @@
 ---
-author: jnHs
 Description: You can help customers discover your app by linking to your app's listing in the Microsoft Store.
 title: Link to your app
 ms.assetid: 5420B65C-7ECE-4364-8959-D1683684E146
-ms.author: wdg-dev-content
-ms.date: 10/26/2017
+ms.date: 10/31/2018
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp, link, windows store protocol, linking to an app, link to app
 ms.localizationpriority: medium
 ---
-
 # Link to your app
 
 
@@ -28,7 +23,7 @@ When a customer clicks this link, it opens the web-based listing page for your a
 
 You can link directly to your app's listing with a custom badge to let customers know your app is in the Microsoft Store.
 
-To create your badge, visit the [Microsoft Store badges](http://go.microsoft.com/fwlink/p/?LinkID=534236) page. You'll need to have your app's 12-character **Store ID** in order to generate the badge and link. You can find your app's **Store ID** on the [App identity](view-app-identity-details.md) page in the **App management** section.
+To create your badge, visit the [Microsoft Store badges](https://developer.microsoft.com/store/badges) page. You'll need to have your app's 12-character **Store ID** in order to generate the badge and link. You can find your app's **Store ID** on the [App identity](view-app-identity-details.md) page in the **App management** section.
 
 > [!NOTE]
 > See [App marketing guidelines](app-marketing-guidelines.md) for info and requirements related to your use of the Microsoft Store badge.

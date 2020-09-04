@@ -1,35 +1,31 @@
 ---
-author: normesta
 ms.assetid: E2A1200C-9583-40FA-AE4D-C9E6F6C32BCF
 title: Submit a work item to the thread pool
 description: Learn how to do work in a separate thread by submitting a work item to the thread pool.
-ms.author: normesta
 ms.date: 02/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp, threads, thread pool
 ms.localizationpriority: medium
 ---
 # Submit a work item to the thread pool
 
-\[ Updated for UWP apps on Windows 10. For Windows 8.x articles, see the [archive](http://go.microsoft.com/fwlink/p/?linkid=619132) \]
+\[ Updated for UWP apps on Windows 10. For Windows 8.x articles, see the [archive](/previous-versions/windows/apps/mt244353(v=win.10)) \]
 
-** Important APIs **
+<b>Important APIs</b>
 
--   [**RunAsync**](https://msdn.microsoft.com/library/windows/apps/BR230593)
--   [**IAsyncAction**](https://msdn.microsoft.com/library/windows/apps/BR206580)
+-   [**RunAsync**](/uwp/api/windows.system.threading.threadpool.runasync)
+-   [**IAsyncAction**](/uwp/api/Windows.Foundation.IAsyncAction)
 
 Learn how to do work in a separate thread by submitting a work item to the thread pool. Use this to maintain a responsive UI while still completing work that takes a noticeable amount of time, and use it to complete multiple tasks in parallel.
 
 ## Create and submit the work item
 
-Create a work item by calling [**RunAsync**](https://msdn.microsoft.com/library/windows/apps/BR230593). Supply a delegate to do the work (you can use a lambda, or a delegate function). Note that **RunAsync** returns an [**IAsyncAction**](https://msdn.microsoft.com/library/windows/apps/BR206580) object; store this object for use in the next step.
+Create a work item by calling [**RunAsync**](/uwp/api/windows.system.threading.threadpool.runasync). Supply a delegate to do the work (you can use a lambda, or a delegate function). Note that **RunAsync** returns an [**IAsyncAction**](/uwp/api/Windows.Foundation.IAsyncAction) object; store this object for use in the next step.
 
-Three versions of [**RunAsync**](https://msdn.microsoft.com/library/windows/apps/BR230593) are available so that you can optionally specify the priority of the work item, and control whether it runs concurrently with other work items.
+Three versions of [**RunAsync**](/uwp/api/windows.system.threading.threadpool.runasync) are available so that you can optionally specify the priority of the work item, and control whether it runs concurrently with other work items.
 
 >[!NOTE]
->Use [**CoreDispatcher.RunAsync**](https://msdn.microsoft.com/library/windows/apps/Hh750317) to access the UI thread and show progress from the work item.
+>Use [**CoreDispatcher.RunAsync**](/uwp/api/windows.ui.core.coredispatcher.runasync) to access the UI thread and show progress from the work item.
 
 The following example creates a work item and supplies a lambda to do the work:
 
@@ -193,11 +189,11 @@ const unsigned int n = 9999;
 // A shared pointer to the result.
 // We use a shared pointer to keep the result alive until the
 // thread is done.
-std::shared_ptr<unsigned long> nthPrime = make_shared<unsigned long int>(0);
+std::shared_ptr<unsigned long> nthPrime = std::make_shared<unsigned long int>(0);
 
 // Simulates work by searching for the nth prime number. Uses a
 // naive algorithm and counts 2 as the first prime number.
-auto workItem = ref new WorkItemHandler(
+auto workItem = ref new Windows::System::Threading::WorkItemHandler(
     \[this, n, nthPrime](IAsyncAction^ workItem)
 {
     unsigned int progress = 0; // For progress reporting.
@@ -267,13 +263,13 @@ auto asyncAction = ThreadPool::RunAsync(workItem);
 m_workItem = asyncAction;
 ```
 
-Following the call to [**RunAsync**](https://msdn.microsoft.com/library/windows/apps/BR230593), the work item is queued by the thread pool and runs when a thread becomes available. Thread pool work items run asynchronously and they can run in any order, so make sure your work items function independently.
+Following the call to [**RunAsync**](/uwp/api/windows.system.threading.threadpool.runasync), the work item is queued by the thread pool and runs when a thread becomes available. Thread pool work items run asynchronously and they can run in any order, so make sure your work items function independently.
 
-Note that the work item checks the [**IAsyncInfo.Status**](https://msdn.microsoft.com/library/windows/apps/BR206593) property, and exits if the work item is cancelled.
+Note that the work item checks the [**IAsyncInfo.Status**](/uwp/api/windows.foundation.iasyncinfo.status) property, and exits if the work item is cancelled.
 
 ## Handle work item completion
 
-Provide a completion handler by setting the [**IAsyncAction.Completed**](https://msdn.microsoft.com/library/windows/apps/windows.foundation.iasyncaction.completed.aspx) property of the work item. Supply a delegate (you can use a lambda or a delegate function) to handle work item completion. For example, use [**CoreDispatcher.RunAsync**](https://msdn.microsoft.com/library/windows/apps/Hh750317) to access the UI thread and show the result.
+Provide a completion handler by setting the [**IAsyncAction.Completed**](/uwp/api/windows.foundation.iasyncaction.completed) property of the work item. Supply a delegate (you can use a lambda or a delegate function) to handle work item completion. For example, use [**CoreDispatcher.RunAsync**](/uwp/api/windows.ui.core.coredispatcher.runasync) to access the UI thread and show the result.
 
 The following example updates the UI with the result of the work item submitted in step 1:
 
@@ -348,7 +344,7 @@ Note that the completion handler checks whether the work item was cancelled befo
 
 ## Summary and next steps
 
-You can learn more by downloading the code from this quickstart in the [Creating a ThreadPool work item sample](http://go.microsoft.com/fwlink/p/?LinkID=328569) written for Windows 8.1, and re-using the source code in a win\_unap Windows 10 app.
+You can learn more by downloading the code from this quickstart in the [Creating a ThreadPool work item sample](https://github.com/microsoftarchive/msdn-code-gallery-microsoft/tree/411c271e537727d737a53fa2cbe99eaecac00cc0/Official%20Windows%20Platform%20Sample/Thread%20pool%20sample) written for Windows 8.1, and re-using the source code in a win\_unap Windows 10 app.
 
 ## Related topics
 

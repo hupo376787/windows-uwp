@@ -4,17 +4,12 @@ description: A line strip is a primitive that is composed of connected line segm
 ms.assetid: 6E8C58E1-B463-44FD-A69F-81CCBF25D856
 keywords:
 - Line strips
-author: michaelfromredmond
-ms.author: mithom
 ms.date: 02/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 ms.localizationpriority: medium
 ---
 
 # Line strips
-
 
 A line strip is a primitive that is composed of connected line segments. Your application can use line strips for creating polygons that are not closed. A closed polygon is a polygon whose last vertex is connected to its first vertex by a line segment. If your application makes polygons based on line strips, the vertices are not guaranteed to be coplanar.
 
@@ -27,7 +22,7 @@ The following illustration shows a rendered line strip.
 
 The following code shows how to create vertices for this line strip.
 
-```
+```cpp
 struct CUSTOMVERTEX
 {
     float x,y,z;
@@ -46,7 +41,7 @@ CUSTOMVERTEX Vertices[] =
 
 The code example below shows how to render a line strip in Direct3D.
 
-```
+```cpp
 //
 // It is assumed that d3dDevice is a valid
 // pointer to an IDirect3DDevice interface.

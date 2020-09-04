@@ -1,35 +1,32 @@
 ---
-author: Karl-Bridge-Microsoft
 Description: Learn how to manage issues with speech-recognition accuracy caused by audio-input quality.
 title: Manage issues with audio input
 ms.assetid: 3E36C683-C96A-4FEE-AD52-FDB87E0CC299
 label: Manage audio input issues
 template: detail.hbs
 keywords: speech, voice, speech recognition, natural language, dictation, input, user interaction
-ms.author: kbridge
 ms.date: 02/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
+
+
 ms.localizationpriority: medium
 ---
-
 # Manage issues with audio input
 
 
 Learn how to manage issues with speech-recognition accuracy caused by audio-input quality.
 
-> **Important APIs**: [**SpeechRecognizer**](https://msdn.microsoft.com/library/windows/apps/dn653226), [**RecognitionQualityDegrading**](https://msdn.microsoft.com/library/windows/apps/dn653243), [**SpeechRecognitionAudioProblem**](https://msdn.microsoft.com/library/windows/apps/dn631406)
+> **Important APIs**: [**SpeechRecognizer**](/uwp/api/Windows.Media.SpeechRecognition.SpeechRecognizer), [**RecognitionQualityDegrading**](/uwp/api/windows.media.speechrecognition.speechrecognizer.recognitionqualitydegrading), [**SpeechRecognitionAudioProblem**](/uwp/api/Windows.Media.SpeechRecognition.SpeechRecognitionAudioProblem)
 
 
 ## Assess audio-input quality
 
 
-When speech recognition is active, use the [**RecognitionQualityDegrading**](https://msdn.microsoft.com/library/windows/apps/dn653243) event of your speech recognizer to determine whether one or more audio issues might be interfering with speech input. The event argument ([**SpeechRecognitionQualityDegradingEventArgs**](https://msdn.microsoft.com/library/windows/apps/dn631430)) provides the [**Problem**](https://msdn.microsoft.com/library/windows/apps/dn631431) property, which describes the issues detected with the audio input.
+When speech recognition is active, use the [**RecognitionQualityDegrading**](/uwp/api/windows.media.speechrecognition.speechrecognizer.recognitionqualitydegrading) event of your speech recognizer to determine whether one or more audio issues might be interfering with speech input. The event argument ([**SpeechRecognitionQualityDegradingEventArgs**](/uwp/api/Windows.Media.SpeechRecognition.SpeechRecognitionQualityDegradingEventArgs)) provides the [**Problem**](/uwp/api/windows.media.speechrecognition.speechrecognitionqualitydegradingeventargs.problem) property, which describes the issues detected with the audio input.
 
 Recognition can be affected by too much background noise, a muted microphone, and the volume or speed of the speaker.
 
-Here, we configure a speech recognizer and start listening for the [**RecognitionQualityDegrading**](https://msdn.microsoft.com/library/windows/apps/dn653243) event.
+Here, we configure a speech recognizer and start listening for the [**RecognitionQualityDegrading**](/uwp/api/windows.media.speechrecognition.speechrecognizer.recognitionqualitydegrading) event.
 
 ```CSharp
 private async void WeatherSearch_Click(object sender, RoutedEventArgs e)
@@ -64,9 +61,9 @@ private async void WeatherSearch_Click(object sender, RoutedEventArgs e)
 ## Manage the speech-recognition experience
 
 
-Use the description provided by the [**Problem**](https://msdn.microsoft.com/library/windows/apps/dn631431) property to help the user improve conditions for recognition.
+Use the description provided by the [**Problem**](/uwp/api/windows.media.speechrecognition.speechrecognitionqualitydegradingeventargs.problem) property to help the user improve conditions for recognition.
 
-Here, we create a handler for the [**RecognitionQualityDegrading**](https://msdn.microsoft.com/library/windows/apps/dn653243) event that checks for a low volume level. We then use a [**SpeechSynthesizer**](https://msdn.microsoft.com/library/windows/apps/dn298152) object to suggest that the user try speaking louder.
+Here, we create a handler for the [**RecognitionQualityDegrading**](/uwp/api/windows.media.speechrecognition.speechrecognizer.recognitionqualitydegrading) event that checks for a low volume level. We then use a [**SpeechSynthesizer**](/uwp/api/Windows.Media.SpeechSynthesis.SpeechSynthesizer) object to suggest that the user try speaking louder.
 
 ```CSharp
 private async void speechRecognizer_RecognitionQualityDegrading(
@@ -107,11 +104,7 @@ private async void speechRecognizer_RecognitionQualityDegrading(
 * [Speech interactions](speech-interactions.md)
 
 **Samples**
-* [Speech recognition and speech synthesis sample](http://go.microsoft.com/fwlink/p/?LinkID=619897)
+* [Speech recognition and speech synthesis sample](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/SpeechRecognitionAndSynthesis)
  
 
  
-
-
-
-

@@ -1,14 +1,10 @@
 ---
-author: stevewhims
 Description: A localized app is one that can be localized to other markets, languages, or regions without uncovering any functional defects in the app. The most essential property of a localizable app is that its executable code has been cleanly separated from its localizable resources.
 title: Make your app localizable
 ms.assetid: 06E1D4BB-59EA-4D71-99AC-7CB93D2A58A7
 template: detail.hbs
-ms.author: stwhi
 ms.date: 11/07/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp, globalization, localizability, localization
 ms.localizationpriority: medium
 ---
@@ -21,7 +17,7 @@ We also recommend that you become familiar with the [guidelines for globalizatio
 
 ## Put your strings into Resources Files (.resw)
 
-Don't hardcode string literals in your imperative code, XAML markup, nor in your app package manifest. Instead, put your strings into Resources Files (.resw) so that they can be adapted to different local markets independently of your app's built binaries. For details, see [Localize strings in your UI and app package manifest](../../app-resources/localize-strings-ui-manifest.md).
+Don't hard-code string literals in your imperative code, XAML markup, nor in your app package manifest. Instead, put your strings into Resources Files (.resw) so that they can be adapted to different local markets independently of your app's built binaries. For details, see [Localize strings in your UI and app package manifest](../../app-resources/localize-strings-ui-manifest.md).
 
 That topic also shows you how to add comments to your default Resources File (.resw). For example, if you are adopting an informal voice or tone then be sure to explain that in comments. Also, to minimize expense, confirm that only the strings that need to be translated are provided to translators.
 
@@ -63,9 +59,9 @@ As another example, consider the sentence "Remind me in {0} minute(s)." Using "m
 
 To solve this problem, localize the entire sentence, rather than a single word. Doing this may seem like extra work and an inelegant solution, but it is the best solution because:
 
--   A grammatically correct message will be displayed for all languages.
--   Your translator will not need to ask about what the strings will be replaced with.
--   You will not need to implement a costly code fix when a problem like this surfaces after your app is completed.
+- A grammatically correct message will be displayed for all languages.
+- Your translator will not need to ask about what the strings will be replaced with.
+- You will not need to implement a costly code fix when a problem like this surfaces after your app is completed.
 
 ## Other considerations for strings
 
@@ -78,6 +74,25 @@ Using an informal voice or tone in your strings is a valid choice. You can use c
 ## Pseudo-localization
 
 Pseudo-localize your app to uncover any localizability issues. Pseudo-localization is a kind of localization dry-run, or disclosure test. You produce a set of resources that are not really translated; they only look that way. Your strings are approximately 40% longer than in the default language, for example, and they have delimiters in them so that you can see at a glance whether they have been truncated in the UI.
+
+## Deployment Considerations
+
+When you install an app that contains localized language data, you might find that only the default language is available for the app even though you initially included resources for multiple languages. This is because the installation process is optimized to only install language resources that match the current language and culture of the device. Therefore, if your device is configured for en-US, only the en-US language resources are installed with your app.
+
+> [!NOTE]
+> It is not possible to install additional language support for your app after the initial installation. If you change the default language after installing an app, the app continues to use only the original language resources.
+
+If you want to ensure all language resources are available after installation, create a configuration file for the app package that specifies that certain resources are required during installation (including language resources). This optimized installation feature is automatically enabled when your application's .appxbundle is generated during packaging. For more information, see [Ensure that resources are installed on a device regardless of whether a device requires them](/previous-versions/dn482043(v=vs.140)).
+
+Optionally, to ensure all resources are installed (not just a subset), you can disable .appxbundle generation when you package your app. This is not recommended however as it can increase the installation time of your app.
+
+Disable automatic generation of the .appxbundle by setting the "Generate App Bundle" attribute to “never”:
+
+1. In Visual Studio, right-click the project name
+2. Select **Store** -> **Create app packages...**
+3. In the **Create Your Packages** dialog, select **I want to create packages to upload to the Microsoft Store using a new app name** and then click **Next**.
+4. In the **Select an app name** dialog, select/create an app name for your package.
+5. In the **Select and Configure Packages** dialog, set **Generate app bundle** to **Never**.
 
 ## Geopolitical awareness
 
@@ -115,14 +130,15 @@ After strings are separated into resource files, they can be translated. The ide
 Consider these options.
 
 - **The resource files can be translated by opening them directly in the project.** This approach works well for a project that has a small volume of strings that need to be translated into two or three languages. It could be suitable for a scenario where a developer speaks more than one language and is willing to handle the translation process. This approach benefits from being quick, requires no tools, and minimizes the risk of mistranslations. But it is not scalable. In particular, the resources in different languages can easily get out of sync, causing bad user experiences and maintenance headaches.
-- **The string resource files are in XML or ResJSON text format, so could be handed off for translation using any text editor. The translated files would then be copied back into the project.** This approach carries a risk of translators accidentally editing the XML tags, but it lets translation work take place outside of the Microsoft Visual Studio project. This approach could work well for projects that need to be translated into a small number of languages. The XLIFF format is an XML format specifically designed for use in localization, and should be well supported by some localization vendors or localization tools. You can use the [Multilingual App Toolkit](https://msdn.microsoft.com/en-us/library/windows/apps/xaml/jj572370.aspx) to generate XLIFF files from other resource files, such as .resw or .resjson.
+- **The string resource files are in XML or ResJSON text format, so could be handed off for translation using any text editor. The translated files would then be copied back into the project.** This approach carries a risk of translators accidentally editing the XML tags, but it lets translation work take place outside of the Microsoft Visual Studio project. This approach could work well for projects that need to be translated into a small number of languages. The XLIFF format is an XML format specifically designed for use in localization, and should be well supported by some localization vendors or localization tools. You can use the [Multilingual App Toolkit](/previous-versions/windows/apps/jj572370(v=win.10)) to generate XLIFF files from other resource files, such as .resw or .resjson.
 
-Handoffs to localizers may need to occur for other files, such as images or audio files.
+> [!NOTE]
+> Localization might also be necessary for other assets, including images and audio files.
 
-Additionally, consider these suggestions.
+You should also consider the following:
 
-- **Use a localization tool.** A number of localization tools are available for parsing resource files and allowing only the translatable strings to be edited by translators. This approach reduces the risk of a translator accidentally editing the XML tags. But it has the drawback of introducing a new tool and process to the localization process. A localization tool is good for projects with a large volume of strings but a small number of languages. To learn more, see [How to use the Multilingual App Toolkit](https://msdn.microsoft.com/en-us/library/windows/apps/xaml/jj572370.aspx).
-- **Use a localization vendor.** Consider using a localization vendor if your project contains a large volume of strings and needs to be translated for many languages. A localization vendor can give advice about tools and processes, as well as translating your resource files. This is an ideal solution, but is also the most costly option, and may increase the turnaround time for your translated content.
+- **Localization tools** A number of localization tools are available for parsing resource files and allowing only the translatable strings to be edited by translators. This approach reduces the risk of a translator accidentally editing the XML tags. But it has the drawback of introducing a new tool and process to the localization process. A localization tool is good for projects with a large volume of strings but a small number of languages. To learn more, see [How to use the Multilingual App Toolkit](/previous-versions/windows/apps/jj572370(v=win.10)).
+- **Localization vendors** Consider using a localization vendor if your application contains extensive strings that need to be translated into a large number of languages. A localization vendor can give advice about tools and processes, as well as translating your resource files. This is an ideal solution, but is also the most costly option, and may increase the turnaround time for your translated content.
 
 ## Keep access keys and labels consistent
 
@@ -134,8 +150,8 @@ Japanese kanji characters have the property of having more than one reading (pro
 
 *Furigana* works around this problem by allowing the user or creator to specify the phonetics for the characters they are using. If you use the following procedure to add furigana to your app name, you can ensure that it is sorted in the proper location in the app list. If your app name contains kanji characters and furigana is not provided when the user’s UI language or the sort order is set to Japanese, Windows makes its best effort to generate the appropriate pronunciation. However, there is a possibility for app names containing rare or unique readings to be sorted under a more common reading instead. Therefore, the best practice for Japanese applications (especially those containing kanji characters in their names) is to provide a furigana version of their app name as part of the Japanese localization process.
 
-1.  Add "ms-resource:Appname" as the Package Display Name and the Application Display Name.
-2.  Create a ja-JP folder under strings, and add two resource files as follows:
+1. Add "ms-resource:Appname" as the Package Display Name and the Application Display Name.
+2. Create a ja-JP folder under strings, and add two resource files as follows:
 
     ``` syntax
     strings\
@@ -145,28 +161,28 @@ Japanese kanji characters have the property of having more than one reading (pro
             Resources.resw
     ```
 
-3.  In Resources.resw for general ja-JP: Add a string resource for Appname "希蒼"
-4.  In Resources.altform-msft-phonetic.resw for Japanese furigana resources: Add furigana value for AppName "のあ"
+3. In Resources.resw for general ja-JP: Add a string resource for Appname "希蒼"
+4. In Resources.altform-msft-phonetic.resw for Japanese furigana resources: Add furigana value for AppName "のあ"
 
 The user can search for the app name "希蒼" using both the furigana value "のあ" (noa), and the phonetic value (using the **GetPhonetic** function from the Input Method Editor (IME)) "まれあお" (mare-ao).
 
 Sorting follows the **Regional Control Panel** format:
 
--   Under a Japanese user locale,
-    -   If furigana is enabled, then "希蒼" is sorted under "の".
-    -   If furigana is missing, then "希蒼" is sorted under "ま".
--   Under a non-Japanese user locale,
-    -   If furigana is enabled, then "希蒼" is sorted under "の".
-    -   If furigana is missing, then "希蒼" is sorted under "漢字".
+- Under a Japanese user locale,
+  - If furigana is enabled, then "希蒼" is sorted under "の".
+  - If furigana is missing, then "希蒼" is sorted under "ま".
+- Under a non-Japanese user locale,
+  - If furigana is enabled, then "希蒼" is sorted under "の".
+  - If furigana is missing, then "希蒼" is sorted under "漢字".
 
 ## Related topics
 
-* [Guidelines for globalization](guidelines-and-checklist-for-globalizing-your-app.md)
-* [Localize strings in your UI and app package manifest](../../app-resources/localize-strings-ui-manifest.md)
-* [Tailor your resources for language, scale, high contrast, and other qualifiers](../../app-resources/tailor-resources-lang-scale-contrast.md)
-* [Adjust layout and fonts, and support RTL](adjust-layout-and-fonts--and-support-rtl.md)
-* [Updating images in response to qualifier value change events](../../app-resources/images-tailored-for-scale-theme-contrast.md#updating-images-in-response-to-qualifier-value-change-events)
+- [Guidelines for globalization](guidelines-and-checklist-for-globalizing-your-app.md)
+- [Localize strings in your UI and app package manifest](../../app-resources/localize-strings-ui-manifest.md)
+- [Tailor your resources for language, scale, high contrast, and other qualifiers](../../app-resources/tailor-resources-lang-scale-contrast.md)
+- [Adjust layout and fonts, and support RTL](adjust-layout-and-fonts--and-support-rtl.md)
+- [Updating images in response to qualifier value change events](../../app-resources/images-tailored-for-scale-theme-contrast.md#updating-images-in-response-to-qualifier-value-change-events)
 
 ## Samples
 
-* [Application resources and localization sample](http://go.microsoft.com/fwlink/p/?linkid=254478)
+- [Application resources and localization sample](https://github.com/microsoftarchive/msdn-code-gallery-microsoft/tree/411c271e537727d737a53fa2cbe99eaecac00cc0/Official%20Windows%20Platform%20Sample/Windows%208%20app%20samples/%5BC%23%5D-Windows%208%20app%20samples/C%23/Windows%208%20app%20samples/Application%20resources%20and%20localization%20sample%20(Windows%208))

@@ -1,18 +1,13 @@
 ---
-author: PatrickFarley
 ms.assetid: 7234DD5F-8E86-424E-99A0-93D01F1311F2
 title: Test with the Microsoft Emulator for Windows 10 Mobile
 description: Simulate real-world interaction with a device and test the features of your app by using the tools included with Microsoft Emulator for Windows 10 Mobile.
-ms.author: pafarley
 ms.date: 02/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp
 ms.localizationpriority: medium
 ---
 # Test with the Microsoft Emulator for Windows 10 Mobile
-
 
 Simulate real-world interaction with a device and test the features of your app by using the tools included with Microsoft Emulator for Windows 10 Mobile. The emulator is a desktop application that emulates a mobile device running Windows 10. It provides a virtualized environment in which you can debug and test Windows apps without a physical device. It also provides an isolated environment for your application prototypes.
 
@@ -40,7 +35,7 @@ Operating system
 -   64-bit
 -   Pro edition or higher
 
-To check the BIOS requirements, see [How to enable Hyper-V for the emulator for Windows Phone 8](https://msdn.microsoft.com/library/windows/apps/xaml/jj863509.aspx).
+To check the BIOS requirements, see [How to enable Hyper-V for the emulator for Windows Phone 8](/previous-versions/windows/apps/jj863509(v=vs.105)).
 
 To check requirements for RAM and operating system, in Control Panel, select **System and Security**, and then select **System**.
 
@@ -48,19 +43,24 @@ Microsoft Emulator for Windows 10 Mobile requires Visual Studio 2015 or later; i
 
 Microsoft Emulator for Windows 10 Mobile cannot load apps that target the Windows Phone OS version earlier than Windows Phone OS 7.1.
 
-## Installing and uninstalling
+## Installing, uninstalling, and running the emulator
 
--   **Installing**.
+### Installing
+Microsoft Emulator for Windows 10 Mobile ships as part of the Windows 10 SDK. The Windows 10 SDK and emulator can be installed as part of the Visual Studio installation. See the [Visual Studio download page](https://developer.microsoft.com/windows/downloads).
 
-    Microsoft Emulator for Windows 10 Mobile ships as part of the Windows 10 SDK. The Windows 10 SDK and emulator can be installed as part of the Visual Studio installation. See the [Visual Studio download page](https://go.microsoft.com/fwlink/p/?LinkId=534785).
+You can also install the Microsoft Emulator for Windows 10 Mobile using the [Microsoft Emulator setup](https://download.microsoft.com/download/E/3/4/E347E8C5-BD79-49AF-941C-D08893A45268/emulator/EmulatorSetup.exe).
 
-    You can also install the Microsoft Emulator for Windows 10 Mobile using the [Microsoft Emulator setup](https://go.microsoft.com/fwlink/p/?LinkID=615095).
+### Uninstalling
 
--   **Uninstalling**.
+You can uninstall the Microsoft Emulator for Windows 10 Mobile using Visual Studio setup/repair. Or you can use **Programs and Features** under **Control Panel** to remove the emulator.
 
-    You can uninstall the Microsoft Emulator for Windows 10 Mobile using Visual Studio setup/repair. Or you can use **Programs and Features** under **Control Panel** to remove the emulator.
+When you uninstall the Microsoft Emulator for Windows 10 Mobile, the Hyper-V Virtual Ethernet Adapter that was created for the emulator to use is not automatically removed. You can manually remove this virtual adapter from **Network Connections** in **Control Panel**.
 
-    When you uninstall the Microsoft Emulator for Windows 10 Mobile, the Hyper-V Virtual Ethernet Adapter that was created for the emulator to use is not automatically removed. You can manually remove this virtual adapter from **Network Connections** in **Control Panel**.
+### Running
+
+To run an app in the emulator, simply select an emulated device from the **run** drop-down menu in Visual Studio.
+
+![Available emulators with resolution, size, and memory](images/em-list.png)
 
 ## What's new in Microsoft Emulator for Windows 10 Mobile
 
@@ -76,7 +76,7 @@ In addition to the new features mentioned in the previous section, you can test 
 
 -   **Screen resolution, screen size, and memory**. Reach a broad market for your app by testing it on various emulator images to simulate various screen resolutions, physical sizes, and memory constraints.
 
-    ![Available emulators with resolution, size, and memory](images/em-list.png)
+![Available emulators with resolution, size, and memory](images/em-list.png)
 
 -   **Screen configuration**. Change the emulator from portrait to landscape mode. Change the zoom setting to fit the emulator to your desktop screen.
 
@@ -209,7 +209,7 @@ Using the proximity mode you can inject messages as if they came from a tag or a
 -   NDEF:URI
 -   NDEF:wkt.U
 
-You can either create these messages by editing the **Payload** windows or providing them in a file. For more information about these types and how to use them please refer to the Remarks section of the[**ProximityDevice.PublishBinaryMessage**](https://msdn.microsoft.com/library/windows/apps/Hh701129) reference page.
+You can either create these messages by editing the **Payload** windows or providing them in a file. For more information about these types and how to use them please refer to the Remarks section of the[**ProximityDevice.PublishBinaryMessage**](/uwp/api/windows.networking.proximity.proximitydevice.publishbinarymessage) reference page.
 
 The Windows 8 Driver Kit (WDK) includes a driver sample that exposes the same protocol as the Windows Phone 8 emulator. You'll need to download the DDK, build that sample driver, install it on a Windows 8 device, then add the Windows 8 device's IP address or hostname to the devices list and tap it either with another Windows 8 device or with a Windows Phone 8 emulator.
 
@@ -231,7 +231,7 @@ You can also use the terminal simulator tool from MasterCard ([https://www.termi
 -   Check the **Enable MasterCard** listener checkbox below the script editor windows and launch the simulator from MasterCard.
 -   Using the tool, you can generate commands that are relayed to your application running on the emulator through the NFC tool.
 
-To learn more about HCE support and how to develop HCE apps in Windows 10 Mobile, please refer to the [Microsoft NFC Team Blog](http://go.microsoft.com/fwlink/?LinkId=534749).
+To learn more about HCE support and how to develop HCE apps in Windows 10 Mobile, please refer to the [Microsoft NFC Team Blog](https://blogs.msdn.com/b/nfc/).
 
 ### How to Create Scripts for HCE Testing
 
@@ -262,7 +262,7 @@ Below is a reference on what functionality is available:
 
 ### Smart Card Reader Mode
 
-The emulator can be connected to a smart card reader device on your host computer, such that smart cards inserted or tapped will show up to your phone application and can be communicated to with APDUs using the [**Windows.Devices.SmartCards.SmartCardConnection**](https://msdn.microsoft.com/library/windows/apps/Dn608002) class. For this to work, you will need a compatible smart card reader device attached to your computer, USB smart card readers (both NFC/contactless and insert/contact) are widely available. To enable the emulator to work with an attached smart card reader, first choose the **Card Reader** mode which should show a dropdown box listing all the compatible smart card readers attached to the host system, then choose the smart card reader device you’d like to be connected from the dropdown.
+The emulator can be connected to a smart card reader device on your host computer, such that smart cards inserted or tapped will show up to your phone application and can be communicated to with APDUs using the [**Windows.Devices.SmartCards.SmartCardConnection**](/uwp/api/Windows.Devices.SmartCards.SmartCardConnection) class. For this to work, you will need a compatible smart card reader device attached to your computer, USB smart card readers (both NFC/contactless and insert/contact) are widely available. To enable the emulator to work with an attached smart card reader, first choose the **Card Reader** mode which should show a dropdown box listing all the compatible smart card readers attached to the host system, then choose the smart card reader device you’d like to be connected from the dropdown.
 
 Note that not all NFC-capable smart card readers support some types of NFC cards, and some do not support the standard PC/SC storage card APDU commands.
 
@@ -313,7 +313,7 @@ Test apps that use navigation or geofencing by using the **Location** tab of the
 
 You can test your app while you simulate moving from one location to another at different speeds and with different accuracy profiles. The location simulator can help you to identify changes in your usage of the location APIs usage that improve the user experience. For example, the tool can help you identify that you have to tune geofence parameters, such as size or dwell time, to detect the geofences successfully in different scenarios.
 
-The **Location** tab supports three modes. In all modes, when the emulator receives a new position, that position is available to trigger the [**PositionChanged**](https://msdn.microsoft.com/library/windows/apps/BR225540) event or to respond to a [**GetGeopositionAsync**](https://msdn.microsoft.com/library/windows/apps/Hh973536) call in your location-aware app.
+The **Location** tab supports three modes. In all modes, when the emulator receives a new position, that position is available to trigger the [**PositionChanged**](/uwp/api/windows.devices.geolocation.geolocator.positionchanged) event or to respond to a [**GetGeopositionAsync**](/uwp/api/windows.devices.geolocation.geolocator.getgeopositionasync) call in your location-aware app.
 
 -   In **Pin** mode, you place pushpins on the map. When you click **Play all points**, the location simulator sends the location of each pin to the emulator one after another, at the interval specified in the **Seconds per pin** text box.
 
@@ -629,9 +629,9 @@ Microsoft Emulator includes XDECleanup.exe, a tool that deletes all VMs, diff di
 
 ### Uninstall Windows 10 for Mobile Image
 
-When you install the emulator, a Windows 10 for Mobile VHD image is installed, which gets its own entry in the **Programs and Features** list in the Control Panel. If you wish to uninstall the image, find **Windows 10 for Mobile Image - <version>** in the list of installed programs, right-click on it, and choose **Uninstall**.
+When you install the emulator, a Windows 10 for Mobile VHD image is installed, which gets its own entry in the **Programs and Features** list in the Control Panel. If you wish to uninstall the image, find **Windows 10 for Mobile Image -\<version\>** in the list of installed programs, right-click on it, and choose **Uninstall**.
 
-In the current release, you must then manually delete the VHD file for the emulator. If you installed the emulator to the default path, the VHD file is at C:\\Program Files (x86)\\Windows Kits\\10\\Emulation\\Mobile\\<version>\\flash.vhd.
+In the current release, you must then manually delete the VHD file for the emulator. If you installed the emulator to the default path, the VHD file is at C:\\Program Files (x86)\\Windows Kits\\10\\Emulation\\Mobile\\\<version\>\\flash.vhd.
 
 ### How to disable hardware accelerated graphics
 
@@ -651,11 +651,10 @@ To disable hardware acceleration:
 
 ## Support Resources
 
-To find answers and solve problems as you start working with the Windows 10 tools, please visit [Windows 10 Tools forum](http://go.microsoft.com/fwlink/?LinkId=534765). To see all the forums for Windows 10 development, visit [this link](http://go.microsoft.com/fwlink/?LinkId=535000).
+To find answers and solve problems as you start working with the Windows 10 tools, please visit [Windows 10 Tools forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=Win10SDKToolsIssues). To see all the forums for Windows 10 development, visit [this link](https://social.msdn.microsoft.com/Forums/windowsapps/en-US/home?forum=wpdevelop).
 
 ## Related topics
 
-* [Run Windows Phone apps in the emulator](https://msdn.microsoft.com/library/windows/apps/xaml/dn632391.aspx)
-* [Windows and Windows Phone SDK archive](https://dev.windows.com/downloads/sdk-archive)
+* [Run Windows Phone apps in the emulator](/visualstudio/debugger/run-windows-phone-apps-in-the-emulator?view=vs-2015)
+* [Windows and Windows Phone SDK archive](https://developer.microsoft.com/windows/downloads/sdk-archive)
  
-

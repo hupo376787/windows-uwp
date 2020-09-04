@@ -1,21 +1,16 @@
 ---
-author: stevewhims
 ms.assetid: 2b63a4c8-b1c0-4c77-95ab-0b9549ba3c0e
 description: This topic presents a case study of porting a very simple Windows Phone Silverlight app to a Windows 10 Universal Windows Platform (UWP) app.
 title: Windows Phone Silverlight to UWP case study, Bookstore1
-ms.author: stwhi
 ms.date: 02/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp
 ms.localizationpriority: medium
 ---
-
 # Windows Phone Silverlight to UWP case study: Bookstore1
 
 
-This topic presents a case study of porting a very simple Windows Phone Silverlight app to a Windows 10 Universal Windows Platform (UWP) app. With Windows 10, you can create a single app package that your customers can install onto a wide range of devices, and that's what we'll do in this case study. See [Guide to UWP apps](https://msdn.microsoft.com/library/windows/apps/dn894631).
+This topic presents a case study of porting a very simple Windows Phone Silverlight app to a Windows 10 Universal Windows Platform (UWP) app. With Windows 10, you can create a single app package that your customers can install onto a wide range of devices, and that's what we'll do in this case study. See [Guide to UWP apps](../get-started/universal-application-platform-guide.md).
 
 The app we'll port consists of a **ListBox** bound to a view model. The view model has a list of books that shows title, author, and book cover. The book cover images have **Build Action** set to **Content** and **Copy to Output Directory** set to **Do not copy**.
 
@@ -25,9 +20,9 @@ The previous topics in this section describe the differences between the platfor
 
 ## Downloads
 
-[Download the Bookstore1WPSL8 Windows Phone Silverlight app](http://go.microsoft.com/fwlink/?linkid=517053).
+[Download the Bookstore1WPSL8 Windows Phone Silverlight app](https://codeload.github.com/MicrosoftDocs/windows-topic-specific-samples/zip/Bookstore1WPSL8).
 
-[Download the Bookstore1Universal\_10 Windows 10 app](http://go.microsoft.com/fwlink/?linkid=532950).
+[Download the Bookstore1Universal\_10 Windows 10 app](https://codeload.github.com/MicrosoftDocs/windows-topic-specific-samples/zip/Bookstore1Universal_10).
 
 ## The Windows Phone Silverlight app
 
@@ -103,7 +98,7 @@ In Bookstore1WPSL8, we did this:
     return new BitmapImage(new Uri(this.CoverImagePath, UriKind.Relative));
 ```
 
-In Bookstore1Universal, we use the ms-appx [URI scheme](https://msdn.microsoft.com/library/windows/apps/jj655406). So that we can keep the rest of our code the same, we can use a different overload of the **System.Uri** constructor to put the ms-appx URI scheme in a base URI and append the rest of the path onto that. Like this:
+In Bookstore1Universal, we use the ms-appx [URI scheme](/previous-versions/windows/apps/jj655406(v=win.10)). So that we can keep the rest of our code the same, we can use a different overload of the **System.Uri** constructor to put the ms-appx URI scheme in a base URI and append the rest of the path onto that. Like this:
 
 ```csharp
     // this.BookCoverImagePath contains a path of the form "/Assets/CoverImages/one.png".

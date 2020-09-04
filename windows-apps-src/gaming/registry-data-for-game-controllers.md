@@ -1,13 +1,9 @@
 ---
-author: eliotcowley
 title: Registry data for game controllers
 description: Learn about the data that you can add to the PC's registry to enable your controller to be used in UWP games.
 ms.assetid: 2DD0B384-8776-4599-9E52-4FC0AA682735
-ms.author: wdg-dev-content
-ms.date: 06/25/2018
+ms.date: 04/08/2019
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp, games, input, registry, custom
 ms.localizationpriority: medium
 ---
@@ -17,7 +13,7 @@ ms.localizationpriority: medium
 > [!NOTE]
 > This topic is meant for manufacturers of Windows 10-compatible game controllers, and doesn't apply to the majority of developers.
 
-The [Windows.Gaming.Input namespace](https://docs.microsoft.com/uwp/api/windows.gaming.input) allows independent hardware vendors (IHVs) to add data to the PC's registry, enabling their devices to appear as [Gamepads](https://docs.microsoft.com/uwp/api/windows.gaming.input.gamepad), [RacingWheels](https://docs.microsoft.com/uwp/api/windows.gaming.input.racingwheel), [ArcadeSticks](https://docs.microsoft.com/uwp/api/windows.gaming.input.arcadestick), [FlightSticks](https://docs.microsoft.com/en-us/uwp/api/windows.gaming.input.flightstick), and [UINavigationControllers](https://docs.microsoft.com/uwp/api/windows.gaming.input.uinavigationcontroller) as appropriate. All IHVs should add this data for their compatible controllers. By doing this, all UWP games (and any desktop games that use the WinRT API) will be able to support your game controller.
+The [Windows.Gaming.Input namespace](/uwp/api/windows.gaming.input) allows independent hardware vendors (IHVs) to add data to the PC's registry, enabling their devices to appear as [Gamepads](/uwp/api/windows.gaming.input.gamepad), [RacingWheels](/uwp/api/windows.gaming.input.racingwheel), [ArcadeSticks](/uwp/api/windows.gaming.input.arcadestick), [FlightSticks](/uwp/api/windows.gaming.input.flightstick), and [UINavigationControllers](/uwp/api/windows.gaming.input.uinavigationcontroller) as appropriate. All IHVs should add this data for their compatible controllers. By doing this, all UWP games (and any desktop games that use the WinRT API) will be able to support your game controller.
 
 ## Mapping scheme
 
@@ -610,7 +606,7 @@ The table below lists the values that are needed to map a button. For example, i
         <td>
             <p>Indicates the switch position that will cause the mapped button to report that it's being pressed. The position values can be one of these strings:</p>
             <ul>
-                <li>Up</li> 
+                <li>Up</li>
                 <li>UpRight</li>
                 <li>Right</li>
                 <li>DownRight</li>
@@ -1117,14 +1113,14 @@ The labels should appear in this order under the **Buttons** key:
 
 ### Axis labels
 
-The **Axes** key will map each of the axis positions in the **RawGameController**'s axis array to one of the labels listed in [GameControllerButtonLabel Enum](https://docs.microsoft.com/en-us/uwp/api/windows.gaming.input.gamecontrollerbuttonlabel) just like the button labels. See the example in [Button labels](#button-labels).
+The **Axes** key will map each of the axis positions in the **RawGameController**'s axis array to one of the labels listed in [GameControllerButtonLabel Enum](https://docs.microsoft.com/uwp/api/windows.gaming.input.gamecontrollerbuttonlabel) just like the button labels. See the example in [Button labels](#button-labels).
 
 ### Switch labels
 
-The **Switches** key maps switch positions to labels. The values follow this naming convention: to label a position of a switch, whose index is *x* in the **RawGameController**'s switch array, add these values under the **Switches** subkey: 
+The **Switches** key maps switch positions to labels. The values follow this naming convention: to label a position of a switch, whose index is *x* in the **RawGameController**'s switch array, add these values under the **Switches** subkey:
 
-* SwitchxUp 
-* SwitchxUpRight 
+* SwitchxUp
+* SwitchxUpRight
 * SwitchxRight
 * SwitchxDownRight
 * SwitchxDown
@@ -1132,7 +1128,7 @@ The **Switches** key maps switch positions to labels. The values follow this nam
 * SwitchxUpLeft
 * SwitchxLeft
 
-The following table shows an example set of labels for switch positions of a 4-way switch which shows up at index 0 in the **RawGameController**: 
+The following table shows an example set of labels for switch positions of a 4-way switch which shows up at index 0 in the **RawGameController**:
 
 <table>
     <tr>
@@ -1232,7 +1228,7 @@ The following table shows an example set of labels for switch positions of a 4-w
 
 To show how all of these mappings and values come together, here is an example registry file for a generic **RacingWheel**:
 
-```
+```text
 Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\GameInput\Devices\1234567800010004]
@@ -1347,6 +1343,6 @@ Windows Registry Editor Version 5.00
 
 ## See also
 
-* [Windows.Gaming.Input Namespace](https://docs.microsoft.com/uwp/api/windows.gaming.input)
-* [Windows.Gaming.Input.Custom Namespace](https://docs.microsoft.com/uwp/api/windows.gaming.input.custom)
-* [INF Files](https://docs.microsoft.com/windows-hardware/drivers/install/inf-files)
+* [Windows.Gaming.Input Namespace](/uwp/api/windows.gaming.input)
+* [Windows.Gaming.Input.Custom Namespace](/uwp/api/windows.gaming.input.custom)
+* [INF Files](/windows-hardware/drivers/install/inf-files)

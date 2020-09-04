@@ -1,25 +1,20 @@
 ---
-author: TylerMSFT
 title: Launch the default app for a URI
 description: Learn how to launch the default app for a Uniform Resource Identifier (URI). URIs allow you to launch another app to perform a specific task. This topic also provides an overview of the many URI schemes built into Windows.
 ms.assetid: 7B0D0AF5-D89E-4DB0-9B79-90201D79974F
-ms.author: twhitney
 ms.date: 06/26/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp
 ms.localizationpriority: medium
 ---
-
 # Launch the default app for a URI
 
 
 **Important APIs**
 
-- [**LaunchUriAsync**](https://msdn.microsoft.com/library/windows/apps/hh701476)
-- [**PreferredApplicationPackageFamilyName**](https://msdn.microsoft.com/library/windows/apps/hh965482)
-- [**DesiredRemainingView**](https://msdn.microsoft.com/library/windows/apps/dn298314)
+- [**LaunchUriAsync**](/uwp/api/windows.system.launcher.launchuriasync)
+- [**PreferredApplicationPackageFamilyName**](/uwp/api/windows.system.launcheroptions.preferredapplicationpackagefamilyname)
+- [**DesiredRemainingView**](/uwp/api/windows.system.launcheroptions.desiredremainingview)
 
 Learn how to launch the default app for a Uniform Resource Identifier (URI). URIs allow you to launch another app to perform a specific task. This topic also provides an overview of the many URI schemes built into Windows. You can launch custom URIs too. For more info about registering a custom URI scheme and handling URI activation, see [Handle URI activation](handle-uri-activation.md).
 
@@ -40,11 +35,12 @@ This topic describes the following URI schemes built into Windows:
 |[ms-store:](#store-app-uri-scheme)  | Store app |
 |[ms-tonepicker:](#tone-picker-uri-scheme) | Tone picker |
 |[ms-yellowpage:](#nearby-numbers-app-uri-scheme) | Nearby Numbers app |
+|[msnweather:](#weather-app-uri-scheme) | Weather app |
 
 <br>
 For example, the following URI opens the default browser and displays the Bing web site.
 
-`http://bing.com`
+`https://bing.com`
 
 You can also launch custom URI schemes too. If there is no app installed to handle that URI, you can recommend an app for the user to install. For more info, see [Recommend an app if one is not available to handle the URI](#recommend-an-app-if-one-is-not-available-to-handle-the-uri).
 
@@ -52,9 +48,9 @@ In general, your app can't select the app that is launched. The user determines 
 
 ### Call LaunchUriAsync to launch a URI
 
-Use the [**LaunchUriAsync**](https://msdn.microsoft.com/library/windows/apps/hh701476) method to launch a URI. When you call this method, your app must be the foreground app, that is, it must be visible to the user. This requirement helps ensure that the user remains in control. To meet this requirement, make sure that you tie all URI launches directly to the UI of your app. The user must always take some action to initiate a URI launch. If you attempt to launch a URI and your app isn't in the foreground, the launch will fail and your error callback will be invoked.
+Use the [**LaunchUriAsync**](/uwp/api/windows.system.launcher.launchuriasync) method to launch a URI. When you call this method, your app must be the foreground app, that is, it must be visible to the user. This requirement helps ensure that the user remains in control. To meet this requirement, make sure that you tie all URI launches directly to the UI of your app. The user must always take some action to initiate a URI launch. If you attempt to launch a URI and your app isn't in the foreground, the launch will fail and your error callback will be invoked.
 
-First create a [**System.Uri**](https://msdn.microsoft.com/library/windows/apps/system.uri.aspx) object to represent the URI, then pass that to the [**LaunchUriAsync**](https://msdn.microsoft.com/library/windows/apps/hh701476) method. Use the return result to see if the call succeeded, as shown in the following example.
+First create a [**System.Uri**](https://docs.microsoft.com/dotnet/api/system.uri) object to represent the URI, then pass that to the [**LaunchUriAsync**](/uwp/api/windows.system.launcher.launchuriasync) method. Use the return result to see if the call succeeded, as shown in the following example.
 
 ```cs
 private async void launchURI_Click(object sender, RoutedEventArgs e)
@@ -80,7 +76,7 @@ In some cases, the operating system will prompt the user to see if they actually
 
 ![a warning dialog overlayed on a grayed out background of the app. the dialog asks the user if they want to switch apps and has ‘yes’ and ‘no’ buttons in the bottom right. the ‘no’ button is highlighted.](images/warningdialog.png)
 
-If you always want this prompt to occur, use the [**Windows.System.LauncherOptions.TreatAsUntrusted**](https://msdn.microsoft.com/library/windows/apps/hh701442) property to tell the operating system to display a warning.
+If you always want this prompt to occur, use the [**Windows.System.LauncherOptions.TreatAsUntrusted**](https://docs.microsoft.com/uwp/api/windows.system.launcheroptions.treatasuntrusted) property to tell the operating system to display a warning.
 
 ```cs
 // The URI to launch
@@ -100,7 +96,7 @@ In some cases, the user might not have an app installed to handle the URI that y
 
 Recommendations are also useful when more than one app has registered to handle a URI scheme. By recommending a specific app, Windows will open that app if it is already installed.
 
-To make a recommendation, call the [**Windows.System.Launcher.LaunchUriAsync(Uri, LauncherOptions)**](https://msdn.microsoft.com/library/windows/apps/hh701484) method with [**LauncherOptions.preferredApplicationPackageFamilyName**](https://msdn.microsoft.com/library/windows/apps/hh965482) set to the package family name of the app in the store that you want to recommend. The operating system uses this info to replace the general option to search for an app in the store with a specific option to acquire the recommended app from the store.
+To make a recommendation, call the [**Windows.System.Launcher.LaunchUriAsync(Uri, LauncherOptions)**](https://docs.microsoft.com/uwp/api/windows.system.launcher.launchuriasync#Windows_System_Launcher_LaunchUriAsync_Windows_Foundation_Uri_Windows_System_LauncherOptions_) method with [**LauncherOptions.preferredApplicationPackageFamilyName**](https://docs.microsoft.com/uwp/api/windows.system.launcheroptions.preferredapplicationpackagefamilyname) set to the package family name of the app in the store that you want to recommend. The operating system uses this info to replace the general option to search for an app in the store with a specific option to acquire the recommended app from the store.
 
 ```cs
 // Set the recommended app
@@ -115,9 +111,9 @@ var success = await Windows.System.Launcher.LaunchUriAsync(uriContoso, options);
 
 ### Set remaining view preference
 
-Source apps that call [**LaunchUriAsync**](https://msdn.microsoft.com/library/windows/apps/hh701476) can request that they remain on screen after a URI launch. By default, Windows attempts to share all available space equally between the source app and the target app that handles the URI. Source apps can use the [**DesiredRemainingView**](https://msdn.microsoft.com/library/windows/apps/dn298314) property to indicate to the operating system that they prefer their app window to take up more or less of the available space. **DesiredRemainingView** can also be used to indicate that the source app doesn't need to remain on screen after the URI launch and can be completely replaced by the target app. This property only specifies the preferred window size of the calling app. It doesn't specify the behavior of other apps that may happen to also be on screen at the same time.
+Source apps that call [**LaunchUriAsync**](/uwp/api/windows.system.launcher.launchuriasync) can request that they remain on screen after a URI launch. By default, Windows attempts to share all available space equally between the source app and the target app that handles the URI. Source apps can use the [**DesiredRemainingView**](/uwp/api/windows.system.launcheroptions.desiredremainingview) property to indicate to the operating system that they prefer their app window to take up more or less of the available space. **DesiredRemainingView** can also be used to indicate that the source app doesn't need to remain on screen after the URI launch and can be completely replaced by the target app. This property only specifies the preferred window size of the calling app. It doesn't specify the behavior of other apps that may happen to also be on screen at the same time.
 
-**Note**  Windows takes into account multiple different factors when it determines the source app's final window size, for example, the preference of the source app, the number of apps on screen, the screen orientation, and so on. By setting [**DesiredRemainingView**](https://msdn.microsoft.com/library/windows/apps/dn298314), you aren't guaranteed a specific windowing behavior for the source app.
+**Note**  Windows takes into account multiple different factors when it determines the source app's final window size, for example, the preference of the source app, the number of apps on screen, the screen orientation, and so on. By setting [**DesiredRemainingView**](/uwp/api/windows.system.launcheroptions.desiredremainingview), you aren't guaranteed a specific windowing behavior for the source app.
 
 ```cs
 // Set the desired remaining view.
@@ -165,7 +161,7 @@ Use the **bingmaps:**, **ms-drive-to:**, and **ms-walk-to:** URI schemes to [lau
 
 ![an example of the windows maps app.](images/mapnyc.png)
 
-For more info, see [Launch the Windows Maps app](launch-maps-app.md). To use the map control in your own app, see [Display maps with 2D, 3D, and Streetside views](https://msdn.microsoft.com/library/windows/apps/mt219695).
+For more info, see [Launch the Windows Maps app](launch-maps-app.md). To use the map control in your own app, see [Display maps with 2D, 3D, and Streetside views](../maps-and-location/display-maps.md).
 
 ### Messaging app URI scheme
 
@@ -187,7 +183,7 @@ Use the **ms-tonepicker:** URI scheme to choose ringtones, alarms, and system to
 |------------|---------|
 | ms-tonepicker: | Pick ringtones, alarms, and system tones. |
 
-Parameters are passed via a [ValueSet](https://msdn.microsoft.com/library/windows/apps/windows.foundation.collections.valueset.aspx) to the LaunchURI API. See [Choose and save tones using the ms-tonepicker URI scheme](launch-ringtone-picker.md) for details.
+Parameters are passed via a [ValueSet](/uwp/api/windows.foundation.collections.valueset) to the LaunchURI API. See [Choose and save tones using the ms-tonepicker URI scheme](launch-ringtone-picker.md) for details.
 
 ### Nearby Numbers app URI scheme
 
@@ -214,8 +210,8 @@ Or to edit a video: `ms-photos:videoedit?InputToken=123abc&Action=Trim&StartTime
 | URI scheme |Results |
 |------------|--------|
 | ms-photos:viewer?fileName={filename} | Launches the Photos app to view the specified image where {filename} is a fully-qualified path name. For example: `c:\users\userName\Pictures\ImageToView.jpg` |
-| ms-photos:videoedit?InputToken={input token} | Launches the Photos app in video editing mode for the file represented by the file token. **InputToken** is required. Use the  [SharedStorageAccessManager](https://docs.microsoft.com/uwp/api/Windows.ApplicationModel.DataTransfer.SharedStorageAccessManager) to get a token for a file. |
-| ms-photos:videoedit?Action={action} | An optional parameter that opens the Photos app in the specified video editing mode where {action} is one of: **SlowMotion**, **FrameExtraction**, **Trim**, **View**, **Ink**. If not specified, defaults to **View** |
+| ms-photos:videoedit?InputToken={input token} | Launches the Photos app in video editing mode for the file represented by the file token. **InputToken** is required. Use the  [SharedStorageAccessManager](/uwp/api/Windows.ApplicationModel.DataTransfer.SharedStorageAccessManager) to get a token for a file. |
+| ms-photos:videoedit?Action={action} | A parameter that indicates which video editing mode to open the Photos app in, where {action} is one of: **SlowMotion**, **FrameExtraction**, **Trim**, **View**, **Ink**. **Action** is required. |
 | ms-photos:videoedit?StartTime={timespan} | An optional parameter that specifies where to start playing the video. `{timespan}` must be in the format `"hh:mm:ss.ffff"`. If not specified, defaults to `00:00:00.0000` |
 
 ### Settings app URI scheme
@@ -226,7 +222,7 @@ Use the **ms-settings:** URI scheme to [launch the Windows Settings app](launch-
 
 ![camera privacy settings.](images/privacyawarenesssettingsapp.png)
 
-For more info, see [Launch the Windows Settings app](launch-settings-app.md) and [Guidelines for privacy-aware apps](https://msdn.microsoft.com/library/windows/apps/hh768223).
+For more info, see [Launch the Windows Settings app](launch-settings-app.md) and [Guidelines for privacy-aware apps](https://docs.microsoft.com/windows/uwp/security/index).
 
 ### Store app URI scheme
 
@@ -235,3 +231,11 @@ Use the **ms-windows-store:** URI scheme to [Launch the UWP app](launch-store-ap
 `ms-windows-store://home/`
 
 For more info, see [Launch the UWP app](launch-store-app.md).
+
+### Weather app URI scheme
+
+Use the **msnweather:** URI scheme to launch the Weather app.
+
+| URI Scheme | Results |
+|------------|---------|
+| msnweather://forecast?la=\[latitude\]&lo=\[longitude\] | Launches the Weather app in the Forecast page based on a location geographic coordinates.<br>`latitude` refers to the latitude of the location.<br> `longitude` refers to the longitude of the location.<br> |

@@ -1,20 +1,15 @@
 ---
-author: mcleanbyron
 ms.assetid: 7B6A99C6-AC86-41A1-85D0-3EB39A7211B6
-description: Use this method in the Microsoft Store submission API to retrieve all add-on data for all the apps that are registered to your Windows Dev Center account.
+description: Use this method in the Microsoft Store submission API to retrieve all add-on data for all the apps that are registered to your Partner Center account.
 title: Get all add-ons
-ms.author: mcleans
 ms.date: 02/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp, Microsoft Store submission API, add-ons, in-app products, IAPs
 ms.localizationpriority: medium
 ---
-
 # Get all add-ons
 
-Use this method in the Microsoft Store submission API to retrieve data for all add-ons for all the apps that are registered to your Windows Dev Center account.
+Use this method in the Microsoft Store submission API to retrieve data for all add-ons for all the apps that are registered to your Partner Center account.
 
 ## Prerequisites
 
@@ -29,7 +24,7 @@ This method has the following syntax. See the following sections for usage examp
 
 | Method | Request URI                                                      |
 |--------|------------------------------------------------------------------|
-| GET    | ```https://manage.devcenter.microsoft.com/v1.0/my/inappproducts``` |
+| GET    | `https://manage.devcenter.microsoft.com/v1.0/my/inappproducts` |
 
 
 ### Request header
@@ -57,14 +52,14 @@ Do not provide a request body for this method.
 
 The following example demonstrates how to retrieve all add-on data for all the apps that are registered to your account.
 
-```
+```json
 GET https://manage.devcenter.microsoft.com/v1.0/my/inappproducts HTTP/1.1
 Authorization: Bearer <your access token>
 ```
 
 The following example demonstrates how to retrieve the first 10 add-ons only.
 
-```
+```json
 GET https://manage.devcenter.microsoft.com/v1.0/my/inappproducts?top=10 HTTP/1.1
 Authorization: Bearer <your access token>
 ```
@@ -132,7 +127,7 @@ The following example demonstrates the JSON response body returned by a successf
 
 | Value      | Type   | Description                                                                                                                                                                                                                                                                         |
 |------------|--------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| @nextLink  | string | If there are additional pages of data, this string contains a relative path that you can append to the base ```https://manage.devcenter.microsoft.com/v1.0/my/``` request URI to request the next page of data. For example, if the *top* parameter of the initial request body is set to 10 but there are 100 add-ons registered to your account, the response body will include a @nextLink value of ```inappproducts?skip=10&top=10```, which indicates that you can call ```https://manage.devcenter.microsoft.com/v1.0/my/inappproducts?skip=10&top=10``` to request the next 10 add-ons. |
+| @nextLink  | string | If there are additional pages of data, this string contains a relative path that you can append to the base `https://manage.devcenter.microsoft.com/v1.0/my/` request URI to request the next page of data. For example, if the *top* parameter of the initial request body is set to 10 but there are 100 add-ons registered to your account, the response body will include a @nextLink value of `inappproducts?skip=10&top=10`, which indicates that you can call `https://manage.devcenter.microsoft.com/v1.0/my/inappproducts?skip=10&top=10` to request the next 10 add-ons. |
 | value            | array  |  An array that contains objects that provide information about each add-on. For more information, see [add-on resource](manage-add-ons.md#add-on-object).   |
 | totalCount   | int  | The number of app objects in the *value* array of the response body.     |
 
@@ -144,7 +139,7 @@ If the request cannot be successfully completed, the response will contain one o
 | Error code |  Description   |
 |--------|------------------|
 | 404  | No add-ons were found. |
-| 409  | The apps or add-ons use Dev Center dashboard features that are [currently not supported by the Microsoft Store submission API](create-and-manage-submissions-using-windows-store-services.md#not_supported).  |
+| 409  | The apps or add-ons use Partner Center features that are [currently not supported by the Microsoft Store submission API](create-and-manage-submissions-using-windows-store-services.md#not_supported).  |
 
 
 ## Related topics

@@ -4,15 +4,12 @@ description: The Tessellator (TS) stage creates a sampling pattern of the domain
 ms.assetid: 2F006F3D-5A04-4B3F-8BC7-55567EFCFA6C
 keywords:
 - Tessellator (TS) stage
-author: michaelfromredmond
-ms.author: mithom
 ms.date: 02/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
+
+
 ms.localizationpriority: medium
 ---
-
 # Tessellator (TS) stage
 
 
@@ -51,7 +48,7 @@ Benefits of tessellation:
 
 The Direct3D graphics pipeline implements tessellation in hardware, which off-loads the work from the CPU to the GPU. This can lead to very large performance improvements if an application implements large numbers of morph targets and/or more sophisticated skinning/deformation models.
 
-The tessellator is a fixed-function stage initialized by binding a [hull shader](hull-shader-stage--hs-.md) to the pipeline. (see [How To: Initialize the Tessellator Stage](https://msdn.microsoft.com/library/windows/desktop/ff476341)). The purpose of the tessellator stage is to subdivide a domain (quad, tri, or line) into many smaller objects (triangles, points or lines). The tessellator tiles a canonical domain in a normalized (zero-to-one) coordinate system. For example, a quad domain is tessellated to a unit square.
+The tessellator is a fixed-function stage initialized by binding a [hull shader](hull-shader-stage--hs-.md) to the pipeline. (see [How To: Initialize the Tessellator Stage](/windows/desktop/direct3d11/direct3d-11-advanced-stages-tessellator-initialize)). The purpose of the tessellator stage is to subdivide a domain (quad, tri, or line) into many smaller objects (triangles, points or lines). The tessellator tiles a canonical domain in a normalized (zero-to-one) coordinate system. For example, a quad domain is tessellated to a unit square.
 
 ### <span id="Phases_in_the_Tessellator__TS__stage"></span><span id="phases_in_the_tessellator__ts__stage"></span><span id="PHASES_IN_THE_TESSELLATOR__TS__STAGE"></span>Phases in the Tessellator (TS) stage
 
@@ -95,7 +92,3 @@ The tessellator outputs uv (and optionally w) coordinates and the surface topolo
  
 
  
-
-
-
-

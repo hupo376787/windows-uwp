@@ -1,24 +1,19 @@
-﻿---
-author: TylerMSFT
+---
 title: Update a live tile from a background task
 description: Use a background task to update your app's live tile with fresh content.
 Search.SourceType: Video
 ms.assetid: 9237A5BD-F9DE-4B8C-B689-601201BA8B9A
-ms.author: twhitney
 ms.date: 01/11/2018
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
-keywords: windows 10, uwp
+keywords: windows 10, uwp, background task
 ms.localizationpriority: medium
 ---
-
 # Update a live tile from a background task
 
 **Important APIs**
 
--   [**IBackgroundTask**](https://msdn.microsoft.com/library/windows/apps/br224794)
--   [**BackgroundTaskBuilder**](https://msdn.microsoft.com/library/windows/apps/br224768)
+-   [**IBackgroundTask**](/uwp/api/Windows.ApplicationModel.Background.IBackgroundTask)
+-   [**BackgroundTaskBuilder**](/uwp/api/Windows.ApplicationModel.Background.BackgroundTaskBuilder)
 
 Use a background task to update your app's live tile with fresh content.
 
@@ -28,7 +23,7 @@ Here's a video that shows how to add live tiles to your apps.
 
 ## Create the background task project  
 
-To enable a live tile for your app, add a new Windows Runtime Component project to your solution. This is a separate assembly that the OS loads and runs in the background when a user installs your app.
+To enable a live tile for your app, add a new Windows Runtime component project to your solution. This is a separate assembly that the OS loads and runs in the background when a user installs your app.
 
 1.  In Solution Explorer, right-click the solution, click **Add**, and then click **New Project**.
 2.  In the **Add New Project** dialog, select the **Windows Runtime Component** template in the **Installed &gt; Other Languages &gt; Visual C# &gt; Windows Universal** section.
@@ -38,7 +33,7 @@ To enable a live tile for your app, add a new Windows Runtime Component project 
 ## Implement the background task
 
 
-Implement the [**IBackgroundTask**](https://msdn.microsoft.com/library/windows/apps/br224794) interface to create a class that updates your app's live tile. Your background work goes in the Run method. In this case, the task gets a syndication feed for the MSDN blogs. To prevent the task from closing prematurely while asynchronous code is still running, get a deferral.
+Implement the [**IBackgroundTask**](/uwp/api/Windows.ApplicationModel.Background.IBackgroundTask) interface to create a class that updates your app's live tile. Your background work goes in the Run method. In this case, the task gets a syndication feed for the MSDN blogs. To prevent the task from closing prematurely while asynchronous code is still running, get a deferral.
 
 1.  In Solution Explorer, rename the automatically generated file, Class1.cs, to BlogFeedBackgroundTask.cs.
 2.  In BlogFeedBackgroundTask.cs, replace the automatically generated code with the stub code for the **BlogFeedBackgroundTask** class.
@@ -113,7 +108,7 @@ namespace BackgroundTasks
             // Create a tile notification for each feed item.
             foreach( var item in feed.Items )
             {
-                XmlDocument tileXml = TileUpdateManager.GetTemplateContent( TileTemplateType.TileWideText03 );
+                XmlDocument tileXml = TileUpdateManager.GetTemplateContent( TileTemplateType.TileWide310x150Text03 );
 
                 var title = item.Title;
                 string titleText = title.Text == null ? String.Empty : title.Text;
@@ -158,7 +153,7 @@ To set up the package manifest, open it and add a new background task declaratio
 ## Register the background task
 
 
-Create a [**BackgroundTaskBuilder**](https://msdn.microsoft.com/library/windows/apps/br224768) to register your task.
+Create a [**BackgroundTaskBuilder**](/uwp/api/Windows.ApplicationModel.Background.BackgroundTaskBuilder) to register your task.
 
 > **Note**  Starting in Windows 8.1, background task registration parameters are validated at the time of registration. An error is returned if any of the registration parameters are invalid. Your app must be able to handle scenarios where background task registration fails - for example, use a conditional statement to check for registration errors and then retry failed registration using different parameter values.
  
@@ -184,7 +179,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.Web.Syndication;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/p/?LinkID=234238
+// The Blank Page item template is documented at https://go.microsoft.com/fwlink/p/?LinkID=234238
 
 namespace ContosoApp
 {
@@ -212,8 +207,8 @@ namespace ContosoApp
         private async void RegisterBackgroundTask()
         {
             var backgroundAccessStatus = await BackgroundExecutionManager.RequestAccessAsync();
-            if( backgroundAccessStatus == BackgroundAccessStatus.AllowedMayUseActiveRealTimeConnectivity ||
-                backgroundAccessStatus == BackgroundAccessStatus.AllowedWithAlwaysOnRealTimeConnectivity )
+            if( backgroundAccessStatus == BackgroundAccessStatus.AllowedSubjectToSystemPolicy ||
+                backgroundAccessStatus == BackgroundAccessStatus.AlwaysAllowed )
             {
                 foreach( var task in BackgroundTaskRegistration.AllTasks )
                 {
@@ -255,11 +250,11 @@ To debug the background task, set a breakpoint in the task’s Run method. In th
 ## Related topics
 
 
-* [**BackgroundTaskBuilder**](https://msdn.microsoft.com/library/windows/apps/br224768)
-* [**TileUpdateManager**](https://msdn.microsoft.com/library/windows/apps/br208622)
-* [**TileNotification**](https://msdn.microsoft.com/library/windows/apps/br208616)
+* [**BackgroundTaskBuilder**](/uwp/api/Windows.ApplicationModel.Background.BackgroundTaskBuilder)
+* [**TileUpdateManager**](/uwp/api/Windows.UI.Notifications.TileUpdateManager)
+* [**TileNotification**](/uwp/api/Windows.UI.Notifications.TileNotification)
 * [Support your app with background tasks](support-your-app-with-background-tasks.md)
-* [Guidelines and checklist for tiles and badges](https://msdn.microsoft.com/library/windows/apps/hh465403)
+* [Guidelines and checklist for tiles and badges](../design/shell/tiles-and-notifications/creating-tiles.md)
 
  
 

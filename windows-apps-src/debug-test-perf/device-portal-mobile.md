@@ -1,14 +1,10 @@
 ---
-author: PatrickFarley
 ms.assetid: 5c34c78e-9ff7-477b-87f6-a31367cd3f8b
 title: Device Portal for Mobile
 description: Learn how the Windows Device Portal lets you remotely configure and manage your mobile device.
-ms.author: pafarley
 ms.date: 02/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
-keywords: windows 10, uwp
+keywords: windows 10, uwp, device portal
 ms.localizationpriority: medium
 ---
 # Device Portal for Mobile
@@ -47,7 +43,7 @@ You can choose from 3 ways to connect to Device Portal: USB, local host, and ove
 
     Use this address to connect over a local network.
 
-    The IP address of the phone is shown in the Device Portal settings on the phone. HTTPS is required for authentication and secure communication. The hostname (editable in Settings > System > About) can also be used to access Device Portal on the local network (e.g. http://Phone360), which is useful for devices that may change networks or IP addresses frequently, or need to be shared. 
+    The IP address of the phone is shown in the Device Portal settings on the phone. HTTPS is required for authentication and secure communication. The hostname (editable in Settings > System > About) can also be used to access Device Portal on the local network (for example, http://Phone360), which is useful for devices that may change networks or IP addresses frequently, or need to be shared. 
 
 2. Press the Pair button on your phone to generate and display the required security code
 
@@ -82,4 +78,4 @@ Device Portal on mobile devices provides the standard set of pages. For detailed
 ## See also
 
 * [Windows Device Portal overview](device-portal.md)
-* [Device Portal core API reference](https://docs.microsoft.com/windows/uwp/debug-test-perf/device-portal-api-core)
+* [Device Portal core API reference](./device-portal-api-core.md)

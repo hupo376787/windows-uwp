@@ -1,9 +1,10 @@
 ---
 title: Running Profile Guided Optimization (PGO) on Universal Windows Platform (UWP) apps
-author: erwals-msft
+description: A step-by-step guide to applying Profile Guided Optimization (PGO) to Universal Windows Platform (UWP) apps.
+ms.date: 02/08/2017
 ms.localizationpriority: medium
+ms.topic: article
 ---
-
 # Running Profile Guided Optimization on Universal Windows Platform apps 
  
 This topic provides a step-by-step guide to applying Profile Guided Optimization (PGO) to Universal Windows Platform (UWP) apps. Not all of the steps available to classic win32 applications are available to UWP apps, so our goal is to explain the process necessary to incorporate PGO to make optimizing easier and more accessible to UWP developers.
@@ -58,7 +59,7 @@ To apply PGO to the DirectX 11 app template:
   It is a good idea to output the .pgc files into the build location where the .pgd is located, and also to name the files `<PGDName>!<RunIdentifier>.pgc`. For this example, this meant:
  
   ```
-  pgosweep.exe App1.exe “C:\Users\<USER>\Documents\Visual Studio 2015\Projects\App1\Release\App1\App1!1.pgc”
+  pgosweep.exe App1.exe "C:\Users\<USER>\Documents\Visual Studio 2015\Projects\App1\Release\App1\App1!1.pgc"
   ```
  
   Further gathering could also be `App1!CoreScenario.pgc`, `App1!UseCase5.pgc`, etc. If the .pgc files are named in this way and in the build output location alongside the .pgd, they will be automatically merged when linking in step 9.
@@ -66,7 +67,7 @@ To apply PGO to the DirectX 11 app template:
 8. OPTIONAL: By default, all .pgc files named as specified in step 7 and placed next to the .pgd will be merged when linking and weighted equally, but you can also have greater control over how particular runs are weighted. To do this, you will use the **pgomgr.exe** tool also located in the same folder where you first found the copy of `pgort140.dll`. For example, to merge the `CoreScenario` run with 3 times the priority of other runs, I can use the following command:
  
  ```
- pgomgr.exe -merge:3 “C:\Users\<USER>\Documents\Visual Studio 2015\Projects\App1\Release\App1\App1!CoreScenario.pgc” “C:\Users\<USER>\Documents\Visual Studio 2015\Projects\App1\Release\App1\App1.pgd”
+ pgomgr.exe -merge:3 "C:\Users\<USER>\Documents\Visual Studio 2015\Projects\App1\Release\App1\App1!CoreScenario.pgc" "C:\Users\<USER>\Documents\Visual Studio 2015\Projects\App1\Release\App1\App1.pgd"
  ```
  
 9. After you have generated one or more .pgc files and either placed them alongside your .pgd or manually merged them (step 8), we can now use the linker to create the final optimized build. Go back into your linker properties (**Properties** > **Linker** > **Optimization**) and set **Link Time Code Generation** to **Profile Guided Optimization - Optimization (LTCG:PGOptimize)** and verify that **Profile Guided Database** is pointing at the .pgd that you intend to use (if you have not changed this, everything should be in order).

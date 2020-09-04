@@ -1,22 +1,19 @@
 ---
-author: Karl-Bridge-Microsoft
-Description: Learn how to improve both the usability and the accessibility of your UWP app by providing an intuitive way for users to quickly navigate and interact with an app's visible UI through a keyboard instead of a pointer device (such as touch or mouse).
+Description: Learn how to improve both the usability and the accessibility of your Windows app by providing an intuitive way for users to quickly navigate and interact with an app's visible UI through a keyboard instead of a pointer device (such as touch or mouse).
 title: Access keys design guidelines
 label: Access keys design guidelines
 keywords: keyboard, access key, keytip, key tip, accessibility, navigation, focus, text, input, user interaction
 template: detail.hbs
-ms.author: kbridge
 ms.date: 06/08/2018
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
+
+
 pm-contact: miguelrb
 design-contact: kimsea
 dev-contact: niallm
 doc-status: Published
 ms.localizationpriority: medium
 ---
-
 # Access keys
 
 Access keys are keyboard shortcuts that improve the usability and the accessibility of your Windows applications by providing an intuitive way for users to quickly navigate and interact with an app's visible UI through a keyboard instead of a pointer device (such as touch or mouse).
@@ -24,9 +21,9 @@ Access keys are keyboard shortcuts that improve the usability and the accessibil
 See the [Accelerator keys](keyboard-accelerators.md) topic for details on invoking common actions in a Windows application with keyboard shortcuts. 
 
 > [!NOTE]
-> A keyboard is indispensable for users with certain disabilities (see [Keyboard accessibility](https://docs.microsoft.com/windows/uwp/accessibility/keyboard-accessibility)), and is also an important tool for users who prefer it as a more efficient way to interact with an app.
+> A keyboard is indispensable for users with certain disabilities (see [Keyboard accessibility](../accessibility/keyboard-accessibility.md)), and is also an important tool for users who prefer it as a more efficient way to interact with an app.
 
-The Universal Windows Platform (UWP) provides built-in support across platform controls for both keyboard-based access keys and associated UI feedback through visual cues called Key Tips.
+The Windows app provides built-in support across platform controls for both keyboard-based access keys and associated UI feedback through visual cues called Key Tips.
 
 ## Overview
 
@@ -241,7 +238,7 @@ Localized access keys are specified in your projects resources.resw file:
 
 _Specify the AccessKey property specified in the resources.resw file_
 
-For more info, see [Translating UI resources ](https://msdn.microsoft.com/library/windows/apps/xaml/Hh965329(v=win.10).aspx)
+For more info, see [Translating UI resources ](/previous-versions/windows/apps/hh965329(v=win.10))
 
 ## Key Tip positioning
 
@@ -353,7 +350,7 @@ This example demonstrates how to change these application resources:
 
 The XAML framework exposes Automation Properties that enable UI Automation clients to discover information about elements in the user interface.
 
-If you specify the AccessKey property on a UIElement or TextElement control, you can use the [AutomationProperties.AccessKey](https://msdn.microsoft.com/library/windows/apps/hh759763) property to get this value. Accessibility clients, such as Narrator, read the value of this property each time an element gets focus.
+If you specify the AccessKey property on a UIElement or TextElement control, you can use the [AutomationProperties.AccessKey](/dotnet/api/system.windows.automation.automationproperties.accesskey) property to get this value. Accessibility clients, such as Narrator, read the value of this property each time an element gets focus.
 
 ## Related articles
 
@@ -362,5 +359,3 @@ If you specify the AccessKey property on a UIElement or TextElement control, you
 
 **Samples**
 * [XAML Controls Gallery (aka XamlUiBasics)](https://github.com/Microsoft/Windows-universal-samples/tree/c2aeaa588d9b134466bbd2cc387c8ff4018f151e/Samples/XamlUIBasics)
-
-

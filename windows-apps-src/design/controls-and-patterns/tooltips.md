@@ -1,15 +1,11 @@
 ---
-author: Jwmsft
 Description: Use a tooltip to reveal more info about a control before asking the user to perform an action.
 title: Tooltips
 ms.assetid: A21BB12B-301E-40C9-B84B-C055FD43D307
 label: Tooltips
 template: detail.hbs
-ms.author: jimwalk
 ms.date: 05/19/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp
 pm-contact: yulikl
 design-contact: kimsea
@@ -23,7 +19,13 @@ A tooltip is a short description that is linked to another control or object. To
 
 ![A tooltip](images/controls/tool-tip.png)
 
-> **Important APIs**: [ToolTip class](/uwp/api/Windows.UI.Xaml.Controls.ToolTip), [ToolTipService class](https://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.tooltipservice)
+**Get the Windows UI Library**
+
+|  |  |
+| - | - |
+| ![WinUI logo](images/winui-logo-64x64.png) | Windows UI Library 2.2 or later includes a new template for this control that uses rounded corners. For more info, see [Corner radius](../style/rounded-corner.md). WinUI is a NuGet package that contains new controls and UI features for Windows apps. For more info, including installation instructions, see [Windows UI Library](/uwp/toolkits/winui/). |
+
+> **Platform APIs**: [ToolTip class](/uwp/api/Windows.UI.Xaml.Controls.ToolTip), [ToolTipService class](/uwp/api/windows.ui.xaml.controls.tooltipservice)
 
 ## Is this the right control?
 
@@ -57,20 +59,20 @@ When should you use a tooltip? To decide, consider these questions:
 <table>
 <th align="left">XAML Controls Gallery<th>
 <tr>
-<td><img src="images/xaml-controls-gallery-sm.png" alt="XAML controls gallery"></img></td>
+<td><img src="images/xaml-controls-gallery-app-icon-sm.png" alt="XAML controls gallery"></img></td>
 <td>
     <p>If you have the <strong style="font-weight: semi-bold">XAML Controls Gallery</strong> app installed, click here to <a href="xamlcontrolsgallery:/item/ToolTip">open the app and see the ToolTip in action</a>.</p>
     <ul>
     <li><a href="https://www.microsoft.com/store/productId/9MSVH128X2ZT">Get the XAML Controls Gallery app (Microsoft Store)</a></li>
-    <li><a href="https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/XamlUIBasics">Get the source code (GitHub)</a></li>
+    <li><a href="https://github.com/Microsoft/Xaml-Controls-Gallery">Get the source code (GitHub)</a></li>
     </ul>
 </td>
 </tr>
 </table>
 
-A tooltip in the Bing Maps app.
+A tooltip in the Windows Maps app.
 
-![A tooltip in the Bing Maps app](images/control-examples/tool-tip-maps.png)
+![A tooltip in the Windows Maps app](images/control-examples/tool-tip-maps.png)
 
 ## Create a tooltip
 
@@ -110,16 +112,29 @@ You can use any object as the [Content](/uwp/api/windows.ui.xaml.controls.conten
 
 By default, a ToolTip is displayed centered above the pointer. The placement is not constrained by the app window, so the ToolTip might be displayed partially or completely outside of the app window bounds.
 
-If a ToolTip obscures the content it is referring to, you can adjust its placement. Use the [Placement](/uwp/api/windows.ui.xaml.controls.tooltip.placement) property or **ToolTipService.Placement** attached property to place the ToolTip above, below, left, or right of the pointer. You can set the [VerticalOffset](/uwp/api/windows.ui.xaml.controls.tooltip.verticaloffset) and [HorizontalOffset](/uwp/api/windows.ui.xaml.controls.tooltip.horizontaloffset) properties to change the distance between the pointer and the ToolTip.
+For broad adjustments, use the [Placement](/uwp/api/windows.ui.xaml.controls.tooltip.placement) property or **ToolTipService.Placement** attached property to specify whether the ToolTip should draw above, below, left, or right of the pointer. You can set the [VerticalOffset](/uwp/api/windows.ui.xaml.controls.tooltip.verticaloffset) or [HorizontalOffset](/uwp/api/windows.ui.xaml.controls.tooltip.horizontaloffset) properties to change the distance between the pointer and the ToolTip. Only one of the two offset values will influence the final position - VerticalOffset when Placement is Top or Bottom, HorizontalOffset when Placement is Left or Right.
 
 ```xaml
-<!-- A TextBlock with an offset ToolTip. -->
-<TextBlock Text="TextBlock with an offset ToolTip.">
+<!-- An Image with an offset ToolTip. -->
+<Image Source="Assets/StoreLogo.png">
     <ToolTipService.ToolTip>
         <ToolTip Content="Offset ToolTip."
-                 HorizontalOffset="20" VerticalOffset="30"/>
+                 Placement="Right"
+                 HorizontalOffset="20"/>
     </ToolTipService.ToolTip>
-</TextBlock>
+</Image>
+```
+
+If a ToolTip obscures the content it is referring to, you can adjust its placement precisely using the new **PlacementRect** property. PlacementRect anchors the ToolTip's position and also serves as an area that ToolTip will not occlude, provided there's sufficient screen space to draw ToolTip outside this area. You can specify the origin of the rectangle relative to the ToolTip's owner, and the height and width of the exclusion area. The [Placement](/uwp/api/windows.ui.xaml.controls.tooltip.placement) property will define if ToolTip should draw above, below, left, or right of the PlacementRect. 
+
+```xaml
+<!-- An Image with a non-occluding ToolTip. -->
+<Image Source="Assets/StoreLogo.png" Height="64" Width="96">
+    <ToolTipService.ToolTip>
+        <ToolTip Content="Non-occluding ToolTip."
+                 PlacementRect="0,0,96,64"/>
+    </ToolTipService.ToolTip>
+</Image>
 ```
 
 ## Recommendations
@@ -134,8 +149,8 @@ If a ToolTip obscures the content it is referring to, you can adjust its placeme
 
 ## Get the sample code
 
-- [XAML Controls Gallery sample](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/XamlUIBasics) - See all the XAML controls in an interactive format.
+- [XAML Controls Gallery sample](https://github.com/Microsoft/Xaml-Controls-Gallery) - See all the XAML controls in an interactive format.
 
 ## Related articles
 
-- [ToolTip class](https://msdn.microsoft.com/library/windows/apps/br227608)
+- [ToolTip class](/uwp/api/Windows.UI.Xaml.Controls.ToolTip)

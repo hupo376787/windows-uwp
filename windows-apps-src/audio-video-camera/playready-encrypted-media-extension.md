@@ -1,17 +1,12 @@
 ---
-author: drewbatgit
 ms.assetid: 79C284CA-C53A-4C24-807E-6D4CE1A29BFA
 description: This section describes how to modify your PlayReady web app to support the changes made from the previous Windows 8.1 version to the Windows 10 version.
 title: PlayReady Encrypted Media Extension
-ms.author: drewbat
 ms.date: 02/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp
 ms.localizationpriority: medium
 ---
-
 # PlayReady Encrypted Media Extension
 
 
@@ -33,7 +28,7 @@ The following list describes the new features and changes made to PlayReady Encr
 -   Provides proactive acquisition of non-persistent licenses.
 -   Provides acquisition of multiple licenses in one message.
 
-    You can either use a PlayReady object with multiple key identifiers (KeyIDs) as in Windows 8.1, or use [content decryption model data (CDMData)](https://go.microsoft.com/fwlink/p/?LinkID=626819) with multiple KeyIDs.
+    You can either use a PlayReady object with multiple key identifiers (KeyIDs) as in Windows 8.1, or use [content decryption model data (CDMData)](/previous-versions/windows/apps/dn457361(v=ieb.10)) with multiple KeyIDs.
 
     > [!NOTE]
     > In Windows 10, multiple key identifiers are supported under &lt;KeyID&gt; in CDMData.
@@ -60,7 +55,7 @@ The following list describes the new features and changes made to PlayReady Encr
 
 This section describes the version of the W3C Encrypted Media Extension supported by PlayReady.
 
-PlayReady for Web Apps is currently bound to the [W3C Encrypted Media Extension (EME) draft of May 10, 2013](http://www.w3.org/TR/2013/WD-encrypted-media-20130510/). This support will be changed to the updated EME specification in future versions of Windows.
+PlayReady for Web Apps is currently bound to the [W3C Encrypted Media Extension (EME) draft of May 10, 2013](https://www.w3.org/TR/2013/WD-encrypted-media-20130510/). This support will be changed to the updated EME specification in future versions of Windows.
 
 ## Use hardware DRM
 
@@ -71,7 +66,7 @@ To use PlayReady hardware DRM, your JavaScript web app should use the **isTypeSu
 Occasionally, some content is not supported in hardware DRM. Cocktail content is never supported in hardware DRM; if you want to play cocktail content, you must opt out of hardware DRM. Some hardware DRM will support HEVC and some will not; if you want to play HEVC content and hardware DRM doesn’t support it, you will want to opt out as well.
 
 > [!NOTE]
-> To determine whether HEVC content is supported, after instantiating `com.microsoft.playready`, use the [**PlayReadyStatics.CheckSupportedHardware**](https://msdn.microsoft.com/library/windows/apps/dn986441) method.
+> To determine whether HEVC content is supported, after instantiating `com.microsoft.playready`, use the [**PlayReadyStatics.CheckSupportedHardware**](/uwp/api/windows.media.protection.playready.playreadystatics.checksupportedhardware) method.
 
 ## Add secure stop to your web app
 
@@ -89,7 +84,7 @@ The following procedures describe how to set up secure stop for various scenario
 To set up secure stop for a normal end of a presentation:
 
 1.  Register the **onEnded** event before playback starts.
-2.  The **onEnded** event handler needs to call `removeAttribute(“src”)` from the video/audio element object to set the source to **NULL** which will trigger the media foundation to tear down the topology, destroy the decryptor(s), and set the stop state.
+2.  The **onEnded** event handler needs to call `removeAttribute("src")` from the video/audio element object to set the source to **NULL** which will trigger the media foundation to tear down the topology, destroy the decryptor(s), and set the stop state.
 3.  You can start the secure stop CDM session inside the handler to send the secure stop challenge to the server to notify the playback has stopped at this time, but it can be done later as well.
 
 To set up secure stop if the user navigates away from the page or closes down the tab or browser:
@@ -204,7 +199,7 @@ function addPlayreadyKeyEventHandler()
                 
         // TODO: send the secure stop challenge to a server that handles the secure stop challenge
 
-        // TODO: Recevie and response and call event.target.Update() to proecess the response
+        // TODO: Receive and response and call event.target.Update() to proecess the response
     });
     
     // add 'keyerror' eventhandler
@@ -295,11 +290,7 @@ function foo() {
 }
 ```
 
-For more information, see the [sample applications](https://code.msdn.microsoft.com/windowsapps/PlayReady-samples-for-124a3738).
+For more information, see the [sample applications](https://github.com/microsoft/Windows-universal-samples/tree/master/Samples/PlayReady).
 
 ## See also
 - [PlayReady DRM](playready-client-sdk.md)
-
-
-
-

@@ -1,14 +1,10 @@
 ---
-author: manoskow
-Description: Learn how to group notifications in Action Center using collections.
 title: Toast Collections
+description: Learn how to organize toast notifications for your app by creating, updating, or removing notification collections in Action Center.
 label: Toast Collections
 template: detail.hbs
-ms.author: mijacobs
 ms.date: 05/16/2018
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp, notification, collections, collection, group notifications, grouping notifications, group, organize, Action Center, toast
 ms.localizationpriority: medium
 ---
@@ -16,7 +12,7 @@ ms.localizationpriority: medium
 Use collections to organize your app's toasts in Action Center. Collections help users locate information within Action Center more easily and allow for developers to better manage their notifications.  The APIs below allow for removing, creating, and updating notification collections.
 
 > [!IMPORTANT]
-> **Requires Creators Update**: You must target SDK 15063 and be running build 15063 or higher to use toast collections. Related APIs include [Windows.UI.Notifications.ToastCollection](https://docs.microsoft.com/en-us/uwp/api/windows.ui.notifications.toastcollection), and [Windows.UI.Notifications.ToastCollectionManager](https://docs.microsoft.com/en-us/uwp/api/windows.ui.notifications.toastcollectionmanager)
+> **Requires Creators Update**: You must target SDK 15063 and be running build 15063 or higher to use toast collections. Related APIs include [Windows.UI.Notifications.ToastCollection](/uwp/api/windows.ui.notifications.toastcollection), and [Windows.UI.Notifications.ToastCollectionManager](/uwp/api/windows.ui.notifications.toastcollectionmanager)
 
 You can see the example below with a messaging app that separates the notifications based on the chat group; each title (Comp Sci 160A Project Chat, Direct Messages, Lacrosse Team Chat) is a separate collection.  Notice how the notifications are distinctly grouped as if they were from a seperate app, even though they are all notifications from the same app.  If you are looking for a more subtle way to organize your notifications, see [toast headers](toast-headers.md).  
 ![Collection Example with two different Groups of Notifications](images/toast-collection-example.png)
@@ -188,4 +184,4 @@ The toast collections that you create will also be reflected in the user's notif
 
 * [Toast content](adaptive-interactive-toasts.md)
 * [Toast headers](toast-headers.md)
-* [Notifications library on GitHub (part of the Windows Community Toolkit)](https://github.com/Microsoft/UWPCommunityToolkit/tree/master/Microsoft.Toolkit.Uwp.Notifications)
+* [Notifications library on GitHub (part of the Windows Community Toolkit)](https://github.com/windows-toolkit/WindowsCommunityToolkit/tree/master/Microsoft.Toolkit.Uwp.Notifications)

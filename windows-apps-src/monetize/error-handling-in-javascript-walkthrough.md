@@ -1,22 +1,20 @@
 ---
-author: mcleanbyron
 ms.assetid: 08b4ae43-69e8-4424-b3c0-a07c93d275c3
-description: Learn how to catch AdControl errors in your app.
+description: Learn how to catch and handle errors from an AdControl in a JavaScript and HTML5 app by following this walkthrough.
 title: Error handling in JavaScript walkthrough
-ms.author: mcleans
-ms.date: 05/11/2018
+ms.date: 02/18/2020
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp, ads, advertising, error handling, javascript
 ms.localizationpriority: medium
 ---
-
 # Error handling in JavaScript walkthrough
 
-This walkthrough demonstrates how to catch ad-related errors in your JavaScript app. This walkthrough uses an [AdControl](https://docs.microsoft.com/uwp/api/microsoft.advertising.winrt.ui.adcontrol) to display a banner ad, but the general concepts in it also apply to interstitial ads and native ads.
+>[!WARNING]
+> As of June 1, 2020, the Microsoft Ad Monetization platform for Windows UWP apps will be shut down. [Learn more](https://social.msdn.microsoft.com/Forums/windowsapps/en-US/db8d44cb-1381-47f7-94d3-c6ded3fea36f/microsoft-ad-monetization-platform-shutting-down-june-1st?forum=aiamgr)
 
-These examples assume that you have a JavaScript app that contains an **AdControl**. For step-by-step instructions that demonstrate how to add an **AdControl** to your app, see [AdControl in HTML 5 and Javascript](adcontrol-in-html-5-and-javascript.md). For a complete sample project that demonstrates how to add banner ads to a JavaScript/HTML app, see the [advertising samples on GitHub](http://aka.ms/githubads).
+This walkthrough demonstrates how to catch ad-related errors in your JavaScript app. This walkthrough uses an [AdControl](/uwp/api/microsoft.advertising.winrt.ui.adcontrol) to display a banner ad, but the general concepts in it also apply to interstitial ads and native ads.
+
+These examples assume that you have a JavaScript app that contains an **AdControl**. For step-by-step instructions that demonstrate how to add an **AdControl** to your app, see [AdControl in HTML 5 and Javascript](adcontrol-in-html-5-and-javascript.md). For a complete sample project that demonstrates how to add banner ads to a JavaScript/HTML app, see the [advertising samples on GitHub](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/Advertising).
 
 1.  In the default.html file, add a value for the **onErrorOccurred** event where you define the **data-win-options** in the **div** for the **AdControl**. Find the following code in the default.html file.
     ``` HTML
@@ -65,4 +63,4 @@ These examples assume that you have a JavaScript app that contains an **AdContro
 
 ## Related topics
 
-* [Advertising samples on GitHub](http://aka.ms/githubads)
+* [Advertising samples on GitHub](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/Advertising)

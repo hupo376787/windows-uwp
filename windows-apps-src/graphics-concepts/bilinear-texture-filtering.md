@@ -4,17 +4,12 @@ description: Bilinear filtering calculates the weighted average of the 4 texels 
 ms.assetid: 0851AD28-8246-4547-A663-47884DDDFC3E
 keywords:
 - Bilinear texture filtering
-author: michaelfromredmond
-ms.author: mithom
 ms.date: 02/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 ms.localizationpriority: medium
 ---
 
 # Bilinear texture filtering
-
 
 *Bilinear filtering* calculates the weighted average of the 4 texels closest to the sampling point. This filtering approach is more accurate and common than nearest-point filtering. This approach is efficient because it is implemented in modern graphics hardware.
 
@@ -36,13 +31,13 @@ The simplest scheme is simply to have the sampler return the color of the closes
 
 A slightly more accurate and more common filtering scheme is to calculate the weighted average of the 4 texels closest to the sampling point; this is called *Bilinear filtering*. The extra computational cost for Bilinear filtering is usually negligible because this routine is implemented in modern graphics hardware. Here are the colors we get at a few different sample points using bilinear filtering:
 
-```
+```cpp
 UV: (0.5, 0.5)
 ```
 
 This point is at the exact border between red, green, blue, and white texels. The color the sampler returns is gray:
 
-```
+```cpp
   0.25 * (255, 0, 0)
   0.25 * (0, 255, 0) 
   0.25 * (0, 0, 255) 
@@ -51,13 +46,13 @@ This point is at the exact border between red, green, blue, and white texels. Th
 = (128, 128, 128)
 ```
 
-```
+```cpp
 UV: (0.5, 0.375)
 ```
 
 This point is at the midpoint of the border between red and green texels. The color the sampler returns is yellow-gray (note that the contributions of the blue and white texels are scaled to 0):
 
-```
+```cpp
   0.5 * (255, 0, 0)
   0.5 * (0, 255, 0) 
   0.0 * (0, 0, 255) 
@@ -66,13 +61,13 @@ This point is at the midpoint of the border between red and green texels. The co
 = (128, 128, 0)
 ```
 
-```
+```cpp
 UV: (0.375, 0.375)
 ```
 
 This is the address of the red texel, which is the returned color (all other texels in the filtering calculation are weighted to 0):
 
-```
+```cpp
   1.0 * (255, 0, 0)
   0.0 * (0, 255, 0) 
   0.0 * (0, 0, 255) 

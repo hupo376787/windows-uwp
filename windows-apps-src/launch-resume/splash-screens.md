@@ -1,17 +1,12 @@
 ---
-author: PatrickFarley
 title: Splash screens
 description: This section describes how to set and configure your app's splash screen.
 ms.assetid: 6b954bb3-e5b0-46d1-8afc-fb805536cf6d
-ms.author: pafarley
 ms.date: 02/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp
 ms.localizationpriority: medium
 ---
-
 # Splash screens
 
 All UWP apps must have a splash screen, which is a composite of an image and a background color, both of which can be customized.
@@ -26,7 +21,7 @@ This splash screen is created by combining a green background color with a trans
 
 A simple image with a background color looks good regardless of the device your app is running on. Only the size of the background changes to compensate for a variety of screen sizes. Your image always remains intact.
 
-Additionally, you can use the [**SplashScreen**](https://msdn.microsoft.com/library/windows/apps/br224763) class to customize your app's launch experience. You can position an extended splash screen, which you create, to give your app more time to complete additional tasks like preparing app UI or completing networking operations. You can also use the **SplashScreen** class to notify you when the splash screen is dismissed, so that you can begin entrance animations.
+Additionally, you can use the [**SplashScreen**](/uwp/api/Windows.ApplicationModel.Activation.SplashScreen) class to customize your app's launch experience. You can position an extended splash screen, which you create, to give your app more time to complete additional tasks like preparing app UI or completing networking operations. You can also use the **SplashScreen** class to notify you when the splash screen is dismissed, so that you can begin entrance animations.
 
 | Topic | Description |
 |-------|-------------|

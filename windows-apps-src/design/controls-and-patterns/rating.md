@@ -1,13 +1,9 @@
 ---
-author: serenaz
 description: Enables users to view and set ratings that reflect satisfaction with content and services. 
 title: Rating Control
 template: detail.hbs
-ms.author: sezhen
 ms.date: 10/25/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp
 pm-contact: abarlow
 design-contact: kimsea
@@ -15,26 +11,33 @@ dev-contact: mitra
 doc-status: Published
 ms.localizationpriority: medium
 ---
-
 # Rating control
 
 The rating control allows users to view and set ratings that reflect degrees of satisfaction with content and services. Users can interact with the rating control with touch, pen, mouse, gamepad or keyboard. The follow guidance shows how to use the rating control's features to provide flexibility and customization.
 
-> **Important APIs**: [RatingControl class](https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.ratingcontrol)
-
 ![Example of Rating Control](images/rating_rs2_doc_ratings_intro.png)
+
+**Get the Windows UI Library**
+
+|  |  |
+| - | - |
+| ![WinUI logo](images/winui-logo-64x64.png) | The **RatingControl** control is included as part of the Windows UI Library, a NuGet package that contains new controls and UI features for Windows apps. For more info, including installation instructions, see [Windows UI Library](/uwp/toolkits/winui/). |
+
+> **Windows UI Library APIs:** [RatingControl class](/uwp/api/microsoft.ui.xaml.controls.ratingcontrol)
+>
+> **Platform APIs:** [RatingControl class](/uwp/api/windows.ui.xaml.controls.ratingcontrol)
 
 ## Examples
 
 <table>
 <th align="left">XAML Controls Gallery<th>
 <tr>
-<td><img src="images/xaml-controls-gallery-sm.png" alt="XAML controls gallery"></img></td>
+<td><img src="images/xaml-controls-gallery-app-icon-sm.png" alt="XAML controls gallery"></img></td>
 <td>
     <p>If you have the <strong style="font-weight: semi-bold">XAML Controls Gallery</strong> app installed, click here to <a href="xamlcontrolsgallery:/item/RatingControl">open the app and see the RatingControl in action</a>.</p>
     <ul>
     <li><a href="https://www.microsoft.com/store/productId/9MSVH128X2ZT">Get the XAML Controls Gallery app (Microsoft Store)</a></li>
-    <li><a href="https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/XamlUIBasics">Get the source code (GitHub)</a></li>
+    <li><a href="https://github.com/Microsoft/Xaml-Controls-Gallery">Get the source code (GitHub)</a></li>
     </ul>
 </td>
 </tr>
@@ -72,7 +75,7 @@ private void RatingChanged(RatingControl sender, object args)
 
 ### Read-only rating mode
 
-Sometimes you need to show ratings of secondary content, such as that displayed in recommended content or when displaying a list of comments and their corresponding ratings. In this case, the user shouldn’t be able to edit the rating, so you can make the control read-only.
+Sometimes you need to show ratings of secondary content, such as that displayed in recommended content or when displaying a list of comments and their corresponding ratings. In this case, the user shouldn't be able to edit the rating, so you can make the control read-only.
 The read only mode is also the recommended way of using the rating control when it is used in very large virtualized lists of content, for both UI design and performance reasons.
 
 ![Read-Only Long List](images/rating_rs2_doc_reviews.png)
@@ -85,7 +88,7 @@ To do this you would do the following:
 
 ## Additional functionality
 
-The rating control has many additional features which can be used. Details for using these features can be found in our MSDN reference documentation.
+The rating control has many additional features which can be used. Details for using these features can be found in our reference documentation.
 Here is a non-comprehensive list of additional functionality:
 -   Great long list performance
 -   Compact sizing for tight UI scenarios
@@ -96,4 +99,4 @@ Here is a non-comprehensive list of additional functionality:
 
 ## Get the sample code
 
-- [XAML Controls Gallery sample](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/XamlUIBasics) - See all the XAML controls in an interactive format.
+- [XAML Controls Gallery sample](https://github.com/Microsoft/Xaml-Controls-Gallery) - See all the XAML controls in an interactive format.

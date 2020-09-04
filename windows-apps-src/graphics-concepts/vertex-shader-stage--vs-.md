@@ -4,15 +4,12 @@ description: The Vertex Shader (VS) stage processes vertices, typically performi
 ms.assetid: 5133C4BB-B4E6-4697-9276-F718AD44869C
 keywords:
 - Vertex Shader (VS) stage
-author: michaelfromredmond
-ms.author: mithom
 ms.date: 02/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
+
+
 ms.localizationpriority: medium
 ---
-
 # Vertex Shader (VS) stage
 
 
@@ -28,7 +25,7 @@ The Vertex Shader (VS) stage is used for individual per-vertex processing such a
 -   Morphing
 -   Per-vertex lighting
 
-The Vertex Shader stage is a programmable-shader stage; it is shown as a rounded block in the [graphics pipeline](graphics-pipeline.md) diagram. This shader stage uses shader model 4.0 [common-shader core](https://msdn.microsoft.com/library/windows/desktop/bb509580).
+The Vertex Shader stage is a programmable-shader stage; it is shown as a rounded block in the [graphics pipeline](graphics-pipeline.md) diagram. This shader stage uses shader model 4.0 [common-shader core](/windows/desktop/direct3dhlsl/dx-graphics-hlsl-common-core).
 
 The vertex-shader (VS) stage processes vertices from the input assembler. Vertex shaders always operate on a single input vertex and produce a single output vertex. The vertex shader stage must always be active for the pipeline to execute. If no vertex modification or transformation is required, a pass-through vertex shader must be created and set to the pipeline.
 
@@ -38,7 +35,7 @@ The vertex-shader stage can consume two system-generated values from the input a
 
 Vertex shaders are always run on all vertices, including adjacent vertices in input primitive topologies with adjacency. The number of times that the vertex shader has been executed can be queried from the CPU using the VSInvocations pipeline statistic.
 
-A vertex shader can perform load and texture sampling operations where screen-space derivatives are not required (using HLSL intrinsic functions: [Sample (DirectX HLSL Texture Object)](https://msdn.microsoft.com/library/windows/desktop/bb509695), [SampleCmpLevelZero (DirectX HLSL Texture Object)](https://msdn.microsoft.com/library/windows/desktop/bb509697), and [SampleGrad (DirectX HLSL Texture Object)](https://msdn.microsoft.com/library/windows/desktop/bb509698)).
+A vertex shader can perform load and texture sampling operations where screen-space derivatives are not required (using HLSL intrinsic functions: [Sample (DirectX HLSL Texture Object)](/windows/desktop/direct3dhlsl/dx-graphics-hlsl-to-sample), [SampleCmpLevelZero (DirectX HLSL Texture Object)](/windows/desktop/direct3dhlsl/dx-graphics-hlsl-to-samplecmplevelzero), and [SampleGrad (DirectX HLSL Texture Object)](/windows/desktop/direct3dhlsl/dx-graphics-hlsl-to-samplegrad)).
 
 ## <span id="Input"></span><span id="input"></span><span id="INPUT"></span>Input
 
@@ -58,7 +55,3 @@ A single vertex. Each output vertex can be comprised of as many as 16 32-bit 4-c
  
 
  
-
-
-
-

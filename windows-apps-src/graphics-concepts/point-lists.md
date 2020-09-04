@@ -4,17 +4,12 @@ description: A point list is a collection of vertices that are rendered as isola
 ms.assetid: 332954AE-019F-4A91-B773-E3A7C92F3297
 keywords:
 - Point lists
-author: michaelfromredmond
-ms.author: mithom
 ms.date: 02/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 ms.localizationpriority: medium
 ---
 
 # Point lists
-
 
 A point list is a collection of vertices that are rendered as isolated points. Your application can use point lists in 3D scenes for star fields, or dotted lines on the surface of a polygon.
 
@@ -29,7 +24,7 @@ Your application can apply materials and textures to a point list. The colors in
 
 The following code shows how to create vertices for this point list.
 
-```
+```cpp
 struct CUSTOMVERTEX
 {
     float x,y,z;
@@ -48,7 +43,7 @@ CUSTOMVERTEX Vertices[] =
 
 The code example below shows how to render this point list in Direct3D.
 
-```
+```cpp
 //
 // It is assumed that d3dDevice is a valid
 // pointer to an IDirect3DDevice interface.

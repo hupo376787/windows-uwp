@@ -1,19 +1,13 @@
 ﻿---
-author: jnHs
 Description: When submitting an add-on, the options on the Properties page help determine the behavior of your add-on when offered to customers.
 title: Enter add-on properties
 ms.assetid: 26D2139F-66FD-479E-940B-7491238ADCAE
-ms.author: wdg-dev-content
-ms.date: 01/12/2018
+ms.date: 10/31/2018
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp, add-on, properties, subscription period, product lifetime, content type, iap, in-app purchase, in-app product
 ms.localizationpriority: medium
 ---
-
 # Enter add-on properties
-
 
 When submitting an add-on, the options on the **Properties** page help determine the behavior of your add-on when offered to customers.
 
@@ -29,7 +23,7 @@ The fields you see on this page will vary, depending on the product type of your
 
 ## Product lifetime
 
-If you selected **Durable** for your product type, **Product lifetime** is shown here. The default **Product lifetime** for a durable add-on is **Forever**, which means the add-on never expires. If you prefer, you can set the **Product lifetime** so that the add-on expires after a set duration (with options from 1-365 days).
+If you selected **Durable** for your product type, **Product lifetime** is shown here. The default **Product lifetime** for a durable add-on is **Forever**, which means the add-on never expires. If you prefer, you can change the **Product lifetime** so that the add-on expires after a set duration (with options from 1-365 days).
 
 
 ## Quantity
@@ -81,7 +75,7 @@ These fields are optional for all types of add-ons.
 
 You have the option to provide up to ten keywords of up to 30 characters each for each add-on you submit. Your app can then query for add-ons that match these words. This feature lets you build screens in your app that can load add-ons without you having to directly specify the product ID in your app's code. You can then change the add-on's keywords anytime, without having to make code changes in your app or submit the app again.
 
-To query this field, use the [StoreProduct.Keywords](https://docs.microsoft.com/uwp/api/windows.services.store.storeproduct.Keywords) property in the [Windows.Services.Store namespace](https://docs.microsoft.com/uwp/api/Windows.Services.Store). (Or, if you're using the [Windows.ApplicationModel.Store namespace](https://docs.microsoft.com/uwp/api/Windows.ApplicationModel.Store), use the [ProductListing.Keywords](https://docs.microsoft.com/uwp/api/windows.applicationmodel.store.productlisting.Keywords) property.)
+To query this field, use the [StoreProduct.Keywords](/uwp/api/windows.services.store.storeproduct.Keywords) property in the [Windows.Services.Store namespace](/uwp/api/Windows.Services.Store). (Or, if you're using the [Windows.ApplicationModel.Store namespace](/uwp/api/Windows.ApplicationModel.Store), use the [ProductListing.Keywords](/uwp/api/windows.applicationmodel.store.productlisting.Keywords) property.)
 
 > [!NOTE]
 > Keywords are not available for use in packages targeting Windows 8 and Windows 8.1.
@@ -94,7 +88,7 @@ You can enter up to 3000 characters into the **Custom developer data** field (fo
 
 For example, let’s say you have a game, and you’re selling an add-on which allows the customer to access additional levels. Using the **Custom developer data** field, the app can query to see which levels are available when a customer owns this add-on. You could adjust the value at any time (in this case, the levels which are included), without having to make code changes in your app or submit the app again, by updating the info in the add-on's **Custom developer data** field and then publishing an updated submission for the add-on.
 
-To query this field, use the [StoreSku.CustomDeveloperData](https://docs.microsoft.com/uwp/api/windows.services.store.storesku.customdeveloperdata#Windows_Services_Store_StoreSku_CustomDeveloperData) property in the [Windows.Services.Store namespace](https://docs.microsoft.com/uwp/api/Windows.Services.Store). (Or, if you're using the [Windows.ApplicationModel.Store namespace](https://docs.microsoft.com/uwp/api/Windows.ApplicationModel.Store), use the [ProductListing.Tag](https://docs.microsoft.com/uwp/api/windows.applicationmodel.store.productlisting.tag#Windows_ApplicationModel_Store_ProductListing_Tag) property.)
+To query this field, use the [StoreSku.CustomDeveloperData](/uwp/api/windows.services.store.storesku.customdeveloperdata#Windows_Services_Store_StoreSku_CustomDeveloperData) property in the [Windows.Services.Store namespace](/uwp/api/Windows.Services.Store). (Or, if you're using the [Windows.ApplicationModel.Store namespace](/uwp/api/Windows.ApplicationModel.Store), use the [ProductListing.Tag](/uwp/api/windows.applicationmodel.store.productlisting.tag#Windows_ApplicationModel_Store_ProductListing_Tag) property.)
 
 > [!NOTE]
 > The **Custom developer data** field is not available for use in packages targeting Windows 8 and Windows 8.1.

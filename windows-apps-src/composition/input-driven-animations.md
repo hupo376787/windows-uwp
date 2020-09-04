@@ -1,12 +1,8 @@
 ---
-author: jwmsft
 title: Input-driven animations
-description: Learn how to use input animations in your app UI.
-ms.author: jimwalk
+description: Learn about the InputAnimation API, and how to use input-driven animations to create dynamically responding motion in your app UI.
 ms.date: 10/10/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp, animation
 ms.localizationpriority: medium
 ---

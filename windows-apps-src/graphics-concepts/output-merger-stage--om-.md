@@ -4,15 +4,12 @@ description: The Output Merger (OM) stage combines various types of output data 
 ms.assetid: ED2DC4A0-2B92-47AF-884A-BFC2183C78B8
 keywords:
 - Output Merger (OM) stage
-author: michaelfromredmond
-ms.author: mithom
 ms.date: 02/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
+
+
 ms.localizationpriority: medium
 ---
-
 # Output Merger (OM) stage
 
 
@@ -36,7 +33,7 @@ Blending combines one or more pixel values to create a final pixel color. The fo
 
 ![diagram of how blending data works](images/d3d10-blend-state.png)
 
-Conceptually, you can visualize this flow chart implemented twice in the Output Merger stage: the first one blends RGB data, while in parallel, a second one blends alpha data. To see how to use the API to create and set blend state, see [Configuring Blending Functionality](https://msdn.microsoft.com/library/windows/desktop/bb205072).
+Conceptually, you can visualize this flow chart implemented twice in the Output Merger stage: the first one blends RGB data, while in parallel, a second one blends alpha data. To see how to use the API to create and set blend state, see [Configuring Blending Functionality](/windows/desktop/direct3d11/d3d10-graphics-programming-guide-blend-state).
 
 Fixed-function blend can be enabled independently for each render target. However there is only one set of blend controls, so that the same blend is applied to all RenderTargets with blending enabled. Blend values (including BlendFactor) are always clamped to the range of the render-target format before blending. Clamping is done per render target, respecting the render target type. The only exception is for the float16, float11 or float10 formats which are not clamped so that blend operations on these formats can be done with at least equal precision/range as the output format. NaN's and signed zeros are propagated for all cases (including 0.0 blend weights).
 
@@ -123,7 +120,3 @@ You may use any combination of render targets slots (up to 8). However, a resour
  
 
  
-
-
-
-

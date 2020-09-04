@@ -1,21 +1,16 @@
 ---
-author: mcleanbyron
 ms.assetid: C09F4B7C-6324-4973-980A-A60035792EFC
-description: Use this method in the Microsoft Store submission API to create a new add-on submission for an app that is registered to your Windows Dev Center account.
+description: Use this method in the Microsoft Store submission API to create a new add-on submission for an app that is registered to Partner Center.
 title: Create an add-on submission
-ms.author: mcleans
 ms.date: 02/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp, Microsoft Store submission API, create add-on submission, in-app product, IAP
 ms.localizationpriority: medium
 ---
 
 # Create an add-on submission
 
-
-Use this method in the Microsoft Store submission API to create a new add-on (also known as in-app product or IAP) submission for an app that is registered to your Windows Dev Center account. After you successfully create a new submission by using this method, [update the submission](update-an-add-on-submission.md) to make any necessary changes to the submission data, and then [commit the submission](commit-an-add-on-submission.md) for ingestion and publishing.
+Use this method in the Microsoft Store submission API to create a new add-on (also known as in-app product or IAP) submission for an app that is registered to your Partner Center account. After you successfully create a new submission by using this method, [update the submission](update-an-add-on-submission.md) to make any necessary changes to the submission data, and then [commit the submission](commit-an-add-on-submission.md) for ingestion and publishing.
 
 For more information about how this method fits into the process of creating an add-on submission by using the Microsoft Store submission API, see [Manage add-on submissions](manage-add-on-submissions.md).
 
@@ -28,7 +23,7 @@ To use this method, you need to first do the following:
 
 * If you have not done so already, complete all the [prerequisites](create-and-manage-submissions-using-windows-store-services.md#prerequisites) for the Microsoft Store submission API.
 * [Obtain an Azure AD access token](create-and-manage-submissions-using-windows-store-services.md#obtain-an-azure-ad-access-token) to use in the request header for this method. After you obtain an access token, you have 60 minutes to use it before it expires. After the token expires, you can obtain a new one.
-* Create an add-on for an app in your Dev Center account. You can do this in the Dev Center dashboard, or you can do this by using the [Create an add-on](create-an-add-on.md) method.
+* Create an add-on for one of your apps. You can do this in Partner Center, or you can do this by using the [Create an add-on](create-an-add-on.md) method.
 
 ## Request
 
@@ -36,8 +31,7 @@ This method has the following syntax. See the following sections for usage examp
 
 | Method | Request URI                                                      |
 |--------|------------------------------------------------------------------|
-| POST    | ```https://manage.devcenter.microsoft.com/v1.0/my/inappproducts/{inAppProductId}/submissions``` |
-
+| POST    | `https://manage.devcenter.microsoft.com/v1.0/my/inappproducts/{inAppProductId}/submissions` |
 
 ### Request header
 
@@ -45,13 +39,11 @@ This method has the following syntax. See the following sections for usage examp
 |---------------|--------|-----------------------------------------------------------------------------|
 | Authorization | string | Required. The Azure AD access token in the form **Bearer** &lt;*token*&gt;. |
 
-
 ### Request parameters
 
 | Name        | Type   | Description                                                                 |
 |---------------|--------|-----------------------------------------------------------------------------|
-| inAppProductId | string | Required. The Store ID of the add-on for which you want to create a submission. The Store ID is available on the Dev Center dashboard, and it is included in the response data for requests to [Create an add-on](create-an-add-on.md) or [get add-on details](get-all-add-ons.md).  |
-
+| inAppProductId | string | Required. The Store ID of the add-on for which you want to create a submission. The Store ID is available in Partner Center, and it is included in the response data for requests to [Create an add-on](create-an-add-on.md) or [get add-on details](get-all-add-ons.md).  |
 
 ### Request body
 
@@ -61,7 +53,7 @@ Do not provide a request body for this method.
 
 The following example demonstrates how to create a new submission for an add-on.
 
-```
+```json
 POST https://manage.devcenter.microsoft.com/v1.0/my/inappproducts/9NBLGGH4TNMP/submissions HTTP/1.1
 Authorization: Bearer <your access token>
 ```
@@ -150,8 +142,7 @@ If the request cannot be successfully completed, the response will contain one o
 | Error code |  Description   |
 |--------|------------------|
 | 400  | The submission could not be created because the request is invalid. |
-| 409  | The submission could not be created because of the current state of the app, or the app uses a Dev Center dashboard feature that is [currently not supported by the Microsoft Store submission API](create-and-manage-submissions-using-windows-store-services.md#not_supported). |   
-
+| 409  | The submission could not be created because of the current state of the app, or the app uses a Partner Center feature that is [currently not supported by the Microsoft Store submission API](create-and-manage-submissions-using-windows-store-services.md#not_supported). |   
 
 ## Related topics
 

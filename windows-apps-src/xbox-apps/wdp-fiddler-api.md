@@ -1,17 +1,12 @@
 ---
-author: WilliamsJason
 title: Device Portal Fiddler API reference
-description: Learn how to enable/disable Fiddler tracing programatically.
-ms.author: wdg-dev-content
+description: Learn how to enable and disable Fiddler network tracing on your devkit by using the Xbox Device Portal REST API.
 ms.date: 02/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp
 ms.assetid: e7d4225e-ac2c-41dc-aca7-9b1a95ec590b
 ms.localizationpriority: medium
 ---
-
 # Fiddler settings API reference   
 You can enable and disable Fiddler network tracing on your devkit using this REST API.
 
@@ -24,7 +19,8 @@ You can check to see if Fiddler tracing is enabled on the device using the follo
 Method      | Request URI
 :------     | :-----
 GET | /ext/fiddler
-<br />
+
+
 **URI parameters**
 
 - None
@@ -60,7 +56,7 @@ You can enable Fiddler tracing for the devkit using the following request.  Note
 Method      | Request URI
 :------     | :-----
 POST | /ext/fiddler
-<br />
+
 **URI parameters**
 
 You can specify the following additional parameters on the request URI:
@@ -70,7 +66,7 @@ You can specify the following additional parameters on the request URI:
 | proxyAddress       | The IP address or hostname of the device running Fiddler |
 | proxyPort          | The port which Fiddler is using for monitoring traffic. Defaults to 8888 |
 | updateCert (optional)| A boolean value indicating if the root Fiddler cert is provided. This must be true if Fiddler has never been configured on this devkit or was configured for a different host.  |
-<br>
+
 
 **Request headers**
 
@@ -103,7 +99,7 @@ You can disable Fiddler tracing on the device using the following request. Note 
 Method      | Request URI
 :------     | :-----
 DELETE | /ext/fiddler
-<br />
+
 **URI parameters**
 
 - None
@@ -130,7 +126,7 @@ HTTP status code      | Description
 4XX | Error codes
 5XX | Error codes
 
-<br />
+
 **Available device families**
 
 * Windows Xbox

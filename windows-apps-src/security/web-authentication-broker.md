@@ -2,25 +2,20 @@
 title: Web authentication broker
 description: This article explains how to connect your Universal Windows Platform (UWP) app to an online identity provider that uses authentication protocols like OpenID or OAuth, such as Facebook, Twitter, Flickr, Instagram, and so on.
 ms.assetid: 05F06961-1768-44A7-B185-BCDB74488F85
-author: PatrickFarley
-ms.author: pafarley
 ms.date: 02/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
-keywords: windows 10, uwp
+keywords: windows 10, uwp, security
 ms.localizationpriority: medium
 ---
-
 # Web authentication broker
 
 
 
 
-This article explains how to connect your Universal Windows Platform (UWP) app to an online identity provider that uses authentication protocols like OpenID or OAuth, such as Facebook, Twitter, Flickr, Instagram, and so on. The [**AuthenticateAsync**](https://msdn.microsoft.com/library/windows/apps/br212066) method sends a request to the online identity provider and gets back an access token that describes the provider resources to which the app has access.
+This article explains how to connect your Universal Windows Platform (UWP) app to an online identity provider that uses authentication protocols like OpenID or OAuth, such as Facebook, Twitter, Flickr, Instagram, and so on. The [**AuthenticateAsync**](/uwp/api/windows.security.authentication.web.webauthenticationbroker.authenticateasync) method sends a request to the online identity provider and gets back an access token that describes the provider resources to which the app has access.
 
 >[!NOTE]
->For a complete, working code sample, clone the [WebAuthenticationBroker repo on GitHub](http://go.microsoft.com/fwlink/p/?LinkId=620622).
+>For a complete, working code sample, clone the [WebAuthenticationBroker repo on GitHub](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/WebAuthenticationBroker).
 
  
 
@@ -34,7 +29,7 @@ You must register your app with the online identity provider to which you want t
 
 The request URI consists of the address where you send the authentication request to your online provider appended with other required information, such as an app ID or secret, a redirect URI where the user is sent after completing authentication, and the expected response type. You can find out from your provider what parameters are required.
 
-The request URI is sent as the *requestUri* parameter of the [**AuthenticateAsync**](https://msdn.microsoft.com/library/windows/apps/br212066) method. It must be a secure address (it must start with `https://`)
+The request URI is sent as the *requestUri* parameter of the [**AuthenticateAsync**](/uwp/api/windows.security.authentication.web.webauthenticationbroker.authenticateasync) method. It must be a secure address (it must start with `https://`)
 
 The following example shows how to build the request URI.
 
@@ -49,7 +44,7 @@ System.Uri endURI = new System.Uri(endURL);
 ## Connect to the online provider
 
 
-You call the [**AuthenticateAsync**](https://msdn.microsoft.com/library/windows/apps/br212066) method to connect to the online identity provider and get an access token. The method takes the URI constructed in the previous step as the *requestUri* parameter, and a URI to which you want the user to be redirected as the *callbackUri* parameter.
+You call the [**AuthenticateAsync**](/uwp/api/windows.security.authentication.web.webauthenticationbroker.authenticateasync) method to connect to the online identity provider and get an access token. The method takes the URI constructed in the previous step as the *requestUri* parameter, and a URI to which you want the user to be redirected as the *callbackUri* parameter.
 
 ```cs
 string result;
@@ -86,14 +81,14 @@ catch (Exception ex)
 ```
 
 >[!WARNING]
->In addition to [**AuthenticateAsync**](https://msdn.microsoft.com/library/windows/apps/br212066), the [**Windows.Security.Authentication.Web**](https://msdn.microsoft.com/library/windows/apps/br227044) namespace contains an [**AuthenticateAndContinue**](https://msdn.microsoft.com/library/windows/apps/dn632425) method. Do not call this method. It is designed for apps targeting Windows Phone 8.1 only and is deprecated starting with Windows 10.
+>In addition to [**AuthenticateAsync**](/uwp/api/windows.security.authentication.web.webauthenticationbroker.authenticateasync), the [**Windows.Security.Authentication.Web**](/uwp/api/Windows.Security.Authentication.Web) namespace contains an [**AuthenticateAndContinue**](/uwp/api/Windows.Security.Authentication.Web.WebAuthenticationBroker#methods) method. Do not call this method. It is designed for apps targeting Windows Phone 8.1 only and is deprecated starting with Windows 10.
 
 ## Connecting with single sign-on (SSO).
 
 
-By default, Web authentication broker does not allow cookies to persist. Because of this, even if the app user indicates that they want to stay logged in (for example, by selecting a check box in the provider's login dialog), they will have to login each time they want to access resources for that provider. To login with SSO, your online identity provider must have enabled SSO for Web authentication broker, and your app must call the overload of [**AuthenticateAsync**](https://msdn.microsoft.com/library/windows/apps/br212068) that does not take a *callbackUri* parameter. This will allow persisted cookies to be stored by the web authentication broker, so that future authentication calls by the same app will not require repeated sign-in by the user (the user is effectively "logged in" until the access token expires).
+By default, Web authentication broker does not allow cookies to persist. Because of this, even if the app user indicates that they want to stay logged in (for example, by selecting a check box in the provider's login dialog), they will have to login each time they want to access resources for that provider. To login with SSO, your online identity provider must have enabled SSO for Web authentication broker, and your app must call the overload of [**AuthenticateAsync**](/uwp/api/windows.security.authentication.web.webauthenticationbroker.authenticateasync) that does not take a *callbackUri* parameter. This will allow persisted cookies to be stored by the web authentication broker, so that future authentication calls by the same app will not require repeated sign-in by the user (the user is effectively "logged in" until the access token expires).
 
-To support SSO, the online provider must allow you to register a redirect URI in the form `ms-app://<appSID>`, where `<appSID>` is the SID for your app. You can find your app's SID from the app developer page for your app, or by calling the [**GetCurrentApplicationCallbackUri**](https://msdn.microsoft.com/library/windows/apps/br212069) method.
+To support SSO, the online provider must allow you to register a redirect URI in the form `ms-app://<appSID>`, where `<appSID>` is the SID for your app. You can find your app's SID from the app developer page for your app, or by calling the [**GetCurrentApplicationCallbackUri**](/uwp/api/windows.security.authentication.web.webauthenticationbroker.getcurrentapplicationcallbackuri) method.
 
 ```cs
 string result;
@@ -154,12 +149,15 @@ Often you can determine what is not working by using the operational logs. There
 
 The Fiddler web debugger can be used with apps.
 
-1.  Since the AuthHost runs in its own app container to give it the private network capability, you must set a registry key: Windows Registry Editor Version 5.00
+1.  Since the AuthHost runs in its own app container, to give it the private network capability you must set a registry key: Windows Registry Editor Version 5.00
 
     **HKEY\_LOCAL\_MACHINE**\\**SOFTWARE**\\**Microsoft**\\**Windows NT**\\**CurrentVersion**\\**Image File Execution Options**\\**authhost.exe**\\**EnablePrivateNetwork** = 00000001
 
-                         Data type  
-                         DWORD
+    If you do not have this registry key, you can create it in a Command Prompt with administrator privileges.
+
+    ```cmd 
+    REG ADD "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\authhost.exe" /v EnablePrivateNetwork /t REG_DWORD /d 1 /f
+    ```
 
 2.  Add a rule for the AuthHost as this is what is generating the outbound traffic.
     ```syntax

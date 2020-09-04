@@ -1,37 +1,32 @@
 ---
-author: Karl-Bridge-Microsoft
-Description: Learn how to design and optimize your UWP apps so they provide the best experience possible for both keyboard power users and those with disabilities and other accessibility requirements.
+Description: Learn how to design and optimize your Windows apps so they provide the best experience possible for both keyboard power users and those with disabilities and other accessibility requirements.
 title: Keyboard interactions
 ms.assetid: FF819BAC-67C0-4EC9-8921-F087BE188138
 label: Keyboard interactions
 template: detail.hbs
 keywords: keyboard, accessibility, navigation, focus, text, input, user interactions, gamepad, remote
-ms.author: kbridge
 ms.date: 03/29/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 pm-contact: chigy
 design-contact: kimsea
 dev-contact: niallm
 doc-status: Published
 ---
-
 # Keyboard interactions
 
 ![keyboard hero image](images/keyboard/keyboard-hero.jpg)
 
-Learn how to design and optimize your UWP apps so they provide the best experience possible for both keyboard power users and those with disabilities and other accessibility requirements.
+Learn how to design and optimize your Windows apps so they provide the best experience possible for both keyboard power users and those with disabilities and other accessibility requirements.
 
-Across devices, keyboard input is an important part of the overall Universal Windows Platform (UWP) interaction experience. A well-designed keyboard experience lets users efficiently navigate the UI of your app and access its full functionality without ever lifting their hands from the keyboard.
+Across devices, keyboard input is an important part of the overall Windows app interaction experience. A well-designed keyboard experience lets users efficiently navigate the UI of your app and access its full functionality without ever lifting their hands from the keyboard.
 
 ![keyboard and gamepad image](images/keyboard/keyboard-gamepad.jpg)
 
 ***Common interaction patterns are shared between keyboard and gamepad***
 
-In this topic, we focus specifically on UWP app design for keyboard input on PCs. However, a well-designed keyboard experience is important for supporting accessibility tools such as Windows Narrator, using software keyboards such as the [touch keyboard](#touch-keyboard) and the [On-Screen Keyboard (OSK)](#osk), and for handling other input device types, such as the Xbox gamepad and remote control.
+In this topic, we focus specifically on Windows app design for keyboard input on PCs. However, a well-designed keyboard experience is important for supporting accessibility tools such as Windows Narrator, using [software keyboards](#software-keyboard) such as the touch keyboard and the On-Screen Keyboard (OSK), and for handling other input device types, such as the Xbox gamepad and remote control.
 
-Many of the guidelines and recommendations discussed here, including [focus visuals](#focus-visual), [access keys](#access-keys), and [UI navigation](#navigation), are also applicable to these other scenarios.
+Many of the guidelines and recommendations discussed here, including [focus visuals](#focus-visuals), [access keys](#access-keys), and [UI navigation](#navigation), are also applicable to these other scenarios.
 
 **NOTE**  While both hardware and software keyboards are used for text input, the focus of this topic is navigation and interaction.
 
@@ -56,10 +51,9 @@ Here are the devices and tools discussed in this topic:
 
 | Device/tool                       | Description     |
 |-----------------------------------|-----------------|
-|Keyboard (hardware and software)   |In addition to the standard hardware keyboard, UWP applications support two software keyboards: the [touch (or software keyboard)](#touch-keyboard) and the [On-Screen Keyboard](#osk).|
-|Gamepad and remote control         |The Xbox gamepad and remote control are fundamental input devices in the [10-foot experience](../devices/designing-for-tv.md).
-For specific details on UWP support for gamepad and remote control, see [Gamepad and remote control interactions](gamepad-and-remote-interactions.md).|
-|Screen readers (Narrator)          |Narrator is a built-in screen reader for Windows that provides unique interaction experiences and functionality, but still relies on basic keyboard navigation and input. For Narrator details, see [Getting started with Narrator](https://support.microsoft.com/help/22798/windows-10-narrator-get-started).|
+|Keyboard (hardware and software)   |In addition to the standard hardware keyboard, Windows applications support two software keyboards: the [touch (or software) keyboard](#software-keyboard) and the [On-Screen Keyboard](#on-screen-keyboard).|
+|Gamepad and remote control         |The Xbox gamepad and remote control are fundamental input devices in the [10-foot experience](../devices/designing-for-tv.md). For specific details on Windows support for gamepad and remote control, see [Gamepad and remote control interactions](gamepad-and-remote-interactions.md).|
+|Screen readers (Narrator)          |Narrator is a built-in screen reader for Windows that provides unique interaction experiences and functionality, but still relies on basic keyboard navigation and input. For Narrator details, see [Getting started with Narrator](https://support.microsoft.com/help/22798/windows-10-complete-guide-to-narrator).|
 
 ## Custom experiences and efficient keyboarding
 As mentioned, keyboard support is integral to ensuring your applications work great for users with different skills, abilities, and expectations. We recommend that you prioritize the following.
@@ -77,10 +71,11 @@ The UWP supports a single focus visual design that works well for all input type
 ![Focus visual](images/keyboard/focus-visual.png)
 
 A focus visual:
--   Is shown when a UI element receives focus from a keyboard and/or gamepad/remote control
--   Is rendered as a highlighted border around the UI element to indicate an action can be taken
--   Helps a user navigate an app UI without getting lost
--   Can be customized for your app (See [High visibility focus  visuals](guidelines-for-visualfeedback.md#high-visibility-focus-visuals))
+
+- Is shown when a UI element receives focus from a keyboard and/or gamepad/remote control
+- Is rendered as a highlighted border around the UI element to indicate an action can be taken
+- Helps a user navigate an app UI without getting lost
+- Can be customized for your app (See [High visibility focus  visuals](guidelines-for-visualfeedback.md#high-visibility-focus-visuals))
 
 **NOTE** The UWP focus visual is not the same as the Narrator focus rectangle.
 
@@ -88,13 +83,13 @@ A focus visual:
 
 To use a control (including navigation elements) with the keyboard, the control must have focus. One way for a control to receive keyboard focus is to make it accessible through tab navigation by identifying it as a tab stop in your application's tab order.
 
-For a control to be included in the tab order, the [IsEnabled](https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.control#Windows_UI_Xaml_Controls_Control_IsEnabled) property must be set to **true** and the [IsTabStop](https://docs.microsoft.com/uwp/api/Windows.UI.Xaml.Controls.Control#Windows_UI_Xaml_Controls_Control_IsTabStop) property must be set to **true**.
+For a control to be included in the tab order, the [IsEnabled](/uwp/api/windows.ui.xaml.controls.control#Windows_UI_Xaml_Controls_Control_IsEnabled) property must be set to **true** and the [IsTabStop](/uwp/api/Windows.UI.Xaml.Controls.Control#Windows_UI_Xaml_Controls_Control_IsTabStop) property must be set to **true**.
 
-To specifically exclude a control from the tab order, set the [IsTabStop](https://docs.microsoft.com/uwp/api/Windows.UI.Xaml.Controls.Control#Windows_UI_Xaml_Controls_Control_IsTabStop) property to **false**.
+To specifically exclude a control from the tab order, set the [IsTabStop](/uwp/api/Windows.UI.Xaml.Controls.Control#Windows_UI_Xaml_Controls_Control_IsTabStop) property to **false**.
 
 By default, tab order reflects the order in which UI elements are created. For example, if a `StackPanel` contains a `Button`, a `Checkbox`, and a `TextBox`, tab order is `Button`, `Checkbox`, and `TextBox`.
 
-You can override the default tab order by setting the [TabIndex](https://docs.microsoft.com/uwp/api/Windows.UI.Xaml.Controls.Control#Windows_UI_Xaml_Controls_Control_TabIndex) property.
+You can override the default tab order by setting the [TabIndex](/uwp/api/Windows.UI.Xaml.Controls.Control#Windows_UI_Xaml_Controls_Control_TabIndex) property.
 
 #### Tab order should be logical and predictable
 
@@ -118,7 +113,7 @@ Try to rank and present the most important commands, controls, and content first
 
 Initial focus specifies the UI element that receives focus when an application or a page is first launched or activated. When using a keyboard, it is from this element that a user starts interacting with your application's UI.
 
-For UWP apps, initial focus is set to the element with the highest [TabIndex](https://docs.microsoft.com/uwp/api/Windows.UI.Xaml.Controls.Control#Windows_UI_Xaml_Controls_Control_TabIndex) that can receive focus. Child elements of container controls are ignored. In a tie, the first element in the visual tree receives focus.
+For UWP apps, initial focus is set to the element with the highest [TabIndex](/uwp/api/Windows.UI.Xaml.Controls.Control#Windows_UI_Xaml_Controls_Control_TabIndex) that can receive focus. Child elements of container controls are ignored. In a tie, the first element in the visual tree receives focus.
 
 #### Set initial focus on the most logical element
 
@@ -161,9 +156,9 @@ For example, the `ContentDialog` control shown here provides inner navigation by
 
 If items are displayed in a single column, Up/Down arrow key navigates items. If items are displayed in a single row, Right/Left arrow key navigates items. If items are multiple columns, all 4 arrow keys navigate.
 
-#### Make a set of related controls a single tab stop
+#### Define a single tab stop for a collection of related controls
 
-By making a set of related, or complementary, controls a single tab stop, you can minimize the number of overall tab stops in your app.
+By defining a single tab stop for a collection of related, or complementary, controls, you can minimize the number of overall tab stops in your app.
 
 For example, the following images show two stacked `ListView` controls. The image on the left shows arrow key navigation used with a tab stop to navigate between `ListView` controls, while the image on the right shows how navigation between child elements could be made easier and more efficient by eliminating the need for to traverse parent controls with a tab key.
 
@@ -366,12 +361,12 @@ The following image shows an intuitive keyboard navigation behavior for a contro
 
 ### Keyboard and Narrator
 
-Narrator is a UI accessibility tool geared towards keyboard users (other input types are also supported). However, Narrator functionality goes beyond the keyboard interactions supported by UWP apps and extra care is required when designing your UWP app for Narrator. (The [Narrator basics page](https://support.microsoft.com/help/22808/windows-10-narrator-learning-basics) guides you through the Narrator user experience.)
+Narrator is a UI accessibility tool geared towards keyboard users (other input types are also supported). However, Narrator functionality goes beyond the keyboard interactions supported by UWP apps and extra care is required when designing your UWP app for Narrator. (The [Narrator basics page](https://support.microsoft.com/help/22808/windows-10-narrator-basics) guides you through the Narrator user experience.)
 
 Some of the differences between UWP keyboard behaviors and those supported by Narrator include:
 -   Extra key combinations for navigation to UI elements that are not exposed through standard keyboard navigation, such as Caps lock + arrow keys to read control labels.
 -   Navigation to disabled items. By default, disabled items are not exposed through standard keyboard navigation.
-    -   Control "views" for quicker navigation based on UI granularity. Users can navigate to items, characters, word, lines, paragraphs, links, headings, tables, landmarks, and suggestions. Standard keyboard navigation exposes these objects as a flat list, which might make navigation cumbersome unless you provide shortcut keys.
+-   Control "views" for quicker navigation based on UI granularity. Users can navigate to items, characters, word, lines, paragraphs, links, headings, tables, landmarks, and suggestions. Standard keyboard navigation exposes these objects as a flat list, which might make navigation cumbersome unless you provide shortcut keys.
 
 #### Case Study – AutoSuggestBox control
 
@@ -398,7 +393,7 @@ The search button for the `AutoSuggestBox` is not accessible to standard keyboar
 
 Xbox gamepads and remote controls support many UWP keyboard behaviors and experiences. However, due to the lack of various key options available on a keyboard, gamepad and remote control lack many keyboard optimizations (remote control is even more limited than gamepad).
 
-See [designing for Xbox and TV](../devices/designing-for-tv.md#gamepad-and-remote-control) for more detail on UWP support for gamepad and remote control input.
+See [Gamepad and remote control interactions](gamepad-and-remote-interactions.md) for more detail on UWP support for gamepad and remote control input.
 
 The following shows some key mappings between keyboard, gamepad, and remote control.
 
@@ -414,16 +409,16 @@ Some key differences you should be aware of when designing your UWP app for use 
 -   Text entry requires the user to press A to activate a text control.
 -   Focus navigation is not limited to control groups, users can navigate freely to any focusable UI element in the app.
 
-    **NOTE** Focus can move to any focusable UI element in the key press direction unless it is in an overlay UI or [focus engagement](../devices/designing-for-tv.md#focus-engagement) is specified, which prevents focus from entering/exiting a region until engaged/disengaged with the A button. For more info, see the [directional navigation](#directional-navigation) section.
+    **NOTE** Focus can move to any focusable UI element in the key press direction unless it is in an overlay UI or [focus engagement](gamepad-and-remote-interactions.md#focus-engagement) is specified, which prevents focus from entering/exiting a region until engaged/disengaged with the A button. For more info, see the [directional navigation](#directional-navigation) section.
 -   D-pad and left stick buttons are used to move focus between controls and for inner navigation.
 
     **NOTE** Gamepad and remote control only navigate to items that are in the same visual order as the directional key pressed. Navigation is disabled in that direction when there is no subsequent element that can receive focus. Depending on the situation, keyboard users do not always have that constraint. See the [Built in keyboard optimization](#built-in-keyboard-optimization) section for more info.
 
 #### Directional navigation
 
-Directional navigation is managed by a UWP [Focus Manager](https://docs.microsoft.com/uwp/api/Windows.UI.Xaml.Input.FocusManager) helper class, which takes the directional key pressed (arrow key, D-pad) and attempts to move focus in the corresponding visual direction.
+Directional navigation is managed by a UWP [Focus Manager](/uwp/api/Windows.UI.Xaml.Input.FocusManager) helper class, which takes the directional key pressed (arrow key, D-pad) and attempts to move focus in the corresponding visual direction.
 
-Unlike the keyboard, when an app opts out of [Mouse Mode](../devices/designing-for-tv.md#mouse-mode), directional navigation is applied across the entire application for gamepad and remote control . Visit [XY focus navigation and interaction article](../devices/designing-for-tv.md#xy-focus-navigation-and-interaction) for more detail on directional navigation optimizations for gamepad and remote control.
+Unlike the keyboard, when an app opts out of [Mouse Mode](gamepad-and-remote-interactions.md#mouse-mode), directional navigation is applied across the entire application for gamepad and remote control. See [Gamepad and remote control interactions](gamepad-and-remote-interactions.md) for more detail on directional navigation optimization.
 
 **NOTE** Navigation using the keyboard Tab key is not considered directional navigation. For more info, see the [Tab stops](#tab-stops) section.
 
@@ -490,17 +485,22 @@ last item in the previous column.
 
 As mentioned, you should try to ensure directional navigation corresponds to the visual order of the controls in your application's UI.
 
-Some controls, such as ContextMenu, AppBarOverflowMenu, and AutoSuggest, include a menu popup that is displayed in a location and direction relative to the primary control (based on available screen space). For example, when there is insufficient space for the menu to open downwards (the default direction), it opens upwards. There is no guarantee that the menu opens in the same direction every time.
+Some controls (such as the context menu, CommandBar overflow menu, and AutoSuggest menu) display a menu popup in a location and direction (downwards by default) relative to the primary control and available screen space. Note that the opening direction can be affected by a variety of factors at run time.
 
 <table>
   <td><img src="images/keyboard/command-bar-open-down.png" alt="command bar opens down with down arrow key" /></td>
   <td><img src="images/keyboard/command-bar-open-up.png" alt="command bar opens up with down arrow key" /></td>
 </table>
 
-For these controls, when the menu is first opened (and no item has been selected by the user), the Down arrow key always sets focus to the first item and the Up arrow key always sets focus to the last item on the menu. Similarly, when the last item is selected and the Down arrow key is pressed, focus moves to the first item on the menu and when the first
-item is selected and the Up arrow key is pressed, focus moves to the last item on the menu.
+For these controls, when the menu is first opened (and no item has been selected by the user), the Down arrow key always sets focus to the first item while the Up arrow key always sets focus to the last item on the menu. 
 
-You should try to emulate these same behaviors in your custom controls. Code sample on how to implement this behavior can be found in [Programmatic focus navigation](focus-navigation-programmatic.md#find-the-first-and-last-focusable-element) documentation.
+If the last item has focus and the Down arrow key is pressed, focus moves to the first item on the menu. Similarly, if the first item has focus and the Up arrow key is pressed, focus moves to the last item on the menu. This behavior is referred to as *cycling* and is useful for navigating popup menus that can open in unpredictable directions.
+
+> [!NOTE]
+> Cycling should be avoided in non-popup UIs where users might come to feel trapped in an endless loop. 
+
+We recommend that you emulate these same behaviors in your custom controls. Code sample on how to implement this behavior can be found in [Programmatic focus navigation](focus-navigation-programmatic.md#find-the-first-and-last-focusable-element) documentation.
+
 
 ## Test your app
 
@@ -510,7 +510,8 @@ Test your app with all supported input devices to ensure UI elements can be navi
 * [Keyboard events](keyboard-events.md)
 * [Identify input devices](identify-input-devices.md)
 * [Respond to the presence of the touch keyboard](respond-to-the-presence-of-the-touch-keyboard.md)
-* [Focus visuals sample](http://go.microsoft.com/fwlink/p/?LinkID=619895)
+* [Focus visuals sample](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/XamlFocusVisuals)
+* [NavigationView control keyboarding specifics](../controls-and-patterns/navigationview.md#hierarchical-navigation) 
 
 ## Appendix
 

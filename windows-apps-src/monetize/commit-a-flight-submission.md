@@ -1,20 +1,15 @@
 ---
-author: mcleanbyron
 ms.assetid: F94AF8F6-0742-4A3F-938E-177472F96C00
-description: Use this method in the Microsoft Store submission API to commit a new or updated package flight submission to Windows Dev Center.
+description: Use this method in the Microsoft Store submission API to commit a new or updated package flight submission to Partner Center.
 title: Commit a package flight submission
-ms.author: mcleans
 ms.date: 04/17/2018
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp, Microsoft Store submission API, commit flight submission
 ms.localizationpriority: medium
 ---
-
 # Commit a package flight submission
 
-Use this method in the Microsoft Store submission API to commit a new or updated package flight submission to Windows Dev Center. The commit action alerts Dev Center that the submission data has been uploaded (including any related packages). In response, Dev Center commits the changes to the submission data for ingestion and publishing. After the commit operation succeeds, the changes to the submission are shown in the Dev Center dashboard.
+Use this method in the Microsoft Store submission API to commit a new or updated package flight submission to Partner Center. The commit action alerts Partner Center that the submission data has been uploaded (including any related packages). In response, Partner Center commits the changes to the submission data for ingestion and publishing. After the commit operation succeeds, the changes to the submission are shown in  Partner Center.
 
 For more information about how the commit operation fits into the process of creating a package flight submission by using the Microsoft Store submission API, see [Manage package flight submissions](manage-flight-submissions.md).
 
@@ -32,8 +27,7 @@ This method has the following syntax. See the following sections for usage examp
 
 | Method | Request URI                                                      |
 |--------|------------------------------------------------------------------|
-| POST    | ```https://manage.devcenter.microsoft.com/v1.0/my/applications/{applicationId}/flights/{flightId}/submissions/{submissionId}/commit``` |
-
+| POST    | `https://manage.devcenter.microsoft.com/v1.0/my/applications/{applicationId}/flights/{flightId}/submissions/{submissionId}/commit` |
 
 ### Request header
 
@@ -41,15 +35,13 @@ This method has the following syntax. See the following sections for usage examp
 |---------------|--------|-----------------------------------------------------------------------------|
 | Authorization | string | Required. The Azure AD access token in the form **Bearer** &lt;*token*&gt;. |
 
-
 ### Request parameters
 
 | Name        | Type   | Description                                                                 |
 |---------------|--------|-----------------------------------------------------------------------------|
-| applicationId | string | Required. The Store ID of the app that contains the package flight submission you want to commit. The Store ID for the app is available on the Dev Center dashboard.  |
-| flightId | string | Required. The ID of the package flight that contains the submission to commit. This ID is available in the response data for requests to [create a package flight](create-a-flight.md) and [get package flights for an app](get-flights-for-an-app.md). For a flight that was created in the Dev Center dashboard, this ID is also available in the URL for the flight page in the dashboard.  |
-| submissionId | string | Required. The ID of the submission to commit. This ID is available in the response data for requests to [create a package flight submission](create-a-flight-submission.md). For a submission that was created in the Dev Center dashboard, this ID is also available in the URL for the submission page in the dashboard.  |
-
+| applicationId | string | Required. The Store ID of the app that contains the package flight submission you want to commit. The Store ID for the app is available in Partner Center.  |
+| flightId | string | Required. The ID of the package flight that contains the submission to commit. This ID is available in the response data for requests to [create a package flight](create-a-flight.md) and [get package flights for an app](get-flights-for-an-app.md). For a flight that was created in Partner Center, this ID is also available in the URL for the flight page in Partner Center.  |
+| submissionId | string | Required. The ID of the submission to commit. This ID is available in the response data for requests to [create a package flight submission](create-a-flight-submission.md). For a submission that was created in  Partner Center, this ID is also available in the URL for the submission page in Partner Center.  |
 
 ### Request body
 
@@ -59,7 +51,7 @@ Do not provide a request body for this method.
 
 The following example demonstrates how to commit a package flight submission.
 
-```
+```json
 POST https://manage.devcenter.microsoft.com/v1.0/my/applications/9NBLGGH4R315/flights/43e448df-97c9-4a43-a0bc-2a445e736bcd/submissions/1152921504621243649/commit HTTP/1.1
 Authorization: Bearer <your access token>
 ```
@@ -80,7 +72,6 @@ The following example demonstrates the JSON response body for a successful call 
 |------------|--------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | status           | string  | The status of the submission. This can be one of the following values: <ul><li>None</li><li>Canceled</li><li>PendingCommit</li><li>CommitStarted</li><li>CommitFailed</li><li>PendingPublication</li><li>Publishing</li><li>Published</li><li>PublishFailed</li><li>PreProcessing</li><li>PreProcessingFailed</li><li>Certification</li><li>CertificationFailed</li><li>Release</li><li>ReleaseFailed</li></ul>  |
 
-
 ## Error codes
 
 If the request cannot be successfully completed, the response will contain one of the following HTTP error codes.
@@ -89,8 +80,7 @@ If the request cannot be successfully completed, the response will contain one o
 |--------|------------------|
 | 400  | The request parameters are invalid. |
 | 404  | The specified submission could not be found. |
-| 409  | The specified submission was found but it could not be committed in its current state, or the app uses a Dev Center dashboard feature that is [currently not supported by the Microsoft Store submission API](create-and-manage-submissions-using-windows-store-services.md#not_supported). |
-
+| 409  | The specified submission was found but it could not be committed in its current state, or the app uses a Partner Center feature that is [currently not supported by the Microsoft Store submission API](create-and-manage-submissions-using-windows-store-services.md#not_supported). |
 
 ## Related topics
 

@@ -1,17 +1,12 @@
 ---
-author: joannaleecy
 title: Getting started
-description: Game development learning guide
+description: Learn how to get started right away developing games for Windows or Xbox by following this quick start guide.
 ms.assetid: 40490837-6c7f-4f82-96b5-14f6858982b3
-ms.author: wdg-dev-content
 ms.date: 01/25/2018
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp, games, getting started
 localizationpriority: medium
 ---
-
 # Getting started
 
 This article is a getting started guide for creators who want to develop games on Windows or Xbox. 
@@ -30,7 +25,7 @@ Steps to get into developing games right away.
 
 Make sure you have Windows 10 installed on your device and have the latest updates installed.
 
-Install a suitable IDE like Visual Studio. Visual Studio Community 2017 is available for free download. For more information, see [Visual Studio downloads](https://www.visualstudio.com/downloads/).
+Install a suitable IDE like Visual Studio. Visual Studio Community 2017 is available for free download. For more information, see [Visual Studio downloads](https://visualstudio.microsoft.com/downloads/).
 
 If you plan to use a game engine and other middleware, see [Bridges, game engines, and middleware](e2e.md#bridges-game-engines-and-middleware) section in the [Windows 10 game development guide](e2e.md). For information about developing Windows and Xbox games using a specific game engine, you'll need to go to the game engine's documentation.
 
@@ -41,7 +36,7 @@ If you're doing development for the first time, you'll need to enable Developer 
 For those who are planning to develop an Xbox game using your retail Xbox console, you'll also need to activate and enable Developer Mode on it. For more information, see [Xbox One Developer Mode activation](../xbox-apps/devkit-activation.md) and [Getting started with UWP app development on Xbox](../xbox-apps/getting-started.md). 
 
 > [!Note]
-> You will need to sign up for a Windows Dev Center account before you can enable Developer mode on your Xbox console. For more information about signing up for a Windows Dev Center account, see [Step 5](#step-5-sign-up-for-windows-dev-center-account) below.
+> You will need to sign up for a [Partner Center](https://partner.microsoft.com/dashboard)  account before you can enable Developer mode on your Xbox console. For more information about signing up for a Partner Center account, see [Step 5](#step-5-sign-up-for-a-partner-center-account) below.
 
 ### Step 3: Run a sample and see how it works
 
@@ -51,22 +46,22 @@ For more samples, see [Game samples](e2e.md#game-samples).
 
 ### Step 4: Consider joining a program
 
-If you want to develop an Xbox game or use Xbox Live features in your game, join either the [Xbox Live Creators Program](https://developer.microsoft.com/games/xbox/xboxlive/creator) or [ID@Xbox](http://www.xbox.com/Developers/id) program. 
+If you want to develop an Xbox game or use Xbox Live features in your game, join either the [Xbox Live Creators Program](https://developer.microsoft.com/games/xbox/xboxlive/creator) or [ID@Xbox](https://www.xbox.com/Developers/id) program. 
 
-To learn more about Xbox Live features that are available to each of the programs, see [Feature Table](../xbox-live/developer-program-overview.md#feature-table). For more information, see [Developer programs](e2e.md#developer-programs).
+To learn more about Xbox Live features that are available to each of the programs, see [Feature Table](/gaming/xbox-live/developer-program-overview.md#feature-table). For more information, see [Developer programs](e2e.md#developer-programs).
 
 > [!Note]
-> Xbox Live Creators Program is available to all developers. **Anyone** can publish an Xbox game. To make your title part of the Xbox Live Creators Program, you simply have to enable this option from the Windows Dev Center dashboard. For more information about signing up for a Windows Dev Center account, see [Step 5](#step-5-sign-up-for-windows-dev-center-account) below.
+> Xbox Live Creators Program is available to all developers. **Anyone** can publish an Xbox game. To make your title part of the Xbox Live Creators Program, you simply have to enable this option from Partner Center. For more information about signing up for a Partner Center account, see [Step 5](#step-5-sign-up-for-a-partner-center-account) below.
 
-### Step 5: Sign up for Windows Dev Center account
+### Step 5: Sign up for a Partner Center account
 
-The Dev Center account gives you access to the Windows Dev Center dashboard, which lets you manage and submit all of your apps and games for Windows devices in one place.
+A Partner Center account gives you access to [Partner Center](https://partner.microsoft.com/dashboard), which lets you manage and submit all of your apps and games for Windows devices in one place.
 
-For Windows game development, you may choose to wait till you want access to the Windows Dev Center dashboard or when you want to use Xbox Live features in your game.
+For Windows game development, you may choose to wait till you want access to Partner Center or when you want to use Xbox Live features in your game.
 
-For Xbox game development, you should sign up for a Dev Center account as it's needed to set up your retail Xbox for development. See [Step 2](#step-2-prepare-your-hardware-for-development) for details.
+For Xbox game development, you should sign up for a Partner Center account as it's needed to set up your retail Xbox for development. See [Step 2](#step-2-prepare-your-hardware-for-development) for details.
 
-For more information, see [Windows Dev Center dashboard](../publish/using-the-windows-dev-center-dashboard.md).
+For more information, see [Publish Windows apps and games](../publish/index.md).
 
 ## Useful links
 

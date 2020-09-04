@@ -1,20 +1,15 @@
 ---
-author: mcleanbyron
 ms.assetid: 1599605B-4243-4081-8D14-40F6F7734E25
 description: Use this method in the Microsoft Store analytics API to get aggregate acquisition data for an add-on during a given date range and other optional filters.
 title: Get add-on acquisitions
-ms.author: mcleans
 ms.date: 02/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp, Store services, Microsoft Store analytics API, add-on acquisitions
 ms.localizationpriority: medium
 ---
-
 # Get add-on acquisitions
 
-Use this method in the Microsoft Store analytics API to get aggregate acquisition data for add-ons for your app in JSON format during a given date range and other optional filters. This information is also available in the [Add-on acquisitions report](../publish/add-on-acquisitions-report.md) in the Windows Dev Center dashboard.
+Use this method in the Microsoft Store analytics API to get aggregate acquisition data for add-ons for your app in JSON format during a given date range and other optional filters. This information is also available in the [Add-on acquisitions report](../publish/add-on-acquisitions-report.md) in Partner Center.
 
 ## Prerequisites
 
@@ -75,7 +70,7 @@ For a list of the supported fields, see the following table. String values must 
 | gender | One of the following strings:<ul><li><strong>m</strong></li><li><strong>f</strong></li><li><strong>Unknown</strong></li></ul> |
 | market | A string that contains the ISO 3166 country code of the market where the acquisition occurred. |
 | osVersion | One of the following strings:<ul><li><strong>Windows Phone 7.5</strong></li><li><strong>Windows Phone 8</strong></li><li><strong>Windows Phone 8.1</strong></li><li><strong>Windows Phone 10</strong></li><li><strong>Windows 8</strong></li><li><strong>Windows 8.1</strong></li><li><strong>Windows 10</strong></li><li><strong>Unknown</strong></li></ul> |
-| deviceType | One of the following strings:<ul><li><strong>PC</strong></li><li><strong>Phone</strong></li><li><strong>Console</strong></li><li><strong>IoT</strong></li><li><strong>Holographic</strong></li><li><strong>Unknown</strong></li></ul> |
+| deviceType | One of the following strings:<ul><li><strong>PC</strong></li><li><strong>Phone</strong></li><li><strong>Console-Xbox One</strong></li><li><strong>Console-Xbox Series X</strong></li><li><strong>IoT</strong></li><li><strong>Holographic</strong></li><li><strong>Unknown</strong></li></ul> |
 | orderName | A string that specifies the name of the order for the promotional code that was used to acquire the add-on (this only applies if the user acquired the add-on by redeeming a promotional code). |
 
 

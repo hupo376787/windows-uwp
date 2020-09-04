@@ -1,13 +1,9 @@
 ---
-author: jwmsft
 description: Explains how to implement a XAML attached property as a dependency property and how to define the accessor convention that is necessary for your attached property to be usable in XAML.
 title: Custom attached properties
 ms.assetid: E9C0C57E-6098-4875-AA3E-9D7B36E160E0
-ms.author: jimwalk
 ms.date: 07/18/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp
 ms.localizationpriority: medium
 dev_langs:
@@ -16,7 +12,6 @@ dev_langs:
   - cppwinrt
   - cpp
 ---
-
 # Custom attached properties
 
 An *attached property* is a XAML concept. Attached properties are typically defined as a specialized form of dependency property. This topic explains how to implement an attached property as a dependency property and how to define the accessor convention that is necessary for your attached property to be usable in XAML.
@@ -27,18 +22,18 @@ We assume that you understand dependency properties from the perspective of a co
 
 ## Scenarios for attached properties
 
-You might create an attached property when there is a reason to have a property-setting mechanism available for classes other than the defining class. The most common scenarios for this are layout and services support. Examples of existing layout properties are [**Canvas.ZIndex**](https://msdn.microsoft.com/library/windows/apps/hh759773) and [**Canvas.Top**](https://msdn.microsoft.com/library/windows/apps/hh759772). In a layout scenario, elements that exist as child elements to layout-controlling elements can express layout requirements to their parent elements individually, each setting a property value that the parent defines as an attached property. An example of the services-support scenario in the Windows Runtime API is set of the attached properties of [**ScrollViewer**](https://msdn.microsoft.com/library/windows/apps/br209527), such as [**ScrollViewer.IsZoomChainingEnabled**](https://msdn.microsoft.com/library/windows/apps/br209561).
+You might create an attached property when there is a reason to have a property-setting mechanism available for classes other than the defining class. The most common scenarios for this are layout and services support. Examples of existing layout properties are [**Canvas.ZIndex**](/previous-versions/windows/silverlight/dotnet-windows-silverlight/cc190397(v=vs.95)) and [**Canvas.Top**](/dotnet/api/system.windows.controls.canvas.top). In a layout scenario, elements that exist as child elements to layout-controlling elements can express layout requirements to their parent elements individually, each setting a property value that the parent defines as an attached property. An example of the services-support scenario in the Windows Runtime API is set of the attached properties of [**ScrollViewer**](/uwp/api/Windows.UI.Xaml.Controls.ScrollViewer), such as [**ScrollViewer.IsZoomChainingEnabled**](/uwp/api/windows.ui.xaml.controls.scrollviewer.iszoomchainingenabled).
 
 > [!WARNING]
 > An existing limitation of the Windows Runtime XAML implementation is that you cannot animate your custom attached property.
 
 ## Registering a custom attached property
 
-If you are defining the attached property strictly for use on other types, the class where the property is registered does not have to derive from [**DependencyObject**](https://msdn.microsoft.com/library/windows/apps/br242356). But you do need to have the target parameter for accessors use **DependencyObject** if you follow the typical model of having your attached property also be a dependency property, so that you can use the backing property store.
+If you are defining the attached property strictly for use on other types, the class where the property is registered does not have to derive from [**DependencyObject**](/uwp/api/Windows.UI.Xaml.DependencyObject). But you do need to have the target parameter for accessors use **DependencyObject** if you follow the typical model of having your attached property also be a dependency property, so that you can use the backing property store.
 
-Define your attached property as a dependency property by declaring a **public** **static** **readonly** property of type [**DependencyProperty**](https://msdn.microsoft.com/library/windows/apps/br242362). You define this property by using the return value of the [**RegisterAttached**](https://msdn.microsoft.com/library/windows/apps/hh701833) method. The property name must match the attached property name you specify as the **RegisterAttached** *name* parameter, with the string "Property" added to the end. This is the established convention for naming the identifiers of dependency properties in relation to the properties that they represent.
+Define your attached property as a dependency property by declaring a **public** **static** **readonly** property of type [**DependencyProperty**](/uwp/api/Windows.UI.Xaml.DependencyProperty). You define this property by using the return value of the [**RegisterAttached**](/uwp/api/windows.ui.xaml.dependencyproperty.registerattached) method. The property name must match the attached property name you specify as the **RegisterAttached** *name* parameter, with the string "Property" added to the end. This is the established convention for naming the identifiers of dependency properties in relation to the properties that they represent.
 
-The main area where defining a custom attached property differs from a custom dependency property is in how you define the accessors or wrappers. Instead of the using the wrapper technique described in [Custom dependency properties](custom-dependency-properties.md), you must also provide static **Get***PropertyName* and **Set***PropertyName* methods as accessors for the attached property. The accessors are used mostly by the XAML parser, although any other caller can also use them to set values in non-XAML scenarios.
+The main area where defining a custom attached property differs from a custom dependency property is in how you define the accessors or wrappers. Instead of the using the wrapper technique described in [Custom dependency properties](custom-dependency-properties.md), you must also provide static **Get**_PropertyName_ and **Set**_PropertyName_ methods as accessors for the attached property. The accessors are used mostly by the XAML parser, although any other caller can also use them to set values in non-XAML scenarios.
 
 > [!IMPORTANT]
 > If you don't define the accessors correctly, the XAML processor can't access your attached property and anyone who tries to use it will probably get a XAML parser error. Also, design and coding tools often rely on the "\*Property" conventions for naming identifiers when they encounter a custom dependency property in a referenced assembly.
@@ -53,9 +48,9 @@ For Microsoft Visual Basic, it is this.
 
 `Public Shared Function Get`_PropertyName_`(ByVal target As DependencyObject) As `_valueType_`)`
 
-The *target* object can be of a more specific type in your implementation, but must derive from [**DependencyObject**](https://msdn.microsoft.com/library/windows/apps/br242356). The *valueType* return value can also be of a more specific type in your implementation. The basic **Object** type is acceptable, but often you'll want your attached property to enforce type safety. The use of typing in the getter and setter signatures is a recommended type-safety technique.
+The *target* object can be of a more specific type in your implementation, but must derive from [**DependencyObject**](/uwp/api/Windows.UI.Xaml.DependencyObject). The *valueType* return value can also be of a more specific type in your implementation. The basic **Object** type is acceptable, but often you'll want your attached property to enforce type safety. The use of typing in the getter and setter signatures is a recommended type-safety technique.
 
-The signature for the **Set***PropertyName* accessor must be this.
+The signature for the **Set**_PropertyName_ accessor must be this.
 
 `public static void Set`_PropertyName_` (DependencyObject target , `_valueType_` value)`
 
@@ -63,16 +58,16 @@ For Visual Basic, it is this.
 
 `Public Shared Sub Set`_PropertyName_` (ByVal target As DependencyObject, ByVal value As `_valueType_`)`
 
-The *target* object can be of a more specific type in your implementation, but must derive from [**DependencyObject**](https://msdn.microsoft.com/library/windows/apps/br242356). The *value* object and its *valueType* can be of a more specific type in your implementation. Remember that the value for this method is the input that comes from the XAML processor when it encounters your attached property in markup. There must be type conversion or existing markup extension support for the type you use, so that the appropriate type can be created from an attribute value (which is ultimately just a string). The basic **Object** type is acceptable, but often you'll want further type safety. To accomplish that, put type enforcement in the accessors.
+The *target* object can be of a more specific type in your implementation, but must derive from [**DependencyObject**](/uwp/api/Windows.UI.Xaml.DependencyObject). The *value* object and its *valueType* can be of a more specific type in your implementation. Remember that the value for this method is the input that comes from the XAML processor when it encounters your attached property in markup. There must be type conversion or existing markup extension support for the type you use, so that the appropriate type can be created from an attribute value (which is ultimately just a string). The basic **Object** type is acceptable, but often you'll want further type safety. To accomplish that, put type enforcement in the accessors.
 
 > [!NOTE]
-> It's also possible to define an attached property where the intended usage is through property element syntax. In that case you don't need type conversion for the values, but you do need to assure that the values you intend can be constructed in XAML. [**VisualStateManager.VisualStateGroups**](https://msdn.microsoft.com/library/windows/apps/hh738505) is an example of an existing attached property that only supports property element usage.
+> It's also possible to define an attached property where the intended usage is through property element syntax. In that case you don't need type conversion for the values, but you do need to assure that the values you intend can be constructed in XAML. [**VisualStateManager.VisualStateGroups**](/dotnet/api/system.windows.visualstatemanager) is an example of an existing attached property that only supports property element usage.
 
 ## Code example
 
-This example shows the dependency property registration (using the [**RegisterAttached**](https://msdn.microsoft.com/library/windows/apps/hh701833) method), as well as the **Get** and **Set** accessors, for a custom attached property. In the example, the attached property name is `IsMovable`. Therefore, the accessors must be named `GetIsMovable` and `SetIsMovable`. The owner of the attached property is a service class named `GameService` that doesn't have a UI of its own; its purpose is only to provide the attached property services when the **GameService.IsMovable** attached property is used.
+This example shows the dependency property registration (using the [**RegisterAttached**](/uwp/api/windows.ui.xaml.dependencyproperty.registerattached) method), as well as the **Get** and **Set** accessors, for a custom attached property. In the example, the attached property name is `IsMovable`. Therefore, the accessors must be named `GetIsMovable` and `SetIsMovable`. The owner of the attached property is a service class named `GameService` that doesn't have a UI of its own; its purpose is only to provide the attached property services when the **GameService.IsMovable** attached property is used.
 
-Defining the attached property in C++/CX is a bit more complex. You have to decide how to factor between the header and code file. Also, you should expose the identifier as a property with only a **get** accessor, for reasons discussed in [Custom dependency properties](custom-dependency-properties.md). In C++/CX you must define this property-field relationship explicitly rather than relying on .NET **readonly** keywording and implicit backing of simple properties. You also need to perform the registration of the attached property within a helper function that only gets run once, when the app first starts but before any XAML pages that need the attached property are loaded. The typical place to call your property registration helper functions for any and all dependency or attached properties is from within the **App** / [**Application**](https://msdn.microsoft.com/library/windows/apps/br242325) constructor in the code for your app.xaml file.
+Defining the attached property in C++/CX is a bit more complex. You have to decide how to factor between the header and code file. Also, you should expose the identifier as a property with only a **get** accessor, for reasons discussed in [Custom dependency properties](custom-dependency-properties.md). In C++/CX you must define this property-field relationship explicitly rather than relying on .NET **readonly** keywording and implicit backing of simple properties. You also need to perform the registration of the attached property within a helper function that only gets run once, when the app first starts but before any XAML pages that need the attached property are loaded. The typical place to call your property registration helper functions for any and all dependency or attached properties is from within the **App** / [**Application**](/uwp/api/windows.ui.xaml.application.-ctor) constructor in the code for your app.xaml file.
 
 ```csharp
 public class GameService : DependencyObject
@@ -119,19 +114,21 @@ End Class
 // GameService.idl
 namespace UserAndCustomControls
 {
+    [default_interface]
     runtimeclass GameService : Windows.UI.Xaml.DependencyObject
     {
         GameService();
         static Windows.UI.Xaml.DependencyProperty IsMovableProperty{ get; };
-        Boolean IsMovable;
+        static Boolean GetIsMovable(Windows.UI.Xaml.DependencyObject target);
+        static void SetIsMovable(Windows.UI.Xaml.DependencyObject target, Boolean value);
     }
 }
 
 // GameService.h
 ...
-    bool IsMovable(){ return winrt::unbox_value<bool>(GetValue(m_IsMovableProperty)); }
-    void IsMovable(bool value){ SetValue(m_IsMovableProperty, winrt::box_value(value)); }
-    Windows::UI::Xaml::DependencyProperty IsMovableProperty(){ return m_IsMovableProperty; }
+    static Windows::UI::Xaml::DependencyProperty IsMovableProperty() { return m_IsMovableProperty; }
+    static bool GetIsMovable(Windows::UI::Xaml::DependencyObject const& target) { return winrt::unbox_value<bool>(target.GetValue(m_IsMovableProperty)); }
+    static void SetIsMovable(Windows::UI::Xaml::DependencyObject const& target, bool value) { target.SetValue(m_IsMovableProperty, winrt::box_value(value)); }
 
 private:
     static Windows::UI::Xaml::DependencyProperty m_IsMovableProperty;
@@ -203,7 +200,10 @@ GameService::RegisterDependencyProperties() {
 }
 ```
 
-## Using your custom attached property in XAML
+## Setting your custom attached property from XAML markup
+
+> [!NOTE]
+> If you're using C++/WinRT, then skip to the following section ([Setting your custom attached property imperatively with C++/WinRT](#setting-your-custom-attached-property-imperatively-with-cwinrt)).
 
 After you have defined your attached property and included its support members as part of a custom type, you must then make the definitions available for XAML usage. To do this, you must map a XAML namespace that will reference the code namespace that contains the relevant class. In cases where you have defined the attached property as part of a library, you must include that library as part of the app package for the app.
 
@@ -229,11 +229,36 @@ If you are setting the property on an element that is also within the same mappe
 ```
 
 > [!NOTE]
-> If you are writing a XAML UI with C++, you must include the header for the custom type that defines the attached property, any time that a XAML page uses that type. Each XAML page has an associated .xaml.h code-behind header. This is where you should include (using **\#include**) the header for the definition of the attached property's owner type.
+> If you are writing a XAML UI with C++/CX, then you must include the header for the custom type that defines the attached property, any time that a XAML page uses that type. Each XAML page has an associated code-behind header (.xaml.h). This is where you should include (using **\#include**) the header for the definition of the attached property's owner type.
+
+## Setting your custom attached property imperatively with C++/WinRT
+
+If you're using C++/WinRT, then you can access a custom attached property from imperative code, but not from XAML markup. The code below shows how.
+
+```xaml
+<Image x:Name="gameServiceImage"/>
+```
+
+```cppwinrt
+// MainPage.h
+...
+#include "GameService.h"
+...
+
+// MainPage.cpp
+...
+MainPage::MainPage()
+{
+    InitializeComponent();
+
+    GameService::SetIsMovable(gameServiceImage(), true);
+}
+...
+```
 
 ## Value type of a custom attached property
 
-The type that is used as the value type of a custom attached property affects the usage, the definition, or both the usage and definition. The attached property's value type is declared in several places: in the signatures of both the **Get** and **Set** accessor methods, and also as the *propertyType* parameter of the [**RegisterAttached**](https://msdn.microsoft.com/library/windows/apps/hh701833) call.
+The type that is used as the value type of a custom attached property affects the usage, the definition, or both the usage and definition. The attached property's value type is declared in several places: in the signatures of both the **Get** and **Set** accessor methods, and also as the *propertyType* parameter of the [**RegisterAttached**](/uwp/api/windows.ui.xaml.dependencyproperty.registerattached) call.
 
 The most common value type for attached properties (custom or otherwise) is a simple string. This is because attached properties are generally intended for XAML attribute usage, and using a string as the value type keeps the properties lightweight. Other primitives that have native conversion to string methods, such as integer, double, or an enumeration value, are also common as value types for attached properties. You can use other value types—ones that don't support native string conversion—as the attached property value. However, this entails making a choice about either the usage or the implementation:
 
@@ -242,11 +267,11 @@ The most common value type for attached properties (custom or otherwise) is a si
 
 ## More about the **Canvas.Left** example
 
-In earlier examples of attached property usages we showed different ways to set the [**Canvas.Left**](https://msdn.microsoft.com/library/windows/apps/hh759771) attached property. But what does that change about how a [**Canvas**](https://msdn.microsoft.com/library/windows/apps/br209267) interacts with your object, and when does that happen? We'll examine this particular example further, because if you implement an attached property, it's interesting to see what else a typical attached property owner class intends to do with its attached property values if it finds them on other objects.
+In earlier examples of attached property usages we showed different ways to set the [**Canvas.Left**](/dotnet/api/system.windows.controls.canvas.left) attached property. But what does that change about how a [**Canvas**](/uwp/api/Windows.UI.Xaml.Controls.Canvas) interacts with your object, and when does that happen? We'll examine this particular example further, because if you implement an attached property, it's interesting to see what else a typical attached property owner class intends to do with its attached property values if it finds them on other objects.
 
-The main function of a [**Canvas**](https://msdn.microsoft.com/library/windows/apps/br209267) is to be an absolute-positioned layout container in UI. The children of a **Canvas** are stored in a base-class defined property [**Children**](https://msdn.microsoft.com/library/windows/apps/br227514). Of all the panels **Canvas** is the only one that uses absolute positioning. It would've bloated the object model of the common [**UIElement**](https://msdn.microsoft.com/library/windows/apps/br208911) type to add properties that might only be of concern to **Canvas** and those particular **UIElement** cases where they are child elements of a **UIElement**. Defining the layout control properties of a **Canvas** to be attached properties that any **UIElement** can use keeps the object model cleaner.
+The main function of a [**Canvas**](/uwp/api/Windows.UI.Xaml.Controls.Canvas) is to be an absolute-positioned layout container in UI. The children of a **Canvas** are stored in a base-class defined property [**Children**](/uwp/api/windows.ui.xaml.controls.panel.children). Of all the panels **Canvas** is the only one that uses absolute positioning. It would've bloated the object model of the common [**UIElement**](/uwp/api/Windows.UI.Xaml.UIElement) type to add properties that might only be of concern to **Canvas** and those particular **UIElement** cases where they are child elements of a **UIElement**. Defining the layout control properties of a **Canvas** to be attached properties that any **UIElement** can use keeps the object model cleaner.
 
-In order to be a practical panel, [**Canvas**](https://msdn.microsoft.com/library/windows/apps/br209267) has behavior that overrides the framework-level [**Measure**](https://msdn.microsoft.com/library/windows/apps/br208952) and [**Arrange**](https://msdn.microsoft.com/library/windows/apps/br208914) methods. This is where **Canvas** actually checks for attached property values on its children. Part of both the **Measure** and **Arrange** patterns is a loop that iterates over any content, and a panel has the [**Children**](https://msdn.microsoft.com/library/windows/apps/br227514) property that makes it explicit what's supposed to be considered the child of a panel. So the **Canvas** layout behavior iterates through these children, and makes static [**Canvas.GetLeft**](https://msdn.microsoft.com/library/windows/apps/br209269) and [**Canvas.GetTop**](https://msdn.microsoft.com/library/windows/apps/br209270) calls on each child to see whether those attached properties contain a non-default value (default is 0). These values are then used to absolutely position each child in the **Canvas** available layout space according to the specific values provided by each child, and committed using **Arrange**.
+In order to be a practical panel, [**Canvas**](/uwp/api/Windows.UI.Xaml.Controls.Canvas) has behavior that overrides the framework-level [**Measure**](/uwp/api/windows.ui.xaml.uielement.measure) and [**Arrange**](/uwp/api/windows.ui.xaml.uielement.arrange) methods. This is where **Canvas** actually checks for attached property values on its children. Part of both the **Measure** and **Arrange** patterns is a loop that iterates over any content, and a panel has the [**Children**](/uwp/api/windows.ui.xaml.controls.panel.children) property that makes it explicit what's supposed to be considered the child of a panel. So the **Canvas** layout behavior iterates through these children, and makes static [**Canvas.GetLeft**](/uwp/api/windows.ui.xaml.controls.canvas.getleft) and [**Canvas.GetTop**](/uwp/api/windows.ui.xaml.controls.canvas.gettop) calls on each child to see whether those attached properties contain a non-default value (default is 0). These values are then used to absolutely position each child in the **Canvas** available layout space according to the specific values provided by each child, and committed using **Arrange**.
 
 The code looks something like this pseudocode.
 
@@ -265,11 +290,11 @@ protected override Size ArrangeOverride(Size finalSize)
 ```
 
 > [!NOTE]
-> For more info on how panels work, see [XAML custom panels overview](https://msdn.microsoft.com/library/windows/apps/mt228351).
+> For more info on how panels work, see [XAML custom panels overview](../design/layout/custom-panels-overview.md).
 
 ## Related topics
 
-* [**RegisterAttached**](https://msdn.microsoft.com/library/windows/apps/hh701833)
+* [**RegisterAttached**](/uwp/api/windows.ui.xaml.dependencyproperty.registerattached)
 * [Attached properties overview](attached-properties-overview.md)
 * [Custom dependency properties](custom-dependency-properties.md)
 * [XAML overview](xaml-overview.md)

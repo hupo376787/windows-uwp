@@ -1,25 +1,22 @@
 ---
-author: Karl-Bridge-Microsoft
-Description: This topic describes the new Windows UI for selecting and manipulating text, images, and controls and provides user experience guidelines that should be considered when using these new selection and manipulation mechanisms in your UWP app.
+Description: This topic describes the new Windows UI for selecting and manipulating text, images, and controls and provides user experience guidelines that should be considered when using these new selection and manipulation mechanisms in your Windows app.
 title: Selecting text and images
 ms.assetid: d973ffd8-602e-47b5-ab0b-4b2a964ec53d
 label: Selecting text and images
 template: detail.hbs
 keywords: keyboard, text, input, user interactions
-ms.author: kbridge
 ms.date: 02/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
+
+
 ms.localizationpriority: medium
 ---
-
 # Selecting text and images
 
 
 This article describes selecting and manipulating text, images, and controls and provides user experience guidelines that should be considered when using these mechanisms in your apps.
 
-> **Important APIs**: [**Windows.UI.Xaml.Input**](https://msdn.microsoft.com/library/windows/apps/br227994), [**Windows.UI.Input**](https://msdn.microsoft.com/library/windows/apps/br242084)
+> **Important APIs**: [**Windows.UI.Xaml.Input**](/uwp/api/Windows.UI.Xaml.Input), [**Windows.UI.Input**](/uwp/api/Windows.UI.Input)
  
 
 
@@ -46,9 +43,9 @@ Text selection and manipulation is particularly susceptible to user experience c
 
 **Considerations and recommendations**
 
-Use the built-in controls exposed through the language frameworks in Windows to build apps that provide the full platform user interaction experience, including selection and manipulation behaviors. You'll find the interaction functionality of the built-in controls sufficient for the majority of UWP apps.
+Use the built-in controls exposed through the language frameworks in Windows to build apps that provide the full platform user interaction experience, including selection and manipulation behaviors. You'll find the interaction functionality of the built-in controls sufficient for the majority of Windows apps.
 
-When using standard UWP text controls, the selection behaviors and visuals described in this topic cannot be customized.
+When using standard Windows text controls, the selection behaviors and visuals described in this topic cannot be customized.
 
 **Text selection**
 
@@ -91,7 +88,7 @@ Follow the same procedures as for editable text to adjust the selection and disp
 
 **Object manipulation**
 
-Wherever possible, use the same (or similar) gripper resources as text selection when implementing custom object manipulation in a UWP app. This helps provide a consistent interaction experience across the platform.
+Wherever possible, use the same (or similar) gripper resources as text selection when implementing custom object manipulation in a Windows app. This helps provide a consistent interaction experience across the platform.
 
 For example, grippers can also be used in image processing apps that support resizing and cropping or media player apps that provide adjustable progress bars, as shown in the following images.
 
@@ -105,30 +102,24 @@ For example, grippers can also be used in image processing apps that support res
 
 ## Related articles
 
+### For developers
 
+- [Custom user interactions](../layout/index.md)
 
-**For developers**
-* [Custom user interactions](https://msdn.microsoft.com/library/windows/apps/mt185599)
+### Samples
 
-**Samples**
-* [Basic input sample](http://go.microsoft.com/fwlink/p/?LinkID=620302)
-* [Low latency input sample](http://go.microsoft.com/fwlink/p/?LinkID=620304)
-* [User interaction mode sample](http://go.microsoft.com/fwlink/p/?LinkID=619894)
-* [Focus visuals sample](http://go.microsoft.com/fwlink/p/?LinkID=619895)
+- [Basic input sample](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/BasicInput)
+- [Low latency input sample](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/LowLatencyInput)
+- [User interaction mode sample](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/UserInteractionMode)
+- [Focus visuals sample](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/XamlFocusVisuals)
 
-**Archive samples**
-* [Input: XAML user input events sample](http://go.microsoft.com/fwlink/p/?linkid=226855)
-* [Input: Device capabilities sample](http://go.microsoft.com/fwlink/p/?linkid=231530)
-* [Input: Touch hit testing sample](http://go.microsoft.com/fwlink/p/?linkid=231590)
-* [XAML scrolling, panning, and zooming sample](http://go.microsoft.com/fwlink/p/?linkid=251717)
-* [Input: Simplified ink sample](http://go.microsoft.com/fwlink/p/?linkid=246570)
-* [Input: Windows 8 gestures sample](http://go.microsoft.com/fwlink/p/?LinkId=264995)
-* [Input: Manipulations and gestures (C++) sample](http://go.microsoft.com/fwlink/p/?linkid=231605)
-* [DirectX touch input sample](http://go.microsoft.com/fwlink/p/?LinkID=231627)
- 
+### Archive samples
 
- 
-
-
-
-
+- [Input: XAML user input events sample](https://github.com/microsoftarchive/msdn-code-gallery-microsoft/tree/411c271e537727d737a53fa2cbe99eaecac00cc0/Official%20Windows%20Platform%20Sample/Input%20XAML%20user%20input%20events%20sample)
+- [Input: Device capabilities sample](https://github.com/microsoftarchive/msdn-code-gallery-microsoft/tree/411c271e537727d737a53fa2cbe99eaecac00cc0/Official%20Windows%20Platform%20Sample/Windows%208%20app%20samples/%5BC%23%5D-Windows%208%20app%20samples/C%23/Windows%208%20app%20samples/Input%20Device%20capabilities%20sample%20(Windows%208))
+- [Input: Touch hit testing sample](https://github.com/microsoftarchive/msdn-code-gallery-microsoft/tree/411c271e537727d737a53fa2cbe99eaecac00cc0/Official%20Windows%20Platform%20Sample/Windows%208%20desktop%20samples/%5BC%2B%2B%5D-Windows%208%20desktop%20samples/C%2B%2B/Windows%208%20desktop%20samples/Input%20Touch%20hit%20testing%20sample)
+- [XAML scrolling, panning, and zooming sample](https://github.com/microsoftarchive/msdn-code-gallery-microsoft/tree/411c271e537727d737a53fa2cbe99eaecac00cc0/Official%20Windows%20Platform%20Sample/Universal%20Windows%20app%20samples/111487-Universal%20Windows%20app%20samples/XAML%20scrolling%2C%20panning%2C%20and%20zooming%20sample)
+- [Input: Simplified ink sample](https://github.com/microsoftarchive/msdn-code-gallery-microsoft/tree/411c271e537727d737a53fa2cbe99eaecac00cc0/Official%20Windows%20Platform%20Sample/Input%20Simplified%20ink%20sample)
+- [Input: Windows 8 gestures sample](/samples/browse/?redirectedfrom=MSDN-samples)
+- [Input: Manipulations and gestures sample](https://github.com/microsoftarchive/msdn-code-gallery-microsoft/tree/411c271e537727d737a53fa2cbe99eaecac00cc0/Official%20Windows%20Platform%20Sample/Input%20Gestures%20and%20manipulations%20with%20GestureRecognizer)
+- [DirectX touch input sample](https://github.com/microsoftarchive/msdn-code-gallery-microsoft/tree/411c271e537727d737a53fa2cbe99eaecac00cc0/Official%20Windows%20Platform%20Sample/Windows%208%20app%20samples/%5BC%2B%2B%5D-Windows%208%20app%20samples/C%2B%2B/Windows%208%20app%20samples/DirectX%20touch%20input%20sample%20(Windows%208))

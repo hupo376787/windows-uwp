@@ -1,27 +1,23 @@
 ---
-author: jwmsft
 ms.assetid: 6e9b9ff2-234b-6f63-0975-1afb2d86ba1a
 title: Composition effects
 description: The effect APIs enable developers to customize how their UI is rendered.
-ms.author: jimwalk
 ms.date: 02/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp
 ms.localizationpriority: medium
 ---
 # Composition effects
 
-The [**Windows.UI.Composition**](https://msdn.microsoft.com/library/windows/apps/Dn706878) APIs allows real-time effects to be applied to images and UI with animatable effect properties. In this overview, we’ll run through the functionality available that allows effects to be applied to a composition visual.
+The [**Windows.UI.Composition**](/uwp/api/Windows.UI.Composition) APIs allows real-time effects to be applied to images and UI with animatable effect properties. In this overview, we’ll run through the functionality available that allows effects to be applied to a composition visual.
 
-To support [Universal Windows Platform (UWP)](https://msdn.microsoft.com/library/windows/apps/dn726767.aspx) consistency for developers describing effects in their applications, composition effects leverage Win2D’s IGraphicsEffect interface to use effect descriptions via the [Microsoft.Graphics.Canvas.Effects](http://microsoft.github.io/Win2D/html/N_Microsoft_Graphics_Canvas_Effects.htm) Namespace.
+To support [Universal Windows Platform (UWP)](../get-started/universal-application-platform-guide.md) consistency for developers describing effects in their applications, composition effects leverage Win2D’s IGraphicsEffect interface to use effect descriptions via the [Microsoft.Graphics.Canvas.Effects](https://microsoft.github.io/Win2D/html/N_Microsoft_Graphics_Canvas_Effects.htm) Namespace.
 
 Brush effects are used to paint areas of an application by applying effects to a set of existing images. Windows 10 composition effect APIs are focused on Sprite Visuals. The SpriteVisual allows for flexibility and interplay in color, image and effect creation. The SpriteVisual is a composition visual type that can fill a 2D rectangle with a brush. The visual defines the bounds of the rectangle and the brush defines the pixels used to paint the rectangle.
 
 Effect brushes are used on composition tree visuals whose content comes from the output of an effect graph. Effects can reference existing surfaces/textures, but not the output of other composition trees.
 
-Effects can also be applied to XAML UIElements using an effect brush with [**XamlCompositionBrushBase**](https://docs.microsoft.com/uwp/api/windows.ui.xaml.media.xamlcompositionbrushbase).
+Effects can also be applied to XAML UIElements using an effect brush with [**XamlCompositionBrushBase**](/uwp/api/windows.ui.xaml.media.xamlcompositionbrushbase).
 
 ## Effect Features
 
@@ -37,11 +33,11 @@ Currently composition supports the following effects:
 
 | Effect               | Description                                                                                                                                                                                                                |
 |----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 2D affine transform  | Applies a 2D affine transform matrix to an image. We used this effect to animate alpha mask in our effect [samples](http://go.microsoft.com/fwlink/?LinkId=785341).       |
-| Arithmetic composite | Combines two images using a flexible equation. We used arithmetic composite to create a crossfade effect in our [samples](http://go.microsoft.com/fwlink/?LinkId=785341). |
-| Blend effect         | Creates a blend effect that combines two images. Composition provides 21 of the 26 [blend modes](http://microsoft.github.io/Win2D/html/T_Microsoft_Graphics_Canvas_Effects_BlendEffectMode.htm) supported in Win2D.        |
+| 2D affine transform  | Applies a 2D affine transform matrix to an image. We used this effect to animate alpha mask in our effect [samples](https://github.com/microsoft/WindowsCompositionSamples/tree/master/Demos/Reference Demos/BasicCompositonEffects).       |
+| Arithmetic composite | Combines two images using a flexible equation. We used arithmetic composite to create a crossfade effect in our [samples](https://github.com/microsoft/WindowsCompositionSamples/tree/master/Demos/Reference Demos/BasicCompositonEffects). |
+| Blend effect         | Creates a blend effect that combines two images. Composition provides 21 of the 26 [blend modes](https://microsoft.github.io/Win2D/html/T_Microsoft_Graphics_Canvas_Effects_BlendEffectMode.htm) supported in Win2D.        |
 | Color source         | Generates an image containing a solid color.                                                                                                                                                                               |
-| Composite            | Combines two images. Composition provides all 13 [composite modes](http://microsoft.github.io/Win2D/html/T_Microsoft_Graphics_Canvas_CanvasComposite.htm) supported in Win2D.                                              |
+| Composite            | Combines two images. Composition provides all 13 [composite modes](https://microsoft.github.io/Win2D/html/T_Microsoft_Graphics_Canvas_CanvasComposite.htm) supported in Win2D.                                              |
 | Contrast             | Increases or decreases the contrast of an image.                                                                                                                                                                           |
 | Exposure             | Increases or decreases the exposure of an image.                                                                                                                                                                           |
 | Grayscale            | Converts an image to monochromatic gray.                                                                                                                                                                                   |
@@ -52,7 +48,7 @@ Currently composition supports the following effects:
 | Sepia                | Converts an image to sepia tones.                                                                                                                                                                                          |
 | Temperature and tint | Adjusts the temperature and/or tint of an image.                                                                                                                                                                           |
 
-See Win2D’s [Microsoft.Graphics.Canvas.Effects](http://microsoft.github.io/Win2D/html/N_Microsoft_Graphics_Canvas_Effects.htm) Namespace for more detailed information. Effects not supported in composition are noted as \[NoComposition\].
+See Win2D’s [Microsoft.Graphics.Canvas.Effects](https://microsoft.github.io/Win2D/html/N_Microsoft_Graphics_Canvas_Effects.htm) Namespace for more detailed information. Effects not supported in composition are noted as \[NoComposition\].
 
 ### Chaining Effects
 
@@ -121,11 +117,11 @@ Start the animation on the Saturation property of the effect like this:
 catEffect.Properties.StartAnimation("saturationEffect.Saturation", effectAnimation);
 ```
 
-See the [Desaturation - Animation sample](http://go.microsoft.com/fwlink/?LinkId=785342) for effect properties animated with key frames and the [AlphaMask sample](http://go.microsoft.com/fwlink/?LinkId=785343) for use of effects and expressions.
+See the [Desaturation - Animation sample](https://github.com/microsoft/WindowsCompositionSamples/tree/master/Demos/Reference Demos/BasicCompositonEffects/Desaturation - Animation) for effect properties animated with key frames and the [AlphaMask sample](https://github.com/microsoft/WindowsCompositionSamples/tree/master/Demos/Reference Demos/BasicCompositonEffects/AlphaMask) for use of effects and expressions.
 
 ### Multiple Effect Instances with Independent Properties
 
-By specifying that a parameter should be dynamic during effect compilation, the parameter can then be changed on a per-effect instance basis. This allows two Visuals to use the same effect but be rendered with different effect properties. See the ColorSource and Blend [sample](http://go.microsoft.com/fwlink/?LinkId=785344) for more information.
+By specifying that a parameter should be dynamic during effect compilation, the parameter can then be changed on a per-effect instance basis. This allows two Visuals to use the same effect but be rendered with different effect properties. See the ColorSource and Blend [sample](https://github.com/microsoft/WindowsCompositionSamples/tree/master/Demos/Reference Demos/BasicCompositonEffects/ColorSource and Blend) for more information.
 
 ## Getting Started with Composition Effects
 
@@ -140,7 +136,7 @@ This quick start tutorial shows you how to make use of some of the basic capabil
 
 ### Installing Visual Studio
 
-- If you don't have a supported version of Visual Studio installed, go to the Visual Studio Downloads page [here](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx).
+- If you don't have a supported version of Visual Studio installed, go to the Visual Studio Downloads page [here](https://visualstudio.microsoft.com/downloads/download-visual-studio-vs).
 
 ### Creating a new project
 
@@ -166,7 +162,7 @@ In the next few steps we will use composition API’s to apply a saturation effe
 ![Source image](images/composition-cat-source.png)
 ### Setting your Composition Basics
 
-See the [Composition Visual Tree Sample](http://go.microsoft.com/fwlink/?LinkId=785345) on our GitHub for an example of how to set up Windows.UI.Composition Compositor, root ContainerVisual, and associate with the Core Window.
+See the [Composition Visual Tree Sample](https://github.com/microsoft/WindowsCompositionSamples/tree/master/Demos/Reference Demos/CompositionImageSample) on our GitHub for an example of how to set up Windows.UI.Composition Compositor, root ContainerVisual, and associate with the Core Window.
 
 ```cs
 _compositor = new Compositor();
@@ -235,12 +231,12 @@ LoadImage(surfaceBrush);
 
 ## More Information
 
-- [Microsoft – Composition GitHub](https://github.com/Microsoft/composition)
-- [**Windows.UI.Composition**](https://msdn.microsoft.com/library/windows/apps/Dn706878)
+- [Microsoft – Composition GitHub](https://github.com/microsoft/WindowsCompositionSamples)
+- [**Windows.UI.Composition**](/uwp/api/Windows.UI.Composition)
 - [Windows Composition team on Twitter](https://twitter.com/wincomposition)
 - [Composition Overview](https://blogs.windows.com/buildingapps/2015/12/08/awaken-your-creativity-with-the-new-windows-ui-composition/)
 - [Visual Tree Basics](composition-visual-tree.md)
 - [Composition Brushes](composition-brushes.md)
-- [XamlCompositionBrushBase](https://docs.microsoft.com/uwp/api/windows.ui.xaml.media.xamlcompositionbrushbase)
+- [XamlCompositionBrushBase](/uwp/api/windows.ui.xaml.media.xamlcompositionbrushbase)
 - [Animation Overview](composition-animation.md)
 - [Composition native DirectX and Direct2D interoperation with BeginDraw and EndDraw](composition-native-interop.md)

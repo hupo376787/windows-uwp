@@ -1,15 +1,11 @@
 ---
-author: serenaz
 Description: Used to select or deselect action items. Can be used for a single list item or for multiple list items.
 title: Check boxes
 ms.assetid: 6231A806-287D-43EE-BD8D-39D2FF761914
 label: Check boxes
 template: detail.hbs
-ms.author: sezhen
 ms.date: 05/19/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp
 pm-contact: kisai
 design-contact: kimsea
@@ -19,13 +15,17 @@ ms.localizationpriority: medium
 ---
 # Check boxes
 
- 
-
 A check box is used to select or deselect action items. It can be used for a single item or for a list of multiple items that a user can choose from. The control has three selection states: unselected, selected, and indeterminate. Use the indeterminate state when a collection of sub-choices have both unselected and selected states.
 
-> **Important APIs**: [CheckBox class](https://msdn.microsoft.com/library/windows/apps/br209316), [Checked event](https://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.primitives.togglebutton.checked.aspx), [IsChecked property](https://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.primitives.togglebutton.ischecked.aspx)
-
 ![Example of check box states](images/templates-checkbox-states-default.png)
+
+**Get the Windows UI Library**
+
+|  |  |
+| - | - |
+| ![WinUI logo](images/winui-logo-64x64.png) | Windows UI Library 2.2 or later includes a new template for this control that uses rounded corners. For more info, see [Corner radius](../style/rounded-corner.md). WinUI is a NuGet package that contains new controls and UI features for Windows apps. For more info, including installation instructions, see [Windows UI Library](/uwp/toolkits/winui/). |
+
+> **Platform APIs:** [CheckBox class](/uwp/api/Windows.UI.Xaml.Controls.CheckBox), [Checked event](/uwp/api/windows.ui.xaml.controls.primitives.togglebutton.checked), [IsChecked property](/uwp/api/windows.ui.xaml.controls.primitives.togglebutton.ischecked)
 
 
 ## Is this the right control?
@@ -52,12 +52,12 @@ Both **check box** and **radio button** controls let the user select from a list
 
 <table>
 <tr>
-<td><img src="images/xaml-controls-gallery-sm.png" alt="XAML controls gallery"></img></td>
+<td><img src="images/xaml-controls-gallery-app-icon-sm.png" alt="XAML controls gallery"></img></td>
 <td>
     <p>If you have the <strong style="font-weight: semi-bold">XAML Controls Gallery</strong> app installed, click here to <a href="xamlcontrolsgallery:/item/CheckBox">open the app and see the CheckBox in action</a>.</p>
     <ul>
     <li><a href="https://www.microsoft.com/store/productId/9MSVH128X2ZT">Get the XAML Controls Gallery app (Microsoft Store)</a></li>
-    <li><a href="https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/XamlUIBasics">Get the source code (GitHub)</a></li>
+    <li><a href="https://github.com/Microsoft/Xaml-Controls-Gallery">Get the source code (GitHub)</a></li>
     </ul>
 </td>
 </tr>
@@ -65,7 +65,7 @@ Both **check box** and **radio button** controls let the user select from a list
 
 ## Create a checkbox
 
-To assign a label to the checkbox, set the [Content](https://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.contentcontrol.content.aspx) property. The label displays next to the checkbox.
+To assign a label to the checkbox, set the [Content](/uwp/api/windows.ui.xaml.controls.contentcontrol.content) property. The label displays next to the checkbox.
 
 This XAML creates a single check box that is used to agree to terms of service before a form can be submitted. 
 
@@ -83,11 +83,33 @@ checkBox1.Content = "I agree to the terms of service.";
 
 ### Bind to IsChecked
 
-Use the [IsChecked](https://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.primitives.togglebutton.ischecked.aspx) property to determine whether the check box is checked or cleared. You can bind the value of the IsChecked property to another binary value. However, because IsChecked is a [nullable](https://msdn.microsoft.com/library/windows/apps/b3h38hb0.aspx) boolean value, you must use a value converter to bind it to a boolean value.
+Use the [IsChecked](/uwp/api/windows.ui.xaml.controls.primitives.togglebutton.ischecked) property to determine whether the check box is checked or cleared. You can bind the value of the IsChecked property to another binary value.
+However, because IsChecked is a [nullable](/dotnet/api/system.nullable-1) boolean value, you must either use a cast or a value converter to bind it to a boolean property. This depends on the actual binding type you are using and you will find examples below for each possible type. 
 
-In this example, the **IsChecked** property of the check box to agree to terms of service is bound to the [IsEnabled](https://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.control.isenabled.aspx) property of a Submit button. The Submit button is enabled only if the terms of service are agreed to.
+In this example, the **IsChecked** property of the check box to agree to terms of service is bound to the [IsEnabled](/uwp/api/windows.ui.xaml.controls.control.isenabled) property of a Submit button. The Submit button is enabled only if the terms of service are agreed to.
 
-> Note&nbsp;&nbsp;We only show the relevant code here. For more info about data binding and value converters, see [Data binding overview](../../data-binding/data-binding-quickstart.md).
+#### Using x:Bind
+
+> Note&nbsp;&nbsp;We only show the relevant code here. For more info about data binding see [Data binding overview](../../data-binding/data-binding-quickstart.md). Specific {x:Bind} info (such as casting) is detailed [here](../../xaml-platform/x-bind-markup-extension.md).
+
+```xaml
+<StackPanel Grid.Column="2" Margin="40">
+    <CheckBox x:Name="termsOfServiceCheckBox" Content="I agree to the terms of service."/>
+    <Button Content="Submit" 
+            IsEnabled="{x:Bind (x:Boolean)termsOfServiceCheckBox.IsChecked, Mode=OneWay}"/>
+</StackPanel>
+```
+
+If the check box can also be in the **indeterminate** state, we use the binding's [FallbackValue](/uwp/api/windows.ui.xaml.data.binding.fallbackvalue) property to specify the boolean value representing this state. In this case, we don't want to have the Submit button enabled as well:
+
+```xaml
+<Button Content="Submit" 
+        IsEnabled="{x:Bind (x:Boolean)termsOfServiceCheckBox.IsChecked, Mode=OneWay, FallbackValue=False}"/>
+```
+
+#### Using x:Bind or Binding
+
+> Note&nbsp;&nbsp;We only show the relevant code here using {x:Bind}. In the {Binding} example, we would replace {x:Bind} with {Binding}. For more info about data binding, value converters and differences between the {x:Bind} and {Binding} markup extensions, see [Data binding overview](../../data-binding/data-binding-quickstart.md).
 
 ```xaml
 ...
@@ -104,6 +126,7 @@ In this example, the **IsChecked** property of the check box to agree to terms o
                         Converter={StaticResource NullableBooleanToBooleanConverter}, Mode=OneWay}"/>
 </StackPanel>
 ```
+
 
 ```csharp
 public class NullableBooleanToBooleanConverter : IValueConverter
@@ -128,7 +151,7 @@ public class NullableBooleanToBooleanConverter : IValueConverter
 
 ### Handle Click and Checked events
 
-To perform an action when the check box state changes, you can handle either the [Click](https://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.primitives.buttonbase.click.aspx) event, or the [Checked](https://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.primitives.togglebutton.checked.aspx) and [Unchecked](https://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.primitives.togglebutton.unchecked.aspx) events. 
+To perform an action when the check box state changes, you can handle either the [Click](/uwp/api/windows.ui.xaml.controls.primitives.buttonbase.click) event, or the [Checked](/uwp/api/windows.ui.xaml.controls.primitives.togglebutton.checked) and [Unchecked](/uwp/api/windows.ui.xaml.controls.primitives.togglebutton.unchecked) events. 
 
 The **Click** event occurs whenever the checked state changes. If you handle the Click event, use the **IsChecked** property to determine the state of the check box.
 
@@ -181,7 +204,7 @@ private void toppingsCheckbox_Click(object sender, RoutedEventArgs e)
 
 ### Use the indeterminate state
 
-The CheckBox control inherits from [ToggleButton](https://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.primitives.togglebutton.aspx) and can have three states: 
+The CheckBox control inherits from [ToggleButton](/uwp/api/windows.ui.xaml.controls.primitives.togglebutton) and can have three states: 
 
 State | Property | Value
 ------|----------|------
@@ -189,7 +212,7 @@ checked | IsChecked | **true**
 unchecked | IsChecked | **false** 
 indeterminate | IsChecked | **null** 
 
-For the check box to report the indeterminate state, you must set the [IsThreeState](https://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.primitives.togglebutton.isthreestate.aspx) property to **true**. 
+For the check box to report the indeterminate state, you must set the [IsThreeState](/uwp/api/windows.ui.xaml.controls.primitives.togglebutton.isthreestate) property to **true**. 
 
 When options can be grouped, you can use an indeterminate check box to represent the whole group. Use the check box's indeterminate state when a user selects some, but not all, sub-items in the group.
 
@@ -298,10 +321,10 @@ private void SetCheckedState()
 
 ## Get the sample code
 
-- [XAML Controls Gallery sample](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/XamlUIBasics) - See all the XAML controls in an interactive format.
+- [XAML Controls Gallery sample](https://github.com/Microsoft/Xaml-Controls-Gallery) - See all the XAML controls in an interactive format.
 
 ## Related articles
 
-- [CheckBox class](https://msdn.microsoft.com/library/windows/apps/br209316) 
+- [CheckBox class](/uwp/api/Windows.UI.Xaml.Controls.CheckBox) 
 - [Radio buttons](radio-button.md)
 - [Toggle switch](toggles.md)

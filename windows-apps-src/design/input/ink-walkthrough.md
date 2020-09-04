@@ -1,23 +1,20 @@
 ---
-author: Karl-Bridge-Microsoft
 ms.assetid: 
-title: Support ink in your UWP app
-description: A step by step tutorial for adding ink support to your UWP app.
-keywords: ink, inking, tuorial
-ms.author: kbridge
+title: Support ink in your Windows app
+description: Learn how to support writing and drawing with Windows Ink in a basic Universal Windows Platform (UWP) app by following this step by step tutorial.
+keywords: ink, inking, tutorial
 ms.date: 01/25/2018
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
+
+
 ms.localizationpriority: medium
 ---
-
-# Tutorial: Support ink in your UWP app
+# Tutorial: Support ink in your Windows app
 
 ![Surface Pen](images/ink/ink-hero-small.png)  
-*Surface Pen* (available for purchase at the [Microsoft Store](https://aka.ms/purchasesurfacepen)).
+*Surface Pen* (available for purchase at the [Microsoft Store](https://www.microsoft.com/p/surface-pen/8zl5c82qmg6b)).
 
-This tutorial steps through how to create a basic Universal Windows Platform (UWP) app that supports writing and drawing with Windows Ink. We use snippets from a sample app, which you can download from GitHub (see [Sample code](#sample-code)), to demonstrate the various features and associated Windows Ink APIs (see [Components of the Windows Ink platform](#components-of-the-windows-ink-platform)) discussed in each step.
+This tutorial steps through how to create a basic Windows app that supports writing and drawing with Windows Ink. We use snippets from a sample app, which you can download from GitHub (see [Sample code](#sample-code)), to demonstrate the various features and associated Windows Ink APIs (see [Components of the Windows Ink platform](#components-of-the-windows-ink-platform)) discussed in each step.
 
 We focus on the following:
 * Adding basic ink support
@@ -26,7 +23,7 @@ We focus on the following:
 * Supporting basic shape recognition
 * Saving and loading ink
 
-For more detail about implementing these features, see [Pen interactions and Windows Ink in UWP apps](https://docs.microsoft.com/windows/uwp/input/pen-and-stylus-interactions).
+For more detail about implementing these features, see [Pen interactions and Windows Ink in Windows apps](./pen-and-stylus-interactions.md).
 
 ## Introduction
 
@@ -35,11 +32,12 @@ With Windows Ink, you can provide your customers with the digital equivalent of 
 ## Prerequisites
 
 * A computer (or a virtual machine) running the current version of Windows 10
-* [Visual Studio 2017 and the RS2 SDK](https://developer.microsoft.com/windows/downloads)
+* [Visual Studio 2019 and the RS2 SDK](https://developer.microsoft.com/windows/downloads)
 * [Windows 10 SDK (10.0.15063.0)](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
-* If you're new to Universal Windows Platform (UWP) app development with Visual Studio, have a look through these topics before you start this tutorial:  
-    * [Get set up](https://docs.microsoft.com/windows/uwp/get-started/get-set-up)
-    * [Create a "Hello, world" app (XAML)](https://docs.microsoft.com/windows/uwp/get-started/create-a-hello-world-app-xaml-universal)
+* Depending on your configuration, you might have to install the [Microsoft.NETCore.UniversalWindowsPlatform](https://www.nuget.org/packages/Microsoft.NETCore.UniversalWindowsPlatform) NuGet package and enable **Developer mode** in your system settings (Settings -> Update & Security -> For developers -> Use developer features).
+* If you're new to Windows app development with Visual Studio, have a look through these topics before you start this tutorial:  
+    * [Get set up](../../get-started/get-set-up.md)
+    * [Create a "Hello, world" app (XAML)](../../get-started/create-a-hello-world-app-xaml-universal.md)
 * **[OPTIONAL]** A digital pen and a computer with a display that supports input from that digital pen.
 
 > [!NOTE] 
@@ -48,7 +46,7 @@ With Windows Ink, you can provide your customers with the digital equivalent of 
 ## Sample code
 Throughout this tutorial, we use a sample ink app to demonstrate the concepts and functionality discussed.
 
-Download this Visual Studio sample and source code from [GitHub](https://github.com/) at [windows-appsample-get-started-ink sample](https://aka.ms/appsample-ink):
+Download this Visual Studio sample and source code from [GitHub](https://github.com/) at [windows-appsample-get-started-ink sample](https://github.com/Microsoft/Windows-tutorials-inputs-and-devices/tree/master/GettingStarted-Ink):
 
 1. Select the green **Clone or download** button  
 ![Cloning the repo](images/ink/ink-clone.png)
@@ -60,14 +58,14 @@ Download this Visual Studio sample and source code from [GitHub](https://github.
 
 ## Components of the Windows Ink platform
 
-These objects provide the bulk of the inking experience for UWP apps.
+These objects provide the bulk of the inking experience for Windows apps.
 
 | Component | Description |
 | --- | --- |
-| [**InkCanvas**](https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.inkcanvas) | A XAML UI platform control that, by default, receives and displays all input from a pen as either an ink stroke or an erase stroke. |
-| [**InkPresenter**](https://msdn.microsoft.com/library/windows/apps/dn922011) | A code-behind object, instantiated along with an [**InkCanvas**](https://msdn.microsoft.com/library/windows/apps/dn858535) control (exposed through the [**InkCanvas.InkPresenter**](https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.inkcanvas.InkPresenter) property). This object provides all default inking functionality exposed by the [**InkCanvas**](https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.inkcanvas), along with a comprehensive set of APIs for additional customization and personalization. |
-| [**InkToolbar**](https://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.inktoolbar.aspx) | A XAML UI platform control containing a customizable and extensible collection of buttons that activate ink-related features in an associated [**InkCanvas**](https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.inkcanvas). |
-| [**IInkD2DRenderer**](https://msdn.microsoft.com/library/mt147263)<br/>We do not cover this functionality here, for more information, see the [Complex ink sample](http://go.microsoft.com/fwlink/p/?LinkID=620314). | Enables the rendering of ink strokes onto the designated Direct2D device context of a Universal Windows app, instead of the default [**InkCanvas**](https://msdn.microsoft.com/library/windows/apps/dn858535) control. |
+| [**InkCanvas**](/uwp/api/windows.ui.xaml.controls.inkcanvas) | A XAML UI platform control that, by default, receives and displays all input from a pen as either an ink stroke or an erase stroke. |
+| [**InkPresenter**](/uwp/api/Windows.UI.Input.Inking.InkPresenter) | A code-behind object, instantiated along with an [**InkCanvas**](/uwp/api/Windows.UI.Xaml.Controls.InkCanvas) control (exposed through the [**InkCanvas.InkPresenter**](/uwp/api/windows.ui.xaml.controls.inkcanvas.InkPresenter) property). This object provides all default inking functionality exposed by the [**InkCanvas**](/uwp/api/windows.ui.xaml.controls.inkcanvas), along with a comprehensive set of APIs for additional customization and personalization. |
+| [**InkToolbar**](/uwp/api/Windows.UI.Xaml.Controls.InkToolbar) | A XAML UI platform control containing a customizable and extensible collection of buttons that activate ink-related features in an associated [**InkCanvas**](/uwp/api/windows.ui.xaml.controls.inkcanvas). |
+| [**IInkD2DRenderer**](/windows/desktop/api/inkrenderer/nn-inkrenderer-iinkd2drenderer)<br/>We do not cover this functionality here, for more information, see the [Complex ink sample](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/ComplexInk). | Enables the rendering of ink strokes onto the designated Direct2D device context of a Universal Windows app, instead of the default [**InkCanvas**](/uwp/api/Windows.UI.Xaml.Controls.InkCanvas) control. |
 
 ## Step 1: Run the sample
 
@@ -84,7 +82,7 @@ The app window opens, and after a splash screen appears for a few seconds, you�
 
 ![Empty app](images/ink/ink-app-step1-empty-small.png)
 
-Okay, we now have the basic UWP app that we’ll use throughout the rest of this tutorial. In the following steps, we add our ink functionality.
+Okay, we now have the basic Windows app that we’ll use throughout the rest of this tutorial. In the following steps, we add our ink functionality.
 
 ## Step 2: Use InkCanvas to support basic inking
 
@@ -92,10 +90,10 @@ Perhaps you've probably already noticed that the app, in it's initial form, does
 
 Let's fix that little shortcoming in this step.
 
-To add basic inking functionality, just place an [**InkCanvas**](https://msdn.microsoft.com/library/windows/apps/dn858535) UWP platform control on the appropriate page in your app.
+To add basic inking functionality, just place an [**InkCanvas**](/uwp/api/Windows.UI.Xaml.Controls.InkCanvas) control on the appropriate page in your app.
 
 > [!NOTE]
-> An InkCanvas has default [**Height**](https://docs.microsoft.com/uwp/api/windows.ui.xaml.frameworkelement.Height) and [**Width**](https://docs.microsoft.com/uwp/api/windows.ui.xaml.frameworkelement.Width) properties of zero, unless it is the child of an element that automatically sizes its child elements. 
+> An InkCanvas has default [**Height**](/uwp/api/windows.ui.xaml.frameworkelement.Height) and [**Width**](/uwp/api/windows.ui.xaml.frameworkelement.Width) properties of zero, unless it is the child of an element that automatically sizes its child elements. 
 
 ### In the sample:
 1. Open the MainPage.xaml.cs file.
@@ -127,14 +125,14 @@ Now run the app again. Go ahead and scribble, write your name, or (if you're hol
 
 You'll notice that, by default, ink is supported for pen input only. If you try to write or draw with your finger, your mouse, or your touchpad, you'll be disappointed.
 
-To turn that frown upside down , you need to add a second line of code. This time it’s in the code-behind for the XAML file in which you declared your [**InkCanvas**](https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.inkcanvas). 
+To turn that frown upside down , you need to add a second line of code. This time it’s in the code-behind for the XAML file in which you declared your [**InkCanvas**](/uwp/api/windows.ui.xaml.controls.inkcanvas). 
 
-In this step, we introduce the [**InkPresenter**](https://docs.microsoft.com/uwp/api/windows.ui.input.inking.inkpresenter) object, which provides finer-grained management of the input, processing, and rendering of ink input (standard and modified) on your [**InkCanvas**](https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.inkcanvas).
+In this step, we introduce the [**InkPresenter**](/uwp/api/windows.ui.input.inking.inkpresenter) object, which provides finer-grained management of the input, processing, and rendering of ink input (standard and modified) on your [**InkCanvas**](/uwp/api/windows.ui.xaml.controls.inkcanvas).
 
 > [!NOTE]
 > Standard ink input (pen tip or eraser tip/button) is not modified with a secondary hardware affordance, such as a pen barrel button, right mouse button, or similar mechanism. 
 
-To enable mouse and touch inking, set the [**InputDeviceTypes**](https://docs.microsoft.com/uwp/api/windows.ui.input.inking.inkpresenter.InputDeviceTypes) property of the [**InkPresenter**](https://docs.microsoft.com/uwp/api/windows.ui.input.inking.inkpresenter) to the combination of [**CoreInputDeviceTypes**](https://docs.microsoft.com/uwp/api/windows.ui.core.coreinputdevicetypes) values that you want.
+To enable mouse and touch inking, set the [**InputDeviceTypes**](/uwp/api/windows.ui.input.inking.inkpresenter.InputDeviceTypes) property of the [**InkPresenter**](/uwp/api/windows.ui.input.inking.inkpresenter) to the combination of [**CoreInputDeviceTypes**](/uwp/api/windows.ui.core.coreinputdevicetypes) values that you want.
 
 ### In the sample:
 1. Open the MainPage.xaml.cs file.
@@ -151,15 +149,15 @@ To enable mouse and touch inking, set the [**InputDeviceTypes**](https://docs.mi
 Run the app again and you'll find that all your finger-painting-on-a-computer-screen dreams have come true!
 
 > [!NOTE]
-> When specifying input device types, you must indicate support for each specific input type (including pen), because setting this property overrides the default [**InkCanvas**](https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.inkcanvas) setting.
+> When specifying input device types, you must indicate support for each specific input type (including pen), because setting this property overrides the default [**InkCanvas**](/uwp/api/windows.ui.xaml.controls.inkcanvas) setting.
 
 ## Step 4: Add an ink toolbar
 
-The [**InkToolbar**](https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.inktoolbar) is a UWP platform control that provides a customizable and extensible collection of buttons for activating ink-related features. 
+The [**InkToolbar**](/uwp/api/windows.ui.xaml.controls.inktoolbar) is a UWP platform control that provides a customizable and extensible collection of buttons for activating ink-related features. 
 
-By default, the [**InkToolbar**](https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.inktoolbar) includes a basic set of buttons that let users quickly select between a pen, a pencil, a highlighter, or an eraser, any of which can be used together with a stencil (ruler or protractor). The pen, pencil, and highlighter buttons each also provide a flyout for selecting ink color and stroke size.
+By default, the [**InkToolbar**](/uwp/api/windows.ui.xaml.controls.inktoolbar) includes a basic set of buttons that let users quickly select between a pen, a pencil, a highlighter, or an eraser, any of which can be used together with a stencil (ruler or protractor). The pen, pencil, and highlighter buttons each also provide a flyout for selecting ink color and stroke size.
 
-To add a default [**InkToolbar**](https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.inktoolbar) to an inking app, just place it on the same page as your [**InkCanvas**](https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.inkcanvas) and associate the two controls.
+To add a default [**InkToolbar**](/uwp/api/windows.ui.xaml.controls.inktoolbar) to an inking app, just place it on the same page as your [**InkCanvas**](/uwp/api/windows.ui.xaml.controls.inkcanvas) and associate the two controls.
 
 ### In the sample
 1. Open the MainPage.xaml file.
@@ -175,9 +173,9 @@ To add a default [**InkToolbar**](https://docs.microsoft.com/uwp/api/windows.ui.
 ```
 
 > [!NOTE]
-> To keep the UI and code as uncluttered and simple as possible, we use a basic Grid layout and declare the [**InkToolbar**](https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.inktoolbar) after the [**InkCanvas**](https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.inkcanvas) in a grid row. If you declare it before the [**InkCanvas**](https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.inkcanvas), the [**InkToolbar**](https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.inktoolbar) is rendered first, below the canvas and inaccessible to the user.  
+> To keep the UI and code as uncluttered and simple as possible, we use a basic Grid layout and declare the [**InkToolbar**](/uwp/api/windows.ui.xaml.controls.inktoolbar) after the [**InkCanvas**](/uwp/api/windows.ui.xaml.controls.inkcanvas) in a grid row. If you declare it before the [**InkCanvas**](/uwp/api/windows.ui.xaml.controls.inkcanvas), the [**InkToolbar**](/uwp/api/windows.ui.xaml.controls.inktoolbar) is rendered first, below the canvas and inaccessible to the user.  
 
-Now run the app again to see the [**InkToolbar**](https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.inktoolbar) and try out some of the tools.
+Now run the app again to see the [**InkToolbar**](/uwp/api/windows.ui.xaml.controls.inktoolbar) and try out some of the tools.
 
 ![InkToolbar from Sketchpad ing the Ink Workspace](images/ink/ink-inktoolbar-default-small.png)
 
@@ -191,11 +189,11 @@ Now run the app again to see the [**InkToolbar**](https://docs.microsoft.com/uwp
 </td>
 <td>
 
-Here's an example of a custom **[InkToolbar](https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.inktoolbar)** (from Sketchpad in the Windows Ink Workspace).
+Here's an example of a custom **[InkToolbar](/uwp/api/windows.ui.xaml.controls.inktoolbar)** (from Sketchpad in the Windows Ink Workspace).
 
 ![InkToolbar from Sketchpad in the Ink Workspace](images/ink/ink-inktoolbar-sketchpad-small.png)
 
-For more details about customizing an [InkToolbar](https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.inktoolbar), see [Add an InkToolbar to a Universal Windows Platform (UWP) inking app](ink-toolbar.md).
+For more details about customizing an [InkToolbar](/uwp/api/windows.ui.xaml.controls.inktoolbar), see [Add an InkToolbar to a Windows app inking app](ink-toolbar.md).
 
 </td>
 </tr>
@@ -458,11 +456,11 @@ For more details about using the clipboard with ink, see [Store and retrieve Win
 
 ## Summary
 
-Congratulations, you've completed the **Input: Support ink in your UWP app** tutorial ! We showed you the basic code required for supporting ink in your UWP apps, and how to provide some of the richer user experiences supported by the Windows Ink platform.
+Congratulations, you've completed the **Input: Support ink in your Windows app** tutorial ! We showed you the basic code required for supporting ink in your Windows apps, and how to provide some of the richer user experiences supported by the Windows Ink platform.
 
 ## Related articles
 
-* [Pen interactions and Windows Ink in UWP apps](pen-and-stylus-interactions.md)
+* [Pen interactions and Windows Ink in Windows apps](pen-and-stylus-interactions.md)
 
 ### Samples
 
@@ -472,9 +470,9 @@ Congratulations, you've completed the **Input: Support ink in your UWP app** tut
 * [Save and load ink strokes from the clipboard](https://github.com/MicrosoftDocs/windows-topic-specific-samples/archive/uwp-ink-store-clipboard.zip)
 * [Ink toolbar location and orientation sample (basic)](https://github.com/MicrosoftDocs/windows-topic-specific-samples/archive/uwp-ink-toolbar-handedness.zip)
 * [Ink toolbar location and orientation sample (dynamic)](https://github.com/MicrosoftDocs/windows-topic-specific-samples/archive/uwp-ink-toolbar-handedness-dynamic.zip)
-* [Simple ink sample (C#/C++)](http://go.microsoft.com/fwlink/p/?LinkID=620312)
-* [Complex ink sample (C++)](http://go.microsoft.com/fwlink/p/?LinkID=620314)
-* [Ink sample (JavaScript)](http://go.microsoft.com/fwlink/p/?LinkID=620308)
-* [Get Started Tutorial: Support ink in your UWP app](https://aka.ms/appsample-ink)
-* [Coloring book sample](https://aka.ms/cpubsample-coloringbook)
-* [Family notes sample](https://aka.ms/cpubsample-familynotessample)
+* [Simple ink sample (C#/C++)](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/SimpleInk)
+* [Complex ink sample (C++)](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/ComplexInk)
+* [Ink sample (JavaScript)](https://github.com/microsoftarchive/msdn-code-gallery-microsoft/tree/411c271e537727d737a53fa2cbe99eaecac00cc0/Official%20Windows%20Platform%20Sample/Windows%208%20app%20samples/%5BJavaScript%5D-Windows%208%20app%20samples/JavaScript/Windows%208%20app%20samples/Input%20Ink%20sample%20(Windows%208))
+* [Get Started Tutorial: Support ink in your Windows app](https://github.com/Microsoft/Windows-tutorials-inputs-and-devices/tree/master/GettingStarted-Ink)
+* [Coloring book sample](https://github.com/Microsoft/Windows-appsample-coloringbook)
+* [Family notes sample](https://github.com/Microsoft/Windows-appsample-familynotes)

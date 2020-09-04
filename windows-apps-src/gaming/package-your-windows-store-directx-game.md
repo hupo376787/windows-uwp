@@ -1,17 +1,12 @@
 ---
-author: mtoepke
 title: Package your Universal Windows Platform (UWP) DirectX game
 description: Larger Universal Windows Platform (UWP) games, especially those that support multiple languages with region-specific assets or feature optional high-definition assets, can easily balloon to large sizes.
 ms.assetid: 68254203-c43c-684f-010a-9cfa13a32a77
-ms.author: mtoepke
 ms.date: 02/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp, games, directx, package
 ms.localizationpriority: medium
 ---
-
 #  Package your Universal Windows Platform (UWP) DirectX game
 
 Larger Universal Windows Platform (UWP) games, especially those that support multiple languages with region-specific assets or feature optional high-definition assets, can easily balloon to large sizes. In this topic, learn how to use app packages and app bundles to customize your app so that your customers only receive the resources they actually need.
@@ -21,7 +16,7 @@ In addition to the app package model, Windows 10 supports app bundles which gro
 -   App packs contain platform-specific executables and libraries. Typically, a UWP game can have up to three app packs: one each for the x86, x64, and ARM CPU architectures. All code and data specific to that hardware platform must be included in its app pack. An app pack should also contain all the core assets for the game to run with a baseline level of fidelity and performance.
 -   Resource packs contain optional or expanded platform-agnostic data, such as game assets (textures, meshes, sound, text). A UWP game can have one or more resource packs, including resource packs for high-definition assets or textures, DirectX feature level 11+ resources, or language-specific assets and resources.
 
-For more information about app bundles and app packs, read [Defining app resources](https://msdn.microsoft.com/library/windows/apps/xaml/hh965321).
+For more information about app bundles and app packs, read [Defining app resources](/previous-versions/windows/apps/hh965321(v=win.10)).
 
 While you can place all content in your app packs, this is inefficient and redundant. Why have the same large texture file replicated three times for each platform, especially for ARM platforms that may not use it? A good goal is to try to minimize what your customer has to download, so they can start playing your game sooner, save space on their device, and avoid possible metered bandwidth costs.
 
@@ -50,7 +45,7 @@ Resources for resource packaging are specified in one of two basic ways:
 
 -   Asset files have the same filename, and the resource pack specific versions are placed in specific named directories. These directory names are reserved by the system. For example, \\en-us, \\scale-140, \\dxfl-dx11.
 -   Asset files are stored in folders with arbitrary names, but the files are named with a common label that is appended with strings reserved by the system to denote language or other qualifiers. Specifically, the qualifier strings are affixed to the generalized filename after an underscore (“\_”). For example, \\assets\\menu\_option1\_lang-en-us.png, \\assets\\menu\_option1\_scale-140.png, \\assets\\coolsign\_dxfl-dx11.dds. You may also combine these strings. For example, \\assets\\menu\_option1\_scale-140\_lang-en-us.png.
-    > **Note**   When used in a filename rather than alone in a directory name, a language qualifier must take the form "lang-<tag>", e.g."lang-en-us" as described in [Tailor your resources for language, scale, and other qualifiers](../app-resources/tailor-resources-lang-scale-contrast.md).
+    > **Note**   When used in a filename rather than alone in a directory name, a language qualifier must take the form "lang-<tag>", for example, "lang-en-us" as described in [Tailor your resources for language, scale, and other qualifiers](../app-resources/tailor-resources-lang-scale-contrast.md).
 
      
 
@@ -82,7 +77,7 @@ When configuring your app to support localized assets for multiple languages, yo
 
      
 
--   Use the APIs in [**Windows.ApplicationModel.Resources**](https://msdn.microsoft.com/library/windows/apps/br206022) and [**Windows.ApplicationModel.Resources.Core**](https://msdn.microsoft.com/library/windows/apps/br225039) to specify and load the locale-specific resources for you app. Also, use asset references that do no include the specific locale, since these APIs determine the correct locale based on the user's settings and then retrieve the correct resource for the user.
+-   Use the APIs in [**Windows.ApplicationModel.Resources**](/uwp/api/Windows.ApplicationModel.Resources) and [**Windows.ApplicationModel.Resources.Core**](/uwp/api/Windows.ApplicationModel.Resources.Core) to specify and load the locale-specific resources for you app. Also, use asset references that do no include the specific locale, since these APIs determine the correct locale based on the user's settings and then retrieve the correct resource for the user.
 -   In Microsoft Visual Studio 2015, select **PROJECT->Store->Create App Package...** and create the package.
 
 ## Defining scaling factor resource packs
@@ -99,7 +94,7 @@ When configuring your app to support resource packs for different UWP app scalin
 
      
 
--   Use the APIs in [**Windows.ApplicationModel.Resources.Core**](https://msdn.microsoft.com/library/windows/apps/br225039) to load the assets. Asset references should be generalized (no suffix), leaving out the specific scale variation. The system will retrieve the appropriate scale asset for the display and the user's settings.
+-   Use the APIs in [**Windows.ApplicationModel.Resources.Core**](/uwp/api/Windows.ApplicationModel.Resources.Core) to load the assets. Asset references should be generalized (no suffix), leaving out the specific scale variation. The system will retrieve the appropriate scale asset for the display and the user's settings.
 -   In Visual Studio 2015, select **PROJECT->Store->Create App Package...** and create the package.
 
 ## Defining DirectX feature level resource packs
@@ -109,7 +104,7 @@ DirectX feature levels correspond to GPU feature sets for prior and current vers
 
 Your baseline app pack should use the baseline texture compression formats: BC1, BC2, or BC3. These formats can be consumed by any UWP device, from low-end ARM platforms up to dedicated multi-GPU workstations and media computers.
 
-Texture format support at DirectX feature level 10 or higher should be added in a resource pack to conserve local disk space and download bandwidth. This enables using the more advanced compression schemes for 11, like BC6H and BC7. (For more details, see [Texture block compression in Direct3D 11](https://msdn.microsoft.com/library/windows/desktop/hh308955).) These formats are more efficient for the high-resolution texture assets supported by modern GPUs, and using them improves the look, performance, and space requirements of your game on high-end platforms.
+Texture format support at DirectX feature level 10 or higher should be added in a resource pack to conserve local disk space and download bandwidth. This enables using the more advanced compression schemes for 11, like BC6H and BC7. (For more details, see [Texture block compression in Direct3D 11](/windows/desktop/direct3d11/texture-block-compression-in-direct3d-11).) These formats are more efficient for the high-resolution texture assets supported by modern GPUs, and using them improves the look, performance, and space requirements of your game on high-end platforms.
 
 | DirectX feature level | Supported texture compression |
 |-----------------------|-------------------------------|
@@ -162,7 +157,7 @@ When configuring your app to support resource packs for different DirectX featur
     );
     ```
 
--   Use the APIs in [**Windows.ApplicationModel.Resources.Core**](https://msdn.microsoft.com/library/windows/apps/br225039) to load the resources. Asset references should be generalized (no suffix), leaving out the feature level. However, unlike language and scale, the system does not automatically determine which feature level is optimal for a given display; that is left to you to determine based on code logic. Once you make that determination, use the APIs to inform the OS of the preferred feature level. The system will then be able to retrieve the correct asset based on that preference. Here is a code sample that shows how to inform your app of the current DirectX feature level for the platform:
+-   Use the APIs in [**Windows.ApplicationModel.Resources.Core**](/uwp/api/Windows.ApplicationModel.Resources.Core) to load the resources. Asset references should be generalized (no suffix), leaving out the feature level. However, unlike language and scale, the system does not automatically determine which feature level is optimal for a given display; that is left to you to determine based on code logic. Once you make that determination, use the APIs to inform the OS of the preferred feature level. The system will then be able to retrieve the correct asset based on that preference. Here is a code sample that shows how to inform your app of the current DirectX feature level for the platform:
     
     ```cpp
     // Set the current UI thread's MRT ResourceContext's DXFeatureLevel with the right DXFL. 
@@ -190,7 +185,7 @@ When configuring your app to support resource packs for different DirectX featur
 
      
 
--   Now, use the [**ResourceManager**](https://msdn.microsoft.com/library/windows/apps/br206078) to locate the file that matches current DirectX feature level. The **ResourceManager** returns a [**ResourceMap**](https://msdn.microsoft.com/library/windows/apps/br206089), which you query with [**ResourceMap::GetValue**](https://msdn.microsoft.com/library/windows/apps/br206098) (or [**ResourceMap::TryGetValue**](https://msdn.microsoft.com/library/windows/apps/jj655438)) and a supplied [**ResourceContext**](https://msdn.microsoft.com/library/windows/apps/br206064). This returns a [**ResourceCandidate**](https://msdn.microsoft.com/library/windows/apps/br206051) that most closely matches the DirectX feature level that was specified by calling [**SetGlobalQualifierValue**](https://msdn.microsoft.com/library/windows/apps/mt622101).
+-   Now, use the [**ResourceManager**](/uwp/api/Windows.ApplicationModel.Resources.Core.ResourceManager) to locate the file that matches current DirectX feature level. The **ResourceManager** returns a [**ResourceMap**](/uwp/api/Windows.ApplicationModel.Resources.Core.ResourceMap), which you query with [**ResourceMap::GetValue**](/uwp/api/windows.applicationmodel.resources.core.resourcemap.getvalue) (or [**ResourceMap::TryGetValue**](/uwp/api/windows.applicationmodel.resources.core.resourcemap.trygetvalue)) and a supplied [**ResourceContext**](/uwp/api/Windows.ApplicationModel.Resources.Core.ResourceContext). This returns a [**ResourceCandidate**](/uwp/api/Windows.ApplicationModel.Resources.Core.ResourceCandidate) that most closely matches the DirectX feature level that was specified by calling [**SetGlobalQualifierValue**](/uwp/api/windows.applicationmodel.resources.core.resourcecontext.setglobalqualifiervalue).
     
     ```cpp
     // An explicit ResourceContext is needed to match the DirectX feature level for the display on which the current view is presented.
@@ -215,14 +210,10 @@ When configuring your app to support resource packs for different DirectX featur
 ## Related topics
 
 
-* [Defining app resources](https://msdn.microsoft.com/library/windows/apps/xaml/hh965321)
-* [Packaging apps](https://msdn.microsoft.com/library/windows/apps/mt270969)
-* [App packager (MakeAppx.exe)](https://msdn.microsoft.com/library/windows/desktop/hh446767)
+* [Defining app resources](/previous-versions/windows/apps/hh965321(v=win.10))
+* [Packaging apps](../packaging/index.md)
+* [App packager (MakeAppx.exe)](/windows/desktop/appxpkg/make-appx-package--makeappx-exe-)
 
  
 
  
-
-
-
-

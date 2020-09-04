@@ -1,19 +1,14 @@
 ---
-author: stevewhims
 Description: Use the Windows.Globalization.DateTimeFormatting API with custom templates and patterns to display dates and times in exactly the format you wish.
 title: Use patterns to format dates and times
 ms.assetid: 012028B3-9DA2-4E72-8C0E-3E06BEC3B3FE
 label: Use patterns to format dates and times
 template: detail.hbs
-ms.author: stwhi
 ms.date: 11/09/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp, globalization, localizability, localization
 ms.localizationpriority: medium
 ---
-
 # Use templates and patterns to format dates and times
 
 Use classes in the [**Windows.Globalization.DateTimeFormatting**](/uwp/api/windows.globalization.datetimeformatting?branch=live) namespace with custom templates and patterns to display dates and times in exactly the format you wish.
@@ -38,7 +33,7 @@ var dateFormatter = new Windows.Globalization.DateTimeFormatting.DateTimeFormatt
 
 This creates a formatter based on the language and region value of the current context. The order of the components in a format template doesn't matter; the formatter displays them in the right order for the current language. So, it displays "January 1" for English (United States), "1 janvier" for French (France), and "1月1日" for Japanese.
 
-On the other hand, a format pattern is culture-specific. Let's acccess the format pattern for our format template.
+On the other hand, a format pattern is culture-specific. Let's access the format pattern for our format template.
 
 ```csharp
 IReadOnlyList<string> monthDayPatterns = dateFormatter.Patterns;
@@ -97,7 +92,7 @@ Suppose you wish to display the current month and day together with the current 
 June 25 | 1:38 PM
 ```
 
-The date part corresponds to the "month day" format template, and the time part corresponds to the "hour minute" format template. So, you can construct formatters for the relevant date and time format templates, and then concatenate their ouput together using a localizable format string.
+The date part corresponds to the "month day" format template, and the time part corresponds to the "hour minute" format template. So, you can construct formatters for the relevant date and time format templates, and then concatenate their output together using a localizable format string.
 
 ```csharp
 var dateToFormat = System.DateTime.Now;
@@ -140,4 +135,4 @@ string output = patternFormatter.Format(System.DateTime.Now);
 
 ## Related topics
 
-* [Date and time formatting sample](http://go.microsoft.com/fwlink/p/?LinkId=231618)
+* [Date and time formatting sample](https://github.com/microsoftarchive/msdn-code-gallery-microsoft/tree/411c271e537727d737a53fa2cbe99eaecac00cc0/Official%20Windows%20Platform%20Sample/Windows%208%20app%20samples/%5BC%23%5D-Windows%208%20app%20samples/C%23/Windows%208%20app%20samples/Date%20and%20time%20formatting%20sample%20(Windows%208))

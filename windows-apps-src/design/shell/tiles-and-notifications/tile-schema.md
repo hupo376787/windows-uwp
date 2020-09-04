@@ -1,19 +1,14 @@
 ---
-author: anbare
 Description: The following article describes all of the properties and elements within tile content.
 title: Tile content schema
 ms.assetid: 7CBC3BD5-D9C3-4781-8BD0-1F28039E1FA8
 label: Tile content schema
 template: detail.hbs
-ms.author: mijacobs
 ms.date: 07/28/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp, tile, tile notification, tile content, schema, tile payload
 ms.localizationpriority: medium
 ---
-
 # Tile content schema
 
  
@@ -25,11 +20,11 @@ If you would rather use raw XML instead of the [Notifications library](https://w
 [TileContent](#tilecontent)
 * [TileVisual](#tilevisual)
   * [TileBinding](#tilebinding)
-    * [TileBindingContentAdaptive](#TileBindingContentAdaptive)
-    * [TileBindingContentIconic](#TileBindingContentIconic)
-    * [TileBindingContentContact](#TileBindingContentContact)
-    * [TileBindingContentPeople](#TileBindingContentPeople)
-    * [TileBindingContentPhotos](#TileBindingContentPhotos)
+    * [TileBindingContentAdaptive](#tilebindingcontentadaptive)
+    * [TileBindingContentIconic](#tilebindingcontenticonic)
+    * [TileBindingContentContact](#tilebindingcontentcontact)
+    * [TileBindingContentPeople](#tilebindingcontentpeople)
+    * [TileBindingContentPhotos](#tilebindingcontentphotos)
 
 
 ## TileContent
@@ -49,7 +44,7 @@ The visual portion of tiles contains the visual specifications for all tile size
 | **TileMedium** | [TileBinding](#tilebinding) | false | Provide an optional medium binding to specify content for the medium tile size. |
 | **TileWide** | [TileBinding](#tilebinding) | false | Provide an optional wide binding to specify content for the wide tile size. |
 | **TileLarge** | [TileBinding](#tilebinding) | false | Provide an optional large binding to specify content for the large tile size. |
-| **Branding** | [TileBranding](#tilebranding) | false | The form that the tile should use to display the app's brand. By default, inherits branding from the default tile. |
+| **Branding** | TileBranding | false | The form that the tile should use to display the app's brand. By default, inherits branding from the default tile. |
 | **DisplayName** | string | false | An optional string to override the tile's display name while showing this notification. |
 | **Arguments** | string | false | New in Anniversary Update: App-defined data that is passed back to your app via the TileActivatedInfo property on LaunchActivatedEventArgs when the user launches your app from the Live Tile. This allows you to know which tile notifications your user saw when they tapped your Live Tile. On devices without the Anniversary Update, this will simply be ignored. |
 | **LockDetailedStatus1** | string | false | If you specify this, you must also provide a TileWide binding. This is the first line of text that will be displayed on the lock screen if the user has selected your tile as their detailed status app. |
@@ -65,8 +60,8 @@ The binding object contains the visual content for a specific tile size.
 
 | Property | Type | Required | Description |
 |---|---|---|---|
-| **Content** | [ITileBindingContent](#itilebindingcontent) | false | The visual content to display on the tile. One of [TileBindingContentAdaptive](#tilebindingcontentadaptive), [TileBindingContentIconic](#TileBindingContentIconic), [TileBindingContentContact](#TileBindingContentContact), [TileBindingContentPeople](#TileBindingContentPeople), or [TileBindingContentPhotos](#TileBindingContentPhotos). |
-| **Branding** | [TileBranding](#tilebranding) | false | The form that the tile should use to display the app's brand. By default, inherits branding from the default tile. |
+| **Content** | [ITileBindingContent](#itilebindingcontent) | false | The visual content to display on the tile. One of [TileBindingContentAdaptive](#tilebindingcontentadaptive), [TileBindingContentIconic](#tilebindingcontenticonic), [TileBindingContentContact](#tilebindingcontentcontact), [TileBindingContentPeople](#tilebindingcontentpeople), or [TileBindingContentPhotos](#tilebindingcontentphotos). |
+| **Branding** | TileBranding | false | The form that the tile should use to display the app's brand. By default, inherits branding from the default tile. |
 | **DisplayName** | string | false | An optional string to override the tile's display name for this tile size. |
 | **Arguments** | string | false | New in Anniversary Update: App-defined data that is passed back to your app via the TileActivatedInfo property on LaunchActivatedEventArgs when the user launches your app from the Live Tile. This allows you to know which tile notifications your user saw when they tapped your Live Tile. On devices without the Anniversary Update, this will simply be ignored. |
 | **BaseUri** | Uri | false | A default base URL that is combined with relative URLs in image source attributes. |
@@ -79,11 +74,11 @@ Marker interface for tile binding content. These let you choose what you want to
 
 | Implementations |
 | --- |
-| [TileBindingContentAdaptive](#TileBindingContentAdaptive) |
-| [TileBindingContentIconic](#TileBindingContentIconic) |
-| [TileBindingContentContact](#TileBindingContentContact) |
-| [TileBindingContentPeople](#TileBindingContentPeople) |
-| [TileBindingContentPhotos](#TileBindingContentPhotos) |
+| [TileBindingContentAdaptive](#tilebindingcontentadaptive) |
+| [TileBindingContentIconic](#tilebindingcontenticonic) |
+| [TileBindingContentContact](#tilebindingcontentcontact) |
+| [TileBindingContentPeople](#tilebindingcontentpeople) |
+| [TileBindingContentPhotos](#tilebindingcontentphotos) |
 
 
 ## TileBindingContentAdaptive
@@ -91,7 +86,7 @@ Supported on all sizes. This is the recommended way of specifying your tile cont
 
 | Property | Type | Required | Description |
 |---|---|---|---|
-| **Children** | IList<[ITileBindingContentAdaptiveChild](#ITileBindingContentAdaptiveChild)> | false | The inline visual elements. [AdaptiveText](#adaptivetext), [AdaptiveImage](#adaptiveimage), and [AdaptiveGroup](#adaptivegroup) objects can be added. The children are displayed in a vertical StackPanel fashion. |
+| **Children** | IList<ITileBindingContentAdaptiveChild> | false | The inline visual elements. [AdaptiveText](#adaptivetext), [AdaptiveImage](#adaptiveimage), and [AdaptiveGroup](#adaptivegroup) objects can be added. The children are displayed in a vertical StackPanel fashion. |
 | **BackgroundImage** | [TileBackgroundImage](#tilebackgroundimage) | false | An optional background image that gets displayed behind all the Tile content, full bleed. |
 | **PeekImage** | [TilePeekImage](#tilepeekimage) | false | An optional peek image that animates in from the top of the Tile. |
 | **TextStacking** | [TileTextStacking](#tiletextstacking) | false | Controls the text stacking (vertical alignment) of the children content as a whole. |
@@ -331,4 +326,4 @@ A basic text element used on various special templates.
 ## Related topics
 
 * [Quickstart: Send a local tile notification](../tiles-and-notifications/sending-a-local-tile-notification.md)
-* [Notifications library on GitHub](https://github.com/Microsoft/UWPCommunityToolkit/tree/dev/Notifications)
+* [Notifications library on GitHub](https://github.com/windows-toolkit/WindowsCommunityToolkit/tree/dev/Notifications)

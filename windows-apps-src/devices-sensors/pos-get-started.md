@@ -1,21 +1,16 @@
 ﻿---
-author: TerryWarwick
 title: Getting started with Point of Service
-description: This article contains information about getting started with the point of service UWP APIs.
-ms.author: jken
-ms.date: 05/1/2018
+description: This article contains information about getting started with the point of service Windows Runtime APIs.
+ms.date: 05/02/2018
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp, point of service, pos
 ms.localizationpriority: medium
 ---
-
 # Getting started with Point of Service
 
 Point of service, point of sale, or Point of Service devices are computer peripherals used to facilitate retail transactions. Examples of Point of Service devices include electronic cash registers, barcode scanners, magnetic stripe readers, and receipt printers.
 
-Here you’ll learn the basics of interfacing with Point of Service devices by using the Universal Windows Platform (UWP) PointOfService APIs. We’ll cover device enumeration, checking device capabilities, claiming devices, and device sharing. We use a barcode scanner device as an example, but almost all the guidance here applies to any UWP-compatible Point of Service device. (For a list of supported devices, see [Point of Service device support](pos-device-support.md)).
+Here you’ll learn the basics of interfacing with Point of Service devices by using the Windows Runtime Point of Service APIs. We’ll cover device enumeration, checking device capabilities, claiming devices, and device sharing. We use a barcode scanner device as an example, but almost all the guidance here applies to any UWP-compatible Point of Service device. (For a list of supported devices, see [Point of Service device support](pos-device-support.md)).
 
 ## Finding and connecting to Point of Service peripherals
 
@@ -204,7 +199,7 @@ if (claimedBarcodeScanner != null)
 ```
 
 > [!NOTE]
-> Both the claimed and unclaimed Point of Service device classes implement the [IClosable interface](https://docs.microsoft.com/uwp/api/windows.foundation.iclosable). If a device is connected to an app via network or Bluetooth, both the claimed and unclaimed objects must be disposed of before another app can connect.
+> Both the claimed and unclaimed Point of Service device classes implement the [IClosable interface](/uwp/api/windows.foundation.iclosable). If a device is connected to an app via network or Bluetooth, both the claimed and unclaimed objects must be disposed of before another app can connect.
 
 ## See also
 + [Barcode scanner sample](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/BarcodeScanner)
@@ -212,4 +207,3 @@ if (claimedBarcodeScanner != null)
 + [Line display sample](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/LineDisplay)
 + [Magnetic stripe reader sample](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/MagneticStripeReader)
 + [POSPrinter sample](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/PosPrinter)
-

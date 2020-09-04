@@ -1,20 +1,15 @@
 ---
 title: Ambient lighting
-description: Ambient lighting provides constant lighting for a scene.
+description: Learn how ambient lighting provides constant lighting for a scene and learn how to set ambient lighting in Direct3D using C++.
 ms.assetid: C34FA65A-3634-4A4B-B183-4CDA89F4DC95
 keywords:
 - Ambient lighting
-author: michaelfromredmond
-ms.author: mithom
 ms.date: 02/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 ms.localizationpriority: medium
 ---
 
 # Ambient lighting
-
 
 Ambient lighting provides constant lighting for a scene. It lights all object vertices the same because it is not dependent on any other lighting factors such as vertex normals, light direction, light position, range, or attenuation. Ambient lighting is constant in all directions and it colors all pixels of an object the same. It is fast to calculate but leaves objects looking flat and unrealistic.
 
@@ -58,7 +53,7 @@ L<sub>ai</sub> is the ambient color of the ith light in the scene. Each Direct3D
 
 In this example, the object is colored using the scene ambient light and a material ambient color.
 
-```
+```cpp
 #define GRAY_COLOR  0x00bfbfbf
 
 Ambient.r = 0.75f;

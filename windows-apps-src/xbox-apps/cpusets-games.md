@@ -1,10 +1,10 @@
 ---
 title: CPUSets for game development
 description: This article provides an overview of the CPUSets API new to the Universal Windows Platform (UWP), and covers the core information pertinent to game and application development.
-author: hammondsp
+ms.topic: article
 ms.localizationpriority: medium
+ms.date: 02/08/2017
 ---
-
 # CPUSets for game development
 
 ## Introduction
@@ -185,7 +185,6 @@ The cache layout illustrated in Figure 1 is an example of the type of layout you
 The CPUSets API available for UWP development provides a considerable amount of information and control over your multithreading options. The added complexities compared to previous multithreaded APIs for Windows development has some learning curve, but the increased flexibility ultimately allows for better performance across a range of consumer PCs and other hardware targets.
 
 ## Additional resources
-- [CPU Sets (MSDN)](https://msdn.microsoft.com/library/windows/desktop/mt186420(v=vs.85).aspx)
+- [CPU Sets (MSDN)](/windows/desktop/ProcThread/cpu-sets)
 - [CPUSets sample provided by ATG](https://github.com/Microsoft/Xbox-ATG-Samples/tree/master/Samples/System/CPUSets)
 - [UWP on Xbox One](index.md)
-

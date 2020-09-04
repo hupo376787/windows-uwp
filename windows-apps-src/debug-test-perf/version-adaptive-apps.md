@@ -1,16 +1,11 @@
 ---
-author: jwmsft
 title: Version adaptive apps
 description: Learn how to take advantage of new APIs while maintaining compatibility with previous versions
-ms.author: jimwalk
-ms.date: 10/10/2017
+ms.date: 05/17/2019
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp
 ms.localizationpriority: medium
 ---
-
 # Version adaptive apps: Use new APIs while maintaining compatibility with previous versions
 
 Each release of the Windows 10 SDK adds exciting new functionality that you'll want to take advantage of. However, not all your customers will update their devices to the latest version of Windows 10 at the same time, and you want to make sure your app works on the broadest possible range of devices. Here, we show you how to design your app so that it runs on earlier versions of Windows 10, but also takes advantage of new features whenever your app runs on a device with the latest update installed.
@@ -43,23 +38,28 @@ We typically recommend that you leave the defaults. However, if you have a Previ
 
 To change the Minimum and Target version for a project that has already been created in Visual Studio, go to Project -> Properties -> Application tab -> Targeting.
 
-![Change the target SDK in Visual Studio](images/vs-target-sdk-2.png) 
+![Change the target SDK in Visual Studio](images/vs-target-sdk-2.png)
 
-For reference, the following table shows the build numbers for each SDK. For more info about Windows 10 updates, see [Windows 10 release information](https://technet.microsoft.com/windows/release-info) on TechNet.
+For reference, the following table shows the build numbers for each SDK.
 
-Friendly name | Version | OS/SDK build | Notes
----- | ---- | ---- | ----
-RTM | 1507 | 10240 | See important [support](https://support.microsoft.com/help/4015562/windows-10-version-1507-will-no-longer-receive-security-updates) info.
-November Update | 1511 | 10586 | See important [support](https://support.microsoft.com/help/4035050/windows-10-version-1511-will-no-longer-receive-security-updates) info.
-Anniversary Update | 1607 | 14393 |
-Creators Update | 1703 | 15063 |
-Fall Creators Update | 1709 | 16299 |
+| Friendly name | Version | OS/SDK build |
+| ---- | ---- | ---- |
+| RTM | 1507 | 10240 |
+| November Update | 1511 | 10586 |
+| Anniversary Update | 1607 | 14393 |
+| Creators Update | 1703 | 15063 |
+| Fall Creators Update | 1709 | 16299 |
+| April 2018 Update | 1803 | 17134 |
+| October 2018 Update | 1809 | 17763 |
+| May 2019 Update | 1903 | 18362 |
 
-You can download any released version of the SDK from the [Windows SDK and emulator archive](https://developer.microsoft.com/downloads/sdk-archive). You can download the latest Windows Insider Preview SDK from the developer section of the [Windows Insider](https://insider.windows.com/Home/BuildWithWindows) site.
+You can download any released version of the SDK from the [Windows SDK and emulator archive](https://developer.microsoft.com/windows/downloads/sdk-archive). You can download the latest Windows Insider Preview SDK from the developer section of the [Windows Insider](https://insider.windows.com/for-developers/) site.
+
+ For more info about Windows 10 updates, see [Windows 10 release information](https://www.microsoft.com/itpro/windows-10/release-information). For important information about the Windows 10 support lifecycle, see the [Windows lifecycle fact sheet](https://support.microsoft.com/help/13853/windows-lifecycle-fact-sheet).
 
 ## Perform API checks
 
-The key to version adaptive apps is the combination of API contracts and the [ApiInformation](https://docs.microsoft.com/uwp/api/windows.foundation.metadata.apiinformation) class. This class lets you detect whether a specified API contract, type, or member is present so that you can safely make API calls across a variety of devices and OS versions.
+The key to version adaptive apps is the combination of API contracts and the [ApiInformation](/uwp/api/windows.foundation.metadata.apiinformation) class. This class lets you detect whether a specified API contract, type, or member is present so that you can safely make API calls across a variety of devices and OS versions.
 
 ### API contracts
 
@@ -75,7 +75,7 @@ What’s an API contract? Essentially, an API contract represents a feature – 
 
 Logically related types are grouped into an API contract, and starting with Windows 10, every Windows Runtime API is a member of some API contract. With API Contracts, you are checking for the availability of a specific feature or API on the device, effectively checking a device’s capabilities rather than checking for a specific device or OS. A platform that implements any API in an API contract is required to implement every API in that API contract. This means you can test whether the running OS supports a particular API contract and, if it does, call any of the APIs in that API contract without checking each one individually.
 
-The largest and most commonly used API contract is the **Windows.Foundation.UniversalApiContract**. It contains the majority of the APIs in the Universal Windows Platform. The [Device Family Extension SDKs and API contracts](https://docs.microsoft.com/uwp/extension-sdks/) documentation describes the variety of API contracts available. You’ll see that most of them represent a set of functionally related APIs.
+The largest and most commonly used API contract is the **Windows.Foundation.UniversalApiContract**. It contains the majority of the APIs in the Universal Windows Platform. The [Device family extension SDKs and API contracts](/uwp/extension-sdks/) documentation describes the variety of API contracts available. You’ll see that most of them represent a set of functionally related APIs.
 
 > [!NOTE]
 > If you have a preview Windows Software Development Kit (SDK) installed that isn’t documented yet, you can also find information about API contract support in the ‘Platform.xml’ file located in the SDK installation folder at ‘\(Program Files (x86))\Windows Kits\10\Platforms\<platform>\<SDK version>\Platform.xml’.
@@ -99,6 +99,6 @@ For more info about remote debugging, see [Deploying and debugging UWP apps](dep
 
 ## Related articles
 
-- [What's a UWP app](https://docs.microsoft.com/windows/uwp/get-started/universal-application-platform-guide)
+- [What's a UWP app](../get-started/universal-application-platform-guide.md)
 - [Dynamically detecting features with API contracts](https://blogs.windows.com/buildingapps/2015/09/15/dynamically-detecting-features-with-api-contracts-10-by-10/)
 - [API Contracts](https://channel9.msdn.com/Events/Build/2015/3-733) (Build 2015 video)

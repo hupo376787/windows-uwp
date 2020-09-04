@@ -4,17 +4,12 @@ description: There are two ways to encode texture maps that exhibit more complex
 ms.assetid: 768A774A-4F21-4DDE-B863-14211DA92926
 keywords:
 - Textures with alpha channels
-author: michaelfromredmond
-ms.author: mithom
 ms.date: 02/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 ms.localizationpriority: medium
 ---
 
 # Textures with alpha channels
-
 
 There are two ways to encode texture maps that exhibit more complex transparency. In each case, a block that describes the transparency precedes the 64-bit block already described. The transparency is either represented as a 4x4 bitmap with 4 bits per pixel (explicit encoding), or with fewer bits and linear interpolation that is analogous to what is used for color encoding.
 
@@ -24,8 +19,6 @@ The transparency block and the color block are arranged as shown in the followin
 |--------------|-----------------------------------|
 | 3:0          | Transparency block                |
 | 7:4          | Previously described 64-bit block |
-
- 
 
 ## <span id="Explicit-Texture-Encoding"></span><span id="explicit-texture-encoding"></span><span id="EXPLICIT-TEXTURE-ENCODING"></span>Explicit texture encoding
 
@@ -97,7 +90,7 @@ The encoding of transparency for the BC3 format is based on a concept similar to
 
 The following code example illustrates this algorithm.
 
-```
+```cpp
 // 8-alpha or 6-alpha block?    
 if (alpha_0 > alpha_1) {    
     // 8-alpha block:  derive the other six alphas.    

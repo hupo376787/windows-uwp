@@ -1,16 +1,11 @@
 ---
 title: WNS Notification Priorities
 description: Description of the various priorities that you can set on a notification
-author: adwilso
-ms.author: sezhen
-ms.date: 1/10/2017
+ms.date: 01/10/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp, WinRT API, WNS
 localizationpriority: medium
 ---
-
 # WNS Notification Priorities
 By setting a notification's priority with a simple header to WNS POST messages, you can control how notifications are delivered in battery sensitive situations.
 
@@ -25,7 +20,7 @@ Every Windows device operates through a variety of power modes (battery, battery
 Windows does not know which notifications are important to any user or app, so the system relies totally on apps to set the right priority for their notifications. 
 
 ## Priorities
-There are four priorities available for an app to use when sending push notifications. The priority is set on individual notifications, allowing you to choose which notifications need to be delivered instantly (e.g., an IM message) and which ones can wait (e.g., contact photo updates).
+There are four priorities available for an app to use when sending push notifications. The priority is set on individual notifications, allowing you to choose which notifications need to be delivered instantly (for example, an IM message) and which ones can wait (for example, contact photo updates).
 
 The priorities are: 
 
@@ -40,7 +35,7 @@ Note that many apps will have notifications of different priority throughout the
 
 ## Setting the priority
 
-Setting the priority on the notification request is done through an additional header on the POST request, `X-WNS-PRIORITY`. This is an integer value between 0 and 3 which maps to a priority: 
+Setting the priority on the notification request is done through an additional header on the POST request, `X-WNS-PRIORITY`. This is an integer value between 1 and 4 which maps to a priority: 
 
 | Priority Name | X-WNS-PRIORITY Value | Default for: |
 |---------------|----------------------|------------------|
@@ -49,7 +44,7 @@ Setting the priority on the notification request is done through an additional h
 | Low | 3 | Raw |
 | Very Low | 4 |  |
 
-To be backward compatible, setting a priority is not required. In case an app doesn’t set the priority of their notifications, the system will provide a default priority. The defaults are shown in in the chart above and match the behavior of existing versions of Windows. 
+To be backward compatible, setting a priority is not required. In case an app doesn’t set the priority of their notifications, the system will provide a default priority. The defaults are shown in the chart above and match the behavior of existing versions of Windows. 
 
 ## Detailed listing of desktop behavior 
 
@@ -66,9 +61,8 @@ More specific recommended behaviors for each priority are listed below. This is 
 
 Note that low priority notifications will be delivered by default for screen off and battery only for Windows Phone based devices. This is to maintian compatibility with preexisting MPNS policy. Also note that the fourth and fifth rows are the same, just calling out different scenarios.
 
-To exempt an app in battery saver, users must go to the "Battery Usage by App" in Settings and select "Allow the app to run background tasks." This user selection exempts the app from battery saver for high, medium, and low priority notifications. You can also call [BackgroundExecutionManager API](https://docs.microsoft.com/uwp/api/windows.applicationmodel.background.backgroundexecutionmanager.requestaccesskindasync#Windows_ApplicationModel_Background_BackgroundExecutionManager_RequestAccessKindAsync_Windows_ApplicationModel_Background_BackgroundAccessRequestKind_System_String_) to programatically ask for the user's permission.  
+To exempt an app in battery saver, users must go to the "Battery Usage by App" in Settings and select "Allow the app to run background tasks." This user selection exempts the app from battery saver for high, medium, and low priority notifications. You can also call [BackgroundExecutionManager API](/uwp/api/windows.applicationmodel.background.backgroundexecutionmanager.requestaccesskindasync#Windows_ApplicationModel_Background_BackgroundExecutionManager_RequestAccessKindAsync_Windows_ApplicationModel_Background_BackgroundAccessRequestKind_System_String_) to programatically ask for the user's permission.  
 
 ## Related topics
 - [Windows Push Notification Services (WNS) overview](windows-push-notification-services--wns--overview.md)
-- [Requesting permission to run in the background](https://docs.microsoft.com/uwp/api/windows.applicationmodel.background.backgroundexecutionmanager.requestaccesskindasync#Windows_ApplicationModel_Background_BackgroundExecutionManager_RequestAccessKindAsync_Windows_ApplicationModel_Background_BackgroundAccessRequestKind_System_String_)
-- 
+- [Requesting permission to run in the background](/uwp/api/windows.applicationmodel.background.backgroundexecutionmanager.requestaccesskindasync#Windows_ApplicationModel_Background_BackgroundExecutionManager_RequestAccessKindAsync_Windows_ApplicationModel_Background_BackgroundAccessRequestKind_System_String_)

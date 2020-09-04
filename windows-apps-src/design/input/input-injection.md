@@ -1,33 +1,28 @@
 ---
-author: Karl-Bridge-Microsoft
-Description: Simulate and automate input from devices such as keyboard, mouse, touch, pen, and gamepad in your UWP apps.
+Description: Simulate and automate input from devices such as keyboard, mouse, touch, pen, and gamepad in your Windows apps.
 title: Simulate user input through input injection
 label: Input injection
 template: detail.hbs
 keywords: device, digitizer, input, interaction, injection
-ms.author: kbridge
 ms.date: 02/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 ms.localizationpriority: medium
 ---
-
 # Simulate user input through input injection
 
-Simulate and automate user input from devices such as keyboard, mouse, touch, pen, and gamepad in your UWP applications.
+Simulate and automate user input from devices such as keyboard, mouse, touch, pen, and gamepad in your Windows applications.
 
-> **Important APIs**: [**Windows.UI.Input.Preview.Injection**](https://docs.microsoft.com/uwp/api/windows.ui.input.preview.injection)
+> **Important APIs**: [**Windows.UI.Input.Preview.Injection**](/uwp/api/windows.ui.input.preview.injection)
 
 ## Overview
 
-Input injection enables your UWP application to simulate input from a variety of input devices and direct that input anywhere, including outside your app's client area (even to apps running with Adminstrator privileges, such as the Registry Editor).
+Input injection enables your Windows application to simulate input from a variety of input devices and direct that input anywhere, including outside your app's client area (even to apps running with Administrator privileges, such as the Registry Editor).
 
-Input injection is useful for UWP apps and tools that need to provide functionality that includes accessibility, testing (ad-hoc, automated), and remote access and support features.
+Input injection is useful for Windows apps and tools that need to provide functionality that includes accessibility, testing (ad-hoc, automated), and remote access and support features.
 
 ## Setup
 
-To use the input injection APIs in your UWP app you'll need to add the following to the app manifest:
+To use the input injection APIs in your Windows app you'll need to add the following to the app manifest:
 
 1. Right click the **Package.appxmanifest** file and select **View code**.
 1. Insert the following into the `Package` node:
@@ -42,14 +37,15 @@ To use the input injection APIs in your UWP app you'll need to add the following
 |:--:|
 | *Touch input injection sample* |
 
-In this example, we demonstrate how to use the input injection APIs ([Windows.UI.Input.Preview.Injection](https://docs.microsoft.com/uwp/api/windows.ui.input.preview.injection)) to listen for mouse input events in one region of an app, and simulate corresponding touch input events in another region.
+In this example, we demonstrate how to use the input injection APIs ([Windows.UI.Input.Preview.Injection](/uwp/api/windows.ui.input.preview.injection)) to listen for mouse input events in one region of an app, and simulate corresponding touch input events in another region.
 
 **Download this sample from [Input injection sample (mouse to touch)](https://github.com/MicrosoftDocs/windows-topic-specific-samples/archive/uwp-input-injection-mouse-to-touch.zip)**
 
 1. First, we set up the UI (MainPage.xaml).
 
     We have two Grid areas (one for mouse input and one for injected touch input), each with four buttons.
-       > [!NOTE] The Grid background must be assigned a value (`Transparent`, in this case), otherwise pointer events are not detected.
+      > [!NOTE] 
+      > The Grid background must be assigned a value (`Transparent`, in this case), otherwise pointer events are not detected.
 
     When any mouse clicks are detected in the input area, a corresponding touch event is injected into the input injection area. Button clicks from inject input are reported in the title area.
 
@@ -166,13 +162,13 @@ In this example, we demonstrate how to use the input injection APIs ([Windows.UI
 
 2. Next, we initialize our app.
     
-    In this snippet, we declare our global objects and declare listeners for pointer events ([AddHandler](https://docs.microsoft.com/uwp/api/windows.ui.xaml.uielement.addhandler)) within the mouse input area that might be marked as handled in the button click events.
+    In this snippet, we declare our global objects and declare listeners for pointer events ([AddHandler](/uwp/api/windows.ui.xaml.uielement.addhandler)) within the mouse input area that might be marked as handled in the button click events.
 
-    The [InputInjector](https://docs.microsoft.com/api/windows.ui.input.preview.injection.inputinjector) object represents the virtual input device for sending the input data.
+    The [InputInjector](/uwp/api/windows.ui.input.preview.injection.inputinjector) object represents the virtual input device for sending the input data.
 
     In the `ContainerInput_PointerPressed` handler we call the touch injection function.
 
-    In the `ContainerInput_PointerReleased` handler, we call UninitializeTouchInjection to shut down the [InputInjector](https://docs.microsoft.com/api/windows.ui.input.preview.injection.inputinjector) object.
+    In the `ContainerInput_PointerReleased` handler, we call UninitializeTouchInjection to shut down the [InputInjector](/uwp/api/windows.ui.input.preview.injection.inputinjector) object.
 
     ```csharp
     public sealed partial class MainPage : Page
@@ -249,13 +245,13 @@ In this example, we demonstrate how to use the input injection APIs ([Windows.UI
     ```
 3. Here's the touch input injection function.
 
-    First, we call [TryCreate](https://docs.microsoft.com/uwp/api/windows.ui.input.preview.injection.inputinjector.trycreate) to instantiate the [InputInjector](https://docs.microsoft.com/api/windows.ui.input.preview.injection.inputinjector) object.
+    First, we call [TryCreate](/uwp/api/windows.ui.input.preview.injection.inputinjector.trycreate) to instantiate the [InputInjector](/uwp/api/windows.ui.input.preview.injection.inputinjector) object.
 
-    Then, we call [InitializeTouchInjection](https://docs.microsoft.com/uwp/api/windows.ui.input.preview.injection.inputinjector.initializetouchinjection) with an [InjectedInputVisualizationMode](https://docs.microsoft.com/uwp/api/windows.ui.input.preview.injection.injectedinputvisualizationmode) of `Default`.
+    Then, we call [InitializeTouchInjection](/uwp/api/windows.ui.input.preview.injection.inputinjector.initializetouchinjection) with an [InjectedInputVisualizationMode](/uwp/api/windows.ui.input.preview.injection.injectedinputvisualizationmode) of `Default`.
 
-    After calculating the point of injection, we call [InjectedInputTouchInfo](https://docs.microsoft.com/uwp/api/windows.ui.input.preview.injection.injectedinputtouchinfo) to initialize the list of touch points to inject (for this example, we create one touch point corresponding to the mouse input pointer).
+    After calculating the point of injection, we call [InjectedInputTouchInfo](/uwp/api/windows.ui.input.preview.injection.injectedinputtouchinfo) to initialize the list of touch points to inject (for this example, we create one touch point corresponding to the mouse input pointer).
 
-    Finally, we call [InjectTouchInput](https://docs.microsoft.com/uwp/api/windows.ui.input.preview.injection.inputinjector.injecttouchinput) twice, the first for a pointer down and the second for a pointer up.
+    Finally, we call [InjectTouchInput](/uwp/api/windows.ui.input.preview.injection.inputinjector.injecttouchinput) twice, the first for a pointer down and the second for a pointer up.
 
     ```csharp
     /// <summary>
@@ -357,7 +353,7 @@ In this example, we demonstrate how to use the input injection APIs ([Windows.UI
     }
     ```
 
-4. Finally, we handle any Button [Click](https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.primitives.buttonbase) routed events in the input injection area and update the UI with the name of the button clicked.
+4. Finally, we handle any Button [Click](/uwp/api/windows.ui.xaml.controls.primitives.buttonbase) routed events in the input injection area and update the UI with the name of the button clicked.
 
 ## See also
 

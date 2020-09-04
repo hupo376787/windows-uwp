@@ -1,15 +1,11 @@
 ---
-author: muhsinking
 Description: Date and time controls let you view and set the date and time. This article provides design guidelines and helps you pick the right control.
 title: Guidelines for date and time controls
 ms.assetid: 4641FFBB-8D82-4290-94C1-D87617997F61
 label: Calendar, date, and time controls
 template: detail.hbs
-ms.author: mukin
 ms.date: 05/19/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp
 pm-contact: kisai
 design-contact: ksulliv
@@ -23,17 +19,17 @@ ms.localizationpriority: medium
 
 Date and time controls give you standard, localized ways to let a user view and set date and time values in your app. This article provides design guidelines and helps you pick the right control.
 
-> **Important APIs**: [CalendarView class](https://msdn.microsoft.com/library/windows/apps/xaml/windows.ui.xaml.controls.calendarview.aspx), [CalendarDatePicker class](https://msdn.microsoft.com/library/windows/apps/xaml/windows.ui.xaml.controls.calendardatepicker.aspx), [DatePicker class](https://msdn.microsoft.com/library/windows/apps/xaml/windows.ui.xaml.controls.datepicker.aspx), [TimePicker class](https://msdn.microsoft.com/library/windows/apps/xaml/windows.ui.xaml.controls.timepicker.aspx)
+> **Important APIs**: [CalendarView class](/uwp/api/Windows.UI.Xaml.Controls.CalendarView), [CalendarDatePicker class](/uwp/api/Windows.UI.Xaml.Controls.CalendarDatePicker), [DatePicker class](/uwp/api/Windows.UI.Xaml.Controls.DatePicker), [TimePicker class](/uwp/api/Windows.UI.Xaml.Controls.TimePicker)
 
 <table>
 <th align="left">XAML Controls Gallery<th>
 <tr>
-<td><img src="images/xaml-controls-gallery-sm.png" alt="XAML controls gallery"></img></td>
+<td><img src="images/xaml-controls-gallery-app-icon-sm.png" alt="XAML controls gallery"></img></td>
 <td>
     <p>If you have the <strong style="font-weight: semi-bold">XAML Controls Gallery</strong> app installed, click here to <a href="xamlcontrolsgallery:/category/DataInput">open the app and see these controls in action</a>.</p>
     <ul>
     <li><a href="https://www.microsoft.com/store/productId/9MSVH128X2ZT">Get the XAML Controls Gallery app (Microsoft Store)</a></li>
-    <li><a href="https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/XamlUIBasics">Get the source code (GitHub)</a></li>
+    <li><a href="https://github.com/Microsoft/Xaml-Controls-Gallery">Get the source code (GitHub)</a></li>
     </ul>
 </td>
 </tr>
@@ -61,11 +57,11 @@ The calendar view is made up of 3 separate views: the month view, year view, and
 ![Example of calendar date picker](images/calendar-view-3-views.png)
 
 - If you need to let a user select multiple dates, you must use a **CalendarView**.
-- If you need to let a user pick only a single date and don’t need a calendar to be always visible, consider using a **CalendarDatePicker** or **DatePicker** control.
+- If you need to let a user pick only a single date and don't need a calendar to be always visible, consider using a **CalendarDatePicker** or **DatePicker** control.
 
 ### Calendar date picker
 
-**CalendarDatePicker** is a drop down control that’s optimized for picking a single date from a calendar view where contextual information like the day of the week or fullness of the calendar is important. You can modify the calendar to provide additional context or to limit available dates.
+**CalendarDatePicker** is a drop down control that's optimized for picking a single date from a calendar view where contextual information like the day of the week or fullness of the calendar is important. You can modify the calendar to provide additional context or to limit available dates.
 
 The entry point displays placeholder text if a date has not been set; otherwise, it displays the chosen date. When the user selects the entry point, a calendar view expands for the user to make a date selection. The calendar view overlays other UI; it doesn't push other UI out of the way.
 
@@ -85,7 +81,7 @@ The entry point displays the chosen date, and when the user selects the entry po
 
 ### Time picker
 
-The **TimePicker** is used to select a single time value for things like appointments or a departure time. It's a static display that is set by the user or in code, but it doesn't update to display the current time. 
+The **TimePicker** is used to select a single time value for things like appointments or a departure time. It's a static display that is set by the user or in code, but it doesn't update to display the current time.
 
 The entry point displays the chosen time, and when the user selects the entry point, a picker surface expands vertically from the middle for the user to make a selection. The time picker overlays other UI; it doesn't push other UI out of the way.
 
@@ -104,31 +100,35 @@ See these articles for info and examples specific to each date and time control.
 
 ### Globalization
 
-The XAML date controls support each of the calendar systems supported by Windows. These calendars are specified in the [Windows.Globalization.CalendarIdentifiers](https://msdn.microsoft.com/library/windows/apps/xaml/windows.globalization.calendaridentifiers.aspx) class. Each control uses the correct calendar for your app's default language, or you can set the **CalendarIdentifier** property to use a specific calendar system.
+The XAML date controls support each of the calendar systems supported by Windows. These calendars are specified in the [Windows.Globalization.CalendarIdentifiers](/uwp/api/Windows.Globalization.CalendarIdentifiers) class. Each control uses the correct calendar for your app's default language, or you can set the **CalendarIdentifier** property to use a specific calendar system.
 
-The time picker control supports each of the clock systems specified in the [Windows.Globalization.ClockIdentifiers](https://msdn.microsoft.com/library/windows/apps/xaml/windows.globalization.clockidentifiers.aspx) class. You can set the [ClockIdentifier](https://msdn.microsoft.com/library/windows/apps/xaml/windows.ui.xaml.controls.timepicker.clockidentifier.aspx) property to use either a 12-hour clock or 24-hour clock. The type of the property is String, but you must use values that correspond to the static string properties of the ClockIdentifiers class. These are: TwelveHour (the string "12HourClock")and TwentyFourHour (the string "24HourClock"). "12HourClock" is the default value.
-
+The time picker control supports each of the clock systems specified in the [Windows.Globalization.ClockIdentifiers](/uwp/api/Windows.Globalization.ClockIdentifiers) class. You can set the [ClockIdentifier](/uwp/api/windows.ui.xaml.controls.timepicker.clockidentifier) property to use either a 12-hour clock or 24-hour clock. The type of the property is String, but you must use values that correspond to the static string properties of the ClockIdentifiers class. These are: TwelveHour (the string "12HourClock")and TwentyFourHour (the string "24HourClock"). "12HourClock" is the default value.
 
 ### DateTime and Calendar values
 
-The date objects used in the XAML date and time controls have a different representation depending on your programming language. 
-- C# and Visual Basic use the [System.DateTimeOffset](https://msdn.microsoft.com/library/windows/apps/xaml/system.datetimeoffset.aspx) structure that is part of .NET. 
-- C++/CX uses the [Windows::Foundation::DateTime](https://msdn.microsoft.com/library/windows/apps/xaml/br205770.aspx) structure. 
+The date objects used in the XAML date and time controls have a different representation depending on your programming language.
 
-A related concept is the Calendar class, which influences how dates are interpreted in context. All Windows Runtime apps can use the [Windows.Globalization.Calendar](https://msdn.microsoft.com/library/windows/apps/xaml/windows.globalization.calendar.aspx) class. C# and Visual Basic apps can alternatively use the [System.Globalization.Calendar](https://msdn.microsoft.com/library/windows/apps/xaml/system.globalization.calendar.aspx) class, which has very similar functionality. (Windows Runtime apps can use the base .NET Calendar class but not the specific implementations; for example, GregorianCalendar.)
+- C# and Visual Basic use the [System.DateTimeOffset](/dotnet/api/system.datetimeoffset) structure that is part of .NET. 
+- C++/CX uses the [Windows::Foundation::DateTime](/windows/desktop/api/windows.foundation/ns-windows-foundation-datetime) structure. 
 
-.NET also supports a type named [DateTime](https://msdn.microsoft.com/library/windows/apps/xaml/system.datetime.aspx), which is implicitly convertible to a [DateTimeOffset](https://msdn.microsoft.com/library/windows/apps/xaml/system.datetimeoffset.aspx). So you might see a "DateTime" type being used in .NET code that's used to set values that are really DateTimeOffset. For more info on the difference between DateTime and DateTimeOffset, see Remarks in the [DateTimeOffset](https://msdn.microsoft.com/library/windows/apps/xaml/system.datetimeoffset.aspx) class.
+A related concept is the Calendar class, which influences how dates are interpreted in context. All Windows Runtime apps can use the [Windows.Globalization.Calendar](/uwp/api/Windows.Globalization.Calendar) class. C# and Visual Basic apps can alternatively use the [System.Globalization.Calendar](/dotnet/api/system.globalization.calendar) class, which has very similar functionality. (Windows Runtime apps can use the base .NET Calendar class but not the specific implementations; for example, GregorianCalendar.)
 
-> **Note**&nbsp;&nbsp;Properties that take date objects can't be set as a XAML attribute string, because the Windows Runtime XAML parser doesn't have a conversion logic for converting strings to dates as DateTime/DateTimeOffset objects. You typically set these values in code. Another possible technique is to define a date that's available as a data object or in the data context, then set the property as a XAML attribute that references a [\{Binding\} markup extension](../../xaml-platform/binding-markup-extension.md) expression that can access the date as data.
+.NET also supports a type named [DateTime](/dotnet/api/system.datetime), which is implicitly convertible to a [DateTimeOffset](/dotnet/api/system.datetimeoffset). So you might see a "DateTime" type being used in .NET code that's used to set values that are really DateTimeOffset. For more info on the difference between DateTime and DateTimeOffset, see Remarks in the [DateTimeOffset](/dotnet/api/system.datetimeoffset) class.
+
+> [!NOTE]
+> Properties that take date objects can't be set as a XAML attribute string, because the Windows Runtime XAML parser doesn't have a conversion logic for converting strings to dates as DateTime/DateTimeOffset objects. You typically set these values in code. Another possible technique is to define a date that's available as a data object or in the data context, then set the property as a XAML attribute that references a [\{Binding\} markup extension](../../xaml-platform/binding-markup-extension.md) expression that can access the date as data.
 
 ## Get the sample code
-* [XAML UI basics sample](https://github.com/Microsoft/Windows-universal-samples/blob/master/Samples/XamlUIBasics)
 
+- [XAML UI basics sample](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/XamlUIBasics)
+- [Calendar sample](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/Calendar)
+- [Date and time formatting sample](https://github.com/microsoft/Windows-universal-samples/tree/master/Samples/DateTimeFormatting)
 
 ## Related topics
 
-**For developers (XAML)**
-- [CalendarView class](https://msdn.microsoft.com/library/windows/apps/dn890052)
-- [CalendarDatePicker class](https://msdn.microsoft.com/library/windows/apps/dn950083)
-- [DatePicker class](https://msdn.microsoft.com/library/windows/apps/dn298584)
-- [TimePicker class](https://msdn.microsoft.com/library/windows/apps/dn299280)
+### For developers (XAML)
+
+- [CalendarView class](/uwp/api/Windows.UI.Xaml.Controls.CalendarView)
+- [CalendarDatePicker class](/uwp/api/Windows.UI.Xaml.Controls.CalendarDatePicker)
+- [DatePicker class](/uwp/api/Windows.UI.Xaml.Controls.DatePicker)
+- [TimePicker class](/uwp/api/Windows.UI.Xaml.Controls.TimePicker)

@@ -1,19 +1,16 @@
 ---
-author: TylerMSFT
 title: Create a Universal Windows Platform console app
 description: This topic describes how to write a UWP app that runs in a console window.
 keywords: console uwp
-ms.author: twhitney
 ms.date: 08/02/2018
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
+
+
 ms.localizationpriority: medium
 ---
-
 # Create a Universal Windows Platform console app
 
-This topic describes how to create a [C++/WinRT](/windows/uwp/cpp-and-winrt-apis/intro-to-using-cpp-with-winrt) or C++/CX Universal Windows Platform (UWP) console app.
+This topic describes how to create a [C++/WinRT](../cpp-and-winrt-apis/intro-to-using-cpp-with-winrt.md) or C++/CX Universal Windows Platform (UWP) console app.
 
 Starting with Windows 10, version 1803, you can write C++/WinRT or C++/CX UWP console apps that run in a console window, such as a DOS or PowerShell console window. Console apps use the console window for input and output, and can use [Universal C Runtime](/cpp/c-runtime-library/reference/crt-alphabetical-function-reference) functions such as **printf** and **getchar**. UWP console apps can be published to the Microsoft Store. They have an entry in the app list, and a primary tile that can be pinned to the Start menu. UWP console apps can be launched from the Start menu, though you will typically launch them from the command-line.
 
@@ -57,9 +54,9 @@ int __cdecl main()
 
 ## UWP Console app behavior
 
-A UWP Console app can access the file-system from the directory it is run from, and below. This is possible because the template adds the [AppExecutionAlias](https://docs.microsoft.com/uwp/schemas/appxpackage/uapmanifestschema/element-uap5-appexecutionalias) extension to your app's Package.appxmanifest file. This extension also enables the user to type the alias from a console window to launch the app. The app does not need to be in the system path to launch.
+A UWP Console app can access the file-system from the directory it is run from, and below. This is possible because the template adds the [AppExecutionAlias](/uwp/schemas/appxpackage/uapmanifestschema/element-uap5-appexecutionalias) extension to your app's Package.appxmanifest file. This extension also enables the user to type the alias from a console window to launch the app. The app does not need to be in the system path to launch.
 
-You can additionally give broad access to the file system to your UWP console app by adding the restricted capability `broadFileSystemAccess` as described in [File access permissions](https://docs.microsoft.com/windows/uwp/files/file-access-permissions). This capability works with APIs in the [**Windows.Storage**](https://msdn.microsoft.com/library/windows/apps/BR227346) namespace.
+You can additionally give broad access to the file system to your UWP console app by adding the restricted capability `broadFileSystemAccess` as described in [File access permissions](../files/file-access-permissions.md). This capability works with APIs in the [**Windows.Storage**](/uwp/api/Windows.Storage) namespace.
 
 More than one instance of a UWP Console app can run at a time because the template adds the [SupportsMultipleInstances](multi-instance-uwp.md) capability to your app's Package.appxmanifest file.
 
@@ -104,4 +101,4 @@ The template also adds the `Subsystem="console"` capability to the Package.appxm
 - UWP console apps may not consume background tasks nor serve as a background task.
 - With the exception of [Command-Line activation](https://blogs.windows.com/buildingapps/2017/07/05/command-line-activation-universal-windows-apps/#5YJUzjBoXCL4MhAe.97), UWP console apps do not support activation contracts, including file association, protocol association, etc.
 - Although UWP console apps support multi-instancing, they do not support [Multi-instancing redirection](multi-instance-uwp.md)
-- For a list of Win32 APIs that are available to UWP apps, see [Win32 and COM APIs for UWP apps](https://docs.microsoft.com/uwp/win32-and-com/win32-and-com-for-uwp-apps)
+- For a list of Win32 APIs that are available to UWP apps, see [Win32 and COM APIs for UWP apps](/uwp/win32-and-com/win32-and-com-for-uwp-apps)

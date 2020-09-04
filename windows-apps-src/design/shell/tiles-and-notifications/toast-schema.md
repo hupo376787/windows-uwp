@@ -1,19 +1,14 @@
 ---
-author: anbare
 Description: The following article describes all of the properties and elements within toast content.
 title: Toast content schema
 ms.assetid: 7CBC3BD5-D9C3-4781-8BD0-1F28039E1FA8
 label: Toast content schema
 template: detail.hbs
-ms.author: mijacobs
 ms.date: 05/19/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp
 ms.localizationpriority: medium
 ---
-
 # Toast content schema
 
  
@@ -478,5 +473,5 @@ New in Creators Update: A custom header that groups multiple notifications toget
 
 ## Related topics
 
-* [Quickstart: Send a local toast and handle activation](http://blogs.msdn.com/b/tiles_and_toasts/archive/2015/07/08/quickstart-sending-a-local-toast-notification-and-handling-activations-from-it-windows-10.aspx)
-* [Notifications library on GitHub](https://github.com/Microsoft/UWPCommunityToolkit/tree/dev/Notifications)
+* [Quickstart: Send a local toast and handle activation](/archive/blogs/tiles_and_toasts/quickstart-sending-a-local-toast-notification-and-handling-activations-from-it-windows-10)
+* [Notifications library on GitHub](https://github.com/windows-toolkit/WindowsCommunityToolkit/tree/dev/Notifications)

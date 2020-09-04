@@ -1,17 +1,12 @@
 ---
-author: mithom
 title: Headset
 description: Use the Windows.Gaming.Input headset APIs to detect headsets, capture player voice, and playback audio.
 ms.assetid: 021CCA26-D339-4C8B-B084-0D499BD83ABE
-ms.author: wdg-dev-content
 ms.date: 02/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp, games, headset
 ms.localizationpriority: medium
 ---
-
 # Headset
 
 This page describes the basics of programming for headsets using [Windows.Gaming.Input.Headset][headset] and related APIs for the Universal Windows Platform (UWP).
@@ -64,12 +59,12 @@ inputDevice.HeadsetDisconnected += ref new TypedEventHandler<IGameController^, H
 
 The [Headset][] class is made up of two strings that represent XAudio endpoint IDs--one for audio capture (recording from the headset microphone) and one for audio rendering (playback through the headset earpiece).
 
-The details of working with XAudio are not discussed here, for more information see the [XAudio2 programming guide](https://msdn.microsoft.com/library/windows/desktop/ee415737.aspx) and [XAudio2 API reference](https://msdn.microsoft.com/library/windows/desktop/ee415899.aspx).
+The details of working with XAudio are not discussed here, for more information see the [XAudio2 programming guide](/windows/desktop/xaudio2/programming-guide) and [XAudio2 API reference](/windows/desktop/xaudio2/programming-reference).
 
 
-[Windows.Gaming.Input]: https://msdn.microsoft.com/library/windows/apps/windows.gaming.input.aspx
-[igamecontroller]: https://msdn.microsoft.com/library/windows/apps/windows.gaming.input.igamecontroller.aspx
-[igamecontroller.headset]: https://msdn.microsoft.com/library/windows/apps/windows.gaming.input.igamecontroller.headset.aspx
-[igamecontroller.headsetconnected]: https://msdn.microsoft.com/library/windows/apps/windows.gaming.input.igamecontroller.headsetconnected.aspx
-[igamecontroller.headsetdisconnected]: https://msdn.microsoft.com/library/windows/apps/windows.gaming.input.igamecontroller.headsetdisconnected.aspx
-[headset]: https://msdn.microsoft.com/library/windows/apps/windows.gaming.input.headset.aspx
+[Windows.Gaming.Input]: /uwp/api/Windows.Gaming.Input
+[igamecontroller]: /uwp/api/Windows.Gaming.Input.IGameController
+[igamecontroller.headset]: /uwp/api/Windows.Gaming.Input.IGameController
+[igamecontroller.headsetconnected]: /uwp/api/Windows.Gaming.Input.IGameController
+[igamecontroller.headsetdisconnected]: /uwp/api/Windows.Gaming.Input.IGameController
+[headset]: /uwp/api/Windows.Gaming.Input.Headset

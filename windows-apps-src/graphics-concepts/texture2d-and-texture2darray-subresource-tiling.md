@@ -4,24 +4,21 @@ description: These tables show how Texture2D and Texture2DArray subresources are
 ms.assetid: 2DC14DFC-5299-44D9-895F-5A223D3FD530
 keywords:
 - Texture2D and Texture2DArray subresource tiling
-author: michaelfromredmond
-ms.author: mithom
 ms.date: 02/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
+
+
 ms.localizationpriority: medium
 ---
-
 # Texture2D and Texture2DArray subresource tiling
 
 
-These tables show how [**Texture2D**](https://msdn.microsoft.com/library/windows/desktop/ff471525) and [**Texture2DArray**](https://msdn.microsoft.com/library/windows/desktop/ff471526) subresources are tiled. The values in these tables don't count tail mip packing.
+These tables show how [**Texture2D**](/windows/desktop/direct3dhlsl/sm5-object-texture2d) and [**Texture2DArray**](/windows/desktop/direct3dhlsl/sm5-object-texture2darray) subresources are tiled. The values in these tables don't count tail mip packing.
 
 ## <span id="Subresources-with-multisample-counts-of-1"></span><span id="subresources-with-multisample-counts-of-1"></span><span id="SUBRESOURCES-WITH-MULTISAMPLE-COUNTS-OF-1"></span>Subresources with multisample counts of 1
 
 
-This table shows how [**Texture2D**](https://msdn.microsoft.com/library/windows/desktop/ff471525) and [**Texture2DArray**](https://msdn.microsoft.com/library/windows/desktop/ff471526) subresources with multisample counts of 1 are tiled.
+This table shows how [**Texture2D**](/windows/desktop/direct3dhlsl/sm5-object-texture2d) and [**Texture2DArray**](/windows/desktop/direct3dhlsl/sm5-object-texture2darray) subresources with multisample counts of 1 are tiled.
 
 | Bits/Pixel (1 sample/pixel) | Tile Dimensions (Pixels, WxH) |
 |-----------------------------|-------------------------------|
@@ -40,7 +37,7 @@ Format bit counts not supported with streaming resources are 96 bpp formats, vid
 ## <span id="Subresources-with-various-multisample-counts"></span><span id="subresources-with-various-multisample-counts"></span><span id="SUBRESOURCES-WITH-VARIOUS-MULTISAMPLE-COUNTS"></span>Subresources with various multisample counts
 
 
-This table shows how [**Texture2D**](https://msdn.microsoft.com/library/windows/desktop/ff471525) and [**Texture2DArray**](https://msdn.microsoft.com/library/windows/desktop/ff471526) subresources with various multisample counts are tiled.
+This table shows how [**Texture2D**](/windows/desktop/direct3dhlsl/sm5-object-texture2d) and [**Texture2DArray**](/windows/desktop/direct3dhlsl/sm5-object-texture2darray) subresources with various multisample counts are tiled.
 
 | Bits/Pixel (1 sample/pixel) | Tile Dimensions (Pixels, WxH) |
 |-----------------------------|-------------------------------|
@@ -68,7 +65,3 @@ The constraints on supported sample counts and formats are due to hardware incon
  
 
  
-
-
-
-

@@ -1,16 +1,11 @@
 ---
-author: payzer
 title: Xbox best practices
-description: How to optimize your application for Xbox.
-ms.author: wdg-dev-content
+description: Learn how to optimize your Universal Windows Platform (UWP) application for Xbox One by following these Xbox development best practices.
 ms.date: 10/12/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp
 ms.localizationpriority: medium
 ---
-
 # Xbox best practices
 
 By default, all UWP apps will run on Xbox One without any extra effort on your part. However, if want your app to shine, delight your customers, and compete with the best app experiences on Xbox, you should follow the practices below.
@@ -21,15 +16,15 @@ By default, all UWP apps will run on Xbox One without any extra effort on your p
 
 ### *Do:* Turn off mouse mode
 
-Xbox users love their controllers. To optimize for controller input, [disable mouse mode](how-to-disable-mouse-mode.md) and enable directional navigation (also known as [X-Y focus](../design/devices/designing-for-tv.md#xy-focus-navigation-and-interaction)). Watch out for focus traps and inaccessible UI.
+Xbox users love their controllers. To optimize for controller input, [disable mouse mode](how-to-disable-mouse-mode.md) and enable directional navigation (also known as [XY focus navigation and interaction](../design/input/gamepad-and-remote-interactions.md#xy-focus-navigation-and-interaction)). Watch out for focus traps and inaccessible UI.
 
 ### *Do:* Draw a focus rectangle that is appropriate for a 10-foot experience
 
-Most Xbox users are sitting across the living room from their TV, so keep in mind that the standard focus rectangle is hard to see from ten feet away. To ensure that the UI element with the input focus is clearly visible to the user at all times, follow the [Focus visual](../design/devices/designing-for-tv.md#focus-visual) guidelines. In XAML you will get this behavior for free when your app runs on Xbox, but HTML apps will need to use a custom CSS style.
+Most Xbox users are sitting across the living room from their TV, so keep in mind that the standard focus rectangle is hard to see from ten feet away. To ensure that the UI element with the input focus is clearly visible to the user at all times, follow the [Focus visual](../design/input/gamepad-and-remote-interactions.md#focus-visual) guidelines. In XAML you will get this behavior for free when your app runs on Xbox, but HTML apps will need to use a custom CSS style.
 
 ###	*Do:* Integrate with the SystemMediaTransportControls class
 
-Xbox users want to control media apps with the Xbox Media Remote, Cortana (especially the "Play" and "Pause" voice commands), and Xbox SmartGlass. To get these features for free your app should use the [SystemMediaTransportControls](https://msdn.microsoft.com/library/windows/apps/windows.media.systemmediatransportcontrols.aspx) class, which is automatically included in the Xbox media controls. If your app has custom media controls, make sure to integrate with the **SystemMediaTransportControls** class to provide these features to your users. If you are creating a background music app, integrate with the **SystemMediaTransportControls** class to ensure that the background music controls work correctly in the Xbox multitasking tab.
+Xbox users want to control media apps with the Xbox Media Remote, Cortana (especially the "Play" and "Pause" voice commands), and Xbox SmartGlass. To get these features for free your app should use the [SystemMediaTransportControls](/uwp/api/windows.media.systemmediatransportcontrols) class, which is automatically included in the Xbox media controls. If your app has custom media controls, make sure to integrate with the **SystemMediaTransportControls** class to provide these features to your users. If you are creating a background music app, integrate with the **SystemMediaTransportControls** class to ensure that the background music controls work correctly in the Xbox multitasking tab.
 
 <!-- ### *Do:* Use adaptive UI to account for snapped apps
 One of the unique features of Xbox One is that users can snap apps such as Cortana next to any other app, so your app should respond gracefully when it runs in *fill mode*. Implement [adaptive UI](../get-started/universal-application-platform-guide.md#design-adaptive-ui-with-adaptive-panels) and make sure to test your app during development by snapping an app next to it. -->
@@ -73,3 +68,4 @@ The **App Dev on Xbox** event is a great starting point for developers new to bu
 
 - [UWP on Xbox One](index.md)
 - [Designing for Xbox and TV](../design/devices/designing-for-tv.md)
+- [Progressive Web Apps for Xbox One](/microsoft-edge/progressive-web-apps/xbox-considerations)

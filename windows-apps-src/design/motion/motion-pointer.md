@@ -1,17 +1,12 @@
 ---
-author: mijacobs
 Description: Use pointer animations to provide users with visual feedback when the user taps on an item.
-title: Pointer click animations in UWP apps
+title: Pointer click animations
 ms.assetid: EEB10A2C-629A-4705-8468-4D019D74DDFF
-ms.author: jimwalk
-ms.date: 08/9/2017
+ms.date: 08/09/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp
 ms.localizationpriority: medium
 ---
-
 # Pointer click animations
 
 
@@ -19,7 +14,7 @@ ms.localizationpriority: medium
 Use pointer animations to provide users with visual feedback when the user taps on an item. The pointer down animation slightly shrinks and tilts the pressed item, and plays when an item is first tapped. The pointer up animation, which restores the item to its original position, is played when the user releases the pointer.
 
 
-> **Important APIs**: [**PointerUpThemeAnimation class**](https://msdn.microsoft.com/library/windows/apps/hh969168), [**PointerDownThemeAnimation class**](https://msdn.microsoft.com/library/windows/apps/hh969164)
+> **Important APIs**: [**PointerUpThemeAnimation class**](/uwp/api/Windows.UI.Xaml.Media.Animation.PointerUpThemeAnimation), [**PointerDownThemeAnimation class**](/uwp/api/Windows.UI.Xaml.Media.Animation.PointerDownThemeAnimation)
 
 
 ## Do's and don'ts
@@ -28,16 +23,12 @@ Use pointer animations to provide users with visual feedback when the user taps 
 
 ## Related articles
 
-* [Animations overview](https://msdn.microsoft.com/library/windows/apps/mt187350)
-* [Animating pointer clicks](https://msdn.microsoft.com/library/windows/apps/xaml/jj649432)
-* [Quickstart: Animating your UI using library animations](https://msdn.microsoft.com/library/windows/apps/xaml/hh452703)
-* [**PointerUpThemeAnimation class**](https://msdn.microsoft.com/library/windows/apps/hh969168)
-* [**PointerDownThemeAnimation class**](https://msdn.microsoft.com/library/windows/apps/hh969164)
+* [Animations overview](./xaml-animation.md)
+* [Animating pointer clicks](/previous-versions/windows/apps/jj649432(v=win.10))
+* [Quickstart: Animating your UI using library animations](/previous-versions/windows/apps/hh452703(v=win.10))
+* [**PointerUpThemeAnimation class**](/uwp/api/Windows.UI.Xaml.Media.Animation.PointerUpThemeAnimation)
+* [**PointerDownThemeAnimation class**](/uwp/api/Windows.UI.Xaml.Media.Animation.PointerDownThemeAnimation)
 
  
 
  
-
-
-
-

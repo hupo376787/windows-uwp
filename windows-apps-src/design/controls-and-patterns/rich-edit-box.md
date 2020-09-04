@@ -1,15 +1,11 @@
 ---
-author: Jwmsft
 Description: You can use a RichEditBox control to enter and edit rich text documents that contain formatted text, hyperlinks, and images. You can make a RichEditBox read-only by setting its IsReadOnly property to true.
 title: RichEditBox
 ms.assetid: 4AFC0DFA-3B89-434D-9F86-4309CCFF7839
 label: Rich edit box
 template: detail.hbs
-ms.author: jimwalk
 ms.date: 05/19/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp
 pm-contact: miguelrb
 design-contact: ksulliv
@@ -18,17 +14,20 @@ ms.localizationpriority: medium
 ---
 # Rich edit box
 
- 
-
 You can use a RichEditBox control to enter and edit rich text documents that contain formatted text, hyperlinks, and images. You can make a RichEditBox read-only by setting its IsReadOnly property to **true**.
 
-> **Important APIs**: [RichEditBox class](https://msdn.microsoft.com/library/windows/apps/xaml/windows.ui.xaml.controls.richeditbox.aspx), [Document property](https://msdn.microsoft.com/library/windows/apps/xaml/windows.ui.xaml.controls.richeditbox.document.aspx), [IsReadOnly property](https://msdn.microsoft.com/library/windows/apps/xaml/windows.ui.xaml.controls.richeditbox.isreadonly.aspx), [IsSpellCheckEnabled property](https://msdn.microsoft.com/library/windows/apps/xaml/windows.ui.xaml.controls.richeditbox.isspellcheckenabled.aspx)
+**Get the Windows UI Library**
+
+|  |  |
+| - | - |
+| ![WinUI logo](images/winui-logo-64x64.png) | Windows UI Library 2.2 or later includes a new template for this control that uses rounded corners. For more info, see [Corner radius](../style/rounded-corner.md). WinUI is a NuGet package that contains new controls and UI features for Windows apps. For more info, including installation instructions, see [Windows UI Library](/uwp/toolkits/winui/). |
+
+> **Platform APIs**: [RichEditBox class](/uwp/api/Windows.UI.Xaml.Controls.RichEditBox), [Document property](/uwp/api/windows.ui.xaml.controls.richeditbox.document), [IsReadOnly property](/uwp/api/windows.ui.xaml.controls.richeditbox.isreadonly), [IsSpellCheckEnabled property](/uwp/api/windows.ui.xaml.controls.richeditbox.isspellcheckenabled)
 
 ## Is this the right control?
 
 Use a **RichEditBox** to display and edit text files. You don't use a RichEditBox to get user input into you app the way you use other standard text input boxes. Rather, you use it to work with text files that are separate from your app. You typically save text entered into a RichEditBox to a .rtf file.
--   If the primary purpose of the multi-line text box is for creating documents (such as blog entries or the contents of an email message), and those documents require rich text, use a rich text box.
--   If you want users to be able to format their text, use a rich text box.
+-   If the primary purpose of the multi-line text box is for creating read-only documents (such as blog entries or the contents of an email message), and those documents require rich text, use a [rich text block](./rich-text-block.md) instead.
 -   When capturing text that will only be consumed and not redisplayed to users, use a plain text input control.
 -   For all other scenarios, use a plain text input control.
 
@@ -39,12 +38,12 @@ For more info about choosing the right text control, see the [Text controls](tex
 <table>
 <th align="left">XAML Controls Gallery<th>
 <tr>
-<td><img src="images/xaml-controls-gallery-sm.png" alt="XAML controls gallery"></img></td>
+<td><img src="images/xaml-controls-gallery-app-icon-sm.png" alt="XAML controls gallery"></img></td>
 <td>
     <p>If you have the <strong style="font-weight: semi-bold">XAML Controls Gallery</strong> app installed, click here to <a href="xamlcontrolsgallery:/item/RichEditBox">open the app and see the RichEditBox in action</a>.</p>
     <ul>
     <li><a href="https://www.microsoft.com/store/productId/9MSVH128X2ZT">Get the XAML Controls Gallery app (Microsoft Store)</a></li>
-    <li><a href="https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/XamlUIBasics">Get the source code (GitHub)</a></li>
+    <li><a href="https://github.com/Microsoft/Xaml-Controls-Gallery">Get the source code (GitHub)</a></li>
     </ul>
 </td>
 </tr>
@@ -56,9 +55,9 @@ This rich edit box has a rich text document open in it. The formatting and file 
 
 ## Create a rich edit box
 
-By default, the RichEditBox supports spell checking. To disable the spell checker, set the [IsSpellCheckEnabled](https://msdn.microsoft.com/library/windows/apps/xaml/windows.ui.xaml.controls.richeditbox.isspellcheckenabled.aspx) property to **false**. For more info, see the [Guidelines for spell checking](text-controls.md) article.
+By default, the RichEditBox supports spell checking. To disable the spell checker, set the [IsSpellCheckEnabled](/uwp/api/windows.ui.xaml.controls.richeditbox.isspellcheckenabled) property to **false**. For more info, see the [Guidelines for spell checking](text-controls.md) article.
 
-You use the [Document](https://msdn.microsoft.com/library/windows/apps/xaml/windows.ui.xaml.controls.richeditbox.document.aspx) property of the RichEditBox to get its content. The content of a RichEditBox is a [Windows.UI.Text.ITextDocument](https://msdn.microsoft.com/library/windows/apps/xaml/bb774052.aspx) object, unlike the RichTextBlock control, which uses [Windows.UI.Xaml.Documents.Block](https://msdn.microsoft.com/library/windows/apps/xaml/windows.ui.xaml.documents.block.aspx) objects as its content. The ITextDocument interface provides a way to load and save the document to a stream, retrieve text ranges, get the active selection, undo and redo changes, set default formatting attributes, and so on.
+You use the [Document](/uwp/api/windows.ui.xaml.controls.richeditbox.document) property of the RichEditBox to get its content. The content of a RichEditBox is a [Windows.UI.Text.ITextDocument](/windows/desktop/api/tom/nn-tom-itextdocument) object, unlike the RichTextBlock control, which uses [Windows.UI.Xaml.Documents.Block](/uwp/api/Windows.UI.Xaml.Documents.Block) objects as its content. The ITextDocument interface provides a way to load and save the document to a stream, retrieve text ranges, get the active selection, undo and redo changes, set default formatting attributes, and so on.
 
 This example shows how to edit, load, and save a Rich Text Format (.rtf) file in a RichEditBox.
 
@@ -203,7 +202,7 @@ private void UnderlineButton_Click(object sender, RoutedEventArgs e)
 
 To help users to enter data using the touch keyboard, or Soft Input Panel (SIP), you can set the input scope of the text control to match the kind of data the user is expected to enter. The default keyboard layout is usually appropriate for working with rich text documents.
 
-For more info about how to use input scopes, see [Use input scope to change the touch keyboard](https://msdn.microsoft.com/library/windows/apps/mt280229).
+For more info about how to use input scopes, see [Use input scope to change the touch keyboard](../input/use-input-scope-to-change-the-touch-keyboard.md).
 
 ## Do's and don'ts
 
@@ -216,7 +215,7 @@ For more info about how to use input scopes, see [Use input scope to change the 
 
 ## Get the sample code
 
-- [XAML Controls Gallery sample](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/XamlUIBasics) - See all the XAML controls in an interactive format.
+- [XAML Controls Gallery sample](https://github.com/Microsoft/Xaml-Controls-Gallery) - See all the XAML controls in an interactive format.
 
 ## Related articles
 
@@ -224,5 +223,5 @@ For more info about how to use input scopes, see [Use input scope to change the 
 - [Guidelines for spell checking](text-controls.md)
 - [Adding search](search.md)
 - [Guidelines for text input](text-controls.md)
-- [TextBox class](https://msdn.microsoft.com/library/windows/apps/br209683)
-- [Windows.UI.Xaml.Controls PasswordBox class](https://msdn.microsoft.com/library/windows/apps/br227519)
+- [TextBox class](/uwp/api/Windows.UI.Xaml.Controls.TextBox)
+- [Windows.UI.Xaml.Controls PasswordBox class](/uwp/api/Windows.UI.Xaml.Controls.PasswordBox)

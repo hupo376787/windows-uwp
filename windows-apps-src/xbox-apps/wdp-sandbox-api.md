@@ -1,17 +1,12 @@
 ---
-author: payzer
 title: Device Portal Xbox Live sandbox API reference
-description: Learn how to access the Xbox Live Sandbox programatically.
-ms.author: wdg-dev-content
+description: Learn how to get and set the value for the device's Xbox Live sandbox by using the Xbox Device Portal REST API.
 ms.date: 02/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp
 ms.assetid: 72c7459c-420a-4da9-8afa-191a846185a5
 ms.localizationpriority: medium
 ---
-
 # Xbox Live Sandbox API reference   
 You can get and set your Xbox Live sandbox using this REST API.
 
@@ -24,7 +19,7 @@ You can read the current value for the device's Xbox Live sandbox using the foll
 Method      | Request URI
 :------     | :-----
 GET | /ext/xboxlive/sandbox
-<br />
+
 **URI parameters**
 
 - None
@@ -60,7 +55,7 @@ You can set the current value for the device's Xbox Live sandbox using the follo
 Method      | Request URI
 :------     | :-----
 PUT | /ext/xboxlive/sandbox
-<br />
+
 **URI parameters**
 
 - None
@@ -86,7 +81,6 @@ HTTP status code      | Description
 4XX | Error codes
 5XX | Error codes
 
-<br />
 **Available device families**
 
 * Windows Xbox

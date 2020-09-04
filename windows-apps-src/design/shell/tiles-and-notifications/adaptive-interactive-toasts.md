@@ -1,19 +1,14 @@
 ---
-author: anbare
 Description: Adaptive and interactive toast notifications let you create flexible pop-up notifications with more content, optional inline images, and optional user interaction.
 title: Toast content
 ms.assetid: 1FCE66AF-34B4-436A-9FC9-D0CF4BDA5A01
 label: Toast content
 template: detail.hbs
-ms.author: mijacobs
 ms.date: 11/20/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp, toast notifications, interactive toasts, adaptive toasts, toast content, toast payload
 ms.localizationpriority: medium
 ---
-
 # Toast content
 
 Adaptive and interactive toast notifications let you create flexible notifications with text, images, and buttons/inputs.
@@ -21,14 +16,14 @@ Adaptive and interactive toast notifications let you create flexible notificatio
 > **Important APIs**: [UWP Community Toolkit Notifications nuget package](https://www.nuget.org/packages/Microsoft.Toolkit.Uwp.Notifications/)
 
 > [!NOTE]
-> To see the legacy templates from Windows 8.1 and Windows Phone 8.1, see the [legacy toast template catalog](https://msdn.microsoft.com/library/windows/apps/hh761494).
+> To see the legacy templates from Windows 8.1 and Windows Phone 8.1, see the [legacy toast template catalog](/previous-versions/windows/apps/hh761494(v=win.10)).
 
 
 ## Getting started
 
 **Install Notifications library.** If you'd like to use C# instead of XML to generate notifications, install the NuGet package named [Microsoft.Toolkit.Uwp.Notifications](https://www.nuget.org/packages/Microsoft.Toolkit.Uwp.Notifications/) (search for "notifications uwp"). The C# samples provided in this article use version 1.0.0 of the NuGet package.
 
-**Install Notifications Visualizer.** This free UWP app helps you design interactive toast notifications by providing an instant visual preview of your toast as you edit it, similar to Visual Studio's XAML editor/design view. See [Notifications Visualizer](notifications-visualizer.md) for more information, or [download Notifications Visualizer from the Store](https://www.microsoft.com/store/apps/notifications-visualizer/9nblggh5xsl1).
+**Install Notifications Visualizer.** This free Windows app helps you design interactive toast notifications by providing an instant visual preview of your toast as you edit it, similar to Visual Studio's XAML editor/design view. See [Notifications Visualizer](notifications-visualizer.md) for more information, or [download Notifications Visualizer from the Store](https://www.microsoft.com/store/apps/notifications-visualizer/9nblggh5xsl1).
 
 
 ## Sending a toast notification
@@ -295,7 +290,7 @@ ToastContent toastContent = new ToastContent()
 
 ## Progress bar
 
-**New in Creators Update**: You can provide a progress bar on your toast notification to keep the user informed of the progress of operations, like downloads and more.
+**New in Creators Update**: You can provide a progress bar on your toast notification to keep the user informed of the progress of operations such as downloads.
 
 <img alt="Toast with progress bar" src="images/toast-progressbar.png" width="364"/>
 
@@ -317,7 +312,7 @@ To learn more about using headers, please see [Toast headers](toast-headers.md).
 
 This additional content is specified using Adaptive, which you can learn more about by reading the [Adaptive Tiles documentation](create-adaptive-tiles.md).
 
-Note that any adaptive content must be contained within an [**AdaptiveGroup**](https://docs.microsoft.com/windows/uwp/design/shell/tiles-and-notifications/toast-schema#adaptivegroup). Otherwise it will not be rendered using adaptive.
+Note that any adaptive content must be contained within an [**AdaptiveGroup**](./toast-schema.md#adaptivegroup). Otherwise it will not be rendered using adaptive.
 
 
 ### Columns and text elements
@@ -405,7 +400,7 @@ Buttons can perform the following different actions...
 -   Activating the app in the foreground, with an argument that can be used to navigate to a specific page/context.
 -   Activating the app's background task, for a quick-reply or similar scenario.
 -   Activating another app via protocol launch.
--   Performing a system action, like snoozing or dismissing the notification.
+-   Performing a system action, such as snoozing or dismissing the notification.
 
 > [!NOTE]
 > You can only have up to 5 buttons (including context menu items which we discuss later).
@@ -501,7 +496,7 @@ To learn how to implement this, see [Toast pending update](toast-pending-update.
 > [!NOTE]
 > On older devices, these additional context menu actions will simply appear as normal buttons on your toast.
 
-The additional context menu actions you add (like "Change location") appear above the two default system entries.
+The additional context menu actions you add (such as "Change location") appear above the two default system entries.
 
 <img alt="Toast with context menu" src="images/toast-contextmenu.png" width="444"/>
 
@@ -550,7 +545,7 @@ Inputs are specified within the Actions region of the toast region of the toast,
 
 ### Quick reply text box
 
-To enable a quick reply text box, like for a messaging scenario, add a text input and a button, and reference the text input's id so that the button is displayed adjacent to the input.
+To enable a quick reply text box (for example, in a messaging app) add a text input and a button, and reference the ID of the text input field so that the button is displayed next to to the input field. The icon for the button should be a 32x32 pixel image with no padding, white pixels set to transparent, and 100% scale.
 
 <img alt="notification with text input and actions" src="images/adaptivetoasts-xmlsample05.jpg" width="364"/>
 
@@ -879,5 +874,5 @@ To learn how to handle toast activations (the user clicking your toast or button
 ## Related topics
 
 * [Send a local toast and handle activation](send-local-toast.md)
-* [Notifications library on GitHub (part of the UWP Community Toolkit)](https://github.com/Microsoft/UWPCommunityToolkit/tree/master/Microsoft.Toolkit.Uwp.Notifications)
+* [Notifications library on GitHub (part of the UWP Community Toolkit)](https://github.com/windows-toolkit/WindowsCommunityToolkit/tree/master/Microsoft.Toolkit.Uwp.Notifications)
 * [Tile and toast notification support for language, scale, and high contrast](tile-toast-language-scale-contrast.md)

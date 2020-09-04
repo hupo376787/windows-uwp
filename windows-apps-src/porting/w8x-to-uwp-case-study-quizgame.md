@@ -1,17 +1,12 @@
 ---
-author: stevewhims
 ms.assetid: 88e16ec8-deff-4a60-bda6-97c5dabc30b8
 description: This topic presents a case study of porting a functioning peer-to-peer quiz game WinRT 8.1 sample app to a Windows 10 Universal Windows Platform (UWP) app.
 title: Windows Runtime 8.x to UWP case study, QuizGame peer-to-peer sample app
-ms.author: stwhi
 ms.date: 02/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp
 ms.localizationpriority: medium
 ---
-
 # Windows Runtime 8.x to UWP case study: QuizGame sample app
 
 
@@ -35,11 +30,11 @@ The app uses patterns that make use of views and view models. As a result of thi
 
 ## Downloads
 
-[Download the QuizGame Universal 8.1 app](http://go.microsoft.com/fwlink/?linkid=532953). This is the initial state of the app prior to porting. 
+[Download the QuizGame Universal 8.1 app](https://codeload.github.com/MicrosoftDocs/windows-topic-specific-samples/zip/QuizGame). This is the initial state of the app prior to porting. 
 
-[Download the QuizGame10 Windows 10 app](http://go.microsoft.com/fwlink/?linkid=532954). This is the state of the app just after  porting. 
+[Download the QuizGame10 Windows 10 app](https://codeload.github.com/MicrosoftDocs/windows-topic-specific-samples/zip/QuizGame10). This is the state of the app just after  porting. 
 
-[See the latest version of this sample on GitHub](https://github.com/Microsoft/Windows-appsample-quizgame).
+[See the latest version of this sample on GitHub](https://github.com/microsoft/Windows-appsample-networkhelper).
 
 ## The WinRT 8.1 solution
 

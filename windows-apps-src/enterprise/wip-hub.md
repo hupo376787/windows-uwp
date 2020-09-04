@@ -1,20 +1,15 @@
 ---
-author: normesta
 Description: This is a hub topic covering the full developer picture of how Windows Information Protection (WIP) relates to files, buffers, clipboard, networking, background tasks, and data protection under lock.
 MS-HAID: dev\_enterprise.edp\_hub
 MSHAttr: PreferredLib:/library/windows/apps
 Search.Product: eADQiWindows 10XVcnh
 title: Windows Information Protection (WIP)
-ms.author: normesta
 ms.date: 02/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp, Windows Information Protection, enterprise data, enterprise data protection, edp, enlightened apps
 ms.assetid: 08f0cfad-f15d-46f7-ae7c-824a8b1c44ea
 ms.localizationpriority: medium
 ---
-
 # Windows Information Protection (WIP)
 
 __Note__ Windows Information Protection (WIP) policy can be applied to Windows 10, version 1607.
@@ -41,8 +36,8 @@ If users unenroll their device from the organization's MDM system, or uninstall 
 ![Wip Lifecycle](images/wip-lifecycle.png)
 
 > **Read more about WIP** <br>
-* [Introducing Windows Information Protection](https://blogs.technet.microsoft.com/windowsitpro/2016/06/29/introducing-windows-information-protection/)
-* [Protect your enterprise data using Windows Information Protection (WIP)](https://technet.microsoft.com/library/dn985838(v=vs.85).aspx)
+* [Introducing Windows Information Protection](https://techcommunity.microsoft.com/t5/Windows-IT-Pro-Blog/bg-p/Windows10Blog)
+* [Protect your enterprise data using Windows Information Protection (WIP)](/windows/whats-new/edp-whats-new-overview)
 
 If your app is on the allowed list, all data produced by your app is subject to policy restrictions. That means that if administrators revoke the user's access to enterprise data, those users lose access to all of the data that your app produced.
 
@@ -66,7 +61,7 @@ If you're ready to enlighten your app, see one of these guides:
 
 **For Desktop apps that you build by using C++**
 
-[Windows Information Protection (WIP) developer guide (C++)](http://go.microsoft.com/fwlink/?LinkId=822192).
+[Windows Information Protection (WIP) developer guide (C++)](/previous-versions/windows/desktop/EDP/wip-developer-guide).
 
 
 ## Create non-enlightened enterprise app

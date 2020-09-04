@@ -1,17 +1,12 @@
 ---
-author: mtoepke
 title: Support shadow maps on a range of hardware
 description: Render higher-fidelity shadows on faster devices and faster shadows on less powerful devices.
 ms.assetid: d97c0544-44f2-4e29-5e02-54c45e0dff4e
-ms.author: mtoepke
 ms.date: 02/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp, games, shadow maps, directx
 ms.localizationpriority: medium
 ---
-
 # Support shadow maps on a range of hardware
 
 
@@ -107,7 +102,7 @@ return float4(input.color * (light + shadow), 1.f);
 ## Shadow buffer size
 
 
-Larger shadow maps won't look as blocky but they take up more space in graphics memory. Experiment with different shadow map sizes in your game and observe the results in different types of devices and different display sizes. Consider an optimization like cascaded shadow maps to get better results with less graphics memory. See [Common Techniques to Improve Shadow Depth Maps](https://msdn.microsoft.com/library/windows/desktop/ee416324).
+Larger shadow maps won't look as blocky but they take up more space in graphics memory. Experiment with different shadow map sizes in your game and observe the results in different types of devices and different display sizes. Consider an optimization like cascaded shadow maps to get better results with less graphics memory. See [Common Techniques to Improve Shadow Depth Maps](/windows/desktop/DxTechArts/common-techniques-to-improve-shadow-depth-maps).
 
 ## Shadow buffer depth
 
@@ -174,7 +169,3 @@ The project file entry for the linear filtered version of the shader does not in
  
 
  
-
-
-
-

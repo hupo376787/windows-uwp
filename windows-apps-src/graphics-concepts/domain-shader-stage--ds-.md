@@ -4,17 +4,12 @@ description: The Domain Shader (DS) stage calculates the vertex position of a su
 ms.assetid: 673CC04A-A74F-495F-AFB7-49157538749C
 keywords:
 - Domain Shader (DS) stage
-author: michaelfromredmond
-ms.author: mithom
 ms.date: 02/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 ms.localizationpriority: medium
 ---
 
 # Domain Shader (DS) stage
-
 
 The Domain Shader (DS) stage calculates the vertex position of a subdivided point in the output patch; it calculates the vertex position that corresponds to each domain sample. A domain shader is run once per tessellator stage output point and has read-only access to the hull shader output patch and output patch constants, and the tessellator stage output UV coordinates.
 
@@ -44,7 +39,7 @@ After the domain shader completes, tessellation is finished and pipeline data co
 ## <span id="Example"></span><span id="example"></span><span id="EXAMPLE"></span>Example
 
 
-```
+```hlsl
 void main( out    MyDSOutput result, 
            float2 myInputUV : SV_DomainPoint, 
            MyDSInput DSInputs,

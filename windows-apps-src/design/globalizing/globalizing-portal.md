@@ -1,20 +1,15 @@
 ---
-author: stevewhims
 Description: Learn about the benefits of globalizing and localizing your app, and exactly what these terms mean.
 Search.SourceType: Video
 title: Globalization and localization
 ms.assetid: c0791eec-5bb8-4a13-8977-61d7d98e35ce
 label: Intro
 template: detail.hbs
-ms.author: stwhi
-ms.date: 10/18/2017
+ms.date: 12/07/2018
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp, globalization, localizability, localization
 ms.localizationpriority: medium
 ---
-
 # Globalization and localization
 
 Windows is used worldwide by audiences that are diverse in terms of language, region, and culture. Your users speak a variety of different languages and in a variety of different countries and regions. Some users speak more than one language. So, your app runs on configurations that involve many permutations of system settings for language, region, and culture. You can increase the potential market for your app by designing it to be readily adaptable, using *globalization* and *localization*.
@@ -35,6 +30,9 @@ Your code needs to function equally well in any of the cultures that you've dete
 - Date and time formatting
 - Numeric, currency, weight, and measure conventions
 - Sorting rules
+
+>[!NOTE]
+> For a list of supported locale names by Windows operating system version, see the Language tag column of the table in [Appendix A: Product Behavior](/openspecs/windows_protocols/ms-lcid/a9eac961-e77d-41a6-90a5-ce1a8b0cdb9c) in the [Windows Language Code Identifier (LCID) Reference](/openspecs/windows_protocols/ms-lcid/70feba9f-294e-491e-b6eb-56532684c37f).
 
 **Localizability** is the process of preparing a globalized app for localization and/or verifying that the app is ready for localization. Correctly making an app localizable means that the later localization process will not uncover any functional defects in the app. The most essential property of a localizable app is that its executable code has been cleanly separated from the app's localizable resources.
 
@@ -60,7 +58,9 @@ Most localization teams use special tools to aid the process. For example, by re
 | [Adjust layout and fonts, and support RTL](adjust-layout-and-fonts--and-support-rtl.md) | Design your app to support the layouts and fonts of multiple languages, including RTL (right-to-left) flow direction. |
 | [NumeralSystem values](glob-numeralsystem-values.md) | This topic lists the values available to the **NumeralSystem** property of various classes in the [**Windows.Globalization**](/uwp/api/windows.globalization?branch=live) namespace. |
 | [Make your app localizable](prepare-your-app-for-localization.md) | A localized app is one that can be localized to other markets, languages, or regions without uncovering any functional defects in the app. The most essential property of a localizable app is that its executable code has been cleanly separated from its localizable resources. |
-| [International fonts](loc-international-fonts.md) | This topic lists the fonts available for UWP apps that are localized into languages other than U.S. English. |
+| [International fonts](loc-international-fonts.md) | This topic lists the fonts available for Windows apps that are localized into languages other than U.S. English. |
 | [Design your app for bidirectional text](design-for-bidi-text.md) | Design your app to provide bi-directional text support (BiDi) so that you can combine script from left-to-right and right-to-left writing systems. |
-| [Use the Multilingual App Toolkit 4.0](use-mat.md) | The Multilingual App Toolkit (MAT) 4.0 integrates with Microsoft Visual Studio 2017 to provide UWP apps with translation support, translation file management, and editor tools. |
+| [Use the Multilingual App Toolkit 4.0](use-mat.md) | The Multilingual App Toolkit (MAT) 4.0 integrates with Microsoft Visual Studio 2017 and later to provide Windows apps with translation support, translation file management, and editor tools. |
 | [Multilingual App Toolkit 4.0 FAQ & troubleshooting](mat-faq-troubleshooting.md) | This topic provides answers to frequently-asked questions and issues related to the Multilingual App Toolkit (MAT) 4.0. |
+| [Use the UTF-8 code page](use-utf8-code-page.md) | UTF-8 is the universal code page for internationalization. |
+| [Prepare your application for the Japanese era change](japanese-era-change.md) | Learn about the May 2019 Japanese era change and how to prepare your application. |

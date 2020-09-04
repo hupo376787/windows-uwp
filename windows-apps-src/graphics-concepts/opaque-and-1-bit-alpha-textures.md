@@ -4,17 +4,12 @@ description: Texture format BC1 is for textures that are opaque or have a single
 ms.assetid: 8C53ACDD-72ED-4307-B4F3-2FCF9A9F53EC
 keywords:
 - Opaque and 1-bit alpha textures
-author: michaelfromredmond
-ms.author: mithom
 ms.date: 02/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 ms.localizationpriority: medium
 ---
 
 # <span id="direct3dconcepts.opaque_and_1-bit_alpha_textures"></span>Opaque and 1-bit alpha textures
-
 
 Texture format BC1 is for textures that are opaque or have a single transparent color.
 
@@ -28,7 +23,7 @@ In three-color encoding, there is one derived color and the fourth 2-bit code is
 
 The following code example illustrates the algorithm for deciding whether three- or four-color encoding is selected:
 
-```
+```cpp
 if (color_0 > color_1) 
 {
     // Four-color block: derive the other two colors. 
@@ -116,7 +111,7 @@ Bitmap Word\_1 is laid out as follows:
 
 As an example of opaque encoding, assume that the colors red and black are at the extremes. Red is color\_0, and black is color\_1. There are four interpolated colors that form the uniformly distributed gradient between them. To determine the values for the 4x4 bitmap, the following calculations are used:
 
-```
+```cpp
 00 ? color_0
 01 ? color_1
 10 ? 2/3 color_0 + 1/3 color_1
@@ -148,7 +143,7 @@ Where the image is shown as white, the texel would be encoded as transparent. Th
 
 The bitmap encoding for the colors and the transparency is determined using the following calculations.
 
-```
+```cpp
 00 ? color_0
 01 ? color_1
 10 ? 1/2 color_0 + 1/2 color_1

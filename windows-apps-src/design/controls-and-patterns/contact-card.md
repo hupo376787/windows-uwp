@@ -1,12 +1,8 @@
 ---
-author: mijacobs
-Description: A button gives the user a way to trigger an immediate action.
+description: Learn how to use contact cards to let users display and edit contact information, such as names, phone numbers, and addresses.
 title: Contact card
-ms.author: mijacobs
 ms.date: 03/07/2018
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp
 pm-contact: kele
 design-contact: tbd
@@ -16,9 +12,9 @@ ms.localizationpriority: medium
 ---
 # Contact card
 
-The contact card displays contact information, such as the name, phone number, and address, for a [Contact](//docs.microsoft.com/uwp/api/Windows.ApplicationModel.Contacts.Contact) (the mechanism UWP uses to represent people and businesses).  The contact card also lets the user edit contact info. You can choose to display a compact contact card, or a full contact card that contains additional information.
+The contact card displays contact information, such as the name, phone number, and address, for a [Contact](/uwp/api/Windows.ApplicationModel.Contacts.Contact) (the mechanism Windows uses to represent people and businesses).  The contact card also lets the user edit contact info. You can choose to display a compact contact card, or a full contact card that contains additional information.
 
-> **Important APIs**: [ShowContactCard method](/uwp/api/windows.applicationmodel.contacts.contactmanager#Windows_ApplicationModel_Contacts_ContactManager_ShowFullContactCard_Windows_ApplicationModel_Contacts_Contact_Windows_Foundation_Rect_),   [ShowFullContactCard method](/uwp/api/windows.applicationmodel.contacts.contactmanager#Windows_ApplicationModel_Contacts_ContactManager_ShowContactCard_Windows_ApplicationModel_Contacts_Contact_Windows_ApplicationModel_Contacts_FullContactCardOptions_),  [IsShowContactCardSupported method](/uwp/api/windows.applicationmodel.contacts.contactmanager.IsShowContactCardSupported),  [Contact class](//docs.microsoft.com/uwp/api/Windows.ApplicationModel.Contacts.Contact)  
+> **Important APIs**: [ShowContactCard method](/uwp/api/windows.applicationmodel.contacts.contactmanager.showcontactcard),   [ShowFullContactCard method](/uwp/api/windows.applicationmodel.contacts.contactmanager.showfullcontactcard),  [IsShowContactCardSupported method](/uwp/api/windows.applicationmodel.contacts.contactmanager.IsShowContactCardSupported),  [Contact class](/uwp/api/Windows.ApplicationModel.Contacts.Contact)  
 
 There are two ways to display the contact card:  
 * As a standard contact card that appears in a flyout that is light-dismissable--the contact card dissapears when the user clicks outside of it. 
@@ -53,7 +49,7 @@ Use the contact card when you want to display contact info for a contact. If you
     <p>If you have the <strong style="font-weight: semi-bold">XAML Controls Gallery</strong> app installed, click here to <a href="xamlcontrolsgallery:/item/Button">open the app and see the Button in action</a>.</p>
     <ul>
     <li><a href="https://www.microsoft.com/store/productId/9MSVH128X2ZT">Get the XAML Controls Gallery app (Microsoft Store)</a></li>
-    <li><a href="https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/XamlUIBasics">Get the source code (GitHub)</a></li>
+    <li><a href="https://github.com/Microsoft/Xaml-Controls-Gallery">Get the source code (GitHub)</a></li>
     </ul>
 </td>
 </tr>
@@ -101,7 +97,7 @@ Use the contact card when you want to display contact info for a contact. If you
                 email.Address = "jsmith@contoso.com"; 
                 contact.Emails.Add(email); 
     ```
-5. Show the contact card by calling the  [ShowContactCard](/uwp/api/windows.applicationmodel.contacts.contactmanager#Windows_ApplicationModel_Contacts_ContactManager_ShowFullContactCard_Windows_ApplicationModel_Contacts_Contact_Windows_Foundation_Rect_) method. 
+5. Show the contact card by calling the  [ShowContactCard](/uwp/api/windows.applicationmodel.contacts.contactmanager.showcontactcard) method. 
 
     ```csharp
             ContactManager.ShowFullContactCard(
@@ -144,7 +140,7 @@ private void OnUserClickShowContactCard(object sender, RoutedEventArgs e)
 
 ## Show a full contact card
 
-To show the full contact card, call the [ShowFullContactCard](/uwp/api/windows.applicationmodel.contacts.contactmanager#Windows_ApplicationModel_Contacts_ContactManager_ShowContactCard_Windows_ApplicationModel_Contacts_Contact_Windows_ApplicationModel_Contacts_FullContactCardOptions_) method instead of [ShowContactCard](/uwp/api/windows.applicationmodel.contacts.contactmanager#Windows_ApplicationModel_Contacts_ContactManager_ShowFullContactCard_Windows_ApplicationModel_Contacts_Contact_Windows_Foundation_Rect_).
+To show the full contact card, call the [ShowFullContactCard](/uwp/api/windows.applicationmodel.contacts.contactmanager.showfullcontactcard) method instead of [ShowContactCard](/uwp/api/windows.applicationmodel.contacts.contactmanager.showcontactcard).
 
 ```csharp
 private void onUserClickShowContactCard() 
@@ -172,12 +168,12 @@ private void onUserClickShowContactCard()
 
 ## Retrieving "real" contacts
 
-The examples in this article create a simple contact. In a real app, you'd probably want to retrieve an existing contact. For instructions, see the [Contacts and calendar article](/windows/uwp/contacts-and-calendar/).
+The examples in this article create a simple contact. In a real app, you'd probably want to retrieve an existing contact. For instructions, see the [Contacts and calendar article](../../contacts-and-calendar/index.md).
 
 
 
 
 ## Related articles
-- [Contacts and calendar](/windows/uwp/contacts-and-calendar/)
-- [Contact cards sample](http://go.microsoft.com/fwlink/p/?LinkId=624040)
+- [Contacts and calendar](../../contacts-and-calendar/index.md)
+- [Contact cards sample](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/ContactCards)
 - [People picture control](/windows/uwp/controls-and-patterns/person-picture/)

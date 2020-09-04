@@ -1,16 +1,11 @@
 ---
-author: Mtoepke
 title: Getting started with UWP app development on Xbox One
-description: How to set up your PC and Xbox One for UWP development.
-ms.author: scotmi
+description: Learn how to set up your development PC and Xbox One console to get started with Universal Windows Platform (UWP) app development on Xbox One.
 ms.date: 10/12/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp
 ms.localizationpriority: medium
 ---
-
 # Getting started with UWP app development on Xbox One
 
 **Carefully** follow these steps to successfully set up your PC and Xbox One for Universal Windows Platform (UWP) development. After you’ve got things set up, you can learn more about Developer Mode on Xbox One and building UWP apps on the [UWP for Xbox One](index.md) page. 
@@ -19,20 +14,20 @@ ms.localizationpriority: medium
 
 Before you start you will need to do the following:
 -	Set up a PC with the latest version of Windows 10.
-<!-- -	Install Microsoft Visual Studio 2015 Update 3 or Microsoft Visual Studio 2017.
+<!-- -	Install Microsoft Visual Studio 2015 Update 3 or Microsoft Visual Studio 2019.
 
     > [!NOTE]
-    > Visual Studio 2017 is required if you are using the Windows 10, build 15063 SDK. -->
+    > Visual Studio 2019 is required if you are using the Windows 10, build 15063 SDK. -->
 
 - Have at least five gigabytes of free space on your Xbox One console.
 
 ## Setting up your development PC
 
-1.	Install Visual Studio 2015 Update 3 or Visual Studio 2017.
+1.	Install Visual Studio 2015 Update 3, Visual Studio 2017, or Visual Studio 2019.
 
     If you're installing Visual Studio 2015 Update 3, make sure that you choose **Custom** install and select the **Universal Windows App Development Tools** check box – it's not part of the default install. If you are a C++ developer, make sure that you choose **Custom install** and select **C++**.
 
-    If you're installing Visual Studio 2017, make sure that you choose the **Universal Windows Platform development** workload. If you're a C++ developer, in the **Summary** pane on the right, under **Universal Windows Platform development**, make sure that you select the **C++ Universal Windows Platform tools** checkbox. It's not part of the default install.
+    If you're installing Visual Studio 2017 or Visual Studio 2019, make sure that you choose the **Universal Windows Platform development** workload. If you're a C++ developer, in the **Summary** pane on the right, under **Universal Windows Platform development**, make sure that you select the **C++ Universal Windows Platform tools** checkbox. It's not part of the default install.
 
     For more information, see [Set up your UWP on Xbox development environment](development-environment-setup.md).
 
@@ -47,7 +42,7 @@ Now that your development PC is ready, you can watch this video or continue read
 
 ## Setting up your Xbox One console
 
-1.	Activate Developer Mode on your Xbox One. Download the app, get the activation code, and then enter it into the [Manage Xbox One consoles](https://developer.microsoft.com/xboxactivate) page in your Dev Center account. For more information, see [Xbox One Developer Mode activation](devkit-activation.md). 
+1.	Activate Developer Mode on your Xbox One. Download the app, get the activation code, and then enter it into the **Manage Xbox One consoles** page in your Partner Center app developer account. For more information, see [Xbox One Developer Mode activation](devkit-activation.md). 
 
 2.	Open the **Dev Mode Activation** app and select **Switch and restart**. Congratulations, you now have an Xbox One in Developer Mode!
   

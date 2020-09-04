@@ -1,20 +1,15 @@
 ﻿---
-author: jnHs
-Description: The Health report in the Windows Dev Center dashboard lets you get data related to the performance and quality of your app, including crashes and unresponsive events.
+Description: The Health report in Partner Center lets you get data related to the performance and quality of your app, including crashes and unresponsive events.
 title: Health report
 ms.assetid: 4F671543-1E91-4E59-88A3-638E3E64539A
-ms.author: wdg-dev-content
-ms.date: 06/01/2018
+ms.date: 10/31/2018
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp, health, crashes, unresponsive events, app health, health data, stack trace, cab file, failure, failures, pdb, symbols
 ms.localizationpriority: medium
 ---
-
 # Health report
 
-The **Health** report in the Windows Dev Center dashboard lets you get data related to the performance and quality of your app, including crashes and unresponsive events. You can view this data in your dashboard, or [download the report](download-analytic-reports.md) to view offline. Where applicable, you can view stack traces and/or CAB files for further debugging.
+The **Health** report in [Partner Center](https://partner.microsoft.com/dashboard) lets you get data related to the performance and quality of your app, including crashes and unresponsive events. You can view this data in Partner Center, or [download the report](download-analytic-reports.md) to view offline. Where applicable, you can view stack traces and/or CAB files for further debugging.
 
 Alternatively, you can programmatically retrieve the data in this report by using the [Microsoft Store analytics REST API](../monetize/access-analytics-data-using-windows-store-services.md).
 
@@ -64,7 +59,7 @@ The **Failures** chart shows the total number of crashes and events over the sel
 > [!TIP]
 > At times, you may see an entry for **Unknown** in this section. This occurs when despite our best efforts, we are unable to collect full details for one or more failures, which will all be grouped together under **Unknown**. Most often, this occurs because of storage constraints, but it can also be a result of a device's privacy settings, network connection issues, partial/bad crash dumps, and other factors.
 >
-> If you see **!unknown** as part of a failure name, this means that symbols weren’t present, so we couldn’t identify the failure name. Be sure to include symbols in your package to get accurate failure analysis. See [Configure an app package](../packaging/packaging-uwp-apps.md#configure-an-app-package). In contrast, failure names that include **!unknown_error_in_** and **!unknown_function** mean that we weren’t able to gather complete details for various other reasons.
+> If you see **!unknown** as part of a failure name, this means that symbols weren’t present, so we couldn’t identify the failure name. Be sure to include symbols in your package to get accurate failure analysis. See [Configure an app package](/windows/msix/package/packaging-uwp-apps#configure-an-app-package). In contrast, failure names that include **!unknown_error_in_** and **!unknown_function** mean that we weren’t able to gather complete details for various other reasons.
 
 To display the **Failure details** report for a particular failure, select the failure name. If you have included symbol files, the **Failure details** report includes the number of failure hits over the last month, as well as a failure log that lists occurrence details (date, package version, device type, device model, OS build) and a link to the stack trace and/or CAB file, if available.
 

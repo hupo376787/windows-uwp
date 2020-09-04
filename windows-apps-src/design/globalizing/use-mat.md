@@ -1,20 +1,16 @@
 ---
-author: stevewhims
-Description: The Multilingual App Toolkit (MAT) 4.0 integrates with Microsoft Visual Studio 2017 to provide UWP apps with translation support, translation file management, and editor tools.
+Description: The Multilingual App Toolkit (MAT) 4.0 integrates with Microsoft Visual Studio 2019 to provide Windows apps with translation support, translation file management, and editor tools.
 title: Use the Multilingual App Toolkit
 template: detail.hbs
-ms.author: stwhi
 ms.date: 01/23/2018
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp, globalization, localizability, localization
 ms.localizationpriority: medium
 ---
 
 # Use the Multilingual App Toolkit 4.0
 
-The Multilingual App Toolkit (MAT) 4.0 integrates with Microsoft Visual Studio 2017 to provide UWP apps with translation support, translation file management, and editor tools. Here are some of the value propositions of the toolkit.
+The Multilingual App Toolkit (MAT) 4.0 integrates with Microsoft Visual Studio 2019 to provide Windows apps with translation support, translation file management, and editor tools. Here are some of the value propositions of the toolkit.
 
 - Helps you manage resource changes and translation status during development.
 - Provides a UI for choosing languages based on configured translation providers.
@@ -37,10 +33,10 @@ Also see [Guidelines for globalization](guidelines-and-checklist-for-globalizing
 
 There are two parts to the Multilingual App Toolkit 4.0 (MAT 4.0), each with its own installer.
 
-- [Multilingual App Toolkit 4.0 Extension for Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=MultilingualAppToolkit.MultilingualAppToolkit-18308). This contains the MAT 4.0 extension for Visual Studio 2017, in the form of a .vsix installer.
-- [Multilingual App Toolkit 4.0 Editor](https://developer.microsoft.com/en-us/windows/develop/multilingual-app-toolkit). This contains the MAT 4.0 standalone Multilingual Editor tool, in the form of an .msi installer. It also includes the MAT 4.0 extension for Visual Studio 2015 and for Visual Studio 2013.
+- [Multilingual App Toolkit 4.0 Extension for Visual Studio 2017 and later](https://marketplace.visualstudio.com/items?itemName=MultilingualAppToolkit.MultilingualAppToolkit-18308). This contains the MAT 4.0 extension for Visual Studio 2019, in the form of a .vsix installer.
+- [Multilingual App Toolkit 4.0 Editor](https://developer.microsoft.com/windows/develop/multilingual-app-toolkit). This contains the MAT 4.0 standalone Multilingual Editor tool, in the form of an .msi installer. It also includes the MAT 4.0 extension for Visual Studio 2015 and for Visual Studio 2013.
 
-If you use Visual Studio 2017, then download and run both installers, one after the other. If you use Visual Studio 2015 or Visual Studio 2013, then download and run the .msi installer.
+If you use Visual Studio 2017 or Visual Studio 2019, then download and run both installers, one after the other. If you use Visual Studio 2015 or Visual Studio 2013, then download and run the .msi installer.
 
 ### Step 3. Enable the Multilingual App Toolkit for your project
 
@@ -62,13 +58,13 @@ Follow these steps to add languages to your project.
 
 The toolkit does these things in response.
 
-- For each language you added, a new folder is created named for the [BCP-47 language tag](http://go.microsoft.com/fwlink/p/?linkid=227302) of the language. Inside that folder, new Resources File(s) (.resw) are created to match the one(s) that contain the default language strings.
+- For each language you added, a new folder is created named for the [BCP-47 language tag](https://tools.ietf.org/html/bcp47) of the language. Inside that folder, new Resources File(s) (.resw) are created to match the one(s) that contain the default language strings.
 - If this is the first time you've added a language, a new folder named `MultilingualResources` is added to the project. Inside that folder, an .xlf file is added for each language. The .xlf files contain a translation unit for each string in each Resources File (.resw) in your project.
 - The Output window confirms the addition of the language(s) that you added.
 
 Whenever you add/remove a default language Resources File (.resw), or you add/remove a string inside a default language Resources File (.resw), rebuild the project to re-synchronize the .xlf files. This ensures that the .xlf files contain the union of the strings in the default language.
 
-Installed Translation Providers&mdash;such as the [Microsoft Language Portal](http://go.microsoft.com/fwlink/p/?LinkId=330295) and [Microsoft Translator](http://go.microsoft.com/fwlink/p/?LinkId=258220)&mdash;can be used to translate your app's resources. When a provider supports a specific language, the provider's icon is displayed next to the language name in the Translation Languages dialog.
+Installed Translation Providers&mdash;such as the [Microsoft Language Portal](https://www.microsoft.com/Language/) and [Microsoft Translator](https://www.microsofttranslator.com/)&mdash;can be used to translate your app's resources. When a provider supports a specific language, the provider's icon is displayed next to the language name in the Translation Languages dialog.
 
 In the Translation Languages dialog, any existing .xlf-based languages that are discovered by the toolkit have their selection box pre-checked to indicate that the language is already included the project.
 
@@ -92,9 +88,7 @@ In addition to character replacement and expansion, the pseudo engine provides a
 
 In this "Hello, World!" text example, the pseudo translation expands to take about 30 percent more screen space, and then applies the resource tracker.
 
-```
-"Hello World" -> "Ĥèĺļõ Ŵòŗłđ" -> "[!!_Ĥèĺļõ Ŵòŗłđ_!!]" -> "[hJ8s1][!!_Ĥèĺļõ Ŵòŗłđ_!!]"
-```
+`"Hello World" -> "Ĥèĺļõ Ŵòŗłđ" -> "[!!_Ĥèĺļõ Ŵòŗłđ_!!]" -> "[hJ8s1][!!_Ĥèĺļõ Ŵòŗłđ_!!]"`
 
 ### Step 6. Translate your app into selected languages
 
@@ -103,7 +97,7 @@ After you've tested your app by using Pseudo language, there are three options t
 
 #### Option 1. Translate the strings yourself
 
-You can use the Multilingual Editor to translate strings individually. As already mentioned, this is included in [The .msi installer](https://developer.microsoft.com/en-us/windows/develop/multilingual-app-toolkit).
+You can use the Multilingual Editor to translate strings individually. As already mentioned, this is included in [The .msi installer](https://developer.microsoft.com/windows/develop/multilingual-app-toolkit).
 
 - Right-click the .xlf file that you want to translate.
 - Click **Open With...** and select Multilingual Editor. You can optionally click **Set as Default**.
@@ -128,11 +122,11 @@ Rebuild your project to cause the translated strings to be copied into the Resou
 
 These third party providers offer localization services, and may be able to assist you.
 
-- [Elanex](https://www.elanex.com/)
+- [Elanex](https://www.strakertranslations.com/)
 - [Keywords Studios](https://www.keywordsstudios.com/)
-- [Lionbridge](https://intlapps.lionbridge.com/windows)
-- [Moravia](https://www.moravia.com/)
-- [SDL](https://www.sdl.com/languagecloud/managed-translation/ilp/instantquote)
+- [Lionbridge](https://www.lionbridge.com)
+- [Moravia](https://www.rws.com/what-we-do/rws-moravia/)
+- [SDL](https://www.sdl.com/translate/get-started/instant-quote.html)
 - [Welocalize](https://www.welocalize.com/)
 
 > [!NOTE]
@@ -148,8 +142,8 @@ The Multilingual Editor provides the same translation support, as well as adding
 
 Two providers are shipped with the Multilingual App Toolkit.
 
-- The [Microsoft Language Portal](http://go.microsoft.com/fwlink/p/?LinkId=330295) provider enables translation-recycling and terminology-matching support based on translations of the user interface text for Microsoft products and services.
-- The [Microsoft Translator](http://go.microsoft.com/fwlink/p/?LinkId=258220) provider enables on-demand machine translation services.
+- The [Microsoft Language Portal](https://www.microsoft.com/Language/) provider enables translation-recycling and terminology-matching support based on translations of the user interface text for Microsoft products and services.
+- The [Microsoft Translator](https://www.microsofttranslator.com/) provider enables on-demand machine translation services.
 
 You and your translator(s) can manage the status of translations in the Multilingual Editor to review uncertain translations later. You can set the status of each string in the **Properties** tab. Status values are: **New**, **Needs review**, **Translated**, **Final**, and **Signed off**. The indicator at the left of the row shows the status. When all rows show green in the Multilingual Editor, then your translation work is done.
 
@@ -165,14 +159,14 @@ Before you start the Microsoft Store Certification process, you must exclude the
 * [Globalization and localization](globalizing-portal.md)
 * [Guidelines for globalization](guidelines-and-checklist-for-globalizing-your-app.md)
 * [Make your app localizable](prepare-your-app-for-localization.md)
-* [BCP-47 language tag](http://go.microsoft.com/fwlink/p/?linkid=227302)
+* [BCP-47 language tag](https://tools.ietf.org/html/bcp47)
 
 ## Downloads
 
 * [Multilingual App Toolkit 4.0 .vsix installer](https://marketplace.visualstudio.com/items?itemName=MultilingualAppToolkit.MultilingualAppToolkit-18308)
-* [Multilingual App Toolkit 4.0 .msi installer](https://developer.microsoft.com/en-us/windows/develop/multilingual-app-toolkit)
+* [Multilingual App Toolkit 4.0 .msi installer](https://developer.microsoft.com/windows/develop/multilingual-app-toolkit)
 
 ## Translation services
 
-* [Microsoft Language Portal](http://go.microsoft.com/fwlink/p/?LinkId=330295)
-* [Microsoft Translator](http://go.microsoft.com/fwlink/p/?LinkId=258220)
+* [Microsoft Language Portal](https://www.microsoft.com/Language/)
+* [Microsoft Translator](https://www.microsofttranslator.com/)

@@ -1,26 +1,21 @@
 ---
-author: mijacobs
 Description: List animations let you insert or remove single or multiple items from a collection, such as a photo album or a list of search results.
-title: Add and delete animations in UWP apps
+title: Add and delete animations
 ms.assetid: A85006AE-4992-457a-B514-500B8BEF5DC8
 label: Motion--add and delete animations
 template: detail.hbs
-ms.author: mijacobs
 ms.date: 05/19/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp
 ms.localizationpriority: medium
 ---
-
 # Add and delete animations
 
 
 
 List animations let you insert or remove single or multiple items from a collection, such as a photo album or a list of search results.
 
-> **Important APIs**: [**AddDeleteThemeTransition class**](https://msdn.microsoft.com/library/windows/apps/br243048)
+> **Important APIs**: [**AddDeleteThemeTransition class**](/uwp/api/windows.ui.xaml.media.animation.adddeletethemetransition)
 
 
 ## Do's and don'ts
@@ -37,15 +32,11 @@ List animations let you insert or remove single or multiple items from a collect
 
 ## Related articles
 
-* [Animations overview](https://msdn.microsoft.com/library/windows/apps/mt187350)
-* [Animating list additions and deletions](https://msdn.microsoft.com/library/windows/apps/xaml/jj649430)
-* [Quickstart: Animating your UI using library animations](https://msdn.microsoft.com/library/windows/apps/xaml/hh452703)
-* [**AddDeleteThemeTransition class**](https://msdn.microsoft.com/library/windows/apps/br243048)
+* [Animations overview](./xaml-animation.md)
+* [Animating list additions and deletions](/previous-versions/windows/apps/jj649430(v=win.10))
+* [Quickstart: Animating your UI using library animations](/previous-versions/windows/apps/hh452703(v=win.10))
+* [**AddDeleteThemeTransition class**](/uwp/api/windows.ui.xaml.media.animation.adddeletethemetransition)
 
  
 
  
-
-
-
-

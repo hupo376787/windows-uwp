@@ -1,17 +1,12 @@
 ---
-author: drewbatgit
 ms.assetid: DD8FFA8C-DFF0-41E3-8F7A-345C5A248FC2
 description: This topic describes how to add PlayReady protected media content to your Universal Windows Platform (UWP) app.
 title: PlayReady DRM
-ms.author: drewbat
 ms.date: 02/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp
 ms.localizationpriority: medium
 ---
-
 # PlayReady DRM
 
 
@@ -33,7 +28,7 @@ The following list describes the new features and changes made to PlayReady DRM 
 
     Hardware-based content protection support enables secure playback of high definition (HD) and ultra-high definition (UHD) content on multiple device platforms. Key material (including private keys, content keys, and any other key material used to derive or unlock said keys), and decrypted compressed and uncompressed video samples are protected by leveraging hardware security. When Hardware DRM is being used, neither unknown enabler (play to unknown / play to unknown with downres) has meaning as the HWDRM pipeline always knows the output being used. For more information, see [Hardware DRM](hardware-drm.md).
 
--   PlayReady is no longer an appX framework component, but instead is an in-box operating system component. The namespace was changed from **Microsoft.Media.PlayReadyClient** to [**Windows.Media.Protection.PlayReady**](https://msdn.microsoft.com/library/windows/apps/dn986454).
+-   PlayReady is no longer an appX framework component, but instead is an in-box operating system component. The namespace was changed from **Microsoft.Media.PlayReadyClient** to [**Windows.Media.Protection.PlayReady**](/uwp/api/Windows.Media.Protection.PlayReady).
 -   The following headers defining the PlayReady error codes are now part of the Windows Software Development Kit (SDK): Windows.Media.Protection.PlayReadyErrors.h and Windows.Media.Protection.PlayReadyResults.h.
 -   Provides proactive acquisition of non-persistent licenses.
 
@@ -68,23 +63,23 @@ The following list describes the new features and changes made to PlayReady DRM 
 
 The following new interfaces, classes, and enumerations were added to PlayReady DRM:
 
--   [**IPlayReadyLicenseAcquisitionServiceRequest**](https://msdn.microsoft.com/library/windows/apps/dn986077) interface
--   [**IPlayReadyLicenseSession**](https://msdn.microsoft.com/library/windows/apps/dn986080) interface
--   [**IPlayReadySecureStopServiceRequest**](https://msdn.microsoft.com/library/windows/apps/dn986090) interface
--   [**PlayReadyLicenseSession**](https://msdn.microsoft.com/library/windows/apps/dn986309) class
--   [**PlayReadySecureStopIterable**](https://msdn.microsoft.com/library/windows/apps/dn986371) class
--   [**PlayReadySecureStopIterator**](https://msdn.microsoft.com/library/windows/apps/dn986375) class
--   [**PlayReadyHardwareDRMFeatures**](https://msdn.microsoft.com/library/windows/apps/dn986265) enumerator
+-   [**IPlayReadyLicenseAcquisitionServiceRequest**](/uwp/api/Windows.Media.Protection.PlayReady.IPlayReadyLicenseAcquisitionServiceRequest) interface
+-   [**IPlayReadyLicenseSession**](/uwp/api/Windows.Media.Protection.PlayReady.IPlayReadyLicenseSession) interface
+-   [**IPlayReadySecureStopServiceRequest**](/uwp/api/Windows.Media.Protection.PlayReady.IPlayReadySecureStopServiceRequest) interface
+-   [**PlayReadyLicenseSession**](/uwp/api/Windows.Media.Protection.PlayReady.PlayReadyLicenseSession) class
+-   [**PlayReadySecureStopIterable**](/uwp/api/Windows.Media.Protection.PlayReady.PlayReadySecureStopIterable) class
+-   [**PlayReadySecureStopIterator**](/uwp/api/Windows.Media.Protection.PlayReady.PlayReadySecureStopIterator) class
+-   [**PlayReadyHardwareDRMFeatures**](/uwp/api/Windows.Media.Protection.PlayReady.PlayReadyHardwareDRMFeatures) enumerator
 
-A new sample has been created to demonstrate how to use the new features of PlayReady DRM. The sample can be downloaded from [http://go.microsoft.com/fwlink/p/?linkid=331670&clcid=0x409](http://go.microsoft.com/fwlink/p/?linkid=331670).
+A new sample has been created to demonstrate how to use the new features of PlayReady DRM. The sample can be downloaded from [/samples/browse/?redirectedfrom=MSDN-samples&clcid=0x409](/samples/browse/?redirectedfrom=MSDN-samples).
 
 ## Things to consider
 
--   PlayReady DRM now supports HDCP Type 1 (supported in HDCP version 2.1 or later). PlayReady carries an HDCP Type Restriction policy in the license for the device to enforce. On Windows 10, this policy will enforce that HDCP 2.2 or later is engaged. This feature can be enabled in your PlayReady Server v3.0 SDK license (the server controls this policy in the license using the HDCP Type Restriction GUID). For more information, see the [PlayReady Compliance and Robustness Rules](http://www.microsoft.com/playready/licensing/compliance/).
+-   PlayReady DRM now supports HDCP Type 1 (supported in HDCP version 2.1 or later). PlayReady carries an HDCP Type Restriction policy in the license for the device to enforce. On Windows 10, this policy will enforce that HDCP 2.2 or later is engaged. This feature can be enabled in your PlayReady Server v3.0 SDK license (the server controls this policy in the license using the HDCP Type Restriction GUID). For more information, see the [PlayReady Compliance and Robustness Rules](https://www.microsoft.com/playready/licensing/compliance/).
 -   Windows Media Video (also known as VC-1) is not supported in hardware DRM (see [Override Hardware DRM](hardware-drm.md#override-hardware-drm)).
 -   PlayReady DRM now supports the High Efficiency Video Coding (HEVC /H.265) video compression standard. To support HEVC, your app must use Common Encryption Scheme (CENC) version 2 content which includes leaving the content's slice headers in the clear. Refer to ISO/IEC 23001-7 Information technology -- MPEG systems technologies -- Part 7: Common encryption in ISO base media file format files (Spec version ISO/IEC 23001-7:2015 or higher is required.) for more information. Microsoft also recommends using CENC version 2 for all HWDRM content. In addition, some hardware DRM will support HEVC and some will not (see [Override Hardware DRM](hardware-drm.md#override-hardware-drm)).
 -   To take advantage of certain new PlayReady 3.0 features (including, but not limited to, SL3000 for hardware-based clients, acquiring multiple non-persistent licenses in one license acquisition message, and time-based restrictions on non-persistent licenses), the PlayReady server is required to be the Microsoft PlayReady Server Software Development Kit v3.0.2769 Release version or later.
--   Depending on the Output Protection Policy specified in the content license, media playback may fail for end users if their connected output does not support those requirements. The following table lists the set of common errors that occur as a result. For more information, see the [PlayReady Compliance and Robustness Rules](http://www.microsoft.com/playready/licensing/compliance/).
+-   Depending on the Output Protection Policy specified in the content license, media playback may fail for end users if their connected output does not support those requirements. The following table lists the set of common errors that occur as a result. For more information, see the [PlayReady Compliance and Robustness Rules](https://www.microsoft.com/playready/licensing/compliance/).
 
 | Error                                                   | Value      | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 |---------------------------------------------------------|------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -400,13 +395,13 @@ Before you begin creating your PlayReady-protected UWP app, the following softwa
 -   If you are compiling any of the samples for PlayReady DRM for UWP apps, you must use Microsoft Visual Studio 2015 or later to compile the samples. You can still use Microsoft Visual Studio 2013 to compile any of the samples from PlayReady DRM for Windows 8.1 Store Apps.
 
 <!--This is no longer available-->
-<!--If you are planning to play back MPEG-2/H.262 content on your app, you must also download and install [Windows 8.1 Media Center Pack](http://go.microsoft.com/fwlink/p/?LinkId=626876).-->
+<!--If you are planning to play back MPEG-2/H.262 content on your app, you must also download and install [Windows 8.1 Media Center Pack](https://windows.microsoft.com/windows-8/feature-packs).-->
 
 ## PlayReady UWP app migration guide
 
 This section includes information on how to migrate your existing PlayReady Windows 8.x Store apps to Windows 10.
 
-The namespace for PlayReady UWP apps on Windows 10 was changed from **Microsoft.Media.PlayReadyClient** to [**Windows.Media.Protection.PlayReady**](https://msdn.microsoft.com/library/windows/apps/dn986454). This means that you will need to search and replace the old namespace with the new one in your code. You will still be referencing a winmd file. It is part of windows.media.winmd on the Windows 10 operating system. It is in windows.winmd as part of the TH’s Windows SDK. For UWP, it’s referenced in windows.foundation.univeralappcontract.winmd.
+The namespace for PlayReady UWP apps on Windows 10 was changed from **Microsoft.Media.PlayReadyClient** to [**Windows.Media.Protection.PlayReady**](/uwp/api/Windows.Media.Protection.PlayReady). This means that you will need to search and replace the old namespace with the new one in your code. You will still be referencing a winmd file. It is part of windows.media.winmd on the Windows 10 operating system. It is in windows.winmd as part of the TH’s Windows SDK. For UWP, it’s referenced in windows.foundation.univeralappcontract.winmd.
 
 To play back PlayReady-protected high definition (HD) content (1080p) and ultra-high definition (UHD) content, you will need to implement PlayReady hardware DRM. For information on how to implement PlayReady hardware DRM, see [Hardware DRM](hardware-drm.md).
 
@@ -469,7 +464,7 @@ In previous versions of PlayReady DRM, non-persistent licenses could only be acq
     ```
     
 ## Query for protection capabilities
-Starting with Windows 10, version 1703, you can query HW DRM capabilities, such as decode codecs, resolution, and output protections (HDCP). Queries are performed with the [**IsTypeSupported**](https://docs.microsoft.com/uwp/api/windows.media.protection.protectioncapabilities.istypesupported) method which takes a string representing the capabilities for which support is queried and a string specifying the key system to which the query applies. For a list of supported string values, see the API reference page for [**IsTypeSupported**](https://docs.microsoft.com/uwp/api/windows.media.protection.protectioncapabilities.istypesupported). The following code example illustrates the usage of this method.  
+Starting with Windows 10, version 1703, you can query HW DRM capabilities, such as decode codecs, resolution, and output protections (HDCP). Queries are performed with the [**IsTypeSupported**](/uwp/api/windows.media.protection.protectioncapabilities.istypesupported) method which takes a string representing the capabilities for which support is queried and a string specifying the key system to which the query applies. For a list of supported string values, see the API reference page for [**IsTypeSupported**](/uwp/api/windows.media.protection.protectioncapabilities.istypesupported). The following code example illustrates the usage of this method.  
 
     ```cs
     using namespace Windows::Media::Protection;
@@ -506,14 +501,14 @@ There are two primary scenarios for sending a secure stop challenge:
 -   When the media presentation stops because end of content was reached or when the user stopped the media presentation somewhere in the middle.
 -   When the previous session ends unexpectedly (for example, due to a system or app crash). The app will need to query, either at startup or shutdown, for any outstanding secure stop sessions and send challenge(s) separate from any other media playback.
 
-For a sample implementation of secure stop, see the securestop.cs file in the PlayReady sample located at [http://go.microsoft.com/fwlink/p/?linkid=331670&clcid=0x409](http://go.microsoft.com/fwlink/p/?linkid=331670).
+For a sample implementation of secure stop, see the securestop.cs file in the PlayReady sample located at [/samples/browse/?redirectedfrom=MSDN-samples&clcid=0x409](/samples/browse/?redirectedfrom=MSDN-samples).
 
 ## Use PlayReady DRM on Xbox One
 
-To use PlayReady DRM in a UWP app on Xbox One, you will first need to register your Dev Center account that you're using to publish the app for authorization to use PlayReady. You can do this in one of two ways:
+To use PlayReady DRM in a UWP app on Xbox One, you will first need to register your [Partner Center](https://partner.microsoft.com/dashboard) account that you're using to publish the app for authorization to use PlayReady. You can do this in one of two ways:
 
 * Have your contact at Microsoft request permission.
-* Apply for authorization by sending your Dev Center account and company name to [pronxbox@microsoft.com](mailto:pronxbox@microsoft.com).
+* Apply for authorization by sending your Partner Center account and company name to [pronxbox@microsoft.com](mailto:pronxbox@microsoft.com).
 
 Once you receive authorization, you'll need to add an additional `<DeviceCapability>` to the app manifest. You'll have to add this manually because there is currently no setting available in the App Manifest Designer. Follow these steps to configure it:
 
@@ -537,7 +532,3 @@ Use the approach that makes the most sense for your company and your product.
 
 ## See also
 - [Media playback](media-playback.md)
-
-
-
-

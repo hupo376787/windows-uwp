@@ -1,13 +1,9 @@
 ---
-author: TylerMSFT
 title: Handle app activation
 description: Learn how to handle app activation by overriding the OnLaunched method.
 ms.assetid: DA9A6A43-F09D-4512-A2AB-9B6132431007
-ms.author: twhitney
 ms.date: 07/02/2018
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp
 ms.localizationpriority: medium
 dev_langs:
@@ -16,16 +12,15 @@ dev_langs:
   - cpp
   - vb
 ---
-
 # Handle app activation
 
 Learn how to handle app activation by overriding the [**Application.OnLaunched**](/uwp/api/windows.ui.xaml.application.onlaunched) method.
 
 ## Override the launch handler
 
-When an app is activated, for any reason, the system sends the [**CoreApplicationView.Activated**](/uwp/api/windows.applicationmodel.core.coreapplicationview.activated) event. For a list of activation types, see the [**ActivationKind**](https://msdn.microsoft.com/library/windows/apps/br224693) enumeration.
+When an app is activated, for any reason, the system sends the [**CoreApplicationView.Activated**](/uwp/api/windows.applicationmodel.core.coreapplicationview.activated) event. For a list of activation types, see the [**ActivationKind**](/uwp/api/Windows.ApplicationModel.Activation.ActivationKind) enumeration.
 
-The [**Windows.UI.Xaml.Application**](https://msdn.microsoft.com/library/windows/apps/br242324) class defines methods you can override to handle the various activation types. Several of the activation types have a specific method that you can override. For the other activation types, override the [**OnActivated**](https://msdn.microsoft.com/library/windows/apps/br242330) method.
+The [**Windows.UI.Xaml.Application**](/uwp/api/Windows.UI.Xaml.Application) class defines methods you can override to handle the various activation types. Several of the activation types have a specific method that you can override. For the other activation types, override the [**OnActivated**](/uwp/api/windows.ui.xaml.application.onactivated) method.
 
 Define the class for your application.
 
@@ -36,7 +31,7 @@ Define the class for your application.
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 ```
 
-Override the [**OnLaunched**](https://msdn.microsoft.com/library/windows/apps/br242335) method. This method is called whenever the user launches the app. The [**LaunchActivatedEventArgs**](https://msdn.microsoft.com/library/windows/apps/br224731) parameter contains the previous state of your app and the activation arguments.
+Override the [**OnLaunched**](/uwp/api/windows.ui.xaml.application.onlaunched) method. This method is called whenever the user launches the app. The [**LaunchActivatedEventArgs**](/uwp/api/Windows.ApplicationModel.Activation.LaunchActivatedEventArgs) parameter contains the previous state of your app and the activation arguments.
 
 > [!NOTE]
 > On Windows, launching a suspended app from Start tile or app list doesn't call this method.
@@ -186,7 +181,7 @@ void App::EnsurePageCreatedAndActivate()
 
 ## Restore application data if app was suspended then terminated
 
-When the user switches to your terminated app, the system sends the [**Activated**](https://msdn.microsoft.com/library/windows/apps/br225018) event, with [**Kind**](https://msdn.microsoft.com/library/windows/apps/br224728) set to **Launch** and [**PreviousExecutionState**](https://msdn.microsoft.com/library/windows/apps/br224729) set to **Terminated** or **ClosedByUser**. The app should load its saved application data and refresh its displayed content.
+When the user switches to your terminated app, the system sends the [**Activated**](/uwp/api/windows.applicationmodel.core.coreapplicationview.activated) event, with [**Kind**](/uwp/api/windows.applicationmodel.activation.iactivatedeventargs.kind) set to **Launch** and [**PreviousExecutionState**](/uwp/api/windows.applicationmodel.activation.iactivatedeventargs.previousexecutionstate) set to **Terminated** or **ClosedByUser**. The app should load its saved application data and refresh its displayed content.
 
 ```csharp
 async protected override void OnLaunched(LaunchActivatedEventArgs args)
@@ -258,19 +253,19 @@ void App::OnLaunched(Windows::ApplicationModel::Activation::LaunchActivatedEvent
 }
 ```
 
-If the value of [**PreviousExecutionState**](https://msdn.microsoft.com/library/windows/apps/br224729) is **NotRunning**, the app failed to save its application data successfully and the app should start over as if it were being initially launched.
+If the value of [**PreviousExecutionState**](/uwp/api/windows.applicationmodel.activation.iactivatedeventargs.previousexecutionstate) is **NotRunning**, the app failed to save its application data successfully and the app should start over as if it were being initially launched.
 
 ## Remarks
 
 > [!NOTE]
-> Apps can skip initialization if there is already content set on the current window. You can check the [**LaunchActivatedEventArgs.TileId**](https://msdn.microsoft.com/library/windows/apps/br224736) property to determine whether the app was launched from a primary or a secondary tile and, based on that information, decide whether you should present a fresh or resume app experience.
+> Apps can skip initialization if there is already content set on the current window. You can check the [**LaunchActivatedEventArgs.TileId**](/uwp/api/windows.applicationmodel.activation.launchactivatedeventargs.tileid) property to determine whether the app was launched from a primary or a secondary tile and, based on that information, decide whether you should present a fresh or resume app experience.
 
 ## Important APIs
-* [Windows.ApplicationModel.Activation](https://msdn.microsoft.com/library/windows/apps/br224766)
-* [Windows.UI.Xaml.Application](https://msdn.microsoft.com/library/windows/apps/br242324)
+* [Windows.ApplicationModel.Activation](/uwp/api/Windows.ApplicationModel.Activation)
+* [Windows.UI.Xaml.Application](/uwp/api/Windows.UI.Xaml.Application)
 
 ## Related topics
 * [Handle app suspend](suspend-an-app.md)
 * [Handle app resume](resume-an-app.md)
-* [Guidelines for app suspend and resume](https://msdn.microsoft.com/library/windows/apps/hh465088)
+* [Guidelines for app suspend and resume](./index.md)
 * [App lifecycle](app-lifecycle.md)

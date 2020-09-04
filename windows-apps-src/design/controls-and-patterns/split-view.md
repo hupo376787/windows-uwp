@@ -1,15 +1,11 @@
 ---
-author: serenaz
 title: Split view
 ms.assetid: E9E4537F-1160-4183-9A83-26602FCFDC9A
 description: A split view control has an expandable/collapsible pane and a content area.
 label: Split view
 template: detail.hbs
-ms.author: sezhen
 ms.date: 05/19/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp
 pm-contact: yulikl
 design-contact: kimsea
@@ -21,7 +17,7 @@ ms.localizationpriority: medium
 
 A split view control has an expandable/collapsible pane and a content area.
 
-> **Important APIs**: [SplitView class](https://msdn.microsoft.com/library/windows/apps/dn864360)
+> **Important APIs**: [SplitView class](/uwp/api/Windows.UI.Xaml.Controls.SplitView)
 
 Here is an example of the Microsoft Edge app using SplitView to show its Hub.
 
@@ -57,12 +53,12 @@ If you'd like to build a navigation menu with an expand/collapse button and a li
 <table>
 <th align="left">XAML Controls Gallery<th>
 <tr>
-<td><img src="images/xaml-controls-gallery-sm.png" alt="XAML controls gallery"></img></td>
+<td><img src="images/xaml-controls-gallery-app-icon-sm.png" alt="XAML controls gallery"></img></td>
 <td>
     <p>If you have the <strong style="font-weight: semi-bold">XAML Controls Gallery</strong> app installed, click here to <a href="xamlcontrolsgallery:/item/SplitView">open the app and see the SplitView in action</a>.</p>
     <ul>
     <li><a href="https://www.microsoft.com/store/productId/9MSVH128X2ZT">Get the XAML Controls Gallery app (Microsoft Store)</a></li>
-    <li><a href="https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/XamlUIBasics">Get the source code (GitHub)</a></li>
+    <li><a href="https://github.com/Microsoft/Xaml-Controls-Gallery">Get the source code (GitHub)</a></li>
     </ul>
 </td>
 </tr>
@@ -93,7 +89,7 @@ Here's a SplitView control with an open Pane appearing inline next to the Conten
 
 ## Get the sample code
 
-- [XAML Controls Gallery sample](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/XamlUIBasics) - See all the XAML controls in an interactive format.
+- [XAML Controls Gallery sample](https://github.com/Microsoft/Xaml-Controls-Gallery) - See all the XAML controls in an interactive format.
 
 ## Related topics
 - [Nav pane pattern](navigationview.md)

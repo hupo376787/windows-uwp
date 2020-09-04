@@ -1,20 +1,15 @@
-﻿---
-author: jnHs
+---
 Description: The Age ratings page of the app submission process lets you provide information about your app so it can receive the appropriate age ratings from the International Age Ratings Coalition (IARC).
 title: Age ratings
 ms.assetid: B501A773-517B-4158-8364-C1BE630DC512
-ms.author: wdg-dev-content
 ms.date: 05/08/2018
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp, age rating, game rating, iarc, rating, questionnaire, ratings board, content rating
 ms.localizationpriority: medium
 ---
-
 # Age ratings
 
-The **Age ratings** page of the [app submission process](app-submissions.md) lets you provide information about your app so it can receive the appropriate age and content ratings administered by the [International Age Ratings Coalition (IARC)](http://go.microsoft.com/fwlink/p/?LinkId=716854) rating system. These ratings are about the suitability of the content in the app, rather than the age of the target audience for your app.
+The **Age ratings** page of the [app submission process](app-submissions.md) lets you provide information about your app so it can receive the appropriate age and content ratings administered by the [International Age Ratings Coalition (IARC)](https://www.globalratings.com/) rating system. These ratings are about the suitability of the content in the app, rather than the age of the target audience for your app.
 
 ## Answering the age ratings questionnaire
 
@@ -34,10 +29,7 @@ The next time you update your app, you’ll see all of the app’s assigned rati
 <span id="boards" />
 
 > [!NOTE]
-> South Korean law requires games made available in South Korea to be rated through the South Korea [Game Rating Board](http://go.microsoft.com/fwlink/p/?LinkId=228256). If you are submitting a game, and if you want to offer it in South Korea, you must fill out this additional section and upload your rating certificate. Note that if your app is not a game, or if you don't want to offer it in South Korea, you can leave this section blank.
-
-> [!NOTE]
-> If you are submitting a game that will be available in Taiwan, you are required by law to register the provided CSRR rating using [this form](https://go.microsoft.com/fwlink/?linkid=867281). 
+> If you are submitting a game that will be available in Taiwan, you are required by law to register the provided CSRR rating using [this form](https://www.gamerating.org.tw/company_login.php). 
 
 <span id="appeal" />
 
@@ -58,4 +50,4 @@ Previously, developers specified the age rating for their app rather than comple
 | 7+ (Suitable for ages 7 and older)   | Apps with this age rating have the same criteria as the 3+ applications, except these apps can include content that might frighten a younger audience and can contain partial nudity, as long as the nudity doesn't refer to sexual activity. This rating should only be used for apps where the content is suitable for children.                                                                                   |
 | 12+ (Suitable for ages 12 and older) | Apps with this age rating can contain increased nudity of a non-sexual nature, slightly graphic violence towards non-realistic characters, or non-graphic violence towards realistic human or animal characters. This age rating might also include profanity, but not of a sexual nature. Also, apps with this age rating or higher may allow for uncontrolled: (i) access to online social networks, or (ii) sharing of personal info with third parties, including other gamers or online acquaintances. (For such activity to be considered controlled, your app must include parental control features that require parental permission to use such sharing features, and you must identify those and explain their functionality in the [Notes for certification](notes-for-certification.md).) |
 | 16+ (Suitable for ages 16 and older) | Apps with this age rating can depict realistic violence with minimal blood, and they can depict sexual activity. They can also contain drug or tobacco use and criminal activities, and more profanity than would be allowed in a 12+ app, within the limits laid out in the Store Policies.                                                                                                                           |
-| 18+ (Suitable for adults)            | Games with this age rating may contain intense, gross or specific violence, blood or gore which is only suitable for an adult audience. All content must meet the [content policies](https://docs.microsoft.com/legal/windows/agreements/store-policies) criteria.                                                                                                                                                            |
+| 18+ (Suitable for adults)            | Games with this age rating may contain intense, gross or specific violence, blood or gore which is only suitable for an adult audience. All content must meet the [content policies](store-policies.md) criteria.                                                                                                                                                            |

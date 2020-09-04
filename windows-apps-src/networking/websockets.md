@@ -1,13 +1,9 @@
 ---
-author: stevewhims
 description: WebSockets provide a mechanism for fast, secure, two-way communication between a client and a server over the web using HTTP(S), and supporting both UTF-8 and binary messages.
 title: WebSockets
 ms.assetid: EAA9CB3E-6A3A-4C13-9636-CCD3DE46E7E2
-ms.author: stwhi
 ms.date: 06/04/2018
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp, networking, websocket, messagewebsocket, streamwebsocket
 ms.localizationpriority: medium
 ---
@@ -15,7 +11,7 @@ ms.localizationpriority: medium
 # WebSockets
 WebSockets provide a mechanism for fast, secure, two-way communication between a client and a server over the web using HTTP(S), and supporting both UTF-8 and binary messages.
 
-Under the [WebSocket Protocol](http://tools.ietf.org/html/rfc6455), data is transferred immediately over a full-duplex single socket connection, allowing messages to be sent and received from both endpoints in real time. WebSockets are ideal for use in multiplayer gaming (both real-time and turn-based), instant social network notifications, up-to-date displays of stock or weather information, and other apps requiring secure and fast data transfer.
+Under the [WebSocket Protocol](https://tools.ietf.org/html/rfc6455), data is transferred immediately over a full-duplex single socket connection, allowing messages to be sent and received from both endpoints in real time. WebSockets are ideal for use in multiplayer gaming (both real-time and turn-based), instant social network notifications, up-to-date displays of stock or weather information, and other apps requiring secure and fast data transfer.
 
 To establish a WebSocket connection, a specific, HTTP-based handshake is exchanged between the client and the server. If successful, the application-layer protocol is "upgraded" from HTTP to WebSockets, using the previously established TCP connection. Once this occurs, HTTP is completely out of the picture; data can be sent or received using the WebSocket protocol by both endpoints, until the WebSocket connection is closed.
 
@@ -297,7 +293,7 @@ As shown in the example above, before establishing a connection and sending data
 **MessageReceived** is raised when data is received. The data can be accessed via [**MessageWebSocketMessageReceivedEventArgs**](/uwp/api/windows.networking.sockets.messagewebsocketmessagereceivedeventargs). **Closed** is raised when the client or the server closes the socket.
  
 ### Send data on a MessageWebSocket
-Once a connection is established, you can send data to the server. You do this by using the [**MessageWebSocket.OutputStream**](https://docs.microsoft.com/en-us/uwp/api/Windows.Networking.Sockets.MessageWebSocket.OutputStream) property, and a [**DataWriter**](/uwp/api/windows.storage.streams.datawriter), to write the data. 
+Once a connection is established, you can send data to the server. You do this by using the [**MessageWebSocket.OutputStream**](/uwp/api/Windows.Networking.Sockets.MessageWebSocket.OutputStream) property, and a [**DataWriter**](/uwp/api/windows.storage.streams.datawriter), to write the data. 
 
 **Note** The **DataWriter** takes ownership of the output stream. When the **DataWriter** goes out of scope, if the output stream is attached to it, the **DataWriter** deallocates the output stream. After that, subsequent attempts to use the output stream fail with an HRESULT value of 0x80000013. But you can call [**DataWriter.DetachStream**](/uwp/api/windows.storage.streams.datawriter.DetachStream) to detach the output stream from the **DataWriter** and return ownership of the stream to the **MessageWebSocket**.
 
@@ -563,12 +559,12 @@ private:
 Before establishing a connection and sending data with a **StreamWebSocket**, you should subscribe to the [**StreamWebSocket.Closed**](/uwp/api/windows.networking.sockets.streamwebsocket.Closed) event. **Closed** is raised when the client or the server closes the socket.
  
 ### Send data on a StreamWebSocket
-Once a connection is established, you can send data to the server. You do this by using the [**StreamWebSocket.OutputStream**](https://docs.microsoft.com/en-us/uwp/api/Windows.Networking.Sockets.StreamWebSocket.OutputStream) property, and a [**DataWriter**](/uwp/api/windows.storage.streams.datawriter), to write the data.
+Once a connection is established, you can send data to the server. You do this by using the [**StreamWebSocket.OutputStream**](/uwp/api/Windows.Networking.Sockets.StreamWebSocket.OutputStream) property, and a [**DataWriter**](/uwp/api/windows.storage.streams.datawriter), to write the data.
 
 **Note** If you want to write more data on the same socket, then be sure to call [**DataWriter.DetachStream**](/uwp/api/windows.storage.streams.datawriter.DetachStream) to detach the output stream from the **DataWriter** before the **DataWriter** goes out of scope. This returns ownership of the stream to the **MessageWebSocket**.
 
 ### Receive data on a StreamWebSocket
-Use the [**StreamWebSocket.InputStream**](https://docs.microsoft.com/en-us/uwp/api/Windows.Networking.Sockets.StreamWebSocket.InputStream) property, and a [**DataReader**](/uwp/api/windows.storage.streams.datareader), to read the data.
+Use the [**StreamWebSocket.InputStream**](/uwp/api/Windows.Networking.Sockets.StreamWebSocket.InputStream) property, and a [**DataReader**](/uwp/api/windows.storage.streams.datareader), to read the data.
 
 ## Advanced options for MessageWebSocket and StreamWebSocket
 Before establishing a connection, you can set advanced options on a socket by setting properties on either [**MessageWebSocketControl**](/uwp/api/windows.networking.sockets.messagewebsocketcontrol) or [**StreamWebSocketControl**](/uwp/api/windows.networking.sockets.streamwebsocketcontrol). You access an instance of those classes from the socket object itself either via its [**MessageWebSocket.Control**](/uwp/api/windows.networking.sockets.messagewebsocket.control) property or its [**StreamWebSocket.Control**](/uwp/api/windows.networking.sockets.streamwebsocket.control) property, as appropriate.
@@ -813,7 +809,7 @@ protected:
 * [MessageWebSocket.Control](/uwp/api/windows.networking.sockets.messagewebsocket.control)
 * [MessageWebSocket.Information](/uwp/api/Windows.Networking.Sockets.MessageWebSocket.Information)
 * [MessageWebSocket.MessageReceived](/uwp/api/Windows.Networking.Sockets.MessageWebSocket.MessageReceived)
-* [MessageWebSocket.OutputStream](https://docs.microsoft.com/en-us/uwp/api/Windows.Networking.Sockets.MessageWebSocket.OutputStream)
+* [MessageWebSocket.OutputStream](/uwp/api/Windows.Networking.Sockets.MessageWebSocket.OutputStream)
 * [MessageWebSocketControl](/uwp/api/Windows.Networking.Sockets.MessageWebSocketControl)
 * [MessageWebSocketControl.MessageType](/uwp/api/Windows.Networking.Sockets.MessageWebSocketControl.MessageType)
 * [MessageWebSocketInformation](/uwp/api/Windows.Networking.Sockets.MessageWebSocketInformation)
@@ -824,8 +820,8 @@ protected:
 * [StreamSocket.ConnectAsync](/uwp/api/windows.networking.sockets.streamsocket.connectasync)
 * [StreamWebSocket.Control](/uwp/api/windows.networking.sockets.streamwebsocket.control)
 * [StreamWebSocket.Information](/uwp/api/windows.networking.sockets.streamwebsocket.Information)
-* [StreamWebSocket.InputStream](https://docs.microsoft.com/en-us/uwp/api/Windows.Networking.Sockets.StreamWebSocket.InputStream)
-* [StreamWebSocket.OutputStream](https://docs.microsoft.com/en-us/uwp/api/Windows.Networking.Sockets.StreamWebSocket.OutputStream)
+* [StreamWebSocket.InputStream](/uwp/api/Windows.Networking.Sockets.StreamWebSocket.InputStream)
+* [StreamWebSocket.OutputStream](/uwp/api/Windows.Networking.Sockets.StreamWebSocket.OutputStream)
 * [StreamWebSocketControl](/uwp/api/Windows.Networking.Sockets.StreamWebSocketControl)
 * [StreamWebSocketInformation](/uwp/api/Windows.Networking.Sockets.StreamWebSocketInformation)
 * [WebErrorStatus](/uwp/api/Windows.Web.WebErrorStatus) 
@@ -833,8 +829,8 @@ protected:
 * [Windows.Networking.Sockets](/uwp/api/Windows.Networking.Sockets)
 
 ## Related topics
-* [WebSocket Protocol](http://tools.ietf.org/html/rfc6455)
+* [WebSocket Protocol](https://tools.ietf.org/html/rfc6455)
 * [Sockets](sockets.md)
 
 ## Samples
-* [WebSocket sample](http://go.microsoft.com/fwlink/p/?LinkId=620623)
+* [WebSocket sample](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/WebSocket)

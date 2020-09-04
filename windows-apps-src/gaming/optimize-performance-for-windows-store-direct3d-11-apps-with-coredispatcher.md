@@ -1,17 +1,12 @@
 ---
-author: mtoepke
 title: Optimize input latency for UWP DirectX games
 description: Input latency can significantly impact the experience of a game, and optimizing it can make a game feel more polished.
 ms.assetid: e18cd1a8-860f-95fb-098d-29bf424de0c0
-ms.author: mtoepke
 ms.date: 02/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp, games, directx, input latency
 ms.localizationpriority: medium
 ---
-
 #  Optimize input latency for Universal Windows Platform (UWP) DirectX games
 
 
@@ -64,7 +59,7 @@ We’ll show the implementation of the game loop for each of the scenarios menti
 
 The first iteration of the jigsaw puzzle game only updates the screen when a user moves a puzzle piece. A user can either drag a puzzle piece into place or snap it into place by selecting it and then touching the correct destination. In the second case, the puzzle piece will jump to the destination with no animation or effects.
 
-The code has a single-threaded game loop within the [**IFrameworkView::Run**](https://msdn.microsoft.com/library/windows/apps/hh700505) method that uses **CoreProcessEventsOption::ProcessOneAndAllPending**. Using this option dispatches all currently available events in the queue. If no events are pending, the game loop waits until one appears.
+The code has a single-threaded game loop within the [**IFrameworkView::Run**](/uwp/api/windows.applicationmodel.core.iframeworkview.run) method that uses **CoreProcessEventsOption::ProcessOneAndAllPending**. Using this option dispatches all currently available events in the queue. If no events are pending, the game loop waits until one appears.
 
 ``` syntax
 void App::Run()
@@ -95,7 +90,7 @@ void App::Run()
 
 In the second iteration, the game is modified so that when a user selects a puzzle piece and then touches the correct destination for that piece, it animates across the screen until it reaches its destination.
 
-As before, the code has a single-threaded game loop that uses **ProcessOneAndAllPending** to dispatch input events in the queue. The difference now is that during an animation, the loop changes to use **CoreProcessEventsOption::ProcessAllIfPresent** so that it doesn’t wait for new input events. If no events are pending, [**ProcessEvents**](https://msdn.microsoft.com/library/windows/apps/br208215) returns immediately and allows the app to present the next frame in the animation. When the animation is complete, the loop switches back to **ProcessOneAndAllPending** to limit screen updates.
+As before, the code has a single-threaded game loop that uses **ProcessOneAndAllPending** to dispatch input events in the queue. The difference now is that during an animation, the loop changes to use **CoreProcessEventsOption::ProcessAllIfPresent** so that it doesn’t wait for new input events. If no events are pending, [**ProcessEvents**](/uwp/api/windows.ui.core.coredispatcher.processevents) returns immediately and allows the app to present the next frame in the animation. When the animation is complete, the loop switches back to **ProcessOneAndAllPending** to limit screen updates.
 
 ``` syntax
 void App::Run()
@@ -181,7 +176,7 @@ However, this ease of development comes with a price. Rendering at 60 frames per
 
 Some games may be able to ignore or compensate for the increase in input latency seen in scenario 3. However, if low input latency is critical to the game’s experience and sense of player feedback, games that render 60 frames per second need to process input on a separate thread.
 
-The fourth iteration of the jigsaw puzzle game builds on scenario 3 by splitting the input processing and graphics rendering from the game loop into separate threads. Having separate threads for each ensures that input is never delayed by graphics output; however, the code becomes more complex as a result. In scenario 4, the input thread calls [**ProcessEvents**](https://msdn.microsoft.com/library/windows/apps/br208215) with [**CoreProcessEventsOption::ProcessUntilQuit**](https://msdn.microsoft.com/library/windows/apps/br208217), which waits for new events and dispatches all available events. It continues this behavior until the window is closed or the game calls [**CoreWindow::Close**](https://msdn.microsoft.com/library/windows/apps/br208260).
+The fourth iteration of the jigsaw puzzle game builds on scenario 3 by splitting the input processing and graphics rendering from the game loop into separate threads. Having separate threads for each ensures that input is never delayed by graphics output; however, the code becomes more complex as a result. In scenario 4, the input thread calls [**ProcessEvents**](/uwp/api/windows.ui.core.coredispatcher.processevents) with [**CoreProcessEventsOption::ProcessUntilQuit**](/uwp/api/Windows.UI.Core.CoreProcessEventsOption), which waits for new events and dispatches all available events. It continues this behavior until the window is closed or the game calls [**CoreWindow::Close**](/uwp/api/windows.ui.core.corewindow.close).
 
 ``` syntax
 void App::Run()
@@ -232,7 +227,7 @@ void JigsawPuzzleMain::StartRenderThread()
 }
 ```
 
-The **DirectX 11 and XAML App (Universal Windows)** template in Microsoft Visual Studio 2015 splits the game loop into multiple threads in a similar fashion. It uses the [**Windows::UI::Core::CoreIndependentInputSource**](https://msdn.microsoft.com/library/windows/apps/dn298460) object to start a thread dedicated to handling input and also creates a rendering thread independent of the XAML UI thread. For more details on these templates, read [Create a Universal Windows Platform and DirectX game project from a template](user-interface.md).
+The **DirectX 11 and XAML App (Universal Windows)** template in Microsoft Visual Studio 2015 splits the game loop into multiple threads in a similar fashion. It uses the [**Windows::UI::Core::CoreIndependentInputSource**](/uwp/api/Windows.UI.Core.CoreIndependentInputSource) object to start a thread dedicated to handling input and also creates a rendering thread independent of the XAML UI thread. For more details on these templates, read [Create a Universal Windows Platform and DirectX game project from a template](user-interface.md).
 
 ## Additional ways to reduce input latency
 
@@ -256,7 +251,3 @@ What we see from these diagrams is that games can potentially reduce input laten
  
 
  
-
-
-
-

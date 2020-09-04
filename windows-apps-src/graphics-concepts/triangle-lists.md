@@ -4,17 +4,12 @@ description: A triangle list is a list of isolated triangles. The isolated trian
 ms.assetid: BC50D532-9E9C-4AAE-B466-9E8C4AD1862A
 keywords:
 - Triangle lists
-author: michaelfromredmond
-ms.author: mithom
 ms.date: 02/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 ms.localizationpriority: medium
 ---
 
 # Triangle lists
-
 
 A triangle list is a list of isolated triangles. The isolated triangles might or might not be near each other. A triangle list must have at least three vertices and the total number of vertices must be divisible by three.
 
@@ -31,7 +26,7 @@ The following illustration depicts a rendered triangle list.
 
 The following code shows how to create vertices for this triangle list.
 
-```
+```cpp
 struct CUSTOMVERTEX
 {
     float x,y,z;
@@ -51,7 +46,7 @@ CUSTOMVERTEX Vertices[] =
 
 The code example below shows how to render this triangle list in Direct3D.
 
-```
+```cpp
 //
 // It is assumed that d3dDevice is a valid
 // pointer to a device interface.

@@ -1,23 +1,19 @@
 ---
-author: QuinnRadich
 title: Learning track - Display customers in a list
 description: Learn what you need to do to display a collection of Customer objects in a list.
-ms.author: quradic
 ms.date: 05/07/2018
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: get started, uwp, windows 10, learning track, data binding, list
 ms.localizationpriority: medium
+ms.custom: RS5
 ---
-
 # Display customers in a list
 
 Displaying and manipulating real data in the UI is crucial to the functionality of many apps. This article will show you what you need to know to display a collection of Customer objects in a list.
 
 This is not a tutorial. If you want one, see our [data binding tutorial](../data-binding/xaml-basics-data-binding.md), which will provide you with a step-by-step guided experience.
 
-We’ll start with a quick discussion of data binding - what it is and how it works. Then we'll add a **ListView** to the UI, add data binding, and customize the data binding with additional features. 
+We’ll start with a quick discussion of data binding - what it is and how it works. Then we'll add a **ListView** to the UI, add data binding, and customize the data binding with additional features.
 
 ## What do you need to know?
 
@@ -100,7 +96,7 @@ Feel free to look back at the [List View](../design/controls-and-patterns/listvi
 
 ## Edit your Customers through the UI
 
-You’ve displayed customers in a list, but data B=binding lets you do more. What if you could edit your data directly from the UI? To do this, let’s first talk about the three modes of data binding:
+You’ve displayed customers in a list, but data binding lets you do more. What if you could edit your data directly from the UI? To do this, let’s first talk about the three modes of data binding:
 
 * *One-Time*: This data binding is only activated once, and doesn’t react to changes.
 * *One-Way*: This data binding will update the UI with any changes made to the data source.
@@ -108,7 +104,7 @@ You’ve displayed customers in a list, but data B=binding lets you do more. Wha
 
 If you've followed the code snippets from earlier, the binding you made uses x:Bind and doesn't specify a mode, making it a One-Time binding. If you want to edit your Customers directly from the UI, you'll need to change it to a Two-Way binding, so that changes from the data will be passed back to the Customer objects. [Data binding in depth](../data-binding/data-binding-in-depth.md) has more information.
 
-Two-way binding will also update the UI if the data source is changed. For this to work, you must implement [**INotifyPropertyChanged**](https://msdn.microsoft.com/library/system.componentmodel.inotifypropertychanged(d=robot).aspx) on the source and ensure its property setters raise the **PropertyChanged** event. Common practice is to have them call a helper method like the **OnPropertyChanged** method, as shown below:
+Two-way binding will also update the UI if the data source is changed. For this to work, you must implement [**INotifyPropertyChanged**](/dotnet/api/system.componentmodel.inotifypropertychanged) on the source and ensure its property setters raise the **PropertyChanged** event. Common practice is to have them call a helper method like the **OnPropertyChanged** method, as shown below:
 
 ```csharp
 public class Customer : INotifyPropertyChanged
@@ -163,13 +159,13 @@ Here's a quick summary of APIs and other useful documentation to help you get st
 
 | API | Description |
 |------|---------------|
-| [Data template](https://docs.microsoft.com/uwp/api/Windows.UI.Xaml.DataTemplate) | Describes the visual structure of a data object, allowing for the display of specific elements in the UI. |
+| [Data template](/uwp/api/Windows.UI.Xaml.DataTemplate) | Describes the visual structure of a data object, allowing for the display of specific elements in the UI. |
 | [x:Bind](../xaml-platform/x-bind-markup-extension.md) | Documentation on the recommended x:Bind markup extension. |
 | [Binding](../xaml-platform/binding-markup-extension.md) | Documentation on the older Binding markup extension. |
-| [ListView](https://docs.microsoft.com/uwp/api/Windows.UI.Xaml.Controls.ListView) | A UI control that displays data items in a vertical stack. |
-| [TextBox](https://docs.microsoft.com/uwp/api/Windows.UI.Xaml.Controls.TextBox) | A basic text control for displaying editable text data in the UI. |
-| [INotifyPropertyChanged](https://msdn.microsoft.com/library/system.componentmodel.inotifypropertychanged(d=robot).aspx) | The interface for making data observable, providing it to a data binding. |
-| [ItemsControl](https://docs.microsoft.com/uwp/api/Windows.UI.Xaml.Controls.ItemsControl) | The **ItemsSource** property of this class allows a ListView to bind to a data source. |
+| [ListView](/uwp/api/Windows.UI.Xaml.Controls.ListView) | A UI control that displays data items in a vertical stack. |
+| [TextBox](/uwp/api/Windows.UI.Xaml.Controls.TextBox) | A basic text control for displaying editable text data in the UI. |
+| [INotifyPropertyChanged](/dotnet/api/system.componentmodel.inotifypropertychanged) | The interface for making data observable, providing it to a data binding. |
+| [ItemsControl](/uwp/api/Windows.UI.Xaml.Controls.ItemsControl) | The **ItemsSource** property of this class allows a ListView to bind to a data source. |
 
 ### Useful docs
 

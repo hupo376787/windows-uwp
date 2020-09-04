@@ -1,27 +1,24 @@
 ---
-author: joannaleecy
 title: Making games accessible
 description: Learn how to make games accessible. Use the inclusive game design principle to achieve game accessibility.
 ms.assetid: f5ba1e60-0d7c-11e6-91ec-0002a5d5c51b
-ms.author: joanlee
 ms.date: 11/09/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp, accessibility, games
 ms.localizationpriority: medium
 ---
+
 #  Making games accessible
 
 Accessibility can empower every person and every organization on the planet to achieve more, and this applies to making games more accessible too. This article is written for game developers, game designers, and producers. It provides an overview of game accessibility guidelines derived from various organizations (listed in the reference section below), and introduces the inclusive game design principle for creating more accessible games.
 
 ## Gaming for Everyone
 
-At Microsoft, we believe that gaming should be fun for everyone. We "felt compelled to do more to make gaming an inclusive environment that embraced everyone. We fundamentally believe that what we build for our fans and the way we show up – inside and outside the walls of Microsoft – is a reflection of who we are. We designed the program to reflect the core values we have as an organization and believe that the program could result in positive change – not only in our workplace but in the products we build for the gamers we serve." ([Blog post](https://blogs.microsoft.com/blog/2016/06/13/gaming-for-everyone) from Phil Spencer)
+At Microsoft, we believe that gaming should be fun for everyone. We "felt compelled to do more to make gaming an inclusive environment that embraced everyone. We fundamentally believe that what we build for our fans and the way we show up – inside and outside the walls of Microsoft – is a reflection of who we are. We designed the program to reflect the core values we have as an organization and believe that the program could result in positive change – not only in our workplace but in the products we build for the gamers we serve." ([Blog post](https://blogs.microsoft.com/blog/2016/06/13/gaming-for-everyone/) from Phil Spencer)
 
-We want to create a fun, diverse, and inclusive environment where everyone can play in. "To truly have a lasting impact requires a culture shift, one that won’t happen overnight. However, our team is committed to get better each day, to teach one another to pause in our decision making process and think about the amazing diversity of needs, abilities and interests amongst gamers around the world." ([Blog post](https://blogs.microsoft.com/blog/2016/06/13/gaming-for-everyone) from Phil Spencer)
+We want to create a fun, diverse, and inclusive environment where everyone can play in. "To truly have a lasting impact requires a culture shift, one that won’t happen overnight. However, our team is committed to get better each day, to teach one another to pause in our decision making process and think about the amazing diversity of needs, abilities and interests amongst gamers around the world." ([Blog post](https://blogs.microsoft.com/blog/2016/06/13/gaming-for-everyone/) from Phil Spencer)
 
-We hope you'll join us on this journey to make [Gaming for Everyone](https://news.microsoft.com/gamingforeveryone) happen. 
+We hope you'll join us on this journey to make [Gaming for Everyone](https://news.microsoft.com/gamingforeveryone/) happen. 
 
 ##  Why make games accessible?
 
@@ -31,9 +28,9 @@ At its most basic level, the business justification for accessibility is straigh
 
 Number of users who can play your game x Awesomeness of game = Game sales
 
-If you made an amazing game that is so complicated or convoluted that only a handful of people can play it, you limit your sales. Similarly, if you made a game that is unplayable by those with physical, sensory, or cognitive impairments, you are missing out on potential sales. Considering that, for example, [19% of people in the United States have some form of disability](http://www.census.gov/newsroom/releases/archives/miscellaneous/cb12-134.html), [estimated 14% of adults in the US have difficulty reading](https://nces.ed.gov/naal/estimates/overview.aspx), and [estimated 10% of males have some form of color vision deficiency](https://www.aao.org/eye-health/diseases/color-blindness-risk), this can potentially have a large impact on your title’s revenue. 
+If you made an amazing game that is so complicated or convoluted that only a handful of people can play it, you limit your sales. Similarly, if you made a game that is unplayable by those with physical, sensory, or cognitive impairments, you are missing out on potential sales. Considering that, for example, [19% of people in the United States have some form of disability](https://www.census.gov/newsroom/releases/archives/miscellaneous/cb12-134.html), [estimated 14% of adults in the US have difficulty reading](https://nces.ed.gov/naal/estimates/overview.aspx), and [estimated 10% of males have some form of color vision deficiency](https://www.aao.org/eye-health/diseases/color-blindness-risk), this can potentially have a large impact on your title’s revenue. 
 
-For more business justifications, see [Making Video Games Accessible](https://msdn.microsoft.com/library/windows/desktop/ee415219).
+For more business justifications, see [Making Video Games Accessible](/windows/desktop/DxTechArts/accessibility-best-practices).
 
 ### Better games
 
@@ -67,7 +64,7 @@ If your answers are mostly no, or you do not know the answers, it is time to ste
 
 ## Defining disability
 
-Disability is defined as "a mismatch between the needs of the individual and the service, product or environment offered." ([Inclusive video](https://www.microsoft.com/design/inclusive), Microsoft.com.) This means that anyone can experience a disability, and that it can be a short-term or situational condition. Envision what challenges gamers with these conditions might have when playing your game, and think about how your game can be better designed for them. Here are some disabilities to consider:
+Disability is defined as "a mismatch between the needs of the individual and the service, product or environment offered." ([Inclusive video](https://www.microsoft.com/design/inclusive/), Microsoft.com.) This means that anyone can experience a disability, and that it can be a short-term or situational condition. Envision what challenges gamers with these conditions might have when playing your game, and think about how your game can be better designed for them. Here are some disabilities to consider:
 
 ### Vision
 
@@ -113,7 +110,7 @@ Nearly every accessibility solution comes down to one of two principles. The fir
 
 ### Reinforce: Communicate information in more than one way
 
-The second principle is where the concept of universal design comes in, a single approach that not only brings in more players but also improves the experience for all. For example an image as well as text, a symbol as well as colour. A map that is based on a range of different coloured markers is not only impossible for colorblind gamers to use, it is also frustrating for everyone else who must remember what everything equates to. Adding symbols makes it a better experience for everyone.
+The second principle is where the concept of universal design comes in, a single approach that not only brings in more players but also improves the experience for all. For example an image as well as text, a symbol as well as colour. A map that is based on a range of different coloured markers is not only impossible for color blind gamers to use, it is also frustrating for everyone else who must remember what everything equates to. Adding symbols makes it a better experience for everyone.
 
 ### Innovate: Be creative
 
@@ -138,10 +135,10 @@ During development, you can introduce a review process to make sure that at ever
 | Checklist                                         | Accessibility features                                                                                                         |
 |---------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------|
 | In-game cinematics                                | Has subtitles and captions, photosensitivity tested                                                                           |
-| Overall artwork (2D and 3D graphics)              | Colorblind friendly colors and options, not dependent entirely on color for identification but use shapes and patterns as well|
+| Overall artwork (2D and 3D graphics)              | Color blind friendly colors and options, not dependent entirely on color for identification but use shapes and patterns as well|
 | Start screen, settings menu and other menus       | Ability to read options aloud, ability to remember settings, alternate command control input method, adjustable UI font size  |
 | Gameplay                                          | Wide adjustable difficulty levels, subtitles and captions, good visual and audio feedback for gamer                           |
-| HUD display                                       | Adjustable screen position, adjustable font size, colorblind friendly option                                                  |        
+| HUD display                                       | Adjustable screen position, adjustable font size, color blind friendly option                                                  |        
 | Control input                                     | Mappable controls to input device, custom controller support, simplified input for game allowed                               |        
 
 ### Playtest and iterate: Get gamers' feedback
@@ -156,24 +153,24 @@ Consumers will want to know if your game can be played by gamers with disabiliti
 
 ## Game accessibility features
 
-This section outlines some features that can make your game more accessible. These features are derived from guidelines taken from the [Game accessibility guidelines](http://gameaccessibilityguidelines.com/), which represent the findings of a collaborative group of studios, specialists, and academics. For more information, see [Game accessibility guidelines](http://gameaccessibilityguidelines.com/). 
+This section outlines some features that can make your game more accessible. These features are derived from guidelines taken from the [Game accessibility guidelines](http://gameaccessibilityguidelines.com/) website. That resource represent the findings of a collaborative group of studios, specialists, and academics.
 
-### Colorblind friendly graphics and user interface
+### Color blind friendly graphics and user interface
 
 The retina of the eye has two types of light-sensitive cells: the cones for seeing where there is light, and the rods for seeing in low light conditions. 
 
-There are three types of cones (red, green, and blue) to enable us to view colors correctly. Colorblindness occurs when one or more of these three types light cones is not functioning as expected. The degree of colorblindness can range from almost normal color perception with reduced sensitivity towards red, green, or blue light, to a complete inability to perceive any color at all. 
+There are three types of cones (red, green, and blue) to enable us to view colors correctly. Color blindness occurs when one or more of these three types light cones is not functioning as expected. The degree of color blindness can range from almost normal color perception with reduced sensitivity towards red, green, or blue light, to a complete inability to perceive any color at all. 
 
-Since it’s less common to have reduced sensitivity to blue light, when designing for the colorblind, the selection of colors are geared towards people who are red or green colorblind:
+Since it’s less common to have reduced sensitivity to blue light, when designing for the color blind, the selection of colors are geared towards people who are red or green color blind:
  
-  + Use color combinations that can be differentiated by people with red/green colorblindness:
+  + Use color combinations that can be differentiated by people with red/green color blindness:
   
     * Colors that appear similar: All shades of red and green including brown and orange
     * Colors that stand out: Blue and yellow
     
   + Do not rely solely on color to communicate or distinguish game objects. Use shapes and patterns as well.
   + If you have to rely on colors alone, combine presets with a free selection of colors, so that it can be fully customizable by the players who need them and not creating extra work for players who do not need them.
-  + Use a colorblind simulator to test your designs so that you can view your designs through colorblind eyes. This can help you avoid common contrast issues. [Color Oracle](http://www.colororacle.org) is a free colorblind simulator that can simulate the three most common types of color vision deficiency – deuteranopia, protanopia, and tritanopia.
+  + Use a color blind simulator to test your designs so that you can view your designs through color blind eyes. This can help you avoid common contrast issues. [Color Oracle](https://www.colororacle.org) is a free color blind simulator that can simulate the three most common types of color vision deficiency – deuteranopia, protanopia, and tritanopia.
   
 ### Closed captioning and subtitles
 
@@ -183,7 +180,7 @@ Here are some basic guidelines to consider when designing closed captions and su
 
 *	Select simple readable font.
 *	Select sufficiently large font size, or consider having adjustable font size option for more flexibility. (Ideal font size depends on screen size, viewing distance from screen, and so on.)
-*	Create high contrast between background and font color. Use strong outline and shadows for the text. Use a dark background overlay for the captions and remember to provide options for it to be turned on or off. (For more information, see [Information on contrast ratio](https://msdn.microsoft.com/windows/uwp/accessibility/accessible-text-requirements).)
+*	Create high contrast between background and font color. Use strong outline and shadows for the text. Use a dark background overlay for the captions and remember to provide options for it to be turned on or off. (For more information, see [Information on contrast ratio](../design/accessibility/accessible-text-requirements.md).)
 * Display short sentences on screen, maximum 38 characters per line and maximum 2-3 lines at any one time. (Remember not to give the game away by displaying the text before event occurs.)
 *	Differentiate what is making the sound or who is talking. (Example: "Daniel: Hi!")
 *	Provide the option to turn closed captions and subtitles on and off. (Additional feature: Ability to select how much sound information is displayed based on importance.)
@@ -194,7 +191,7 @@ If your title allows gamers to communicate using voice and send text messages to
 
 People who do not have microphones attached to their gaming device can still have a voice conversation with someone who is speaking. They are able to type text into the chat window and have those messages converted into voice. It also allows someone who can't hear very well to read the transcribed text messages from the person they're having a voice chat with.
 
-For developers in the ID@Xbox and managed partners program, Text-to-Speech and Speech-to-Text features are available as part of the [Game Chat 2 accessibility features](../xbox-live/multiplayer/chat/using-game-chat-2.md#accessibility) in the Xbox Live service. For more information, see [Game Chat 2 Overview](../xbox-live/multiplayer/chat/game-chat-2-overview.md).
+For developers in the ID@Xbox and managed partners program, Text-to-Speech and Speech-to-Text features are available as part of the [Game Chat 2 accessibility features](/gaming/xbox-live/multiplayer/chat/using-game-chat-2.md#accessibility) in the Xbox Live service. For more information, see [Game Chat 2 Overview](/gaming/xbox-live/multiplayer/chat/game-chat-2-overview.md).
 
 ### Sound feedback
 
@@ -207,13 +204,13 @@ Sound provides feedback to the player, in addition to visual feedback. Good game
 
 ### Fully mappable controls
 
-There are companies and organizations, such as [Special Effect](http://www.specialeffect.org.uk/), that design custom game controllers that can be used with various gaming systems like Windows and Xbox One. This customization allows people with different forms of disabilities to play games they might not be able to play otherwise. For more information on people who are now able to play games independently because of customized controllers, see [who they helped](http://www.specialeffect.org.uk/who-we-helped).
+There are companies and organizations, such as [Special Effect](https://www.specialeffect.org.uk/), that design custom game controllers that can be used with various gaming systems like Windows and Xbox One. This customization allows people with different forms of disabilities to play games they might not be able to play otherwise. For more information on people who are now able to play games independently because of customized controllers, see [who they helped](https://www.specialeffect.org.uk/who-we-helped).
 
 As a game developer, you can make your game more accessible by allowing fully mappable controls so that gamers have the option to plug in their custom controllers and remap the keys according to their needs.
 
 Having fully mappable controls also benefits people who use standard controllers. Your gamers can design a layout that suits their unique individual needs.
 
-Both standard Xbox One and Xbox Elite controllers offer customization of the controllers for precision gaming. To fully utliize their remapping capabilities, __it is recommended that developers include remapping directly in the game__. For more information, see [Xbox One](http://support.xbox.com/xbox-one/accessories/customize-standard-controller-with-accessories-app) and [Xbox Elite](http://support.xbox.com/xbox-one/accessories/use-accessories-app-configure-elite-controller).
+Both standard Xbox One and Xbox Elite controllers offer customization of the controllers for precision gaming. To fully utliize their remapping capabilities, __it is recommended that developers include remapping directly in the game__. For more information, see [Xbox One](https://support.xbox.com/xbox-one/accessories/customize-standard-controller-with-accessories-app) and [Xbox Elite](https://support.xbox.com/xbox-one/accessories/use-accessories-app-configure-elite-controller).
 
 ### Wider selection of difficulty levels
 
@@ -223,7 +220,7 @@ Tweaking the difficulty level of your game is a delicate process. If it is too e
 
 ### Photosensitivity epilepsy testing
 
-Photosensitive epilepsy (PSE) is a condition where seizures are triggered by visual stimuli, including exposures to flashing lights or certain moving visual forms and patterns. This occurs in about three percent of people and is more common in children and adolescents. In terms of numbers, we are looking at approximately [1 in 4000 people aged 5-24](http://www.epilepsy.com/information/professionals/about-epilepsy-seizures/reflex-seizures-and-related-epileptic-syndromes-3).
+Photosensitive epilepsy (PSE) is a condition where seizures are triggered by visual stimuli, including exposures to flashing lights or certain moving visual forms and patterns. This occurs in about three percent of people and is more common in children and adolescents. In terms of numbers, we are looking at approximately [1 in 4000 people aged 5-24](https://www.epilepsy.com/learn/professionals/about-epilepsy-seizures/reflex-seizures-and-related-epileptic-syndromes-0).
 
 There are many factors that can cause a photosensitive reaction when playing video games, including the duration of gameplay, the frequency of the flash, the intensity of the light, the contrast of the background and the light, the distance between the screen and the gamer, and the wavelength of the light.
 
@@ -239,7 +236,7 @@ Avoid the following:
 * More than five evenly spaced high contrast repeated stripes – rows or columns such as grids and checkerboards, that may be composed of smaller regular elements such as polkadots
 * More than five lines of text formatted as capital letters only, with not much spacing between letters, and line spacing the same height as the lines themselves, effectively turning it into high contrast evenly alternating rows
 
-Use an automated system to check gameplay for stimuli that could trigger photosensitive epilepsy. (Example: [The Harding Test](http://www.hardingtest.com/index.php?page=test) and [Harding Flash and Pattern Analyzer (FPA) G2](http://www.hardingfpa.com/harding-fpa-for-games/) developed by Cambridge Research System Ltd and Professor Graham Harding.) 
+Use an automated system to check gameplay for stimuli that could trigger photosensitive epilepsy. (Example: [The Harding Test](https://www.hardingtest.com/index.php?page=test) and [Harding Flash and Pattern Analyzer (FPA) G2](https://www.hardingfpa.com/harding-fpa-for-games/) developed by Cambridge Research System Ltd and Professor Graham Harding.) 
 
 Include **Flashing On/Off** as a setting option and set **Flashing** as **Off** by default. In doing so, you protect players who do not yet know they are susceptible to seizures.
 
@@ -250,24 +247,22 @@ Design for breaks between game levels, encouraging players to take a break from 
 Here are some external sites that provide additional information about game accessibility.
 
 ### Game accessibility guidelines
-* [Game accessibility guidelines](http://gameaccessibilityguidelines.com/)
-* [AbleGamers Foundation guidelines](http://www.includification.com/)
-* [Design Universally Accessible (UA) games](http://www.ics.forth.gr/hci/ua-games/index_main.php?l=e&c=555)
+* [Game accessibility guidelines](http://gameaccessibilityguidelines.com/) (used as a reference in this topic)
+* [AbleGamers Foundation guidelines](https://accessible.games/accessible-player-experiences/) (used as a reference in this topic)
+* [Design Universally Accessible (UA) games](https://www.ics.forth.gr/hci/ua-games/index_main.php?l=e&c=555)
 
 ### Custom input controllers
-* [Special effect](http://www.specialeffect.org.uk/)
-* [War fighter engaged](http://www.warfighterengaged.org/)
+* [Special effect](https://www.specialeffect.org.uk/)
+* [War fighter engaged](https://www.warfighterengaged.org/)
 
-## References used
-* [Game accessibility guidelines](http://gameaccessibilityguidelines.com/)
-* [AbleGamers Foundation guidelines](http://www.includification.com/)
-* [Color Blind Awareness, a Community Interest Company](http://www.colourblindawareness.org/colour-blindness/types-of-colour-blindness/)
-* [How to do subtitles well- a blog article on Gamasutra by Ian Hamilton](http://www.gamasutra.com/blogs/IanHamilton/20150715/248571/How_to_do_subtitles_well__basics_and_good_practices.php)
-* [Innovation for All Programme](http://www.inclusivedesign.no/practical-tools/definitions-article56-127.html)
-* [Epilepsy foundation](http://www.epilepsy.com/)
+### Other references used
+* [Color Blind Awareness, a Community Interest Company](https://www.colourblindawareness.org/colour-blindness/types-of-colour-blindness/)
+* [How to do subtitles well&mdash;a blog article on Gamasutra by Ian Hamilton](https://www.gamasutra.com/blogs/IanHamilton/20150715/248571/How_to_do_subtitles_well__basics_and_good_practices.php)
+* [Innovation for All Programme](https://www.inclusivedesign.no/practical-tools/definitions-article56-127.html)
+* [Epilepsy foundation](https://www.epilepsy.com/)
 
-## Related links
-* [Inclusive Design](https://www.microsoft.com/design/inclusive)
+### Related links
+* [Inclusive Design](https://www.microsoft.com/design/inclusive/)
 * [Microsoft Accessibility Developer Hub](https://developer.microsoft.com/windows/accessible-apps)
-* [Developing accessible UWP apps](https://msdn.microsoft.com/windows/uwp/accessibility/accessibility)
+* [Developing accessible UWP apps](../design/accessibility/accessibility.md)
 * [Engineering Software For Accessibility eBook](https://www.microsoft.com/download/details.aspx?id=19262)

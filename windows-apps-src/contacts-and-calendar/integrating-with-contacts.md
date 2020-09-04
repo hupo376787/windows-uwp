@@ -1,18 +1,13 @@
 ---
-author: normesta
-description: Shows how to add your app next to actions in a contact card
+description: Learn how to connect your app to actions on a contact card so that users can choose your app to open a profile page, place a call, or send a message.
 MSHAttr: PreferredLib:/library/windows/apps
 title: Connect your app to actions on a contact card
-ms.author: normesta
 ms.date: 02/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp, contacts, contact card, annotation
 ms.assetid: 0edabd9c-ecfb-4525-bc38-53f219d744ff
 ms.localizationpriority: medium
 ---
-
 # Connect your app to actions on a contact card
 
 Your app can appear next to actions on a contact card or mini contact card. Users can choose your app to perform an action such as open a profile page, place a call, or send a message.
@@ -180,13 +175,13 @@ Just like the contact card, each tab remembers the app that the user last used s
 
 ## Perform operations when users select your app in a contact card
 
-Override the [Application.OnActivated](https://msdn.microsoft.com/library/windows/apps/br242330) method  in your **App.cs** file and navigate users to a page in your app. The [Contact Card Integration Sample](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/ContactCardIntegration) shows one way to do that.
+Override the [Application.OnActivated](/uwp/api/windows.ui.xaml.application.onactivated) method  in your **App.cs** file and navigate users to a page in your app. The [Contact Card Integration Sample](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/ContactCardIntegration) shows one way to do that.
 
-In the code behind file of the page, override the [Page.OnNavigatedTo](https://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.page.onnavigatedto.aspx) method. The contact card passes this method the name of operation and the ID of the user.
+In the code behind file of the page, override the [Page.OnNavigatedTo](/uwp/api/windows.ui.xaml.controls.page.onnavigatedto) method. The contact card passes this method the name of operation and the ID of the user.
 
-To start a video or audio call, see this sample: [VoIP sample](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/VoIP). You'll find the complete API in the [WIndows.ApplicationModel.Calls](https://msdn.microsoft.com/library/windows/apps/windows.applicationmodel.calls.aspx) namespace.
+To start a video or audio call, see this sample: [VoIP sample](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/VoIP). You'll find the complete API in the [WIndows.ApplicationModel.Calls](/uwp/api/windows.applicationmodel.calls) namespace.
 
-To facilitate messaging, see the [Windows.ApplicationModel.Chat](https://msdn.microsoft.com/library/windows/apps/windows.applicationmodel.chat.aspx) namespace.
+To facilitate messaging, see the [Windows.ApplicationModel.Chat](/uwp/api/windows.applicationmodel.chat) namespace.
 
 You can also start another app. That's what this code does.
 
@@ -203,7 +198,7 @@ protected override async void OnNavigatedTo(NavigationEventArgs e)
         var options = new Windows.System.LauncherOptions();
         options.DisplayApplicationPicker = true;
 
-        options.TargetApplicationPackageFamilyName = “ContosoApp”;
+        options.TargetApplicationPackageFamilyName = "ContosoApp";
 
         string launchString = args.uri.Scheme + ":" + args.uri.Query;
         var launchUri = new Uri(launchString);

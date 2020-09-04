@@ -1,17 +1,12 @@
 ---
-author: mtoepke
 title: Render the shadow map to the depth buffer
 description: Render from the point of view of the light to create a two-dimensional depth map representing the shadow volume.
 ms.assetid: 7f3d0208-c379-8871-cc48-027047c6c2d0
-ms.author: mtoepke
 ms.date: 02/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp, games, rendering, shadow map, depth buffer, direct3d
 ms.localizationpriority: medium
 ---
-
 # Render the shadow map to the depth buffer
 
 
@@ -36,7 +31,7 @@ For the shadow rendering pass, specify a depth buffer but do not specify a rende
 
 Specify the light viewport, a vertex shader, and set the light space constant buffers. Use front face culling for this pass to optimize the depth values placed in the shadow buffer.
 
-Note that on most devices, you can specify nullptr for the pixel shader (or skip specifying a pixel shader entirely). But some drivers may throw an exception when you call draw on the Direct3D device with a null pixel shader set. To avoid this exception, you can set a minimal pixel shader for the shadow rendering pass. The output of this shader is thrown away; it can call [**discard**](https://msdn.microsoft.com/library/windows/desktop/bb943995) on every pixel.
+Note that on most devices, you can specify nullptr for the pixel shader (or skip specifying a pixel shader entirely). But some drivers may throw an exception when you call draw on the Direct3D device with a null pixel shader set. To avoid this exception, you can set a minimal pixel shader for the shadow rendering pass. The output of this shader is thrown away; it can call [**discard**](/windows/desktop/direct3dhlsl/dx-graphics-hlsl-discard) on every pixel.
 
 Render the objects that can cast shadows, but don't bother rendering geometry that can't cast a shadow (like a floor in a room, or objects removed from the shadow pass for optimization reasons).
 
@@ -124,7 +119,7 @@ void ShadowSceneRenderer::RenderShadowMap()
 }
 ```
 
-**Optimize the view frustum:**  Make sure your implementation computes a tight view frustum so that you get the most precision out of your depth buffer. See [Common Techniques to Improve Shadow Depth Maps](https://msdn.microsoft.com/library/windows/desktop/ee416324) for more tips on shadow technique.
+**Optimize the view frustum:**  Make sure your implementation computes a tight view frustum so that you get the most precision out of your depth buffer. See [Common Techniques to Improve Shadow Depth Maps](/windows/desktop/DxTechArts/common-techniques-to-improve-shadow-depth-maps) for more tips on shadow technique.
 
 ## Vertex shader for shadow pass
 
@@ -152,7 +147,3 @@ In the next part of this walkthrough, learn how to add shadows by [rendering wit
  
 
  
-
-
-
-

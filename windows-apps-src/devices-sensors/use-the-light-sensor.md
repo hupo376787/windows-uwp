@@ -1,13 +1,9 @@
 ---
-author: muhsinking
 ms.assetid: 15BAB25C-DA8C-4F13-9B8F-EA9E4270BCE9
 title: Use the light sensor
 description: Learn how to use the ambient light sensor to detect changes in lighting.
-ms.author: mukin
 ms.date: 06/06/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp
 ms.localizationpriority: medium
 ---
@@ -16,8 +12,8 @@ ms.localizationpriority: medium
 
 **Important APIs**
 
--   [**Windows.Devices.Sensors**](https://msdn.microsoft.com/library/windows/apps/BR206408)
--   [**LightSensor**](https://msdn.microsoft.com/library/windows/apps/BR225790)
+-   [**Windows.Devices.Sensors**](/uwp/api/Windows.Devices.Sensors)
+-   [**LightSensor**](/uwp/api/Windows.Devices.Sensors.LightSensor)
 
 **Sample**
 
@@ -61,7 +57,7 @@ This section is divided into two subsections. The first subsection will take you
     using Windows.UI.Core; // Required to access the core dispatcher object
     using Windows.Devices.Sensors; // Required to access the sensor platform and the ALS
 
-    // The Blank Page item template is documented at http://go.microsoft.com/fwlink/p/?linkid=234238
+    // The Blank Page item template is documented at https://go.microsoft.com/fwlink/p/?linkid=234238
 
     namespace App1
     {

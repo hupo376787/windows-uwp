@@ -1,28 +1,25 @@
 ---
-author: jnHs
-Description: You can submit apps to the Microsoft Store in over 100 languages.
 title: Supported languages
+description: View a table of the languages and corresponding language codes that are supported for submitting apps to the Microsoft Store.
 ms.assetid: FCA66311-4145-46AC-8B20-1E736F940976
-ms.author: wdg-dev-content
-ms.date: 02/08/2017
+ms.date: 03/07/2019
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp
 ms.localizationpriority: medium
 ---
-
 # Supported languages
 
 
 You can submit apps to the Microsoft Store in over 100 languages.
 
-To learn more about configuring languages in your apps, see [Globalization and localization](../design/globalizing/globalizing-portal.md) and [Understand user profile languages and app manifest languages](../design/globalizing/manage-language-and-region.md). We also have a [Multilingual App Toolkit](https://docs.microsoft.com/windows/uwp/design/globalizing/use-mat) to help you write apps that support multiple languages.
+To learn more about configuring languages in your apps, see [Globalization and localization](../design/globalizing/globalizing-portal.md) and [Understand user profile languages and app manifest languages](../design/globalizing/manage-language-and-region.md). We also have a [Multilingual App Toolkit](../design/globalizing/use-mat.md) to help you write apps that support multiple languages.
 
 ## Supported languages
 
 
-These are the languages that the Microsoft Store supports. Your app must support at least one of these languages, and it must not specify any language codes that are not included here.
+These are the languages that the Microsoft Store supports. Your app must support at least one of these languages. 
+
+Language codes that are not included here are not supported by the Store. We recommend that you don't include packages targeting language codes other than those listed below; such packages will not be distributed to customers, and may cause delays or failures in certification.
 
 | Language name         | Supported language codes                                                                                                                                                                              |
 |-----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -32,7 +29,7 @@ These are the languages that the Microsoft Store supports. Your app must support
 | Amharic               | am, am-et                                                                                                                                                                                             |
 | Armenian              | hy, hy-am                                                                                                                                                                                             |
 | Assamese              | as, as-in                                                                                                                                                                                             |
-| Azerbaijani           | az, az-arab, az-arab-az, az-cyrl, az-cyrl-az, az-latn, az-latn-az                                                                                                                                     |
+| Azerbaijani           | az-arab, az-arab-az, az-cyrl, az-cyrl-az, az-latn, az-latn-az                                                                                                                                     |
 | Basque (Basque)       | eu, eu-es                                                                                                                                                                                             |
 | Belarusian            | be, be-by                                                                                                                                                                                             |
 | Bangla                | bn, bn-bd, bn-in                                                                                                                                                                                      |
@@ -40,7 +37,7 @@ These are the languages that the Microsoft Store supports. Your app must support
 | Bulgarian             | bg, bg-bg                                                                                                                                                                                             |
 | Catalan               | ca, ca-es, ca-es-valencia                                                                                                                                                                             |
 | Cherokee              | chr-cher, chr-cher-us, chr-latn                                                                                                                                                                       |
-| Chinese (Simplified)  | zh, zh-Hans, zh-cn, zh-hans-cn, zh-sg, zh-hans-sg                                                                                                                                                     |
+| Chinese (Simplified)  | zh-Hans, zh-cn, zh-hans-cn, zh-sg, zh-hans-sg                                                                                                                                                     |
 | Chinese (Traditional) | zh-Hant, zh-hk, zh-mo, zh-tw, zh-hant-hk, zh-hant-mo, zh-hant-tw                                                                                                                                      |
 | Croatian              | hr, hr-hr, hr-ba                                                                                                                                                                                      |
 | Czech                 | cs, cs-cz                                                                                                                                                                                             |
@@ -135,7 +132,3 @@ These are the languages that the Microsoft Store supports. Your app must support
  
 
  
-
-
-
-

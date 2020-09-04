@@ -1,13 +1,9 @@
 ---
-author: mijacobs
 Description: Dialogs and flyouts display transient UI elements that appear when the user requests them or when something happens that requires notification or approval.
 title: Flyout controls
 template: detail.hbs
-ms.author: mijacobs
 ms.date: 05/19/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp
 ms.assetid: ad6affd9-a3c0-481f-a237-9a1ecd561be8
 pm-contact: yulikl
@@ -16,32 +12,37 @@ dev-contact: niallm
 doc-status: Published
 ms.localizationpriority: medium
 ---
-
 # Flyouts
 
 A flyout is a light dismiss container that can show arbitrary UI as its content. Flyouts can contain other flyouts or context menus to create a nested experience.
 
 ![Context menu nested inside a flyout](../images/flyout-nested.png)
 
-> **Important APIs**: [Flyout class](https://docs.microsoft.com/uwp/api/Windows.UI.Xaml.Controls.Flyout)
+**Get the Windows UI Library**
+
+|  |  |
+| - | - |
+| ![WinUI logo](../images/winui-logo-64x64.png) | Windows UI Library 2.2 or later includes a new template for this control that uses rounded corners. For more info, see [Corner radius](../../style/rounded-corner.md). WinUI is a NuGet package that contains new controls and UI features for Windows apps. For more info, including installation instructions, see [Windows UI Library](/uwp/toolkits/winui/). |
+
+> **Platform APIs:** [Flyout class](/uwp/api/Windows.UI.Xaml.Controls.Flyout)
 
 ## Is this the right control?
 
 * Don't use a flyout instead of [tooltip](../tooltips.md) or [context menu](../menus.md). Use a tooltip to show a short description that hides after a specified time. Use a context menu for contextual actions related to a UI element, such as copy and paste.
 
-For recommendations on when to use a flyout vs. when to use a dialog (a similar control), see [Dialogs and flyouts](index.md). 
+For recommendations on when to use a flyout vs. when to use a dialog (a similar control), see [Dialogs and flyouts](index.md).
 
 ## Examples
 
 <table>
 <th align="left">XAML Controls Gallery<th>
 <tr>
-<td><img src="../images/xaml-controls-gallery-sm.png" alt="XAML controls gallery"></img></td>
+<td><img src="../images/xaml-controls-gallery-app-icon-sm.png" alt="XAML controls gallery"></img></td>
 <td>
     <p>If you have the <strong style="font-weight: semi-bold">XAML Controls Gallery</strong> app installed, click here to open the app and see the <a href="xamlcontrolsgallery:/item/ContentDialog">ContentDialog</a> or <a href="xamlcontrolsgallery:/item/Flyout">Flyout</a> in action.</p>
     <ul>
     <li><a href="https://www.microsoft.com/store/productId/9MSVH128X2ZT">Get the XAML Controls Gallery app (Microsoft Store)</a></li>
-    <li><a href="https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/XamlUIBasics">Get the source code (GitHub)</a></li>
+    <li><a href="https://github.com/Microsoft/Xaml-Controls-Gallery">Get the source code (GitHub)</a></li>
     </ul>
 </td>
 </tr>
@@ -63,7 +64,7 @@ This example creates a simple flyout that displays some text when the button is 
 </Button>
 ````
 
-If the control doesn't have a flyout property, you can use the [FlyoutBase.AttachedFlyout](https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.primitives.flyoutbase.AttachedFlyoutProperty) attached property instead. When you do this, you also need to call the [FlyoutBase.ShowAttachedFlyout](https://docs.microsoft.com/uwp/api/Windows.UI.Xaml.Controls.Primitives.FlyoutBase#Windows_UI_Xaml_Controls_Primitives_FlyoutBase_ShowAttachedFlyout_Windows_UI_Xaml_FrameworkElement_) method to show the flyout.
+If the control doesn't have a flyout property, you can use the [FlyoutBase.AttachedFlyout](/uwp/api/windows.ui.xaml.controls.primitives.flyoutbase.AttachedFlyoutProperty) attached property instead. When you do this, you also need to call the [FlyoutBase.ShowAttachedFlyout](/uwp/api/Windows.UI.Xaml.Controls.Primitives.FlyoutBase#Windows_UI_Xaml_Controls_Primitives_FlyoutBase_ShowAttachedFlyout_Windows_UI_Xaml_FrameworkElement_) method to show the flyout.
 
 This example adds a simple flyout to an image. When the user taps the image, the app shows the flyout.
 
@@ -73,7 +74,7 @@ This example adds a simple flyout to an image. When the user taps the image, the
   <FlyoutBase.AttachedFlyout>
     <Flyout>
       <TextBlock Text="This is some text in a flyout."  />
-    </Flyout>        
+    </Flyout>
   </FlyoutBase.AttachedFlyout>
 </Image>
 ````
@@ -120,12 +121,12 @@ The previous examples defined their flyouts inline. You can also define a flyout
 ````csharp
 private void Image_Tapped(object sender, TappedRoutedEventArgs e)
 {
-    FlyoutBase.ShowAttachedFlyout((FrameworkElement)sender);  
+    FlyoutBase.ShowAttachedFlyout((FrameworkElement)sender);
 }
 ````
 
 ## Style a flyout
-To style a Flyout, modify its [FlyoutPresenterStyle](https://docs.microsoft.com/uwp/api/Windows.UI.Xaml.Controls.Flyout.FlyoutPresenterStyle). This example shows a paragraph of wrapping text and makes the text block accessible to a screen reader.
+To style a Flyout, modify its [FlyoutPresenterStyle](/uwp/api/Windows.UI.Xaml.Controls.Flyout.FlyoutPresenterStyle). This example shows a paragraph of wrapping text and makes the text block accessible to a screen reader.
 
 ![Accessible flyout with wrapping text](../images/flyout-wrapping-text.png)
 
@@ -156,12 +157,12 @@ Light dismiss controls like flyout trap keyboard and gamepad focus inside their 
 
 ## Light dismiss behavior
 Flyouts can be closed with a quick light dismiss action, including
--	Tap outside the flyout
--	Press the Escape keyboard key
--	Press the hardware or software system Back button
--	Press the gamepad B button
+-    Tap outside the flyout
+-    Press the Escape keyboard key
+-    Press the hardware or software system Back button
+-    Press the gamepad B button
 
-When dismissing with a tap, this gesture is typically absorbed and not passed on to the UI underneath. For example, if there’s a button visible behind an open flyout, the user’s first tap dismisses the flyout but does not activate this button. Pressing the button requires a second tap.
+When dismissing with a tap, this gesture is typically absorbed and not passed on to the UI underneath. For example, if there's a button visible behind an open flyout, the user's first tap dismisses the flyout but does not activate this button. Pressing the button requires a second tap.
 
 You can change this behavior by designating the button as an input pass-through element for the flyout. The flyout will close as a result of the light dismiss actions described above and will also pass the tap event to its designated `OverlayInputPassThroughElement`. Consider adopting this behavior to speed up user interactions on functionally similar items. If your app has a favorites collection and each item in the collection includes an attached flyout, it's reasonable to expect that users may want to interact with multiple flyouts in rapid succession.
 
@@ -176,7 +177,7 @@ In the following example, all three buttons inside FavoritesBar will be activate
                 OverlayInputPassThroughElement="{x:Bind FavoritesBar}">
             <StackPanel>
                 <HyperlinkButton Content="Washington Trails Association"/>
-                <HyperlinkButton Content="Washington Cascades - Go Northwest! A Travel Guide"/>  
+                <HyperlinkButton Content="Washington Cascades - Go Northwest! A Travel Guide"/>
             </StackPanel>
         </Flyout>
     </Page.Resources>
@@ -187,7 +188,7 @@ In the following example, all three buttons inside FavoritesBar will be activate
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel x:Name="FavoritesBar" Orientation="Horizontal">
-            <HyperlinkButton x:Name="PageLinkBtn">Bing</HyperlinkButton>  
+            <HyperlinkButton x:Name="PageLinkBtn">Bing</HyperlinkButton>
             <Button x:Name="Folder1" Content="Travel" Flyout="{StaticResource TravelFlyout}"/>
             <Button x:Name="Folder2" Content="Entertainment" Click="Folder2_Click"/>
         </StackPanel>
@@ -209,7 +210,7 @@ private void Folder2_Click(object sender, RoutedEventArgs e)
 
 ## Get the sample code
 
-- [XAML Controls Gallery sample](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/XamlUIBasics) - See all the XAML controls in an interactive format.
+- [XAML Controls Gallery sample](https://github.com/Microsoft/Xaml-Controls-Gallery) - See all the XAML controls in an interactive format.
 
 ## Related articles
 - [Tooltips](../tooltips.md)

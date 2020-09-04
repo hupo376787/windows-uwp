@@ -1,22 +1,17 @@
 ---
-author: JnHs
 description: In addition to creating an ad campaign for your app that will run in Windows apps, you can promote your app using other channels.
 title: Create a custom app promotion campaign
 ms.assetid: 7C9BF73E-B811-4FC7-B1DD-4A0C2E17E95D
-ms.author: wdg-dev-content
-ms.date: 09/27/2017
+ms.date: 10/31/2018
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp, custom, app, promotion, campaign
 ms.localizationpriority: medium
 ---
-
 # Create a custom app promotion campaign
 
 In addition to creating an [ad campaign for your app](create-an-ad-campaign-for-your-app.md) that will run in Windows apps, you can also promote your app using other channels. For example, you can promote your app using a third-party app marketing provider, or you might post links to your app on social media sites. These activities are called *custom campaigns*.
 
-If you run custom campaigns for your app, you can track the relative performance of each campaign by creating a different URL for each custom campaign, where each URL contains a different *campaign ID*. When a customer running Windows 10 clicks a URL that contains a campaign ID, Microsoft associates the click with the corresponding custom campaign and makes this data available to you.
+If you run custom campaigns for your app, you can track the relative performance of each campaign by creating a different URL for each custom campaign, where each URL contains a different *campaign ID*. When a customer running Windows 10 clicks a URL that contains a campaign ID, Microsoft associates the click with the corresponding custom campaign and makes this data available to you in [Partner Center](https://partner.microsoft.com/dashboard).
 
 > [!IMPORTANT]
 > This data is only tracked for customers on Windows 10. Customers using other operating systems can still follow the link to your app's listing, but data about those customers' activities will not be included.
@@ -25,7 +20,7 @@ There are two main types of data associated with custom campaigns: *page views* 
 
 You can retrieve custom campaign performance data for your app in the following ways:
 
-* You can view data about page views and conversions for your app or add-on from the **App page views and conversions by campaign ID** and **Total campaign conversions** charts in the [Acquisitions report](acquisitions-report.md) in the Dev Center dashboard.
+* You can view data about page views and conversions for your app or add-on from the **App page views and conversions by campaign ID** and **Total campaign conversions** charts in the [Acquisitions report](acquisitions-report.md).
 * If your app is a Universal Windows Platform (UWP) app, you can use APIs in the Windows SDK to programmatically retrieve the custom campaign ID that resulted in a conversion.
 
 ## Example custom campaign scenario
@@ -44,9 +39,9 @@ As her Facebook and Twitter followers click the URLs, Microsoft tracks each clic
 
 ## Understanding how acquisitions qualify as conversions
 
-A custom campaign *conversion* is an acquisition that results from a customer clicking a URL that is promoted via a custom campaign. There are different scenarios for qualifying as a conversion for the **App page views and conversions by campaign ID** and **Total campaign conversions** charts in the [Acquisitions report](acquisitions-report.md) in the Dev Center dashboard and for qualifying as a conversion for [programmatically retrieving the campaign ID](#programmatically).
+A custom campaign *conversion* is an acquisition that results from a customer clicking a URL that is promoted via a custom campaign. There are different scenarios for qualifying as a conversion for the **App page views and conversions by campaign ID** and **Total campaign conversions** charts in the [Acquisitions report](acquisitions-report.md) and for qualifying as a conversion for [programmatically retrieving the campaign ID](#programmatically).
 
-### Qualifying conversions in the dashboard report
+### Qualifying conversions in the Acquisitions report
 
 The following scenarios qualify as a conversion for the **App page views and conversions by campaign ID** and **Total campaign conversions** charts in the [Acquisitions report](acquisitions-report.md):
 
@@ -99,9 +94,9 @@ These APIs will return a campaign ID string only if the customer clicked your UR
 
 There are different APIs for you to use depending on the version of Windows 10 that your app targets:
 
-* Windows 10, version 1607, or later: Use the [**StoreContext**](https://docs.microsoft.com/uwp/api/windows.services.store.storecontext) class in the **Windows.Services.Store** namespace. When using this API, you can retrieve custom campaign IDs for any [qualified acquisitions](#conversions), whether or not the user is signed in with a recognized Microsoft account.
+* Windows 10, version 1607, or later: Use the [**StoreContext**](/uwp/api/windows.services.store.storecontext) class in the **Windows.Services.Store** namespace. When using this API, you can retrieve custom campaign IDs for any [qualified acquisitions](#conversions), whether or not the user is signed in with a recognized Microsoft account.
 
-* Windows 10, version 1511, or earlier: Use the [**CurrentApp**](https://docs.microsoft.com/uwp/api/Windows.ApplicationModel.Store.CurrentApp) class in the **Windows.ApplicationModel.Store** namespace. When using this API, you can only retrieve custom campaign IDs for [qualified acquisitions](#conversions) where the user is signed in with a recognized Microsoft account.
+* Windows 10, version 1511, or earlier: Use the [**CurrentApp**](/uwp/api/Windows.ApplicationModel.Store.CurrentApp) class in the **Windows.ApplicationModel.Store** namespace. When using this API, you can only retrieve custom campaign IDs for [qualified acquisitions](#conversions) where the user is signed in with a recognized Microsoft account.
 
 > [!NOTE]
 > Although the **Windows.ApplicationModel.Store** namespace is available in all versions of Windows 10, we recommend that you use the APIs in the **Windows.Services.Store** namespace if your app targets Windows 10, version 1607, or later. For more information about the differences between these namespaces, see [In-app purchases and trials](../monetize/in-app-purchases-and-trials.md#choose-namespace). The following code example shows how to structure your code to use both APIs in the same project.
@@ -162,16 +157,16 @@ public async Task<string> GetCampaignId()
 
 This code does the following:
 
-1. First, it checks to see if the [**StoreContext**](https://docs.microsoft.com/uwp/api/windows.services.store.storecontext) class in the **Windows.Services.Store** namespace is available on the current device (this means the device is running Windows 10, version 1607, or later). If so, the code proceeds to use this class.
+1. First, it checks to see if the [**StoreContext**](/uwp/api/windows.services.store.storecontext) class in the **Windows.Services.Store** namespace is available on the current device (this means the device is running Windows 10, version 1607, or later). If so, the code proceeds to use this class.
 
-2. Next, it attempts to get the custom campaign ID for the case where the current user has a recognized Microsoft account. To do this, the code gets a [**StoreSku**](https://docs.microsoft.com/uwp/api/Windows.Services.Store.StoreSku) object that represents the current app SKU, and then it accesses the [**CampaignId**](https://docs.microsoft.com/uwp/api/windows.services.store.storecollectiondata.CampaignId) property to retrieve the campaign ID, if one is available.
-3. The code then attempts to retrieve the campaign ID for the case where the current user does not have a recognized Microsoft account. In this case, the campaign ID is embedded in the app license. The code retrieves the license by using the [**GetAppLicenseAsync**](https://docs.microsoft.com/uwp/api/windows.services.store.storecontext.GetAppLicenseAsync) method and then parses the JSON contents of the license for the value of a key named *customPolicyField1*. This value contains the campaign ID.
+2. Next, it attempts to get the custom campaign ID for the case where the current user has a recognized Microsoft account. To do this, the code gets a [**StoreSku**](/uwp/api/Windows.Services.Store.StoreSku) object that represents the current app SKU, and then it accesses the [**CampaignId**](/uwp/api/windows.services.store.storecollectiondata.CampaignId) property to retrieve the campaign ID, if one is available.
+3. The code then attempts to retrieve the campaign ID for the case where the current user does not have a recognized Microsoft account. In this case, the campaign ID is embedded in the app license. The code retrieves the license by using the [**GetAppLicenseAsync**](/uwp/api/windows.services.store.storecontext.GetAppLicenseAsync) method and then parses the JSON contents of the license for the value of a key named *customPolicyField1*. This value contains the campaign ID.
 
-4. If the [**StoreContext**](https://docs.microsoft.com/uwp/api/windows.services.store.storecontext) class in the **Windows.Services.Store** namespace is not available, the code then falls back to using the [**GetAppPurchaseCampaignIdAsync**](https://docs.microsoft.com/uwp/api/Windows.ApplicationModel.Store.CurrentApp#Windows_ApplicationModel_Store_CurrentApp_GetAppPurchaseCampaignIdAsync) method in the **Windows.ApplicationModel.Store** namespace to retrieve the custom campaign ID (this namespace is available in all versions of Windows 10, including version 1511 and earlier). Note that when using this method, you can only retrieve custom campaign IDs for [qualified acquisitions](#conversions) where the user has a recognized Microsoft account.
+4. If the [**StoreContext**](/uwp/api/windows.services.store.storecontext) class in the **Windows.Services.Store** namespace is not available, the code then falls back to using the [**GetAppPurchaseCampaignIdAsync**](/uwp/api/Windows.ApplicationModel.Store.CurrentApp#Windows_ApplicationModel_Store_CurrentApp_GetAppPurchaseCampaignIdAsync) method in the **Windows.ApplicationModel.Store** namespace to retrieve the custom campaign ID (this namespace is available in all versions of Windows 10, including version 1511 and earlier). Note that when using this method, you can only retrieve custom campaign IDs for [qualified acquisitions](#conversions) where the user has a recognized Microsoft account.
 
 ### Specify the campaign ID in the proxy file for the Windows.ApplicationModel.Store namespace
 
-The **Windows.ApplicationModel.Store** namespace includes [**CurrentAppSimulator**](https://docs.microsoft.com/uwp/api/windows.applicationmodel.store.currentappsimulator), a special class that simulates Store operations for testing your code before you submit your app to the Store. This class retrieves data from [a local file named Windows.StoreProxy.xml file](../monetize/in-app-purchases-and-trials-using-the-windows-applicationmodel-store-namespace.md#using-the-windowsstoreproxyxml-file-with-currentappsimulator). The previous code example shows how to include use both **CurrentApp** and **CurrentAppSimulator** in debug and non-debug code in your project. To test this code in a debug environment, add an **AppPurchaseCampaignId** element to the WindowsStoreProxy.xml file on your development computer, as shown in the following example. When you run the app, the [**GetAppPurchaseCampaignIdAsync**](https://docs.microsoft.com/uwp/api/windows.applicationmodel.store.currentappsimulator.GetAppPurchaseCampaignIdAsync) method will always return this value.
+The **Windows.ApplicationModel.Store** namespace includes [**CurrentAppSimulator**](/uwp/api/windows.applicationmodel.store.currentappsimulator), a special class that simulates Store operations for testing your code before you submit your app to the Store. This class retrieves data from [a local file named Windows.StoreProxy.xml file](../monetize/in-app-purchases-and-trials-using-the-windows-applicationmodel-store-namespace.md#using-the-windowsstoreproxyxml-file-with-currentappsimulator). The previous code example shows how to include use both **CurrentApp** and **CurrentAppSimulator** in debug and non-debug code in your project. To test this code in a debug environment, add an **AppPurchaseCampaignId** element to the WindowsStoreProxy.xml file on your development computer, as shown in the following example. When you run the app, the [**GetAppPurchaseCampaignIdAsync**](/uwp/api/windows.applicationmodel.store.currentappsimulator.GetAppPurchaseCampaignIdAsync) method will always return this value.
 
 ``` xml
 <CurrentApp>
@@ -192,4 +187,4 @@ Before you promote a custom campaign URL, we recommend that you test your custom
 
 3.  Click the URL several more times, closing the UWP app or the browser page after each visit to your app's page. During **one** of the visits to your app's page, acquire your app to generate a conversion. Count the total number of times you clicked the URL.
 
-4. Confirm whether the expected page views and conversions appear in the **App page views and conversions by campaign ID** and **Total campaign conversions** charts in the [Acquisitions report](acquisitions-report.md) in the Dev Center dashboard., and test your app's code to confirm whether it can successfully retrieve the campaign ID using the APIs described above.
+4. Confirm whether the expected page views and conversions appear in the **App page views and conversions by campaign ID** and **Total campaign conversions** charts in the [Acquisitions report](acquisitions-report.md), and test your app's code to confirm whether it can successfully retrieve the campaign ID using the APIs described above.

@@ -1,21 +1,16 @@
 ---
-author: QuinnRadich
 title: What's New in Windows Docs in May 2018 - Develop UWP apps
 description: New features, videos, and developer guidance have been added to the Windows 10 developer documentation for May 2018 and the Microsoft Build conference.
 keywords: what's new, update, features, developer guidance, Windows 10, may, build
-ms.author: quradic
-ms.date: 5/7/2018
+ms.date: 05/07/2018
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 ms.localizationpriority: medium
 ---
-
 # What's New in the Windows Developer Docs in May 2018
 
-The Windows Developer Documentation is constantly being updated with information on new features available to developers across the Windows platform. The following feature overviews, developer guidance, videos, and samples have been made available in the month of May to coincide with the [Microsoft Build 2018](https://www.microsoft.com/build) developer conference.
+The Windows Developer Documentation is constantly being updated with information on new features available to developers across the Windows platform. The following feature overviews, developer guidance, videos, and samples have been made available in the month of May to coincide with the [Microsoft Build 2018](https://www.microsoft.com/build/) developer conference.
 
-[Install the tools and SDK](http://go.microsoft.com/fwlink/?LinkId=821431) on Windows 10 and you’re ready to either [create a new Universal Windows app](../get-started/create-uwp-apps.md) or explore how you can use your [existing app code on Windows](../porting/index.md).
+[Install the tools and SDK](https://developer.microsoft.com/windows/downloads#_blank) on Windows 10 and you’re ready to either [create a new Universal Windows app](../get-started/create-uwp-apps.md) or explore how you can use your [existing app code on Windows](../porting/index.md).
 
 ## Features
 
@@ -37,7 +32,7 @@ Visual updates and minor changes have been made to the following Fluent Design p
 * [Alignment, padding, margins](../design/layout/alignment-margin-padding.md)
 * [Color](../design/style/color.md)
 * [Command basics](../design/basics/commanding-basics.md)
-* [Fluent Design for Windows apps](../design/fluent-design-system/index.md)
+* [Fluent Design for Windows apps](/windows/apps/fluent-design-system)
 * [Introduction to app design](../design/basics/design-and-ui-intro.md)
 * [Navigation basics](../design/basics/navigation-basics.md)
 * [Responsive design techniques](../design/layout/responsive-design.md)
@@ -54,13 +49,13 @@ In addition, we've rewritten the following pages with all-new information on the
 
 ### App Installer files in Visual Studio
 
-App Installer files can now be created with Visual Studio 2017, Update 15.7. [Learn how to use Visual Studio to create an App Installer file](../packaging/create-appinstallerfile-vs.md) and enable automatic updates to your apps. If you're running into problems, see [troubleshooting installation issues with the App Installer file](../packaging/troubleshoot-appinstaller-issues.md) to view common issues and solutions.
+App Installer files can now be created with Visual Studio 2017, Update 15.7, and later versions. [Learn how to use Visual Studio to create an App Installer file](/windows/msix/app-installer/create-appinstallerfile-vs) and enable automatic updates to your apps. If you're running into problems, see [troubleshooting installation issues with the App Installer file](/windows/msix/app-installer/troubleshoot-appinstaller-issues) to view common issues and solutions.
 
 ### Edge WebView control for Windows Forms and WPF applications
 
-Show web content in your desktop application by using the WebView control, previously only available to UWP applications. This control uses the Microsoft Edge rendering engine to embed a view that renders richly formatted HTML content from a remote web server, dynamically generated code, or content files. Find the WebView control in the latest release of the [Windows Community Toolkit.](https://docs.microsoft.com/windows/uwpcommunitytoolkit/)
+Show web content in your desktop application by using the WebView control, previously only available to UWP applications. This control uses the Microsoft Edge rendering engine to embed a view that renders richly formatted HTML content from a remote web server, dynamically generated code, or content files. Find the WebView control in the latest release of the [Windows Community Toolkit.](/windows/uwpcommunitytoolkit/)
 
-Look for other controls like WebView in future releases of the Windows Community Toolkit. For more information, see [Host UWP controls in WPF and Windows Forms applications.](https://docs.microsoft.com/windows/uwp/xaml-platform/xaml-host-controls)
+Look for other controls like WebView in future releases of the Windows Community Toolkit. For more information, see [Host UWP controls in WPF and Windows Forms applications.](/windows/apps/desktop/modernize/xaml-islands)
 
 ### Gaze input and interactions
 
@@ -82,7 +77,7 @@ The MSIX packaging format is an open source format which makes it easier for our
 
 ### Optional packages with executable code
 
-Optional packages in your app can now contain executable C# code. [Learn how to use Visual Studio to configure optional add-on packages to support your main app package.](../packaging/optional-packages-with-executable-code.md)
+Optional packages in your app can now contain executable C# code. [Learn how to use Visual Studio to configure optional add-on packages to support your main app package.](/windows/msix/package/optional-packages)
 
 ### Page transitions
 
@@ -90,11 +85,11 @@ Optional packages in your app can now contain executable C# code. [Learn how to 
 
 ### Project Rome
 
-The Project Rome team has overhauled their iOS and Android SDKs, adding new features like User Activities and refactoring much of their code to provide a consistent programming experience across the different SDKs. [All new API reference and how-to docs](https://docs.microsoft.com/windows/project-rome/) will go live  during the Build 2018 developer conference.
+The Project Rome team has overhauled their iOS and Android SDKs, adding new features like User Activities and refactoring much of their code to provide a consistent programming experience across the different SDKs. [All new API reference and how-to docs](/windows/project-rome/) will go live  during the Build 2018 developer conference.
 
 ### Sets
 
-The Sets feature is available in Windows Insider preview builds. When using the Sets feature, you app is drawn into a window that might be shared with other apps, with each app having its own tab in the title bar. [Designing for sets](../design/shell/design-for-sets.md) has guidance on how to optimize your app to provide the best experience in the Sets UI.
+The Sets feature is available in Windows Insider preview builds. When using the Sets feature, you app is drawn into a window that might be shared with other apps, with each app having its own tab in the title bar. 
 
 ## Developer Guidance
 
@@ -111,11 +106,11 @@ We've revitalized our Get started content with new learning tracks. These new to
 
 ### Advertising performance report
 
-The [Advertising performance report](../publish/advertising-performance-report.md) in the Dev Center dashboard now provides viewability metrics. We also added the [Optimize the viewability of your ad units](../monetize/optimize-ad-unit-viewability.md) article to provide recommendations for optimizing the viewability of your ads.
+The [Advertising performance report](../publish/advertising-performance-report.md) in Partner Center now provides viewability metrics. We also added the [Optimize the viewability of your ad units](../monetize/optimize-ad-unit-viewability.md) article to provide recommendations for optimizing the viewability of your ads.
 
 ### Targeted push notifications
 
-The [Notifications](../publish/send-push-notifications-to-your-apps-customers.md) page in the Dev Center dashboard now provides additional analytics data for all your notifications in graph and world map views.
+The [Notifications](../publish/send-push-notifications-to-your-apps-customers.md) page in Partner Center now provides additional analytics data for all your notifications in graph and world map views.
 
 ## Videos
 

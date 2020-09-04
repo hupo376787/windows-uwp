@@ -4,15 +4,12 @@ description: Direct3D supports several primitive topologies, which define how ve
 ms.assetid: 7AA5A4A2-0B7C-431D-B597-684D58C02BA5
 keywords:
 - Primitive topologies
-author: michaelfromredmond
-ms.author: mithom
 ms.date: 02/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
+
+
 ms.localizationpriority: medium
 ---
-
 # Primitive topologies
 
 
@@ -68,7 +65,7 @@ The symbols in the preceding illustration are described in the following table.
 ## <span id="Generating_Multiple_Strips"></span><span id="generating_multiple_strips"></span><span id="GENERATING_MULTIPLE_STRIPS"></span>Generating multiple strips
 
 
-You can generate multiple strips through strip cutting. You can perform a strip cut by explicitly calling the [RestartStrip](https://msdn.microsoft.com/library/windows/desktop/bb509660) HLSL function, or by inserting a special index value into the index buffer. This value is –1, which is 0xffffffff for 32-bit indices or 0xffff for 16-bit indices.
+You can generate multiple strips through strip cutting. You can perform a strip cut by explicitly calling the [RestartStrip](/windows/desktop/direct3dhlsl/dx-graphics-hlsl-so-restartstrip) HLSL function, or by inserting a special index value into the index buffer. This value is –1, which is 0xffffffff for 32-bit indices or 0xffff for 16-bit indices.
 
 An index of –1 indicates an explicit 'cut' or 'restart' of the current strip. The previous index completes the previous primitive or strip and the next index starts a new primitive or strip.
 
@@ -84,7 +81,3 @@ For more info about generating multiple strips, see [Geometry Shader (GS) stage]
  
 
  
-
-
-
-

@@ -4,15 +4,12 @@ description: Constant buffers contain shader constant data. The value of them is
 ms.assetid: 99AEC6B0-A43B-4B61-8C3A-ECC8DE1B69A7
 keywords:
 - Constant buffer view (CBV)
-author: michaelfromredmond
-ms.author: mithom
 ms.date: 02/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
+
+
 ms.localizationpriority: medium
 ---
-
 # Constant buffer view (CBV)
 
 
@@ -20,7 +17,7 @@ Constant buffers contain shader constant data. The value of them is that the dat
 
 Typical data for a constant buffer would be world, projection and view matrices, which remain constant throughout the drawing of one frame.
 
-Constant buffer layout should match the HLSL layout (refer to [Packing Rules for Constant Variables](https://msdn.microsoft.com/library/windows/desktop/bb509632.aspx)).
+Constant buffer layout should match the HLSL layout (refer to [Packing Rules for Constant Variables](/windows/desktop/direct3dhlsl/dx-graphics-hlsl-packing-rules)).
 
 ## <span id="related-topics"></span>Related topics
 
@@ -30,7 +27,3 @@ Constant buffer layout should match the HLSL layout (refer to [Packing Rules for
  
 
  
-
-
-
-

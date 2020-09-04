@@ -1,14 +1,10 @@
 ---
-author: muhsinking
-Description: Use nested UI to enable multiple actions on a list item
 title: Nested UI in list items
+description: Learn how to create nested UI in ListView and GridView items to present a user with additional options for taking important actions.
 label: Nested UI in list items
 template: detail.hbs
-ms.author: mukin
 ms.date: 05/19/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp
 ms.assetid: 60a29717-56f2-4388-a9ff-0098e34d5896
 pm-contact: chigy
@@ -24,9 +20,9 @@ Nested UI is a user interface (UI) that exposes nested actionable controls enclo
 
 You can use nested UI to present a user with additional options that help accelerate taking important actions. However, the more actions you expose, the more complicated your UI becomes. You need to take extra care when you choose to use this UI pattern. This article provides guidelines to help you determine the best course of action for your particular UI.
 
-> **Important APIs**: [ListView class](https://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.listview.aspx), [GridView class](https://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.gridview.aspx)
+> **Important APIs**: [ListView class](/uwp/api/windows.ui.xaml.controls.listview), [GridView class](/uwp/api/windows.ui.xaml.controls.gridview)
 
-In this article, we discuss the creation of nested UI in [ListView](https://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.listview.aspx) and [GridView](https://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.gridview.aspx) items. While this section does not talk about other nested UI cases, these concepts are transferrable. Before you start, you should be familiar with the general guidance for using ListView or GridView controls in your UI, which is found in the [Lists](lists.md) and [List view and grid view](listview-and-gridview.md) articles.
+In this article, we discuss the creation of nested UI in [ListView](/uwp/api/windows.ui.xaml.controls.listview) and [GridView](/uwp/api/windows.ui.xaml.controls.gridview) items. While this section does not talk about other nested UI cases, these concepts are transferrable. Before you start, you should be familiar with the general guidance for using ListView or GridView controls in your UI, which is found in the [Lists](lists.md) and [List view and grid view](listview-and-gridview.md) articles.
 
 In this article, we use the terms *list*, *list item*, and *nested UI* as defined here:
 - *List* refers to a collection of items contained in a list view or grid view.
@@ -35,7 +31,7 @@ In this article, we use the terms *list*, *list item*, and *nested UI* as define
 
 ![Nested UI parts](images/nested-ui-example-1.png)
 
-> NOTE&nbsp;&nbsp; ListView and GridView both derive from the [ListViewBase](https://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.listviewbase.aspx) class, so they have the same functionality, but display data differently. In this article, when we talk about lists, the info applies to both the ListView and GridView controls.
+> NOTE&nbsp;&nbsp; ListView and GridView both derive from the [ListViewBase](/uwp/api/windows.ui.xaml.controls.listviewbase) class, so they have the same functionality, but display data differently. In this article, when we talk about lists, the info applies to both the ListView and GridView controls.
 
 ## Primary and secondary actions
 
@@ -54,9 +50,9 @@ The *primary action* is what the user expects to happen when they press the list
 
 ## Options for secondary actions
 
-When creating list UI, you first need to make sure you account for all input methods that UWP supports. For more info about different kinds of input, see [Input primer](../input/index.md).
+When creating list UI, you first need to make sure you account for all input methods that Windows supports. For more info about different kinds of input, see [Input primer](../input/index.md).
 
-After you have made sure that your app supports all inputs that UWP supports, you should decide if your app’s secondary actions are important enough to expose as accelerators in the main list. Remember that the more actions you expose, the more complicated your UI becomes. Do you really need to expose the secondary actions in the main list UI, or can you put them somewhere else?
+After you have made sure that your app supports all inputs that Windows supports, you should decide if your app’s secondary actions are important enough to expose as accelerators in the main list. Remember that the more actions you expose, the more complicated your UI becomes. Do you really need to expose the secondary actions in the main list UI, or can you put them somewhere else?
 
 You might consider exposing additional actions in the main list UI when those actions need to be accessible by any input at all times.
 
@@ -95,7 +91,7 @@ In these examples, we talk about list UI where the item flows more horizontally 
 
 ## Consider all inputs
 
-When deciding to use nested UI, also evaluate the user experience with all input types. As mentioned earlier, nested UI works great for some input types. However, it does not always work great for some other. In particular, keyboard, controller, and remote inputs can have difficulty accessing nested UI elements. Be sure to follow the guidance below to ensure your UWP works with all input types.
+When deciding to use nested UI, also evaluate the user experience with all input types. As mentioned earlier, nested UI works great for some input types. However, it does not always work great for some other. In particular, keyboard, controller, and remote inputs can have difficulty accessing nested UI elements. Be sure to follow the guidance below to ensure your Windows works with all input types.
 
 ## Nested UI handling
 
@@ -135,7 +131,7 @@ When input is from a keyboard, this is the experience user gets:
 - From UI element to the left of List Item, tab key puts focus on **A**.
 - From UI element to the right of List Item, shift tab key puts focus on **C**.
 
-To achieve this UI, set [IsItemClickEnabled](https://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.listviewbase.isitemclickenabled.aspx) to **true** on your list. [SelectionMode](https://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.listviewbase.selectionmode.aspx) can be any value.
+To achieve this UI, set [IsItemClickEnabled](/uwp/api/windows.ui.xaml.controls.listviewbase.isitemclickenabled) to **true** on your list. [SelectionMode](/uwp/api/windows.ui.xaml.controls.listviewbase.selectionmode) can be any value.
 
 For the code to implement this, see the [Example](#example) section of this article.
 
@@ -149,9 +145,9 @@ This kind of UI tends to be much more complicated than the previous examples, wi
 
 
 To achieve this UI, set the following properties on your list:
-- [SelectionMode](https://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.listviewbase.selectionmode.aspx) to **None**.
-- [IsItemClickEnabled](https://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.listviewbase.isitemclickenabled.aspx) to **false**.
-- [IsFocusEngagementEnabled](https://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.controls.control.isfocusengagementenabled.aspx) to **true**.
+- [SelectionMode](/uwp/api/windows.ui.xaml.controls.listviewbase.selectionmode) to **None**.
+- [IsItemClickEnabled](/uwp/api/windows.ui.xaml.controls.listviewbase.isitemclickenabled) to **false**.
+- [IsFocusEngagementEnabled](/uwp/api/windows.ui.xaml.controls.control.isfocusengagementenabled) to **true**.
 
 ```xaml
 <ListView SelectionMode="None" IsItemClickEnabled="False" >

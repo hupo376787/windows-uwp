@@ -1,28 +1,16 @@
 ---
 title: Adding WebVR support to a 3D Babylon.js game
-description: Learn how to add WebVR support to an existing 3D Babylon.js game.
-author: abbycar
-ms.author: abigailc
+description: Learn how to add WebVR virtual reality support to an existing 3D Babylon.js game by following this tutorial.
 ms.date: 11/29/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: webvr, edge, web development, babylon, babylonjs, babylon.js, javascript
 ms.localizationpriority: medium
 ---
-
 # Adding WebVR support to a 3D Babylon.js game
 
 If you've created a 3D game with Babylon.js and thought that it might look great in virtual reality (VR), follow the simple steps in this tutorial to make that a reality.
 
-We'll add WebVR support to the game shown here. Go ahead and plug in an Xbox controller to try it out!
-
-
-<iframe height='300' scrolling='no' title='Babylon.js dino game using Babylon.GUI' src='//codepen.io/MicrosoftEdgeDocumentation/embed/preview/wrOvoj/?height=300&theme-id=23761&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/MicrosoftEdgeDocumentation/pen/wrOvoj/'>Babylon.js dino game using Babylon.GUI</a> by Microsoft Edge Docs (<a href='https://codepen.io/MicrosoftEdgeDocumentation'>@MicrosoftEdgeDocumentation</a>) on <a href='https://codepen.io'>CodePen</a>.
-</iframe>
-
-This is a 3D game that works well on a flat screen, but what about in VR?
-In this tutorial, we'll walk through the few steps it takes to get this up and running with WebVR. We’ll use a [Windows Mixed Reality](https://developer.microsoft.com/en-us/windows/mixed-reality) headset that can tap into the added support for WebVR in Microsoft Edge. After we apply these changes to the game, you can expect it also to work in other browser/headset combinations that support WebVR.
+In this tutorial, we'll walk through the few steps it takes to get a 3D game up and running with WebVR. We’ll use a [Windows Mixed Reality](https://developer.microsoft.com/mixed-reality) headset that can tap into the added support for WebVR in Microsoft Edge. After we apply these changes to the game, you can expect it also to work in other browser/headset combinations that support WebVR.
 
 
 
@@ -31,7 +19,7 @@ In this tutorial, we'll walk through the few steps it takes to get this up and r
 - A text editor (like [Visual Studio Code](https://code.visualstudio.com/download))
 - An Xbox controller that’s plugged in to your computer
 - Windows 10 Creators Update
-- A computer with the [minimum required specs to run Windows Mixed Reality](https://developer.microsoft.com/en-us/windows/mixed-reality/immersive_headset_setup)
+- A computer with the [minimum required specs to run Windows Mixed Reality](https://developer.microsoft.com/windows/mixed-reality/immersive_headset_setup)
 - A Windows Mixed Reality device (Optional) 
 
 
@@ -132,12 +120,12 @@ With the info stored in the `headset` variable, we'll now be able to choose the 
 
 ## Creating and selecting the initial camera
 
-With Babylon.js, WebVR can be added quickly by using the [`WebVRFreeCamera`](http://doc.babylonjs.com/classes/3.1/webvrfreecamera). This camera can take keyboard input and enables you to use a VR headset to control your "head" rotation.
+With Babylon.js, WebVR can be added quickly by using the [`WebVRFreeCamera`](https://doc.babylonjs.com/api/classes/babylon.webvrfreecamera). This camera can take keyboard input and enables you to use a VR headset to control your "head" rotation.
 
 
 ### Step 1: Checking for headsets
 
-For our fallback camera, we'll be using the [`UniversalCamera`](https://doc.babylonjs.com/classes/3.1/universalcamera) that’s currently used in the original game.
+For our fallback camera, we'll be using the [`UniversalCamera`](https://doc.babylonjs.com/api/classes/babylon.universalcamera) that’s currently used in the original game.
 
 We'll check our `headset` variable to determine whether we can use the `WebVRFreeCamera` camera.
 
@@ -171,7 +159,7 @@ A click in the game now creates a prompt like the following, or displays the gam
 
 ![immersive prompt](images/immersiveview.png)
 
-We can also add a piece of code that will display the the `UniversalCamera` view before we switch to our `WebVRFreeCamera`, allowing the user to look at the game instead of a blue window. 
+We can also add a piece of code that will display the `UniversalCamera` view before we switch to our `WebVRFreeCamera`, allowing the user to look at the game instead of a blue window. 
 
 Add the following after `engine.runRenderLoop(function () {`.
 ```javascript
@@ -204,9 +192,6 @@ Add this code below the `scene.onPointerDown = function() {...}` call.
 
 If we open **index.html** with our headset and game controller plugged in, a left click on the blue game window will switch our game to VR mode! Go ahead and put on your headset to check out the results. 
 
-
-<iframe height='300' scrolling='no' title='Babylon.js dino game using Babylon.GUI - WebVR' src='//codepen.io/MicrosoftEdgeDocumentation/embed/preview/RjgpJd/?height=300&theme-id=23761&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/MicrosoftEdgeDocumentation/pen/RjgpJd/'>Babylon.js dino game using Babylon.GUI - WebVR</a> by Microsoft Edge Docs (<a href='https://codepen.io/MicrosoftEdgeDocumentation'>@MicrosoftEdgeDocumentation</a>) on <a href='https://codepen.io'>CodePen</a>.
-</iframe>
 
 
 ## Conclusion

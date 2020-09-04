@@ -1,26 +1,21 @@
 ---
-author: normesta
 description: Through the Windows.ApplicationModel.Appointments namespace, you can create and manage appointments in a user's calendar app.
 title: Manage appointments
 ms.assetid: 292E9249-07C3-4791-B32C-6EC153C2B538
-ms.author: normesta
 ms.date: 02/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp, appointments, calendar
 ms.localizationpriority: medium
 ---
-
 # Manage appointments
 
 
 
-Through the [**Windows.ApplicationModel.Appointments**](https://msdn.microsoft.com/library/windows/apps/Dn263359) namespace, you can create and manage appointments in a user's calendar app. Here, we'll show you how to create an appointment, add it to a calendar app, replace it in the calendar app, and remove it from the calendar app. We'll also show how to display a time span for a calendar app and create an appointment-recurrence object.
+Through the [**Windows.ApplicationModel.Appointments**](/uwp/api/Windows.ApplicationModel.Appointments) namespace, you can create and manage appointments in a user's calendar app. Here, we'll show you how to create an appointment, add it to a calendar app, replace it in the calendar app, and remove it from the calendar app. We'll also show how to display a time span for a calendar app and create an appointment-recurrence object.
 
 ## Create an appointment and apply data to it
 
-Create a [**Windows.ApplicationModel.Appointments.Appointment**](https://msdn.microsoft.com/library/windows/apps/Dn297221) object and assign it to a variable. Then, apply to the **Appointment** the appointment properties that were supplied through the UI by a user.
+Create a [**Windows.ApplicationModel.Appointments.Appointment**](/uwp/api/Windows.ApplicationModel.Appointments.Appointment) object and assign it to a variable. Then, apply to the **Appointment** the appointment properties that were supplied through the UI by a user.
 
 ```cs
 private void Create-Click(object sender, RoutedEventArgs e)
@@ -155,7 +150,7 @@ private void Create-Click(object sender, RoutedEventArgs e)
         }
         else
         {
-            // Organizer Address (e.g. Email Address)
+            // Organizer Address (for example, Email Address)
             organizer.Address = OrganizerAddressTextBox.Text;
 
             if (organizer.Address.Length > 321)
@@ -191,7 +186,7 @@ private void Create-Click(object sender, RoutedEventArgs e)
         }
         else
         {
-            // Invitee Address (e.g. Email Address)
+            // Invitee Address (for example, Email Address)
             invitee.Address = InviteeAddressTextBox.Text;
 
             if (invitee.Address.Length > 321)
@@ -254,7 +249,7 @@ private void Create-Click(object sender, RoutedEventArgs e)
 
 ## Add an appointment to the user's calendar
 
-Create a [**Windows.ApplicationModel.Appointments.Appointment**](https://msdn.microsoft.com/library/windows/apps/Dn297221) object and assign it to a variable. Then, call the [**AppointmentManager.ShowAddAppointmentAsync(Appointment, Rect, Placement)**](https://msdn.microsoft.com/library/windows/apps/dn297261) method to show the default appointments provider add-appointment UI, to enable the user to add an appointment. If the user clicked **Add**, the sample prints the appointment identifier that **ShowAddAppointmentAsync** returned.
+Create a [**Windows.ApplicationModel.Appointments.Appointment**](/uwp/api/Windows.ApplicationModel.Appointments.Appointment) object and assign it to a variable. Then, call the [**AppointmentManager.ShowAddAppointmentAsync(Appointment, Rect, Placement)**](/uwp/api/windows.applicationmodel.appointments.appointmentmanager.showaddappointmentasync) method to show the default appointments provider add-appointment UI, to enable the user to add an appointment. If the user clicked **Add**, the sample prints the appointment identifier that **ShowAddAppointmentAsync** returned.
 
 ```cs
 private async void Add-Click(object sender, RoutedEventArgs e)
@@ -281,11 +276,11 @@ private async void Add-Click(object sender, RoutedEventArgs e)
 }
 ```
 
-**Note**  For Windows Phone Store apps, [**ShowAddAppointment**](https://msdn.microsoft.com/library/windows/apps/windows.applicationmodel.appointments.appointmentmanager.showaddappointmentasync) functions just like [**ShowEditNewAppointment**](https://msdn.microsoft.com/library/windows/apps/windows.applicationmodel.appointments.appointmentmanager.showeditnewappointmentasync) in that the dialog displayed for adding the appointment is editable.
+**Note**  For Windows Phone Store apps, [**ShowAddAppointment**](/uwp/api/windows.applicationmodel.appointments.appointmentmanager.showaddappointmentasync) functions just like [**ShowEditNewAppointment**](/uwp/api/windows.applicationmodel.appointments.appointmentmanager.showeditnewappointmentasync) in that the dialog displayed for adding the appointment is editable.
 
 ## Replace an appointment in the user's calendar
 
-Create a [**Windows.ApplicationModel.Appointments.Appointment**](https://msdn.microsoft.com/library/windows/apps/Dn297221) object and assign it to a variable. Then, call the appropriate [**AppointmentManager.ShowReplaceAppointmentAsync**](https://msdn.microsoft.com/library/windows/apps/windows.applicationmodel.appointments.appointmentmanager.showreplaceappointmentasync) method to show the default appointments provider replace-appointment UI to enable the user to replace an appointment. The user also provides the appointment identifier that they want to replace. This identifier was returned from [**AppointmentManager.ShowAddAppointmentAsync**](https://msdn.microsoft.com/library/windows/apps/windows.applicationmodel.appointments.appointmentmanager.showaddappointmentasync). If the user clicked **Replace**, the sample prints that it updated that appointment identifier.
+Create a [**Windows.ApplicationModel.Appointments.Appointment**](/uwp/api/Windows.ApplicationModel.Appointments.Appointment) object and assign it to a variable. Then, call the appropriate [**AppointmentManager.ShowReplaceAppointmentAsync**](/uwp/api/windows.applicationmodel.appointments.appointmentmanager.showreplaceappointmentasync) method to show the default appointments provider replace-appointment UI to enable the user to replace an appointment. The user also provides the appointment identifier that they want to replace. This identifier was returned from [**AppointmentManager.ShowAddAppointmentAsync**](/uwp/api/windows.applicationmodel.appointments.appointmentmanager.showaddappointmentasync). If the user clicked **Replace**, the sample prints that it updated that appointment identifier.
 
 ```cs
 private async void Replace-Click(object sender, RoutedEventArgs e)
@@ -339,7 +334,7 @@ private async void Replace-Click(object sender, RoutedEventArgs e)
 
 ## Remove an appointment from the user's calendar
 
-Call the appropriate [**AppointmentManager.ShowRemoveAppointmentAsync**](https://msdn.microsoft.com/library/windows/apps/windows.applicationmodel.appointments.appointmentmanager.showremoveappointmentasync) method to show the default appointments provider remove-appointment UI, to enable the user to remove an appointment. The user also provides the appointment identifier that they want to remove. This identifier was returned from [**AppointmentManager.ShowAddAppointmentAsync**](https://msdn.microsoft.com/library/windows/apps/windows.applicationmodel.appointments.appointmentmanager.showaddappointmentasync). If the user clicked **Delete**, the sample prints that it removed the appointment specified by that appointment identifier.
+Call the appropriate [**AppointmentManager.ShowRemoveAppointmentAsync**](/uwp/api/windows.applicationmodel.appointments.appointmentmanager.showremoveappointmentasync) method to show the default appointments provider remove-appointment UI, to enable the user to remove an appointment. The user also provides the appointment identifier that they want to remove. This identifier was returned from [**AppointmentManager.ShowAddAppointmentAsync**](/uwp/api/windows.applicationmodel.appointments.appointmentmanager.showaddappointmentasync). If the user clicked **Delete**, the sample prints that it removed the appointment specified by that appointment identifier.
 
 ```cs
 private async void Remove-Click(object sender, RoutedEventArgs e)
@@ -389,7 +384,7 @@ private async void Remove-Click(object sender, RoutedEventArgs e)
 
 ## Show a time span for the appointments provider
 
-Call the [**AppointmentManager.ShowTimeFrameAsync**](https://msdn.microsoft.com/library/windows/apps/windows.applicationmodel.appointments.appointmentmanager.showtimeframeasync) method to show a specific time span for the default appointments provider's primary UI if the user clicked **Show**. The sample prints that the default appointments provider appeared on screen.
+Call the [**AppointmentManager.ShowTimeFrameAsync**](/uwp/api/windows.applicationmodel.appointments.appointmentmanager.showtimeframeasync) method to show a specific time span for the default appointments provider's primary UI if the user clicked **Show**. The sample prints that the default appointments provider appeared on screen.
 
 ```cs
 private async void Show-Click(object sender, RoutedEventArgs e)
@@ -403,7 +398,7 @@ private async void Show-Click(object sender, RoutedEventArgs e)
 
 ## Create an appointment-recurrence object and apply data to it
 
-Create an [**Windows.ApplicationModel.Appointments.AppointmentRecurrence**](https://msdn.microsoft.com/library/windows/apps/windows.applicationmodel.appointments.appointmentrecurrence) object and assign it to a variable. Then, apply to the **AppointmentRecurrence** the recurrence properties that were supplied through the UI by a user.
+Create an [**Windows.ApplicationModel.Appointments.AppointmentRecurrence**](/uwp/api/windows.applicationmodel.appointments.appointmentrecurrence) object and assign it to a variable. Then, apply to the **AppointmentRecurrence** the recurrence properties that were supplied through the UI by a user.
 
 ```cs
 private void Create-Click(object sender, RoutedEventArgs e)
@@ -506,7 +501,7 @@ private void Create-Click(object sender, RoutedEventArgs e)
 
 ## Add a new editable appointment
 
-[**ShowEditNewAppointmentAsync**](https://msdn.microsoft.com/library/windows/apps/windows.applicationmodel.appointments.appointmentmanager.showeditnewappointmentasync) works just like [**ShowAddAppointmentAsync**](https://msdn.microsoft.com/library/windows/apps/windows.applicationmodel.appointments.appointmentmanager.showaddappointmentasync) except that the dialog for adding the appointment is editable so that the user can modify the appointment data before saving it.
+[**ShowEditNewAppointmentAsync**](/uwp/api/windows.applicationmodel.appointments.appointmentmanager.showeditnewappointmentasync) works just like [**ShowAddAppointmentAsync**](/uwp/api/windows.applicationmodel.appointments.appointmentmanager.showaddappointmentasync) except that the dialog for adding the appointment is editable so that the user can modify the appointment data before saving it.
 
 ``` cs
 private async void AddAndEdit-Click(object sender, RoutedEventArgs e)
@@ -541,7 +536,7 @@ private async void AddAndEdit-Click(object sender, RoutedEventArgs e)
 
 ## Show appointment details
 
-[**ShowAppointmentDetailsAsync**](https://msdn.microsoft.com/library/windows/apps/windows.applicationmodel.appointments.appointmentmanager.showappointmentdetailsasync) causes the system to show details for the specified appointment. An app that implements app calendars may choose to be activated to show details for appointments in calendars it owns. Otherwise, the system will show the appointment details. An overload of the method that accepts a start date argument is provided to show details for an instance of a recurring appointment.
+[**ShowAppointmentDetailsAsync**](/uwp/api/windows.applicationmodel.appointments.appointmentmanager.showappointmentdetailsasync) causes the system to show details for the specified appointment. An app that implements app calendars may choose to be activated to show details for appointments in calendars it owns. Otherwise, the system will show the appointment details. An overload of the method that accepts a start date argument is provided to show details for an instance of a recurring appointment.
 
 ```cs
 private async void ShowAppointmentDetails-Click(object sender, RoutedEventArgs e)
@@ -564,11 +559,11 @@ private async void ShowAppointmentDetails-Click(object sender, RoutedEventArgs e
 
 ## Summary and next steps
 
-Now you have a basic understanding of how to manage appointments. Download the [Universal Windows app samples](http://go.microsoft.com/fwlink/p/?linkid=619979) from GitHub to see more examples of how to manage appointments.
+Now you have a basic understanding of how to manage appointments. Download the [Universal Windows app samples](https://github.com/Microsoft/Windows-universal-samples) from GitHub to see more examples of how to manage appointments.
 
 ## Related topics
 
-* [Appointments API sample](http://go.microsoft.com/fwlink/p/?linkid=309836)
+* [Appointments API sample](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/Appointments)
  
 
  

@@ -1,31 +1,26 @@
 ---
-author: stevewhims
 Description: This topic defines the terms user profile language list, app manifest language list, and app runtime language list. We'll be using these terms in this topic and other topics in this feature area, so it's important to know what they mean.
 title: Understand user profile languages and app manifest languages
 ms.assetid: 22D3A937-736A-4121-8285-A55DED56E594
 template: detail.hbs
-ms.author: stwhi
 ms.date: 11/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp, globalization, localizability, localization
 ms.localizationpriority: medium
 ---
-
 # Understand user profile languages and app manifest languages
 A Windows user can use **Settings** > **Time & Language** > **Region & language** to configure an ordered list of preferred display languages, or just a single preferred display language. A language can have a regional variant. For example, you can select Spanish as spoken in Spain, Spanish as spoken in Mexico, Spanish as spoken in the United States, among others.
 
 Also in **Settings** > **Time & Language** > **Region & language**, but separate from language, the user can specify their location (known as region) in the world. Note that the display language (and regional variant) setting isn't a determiner of the region setting, and vice versa. For example, a user might be currently living in France but choose a preferred Windows display language of Español (México).
 
-For UWP apps, a language is represented as a [BCP-47 language tag](http://go.microsoft.com/fwlink/p/?linkid=227302). For example, the BCP-47 language tag "en-US" corresponds to English (United States) in **Settings**. Appropriate UWP APIs accept and return string representations of BCP-47 language tags.
+For Windows apps, a language is represented as a [BCP-47 language tag](https://tools.ietf.org/html/bcp47). For example, the BCP-47 language tag "en-US" corresponds to English (United States) in **Settings**. Appropriate Windows Runtime APIs accept and return string representations of BCP-47 language tags.
 
-Also see the [IANA language subtag registry](http://go.microsoft.com/fwlink/p/?linkid=227303).
+Also see the [IANA language subtag registry](https://www.iana.org/assignments/language-subtag-registry).
 
 The following three sections define the terms "user profile language list", "app manifest language list", and "app runtime language list". We'll be using these terms in this topic and other topics in this feature area, so it's important to know what they mean.
 
 ## User profile language list
-The user profile language list is the name of the list that's configured by the user in **Settings** > **Time & Language** > **Region & language** > **Languages**. In code you can use the [**GlobalizationPreferences.Languages**](/uwp/api/windows.system.userprofile.globalizationpreferences.Languages) property to access the user profile language list as a read-only list of strings, where each string is a single [BCP-47 language tag](http://go.microsoft.com/fwlink/p/?linkid=227302) such as "en-US" or "ja-JP".
+The user profile language list is the name of the list that's configured by the user in **Settings** > **Time & Language** > **Region & language** > **Languages**. In code you can use the [**GlobalizationPreferences.Languages**](/uwp/api/windows.system.userprofile.globalizationpreferences.Languages) property to access the user profile language list as a read-only list of strings, where each string is a single [BCP-47 language tag](https://tools.ietf.org/html/bcp47) such as "en-US" or "ja-JP".
 
 ```csharp
     IReadOnlyList<string> userLanguages = Windows.System.UserProfile.GlobalizationPreferences.Languages;
@@ -69,7 +64,7 @@ The third language list of interest is the intersection between the two lists th
 
 More specifically, the app runtime language list is made up of these items.
 
-1.  **(Optional) Primary Language Override**. The [**PrimaryLanguageOverride**](/uwp/api/Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride) is a simple override setting for apps that give users their own independent language choice, or apps that have some strong reason to override the default language choices. To learn more, see the [Application resources and localization sample](http://go.microsoft.com/fwlink/p/?linkid=231501).
+1.  **(Optional) Primary Language Override**. The [**PrimaryLanguageOverride**](/uwp/api/Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride) is a simple override setting for apps that give users their own independent language choice, or apps that have some strong reason to override the default language choices. To learn more, see the [Application resources and localization sample](https://github.com/microsoftarchive/msdn-code-gallery-microsoft/tree/411c271e537727d737a53fa2cbe99eaecac00cc0/Official%20Windows%20Platform%20Sample/Windows%208%20app%20samples/%5BC%23%5D-Windows%208%20app%20samples/C%23/Windows%208%20app%20samples/Application%20resources%20and%20localization%20sample%20(Windows%208)).
 2.  **The user's languages that are supported by the app**. This is the user profile language list filtered by the app manifest language list. Filtering the user's languages by those supported by the app maintains consistency among software development kits (SDKs), class libraries, dependent framework packages, and the app.
 3.  **If 1 and 2 are empty, then the default or first language supported by the app**. If the user profile language list doesn't contain any languages that the app supports, then the app runtime language is the first language supported by the app.
 
@@ -92,24 +87,26 @@ The app runtime language list determines the resources that Windows loads for yo
 **Note** If the user profile language and the app manifest language are regional variants of one another, then the user's regional variant is used as the app runtime language. For example, if the user prefers en-GB and the app supports en-US, then the app runtime language is en-GB. This ensures that dates, times, and numbers are formatted more closely to the user's expectations (en-GB), but localized resources are still loaded (due to language matching) in the app's supported language (en-US).
 
 ## Qualify resource files with their language
-Name your resource files, or their folders, with language resource qualifiers. To learn more about resource qualifiers, see [Tailor your resources for language, scale, high contrast, and other qualifiers](../../app-resources/tailor-resources-lang-scale-contrast.md). A resource file can be a single image or other asset file, or it can be a container resource file&mdash;such as a Resources File (.resw)&mdash;that contains string resources.
+Name your resource files, or their folders, with language resource qualifiers. To learn more about resource qualifiers, see [Tailor your resources for language, scale, high contrast, and other qualifiers](../../app-resources/tailor-resources-lang-scale-contrast.md). A resource file can be an image (or other asset), or it can be a resource container file, such as a *.resw* that contains text strings.
 
-**Note** Even resources in your app's default language must be qualified with their language. For example, your app's default language is English (United States), then qualify even your en-US resources similar to `\Assets\Images\en-US\logo.png`. 
+**Note** Even resources in your app's default language must specify the language qualifier. For example, if your app's default language is English (United States), then qualify your assets as `\Assets\Images\en-US\logo.png`.
 
-- Windows performs complex matching, including for example across regional variants such as en-US and en-GB. So include or omit the region subtag as appropriate. See [How the Resource Management System matches language tags](../../app-resources/how-rms-matches-lang-tags.md).
-- Include script when there is no Suppress-Script value defined for the language. See the [IANA language subtag registry](http://go.microsoft.com/fwlink/p/?linkid=227303) for language tag details. For example, use zh-Hant, zh-Hant-TW, or zh-Hans, and not zh-CN or zh-TW.
-- For languages that have a single standard dialect, there is no need to add region. General tagging is reasonable in some situations, such as marking assets with ja instead of ja-JP.
+- Windows performs complex matching, including across regional variants such as en-US and en-GB. So include the region sub-tag as appropriate. See [How the Resource Management System matches language tags](../../app-resources/how-rms-matches-lang-tags.md).
+- Specify a language script sub-tag in the qualifier when there is no Suppress-Script value defined for the language. For example, instead of zh-CN or zh-TW, use zh-Hant, zh-Hant-TW, or zh-Hans (for more detail, see the [IANA language subtag registry](https://www.iana.org/assignments/language-subtag-registry)).
+- For languages that have a single standard dialect, there is no need to include the region qualifier. For example, use ja instead of ja-JP.
 - Some tools and other components such as machine translators might find specific language tags, such as regional dialect info, helpful in understanding the data.
 
-There are cases where not all resources need to be localized.
+### Not all resources need to be localized
 
-- For resources such as UI strings that come in all languages, mark them with their language. Make sure that all of these strings exist in the default language.
-- For resources that come in a subset of the entire app's set of languages (partial localization), specify the set of languages the assets do come in and make sure to have all of these resources in the default language. For example, you might not localize all of your app's UI into Catalan if your app has a full set of resources in Spanish. For users who speak Catalan and then Spanish, the resources that are not available in Catalan will appear in Spanish.
-- For resources that have specific exceptions in some languages, but all other languages map to a common resource, mark the resource intended to be used for all languages with the undetermined language tag 'und'. Windows interprets the 'und' language tag as a wildcard (similar to '\*') in that it matches the top app language after any other specific match. For example, if a few resources are different for Finnish, but the rest of the resources are the same for all languages, then the Finnish resource should be marked with the Finnish language tag, and the rest should be marked with 'und'.
-- For resources that are based on a language's script instead of the language, such as a font or height of text, use the undetermined language tag with a specified script: 'und-&lt;script&gt;'. For example, for Latin fonts use `und-Latn\\fonts.css` and for Cyrillic fonts use `und-Cryl\\fonts.css`.
+Localization might not be required for all resources.
+
+- At a minimum, ensure all resources exist in the default language.
+- A subset of some resources might suffice for a closely related language (partial localization). For example, you might not localize all of your app's UI into Catalan if your app has a full set of resources in Spanish. For users who speak Catalan and then Spanish, the resources that are not available in Catalan appear in Spanish.
+- Some resources might require exceptions for specific languages, while the majority of other resources map to a common resource. In this case, mark the resource intended to be used for all languages with the undetermined language tag 'und'. Windows interprets the 'und' language tag as a wildcard (similar to '\*') in that it matches the top app language after any other specific match. For example, if a few resources are different for Finnish, but the rest of the resources are the same for all languages, then the Finnish resource should be marked with the Finnish language tag, and the rest should be marked with 'und'.
+- For resources that are based on a language script, such as a font or height of text, use the undetermined language tag with a specified script: 'und-&lt;script&gt;'. For example, for Latin fonts use `und-Latn\\fonts.css` and for Cyrillic fonts use `und-Cryl\\fonts.css`.
 
 ## Set the HTTP Accept-Language request header
-Consider whether the web services that you call have the same extent of localization as your app does. HTTP requests made from UWP apps and Desktop apps in typical web requests, and XMLHttpRequest (XHR), use the standard HTTP Accept-Language request header. By default, the HTTP header is set to the user profile language list. Each language in the list is further expanded to include neutrals of the language and a weighting (q). For example, a user's language list of fr-FR and en-US results in an HTTP Accept-Language request header of fr-FR, fr, en-US, en ("fr-FR,fr;q=0.8,en-US;q=0.5,en;q=0.3"). But if your weather app (for example) is displaying a UI in French (France), but the user's top language in their preference list is German, then you'll need to explicitly request French (France) from the service in order to remain consistent within your app.
+Consider whether the web services that you call have the same extent of localization as your app does. HTTP requests made from Windows apps in typical web requests, and XMLHttpRequest (XHR), use the standard HTTP Accept-Language request header. By default, the HTTP header is set to the user profile language list. Each language in the list is further expanded to include neutrals of the language and a weighting (q). For example, a user's language list of fr-FR and en-US results in an HTTP Accept-Language request header of fr-FR, fr, en-US, en ("fr-FR,fr;q=0.8,en-US;q=0.5,en;q=0.3"). But if your weather app (for example) is displaying a UI in French (France), but the user's top language in their preference list is German, then you'll need to explicitly request French (France) from the service in order to remain consistent within your app.
 
 ## APIs in the Windows.Globalization namespace
 Typically, the APIs in the [**Windows.Globalization**](/uwp/api/windows.globalization?branch=live) namespace use the app runtime language list to determine the language. If none of the languages has a matching format, then the user locale is used. This is the same locale that is used for the system clock. The user locale is available from **Settings** > **Time & Language** > **Region & language** > **Additional date, time, & regional settings** > **Region: Change date, time, or number formats**. The **Windows.Globalization** APIs also have overrides to specify a list of languages to use, instead of the app runtime language list.
@@ -189,6 +186,9 @@ The following table contains examples of what the user would see in your app's U
 </tbody>
 </table>
 
+>[!NOTE]
+> For a list of standard country/region codes used by Microsoft, see the [Official Country/Region List](../../publish/supported-languages.md).
+
 ## Important APIs
 * [GlobalizationPreferences.Languages](/uwp/api/windows.system.userprofile.globalizationpreferences.Languages)
 * [ApplicationLanguages.ManifestLanguages](/uwp/api/windows.globalization.applicationlanguages.ManifestLanguages)
@@ -202,12 +202,12 @@ The following table contains examples of what the user would see in your app's U
 * [GeographicRegion](/uwp/api/windows.globalization.geographicregion?branch=live)
 
 ## Related topics
-* [BCP-47 language tag](http://go.microsoft.com/fwlink/p/?linkid=227302)
-* [IANA language subtag registry](http://go.microsoft.com/fwlink/p/?linkid=227303)
+* [BCP-47 language tag](https://tools.ietf.org/html/bcp47)
+* [IANA language subtag registry](https://www.iana.org/assignments/language-subtag-registry)
 * [Tailor your resources for language, scale, high contrast, and other qualifiers](../../app-resources/tailor-resources-lang-scale-contrast.md)
 * [Supported languages](../../publish/supported-languages.md)
 * [Globalize your date/time/number formats](use-global-ready-formats.md)
 * [How the Resource Management System matches language tags](../../app-resources/how-rms-matches-lang-tags.md)
 
 ## Samples
-* [Application resources and localization sample](http://go.microsoft.com/fwlink/p/?linkid=231501)
+* [Application resources and localization sample](https://code.msdn.microsoft.com/windowsapps/Application-resources-and-cd0c6eaa)

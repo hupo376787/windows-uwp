@@ -1,17 +1,12 @@
 ---
-author: eliotcowley
 title: Arcade stick
 description: Use the Windows.Gaming.Input arcade stick APIs to detect and read arcade sticks.
 ms.assetid: 2E52232F-3014-4C8C-B39D-FAC478BA3E01
-ms.author: wdg-dev-content
 ms.date: 02/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp, games, arcade stick, input
 ms.localizationpriority: medium
 ---
-
 # Arcade stick
 
 This page describes the basics of programming for Xbox One arcade sticks using [Windows.Gaming.Input.ArcadeStick][arcadestick] and related APIs for the Universal Windows Platform (UWP).
@@ -52,7 +47,7 @@ Arcade sticks don't map any of the [optional set](ui-navigation-controller.md#op
 
 ## Detect and track arcade sticks
 
-Detecting and tracking arcade sticks works in exactly the same way as it does for gamepads, except with the [ArcadeStick][] class instead of the [Gamepad](https://docs.microsoft.com/uwp/api/Windows.Gaming.Input.Gamepad) class. See [Gamepad and vibration](gamepad-and-vibration.md) for more information.
+Detecting and tracking arcade sticks works in exactly the same way as it does for gamepads, except with the [ArcadeStick][] class instead of the [Gamepad](/uwp/api/Windows.Gaming.Input.Gamepad) class. See [Gamepad and vibration](gamepad-and-vibration.md) for more information.
 
 <!-- Arcade sticks are managed by the system, therefore you don't have to create or initialize them. The system provides a list of connected arcades sticks and events to notify you when an arcade stick is added or removed.
 
@@ -177,13 +172,13 @@ The [InputInterfacingUWP sample _(github)_](https://github.com/Microsoft/Xbox-AT
 * [Windows.Gaming.Input.IGameController][]
 * [Input practices for games](input-practices-for-games.md)
 
-[Windows.Gaming.Input]: https://msdn.microsoft.com/library/windows/apps/windows.gaming.input.aspx
-[Windows.Gaming.Input.IGameController]: https://msdn.microsoft.com/library/windows/apps/windows.gaming.input.igamecontroller.aspx
-[Windows.Gaming.Input.UINavigationController]: https://msdn.microsoft.com/library/windows/apps/windows.gaming.input.uinavigationcontroller.aspx
-[arcadestick]: https://msdn.microsoft.com/library/windows/apps/windows.gaming.input.arcadestick.aspx
-[arcadesticks]: https://msdn.microsoft.com/library/windows/apps/windows.gaming.input.arcadestick.arcadesticks.aspx
-[arcadestickadded]: https://msdn.microsoft.com/library/windows/apps/windows.gaming.input.arcadestick.arcadestickadded.aspx
-[arcadestickremoved]: https://msdn.microsoft.com/library/windows/apps/windows.gaming.input.arcadestick.arcadestickremoved.aspx
-[getcurrentreading]: https://msdn.microsoft.com/library/windows/apps/windows.gaming.input.arcadestick.getcurrentreading.aspx
-[arcadestickreading]: https://msdn.microsoft.com/library/windows/apps/windows.gaming.input.arcadestickreading.aspx
-[arcadestickbuttons]: https://msdn.microsoft.com/library/windows/apps/windows.gaming.input.arcadestickbuttons.aspx
+[Windows.Gaming.Input]: /uwp/api/Windows.Gaming.Input
+[Windows.Gaming.Input.IGameController]: /uwp/api/Windows.Gaming.Input.IGameController
+[Windows.Gaming.Input.UINavigationController]: /uwp/api/Windows.Gaming.Input.UINavigationController
+[arcadestick]: /uwp/api/Windows.Gaming.Input.ArcadeStick
+[arcadesticks]: /uwp/api/Windows.Gaming.Input.ArcadeStick
+[arcadestickadded]: /uwp/api/Windows.Gaming.Input.ArcadeStick
+[arcadestickremoved]: /uwp/api/Windows.Gaming.Input.ArcadeStick
+[getcurrentreading]: /uwp/api/Windows.Gaming.Input.ArcadeStick
+[arcadestickreading]: /uwp/api/Windows.Gaming.Input.ArcadeStickReading
+[arcadestickbuttons]: /uwp/api/Windows.Gaming.Input.ArcadeStickButtons

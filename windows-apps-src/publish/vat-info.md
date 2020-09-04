@@ -1,26 +1,21 @@
 ---
-author: jnHs
-Description: If you’re required to provide a VAT ID number during the Dev Center registration process, here’s some info to get you started.
+Description: If you’re required to provide a VAT ID number during the Partner Center registration process, here’s some info to get you started.
 title: VAT info
 ms.assetid: 93834A6B-86D6-4647-AC01-CBCA3CB7A578
-ms.author: wdg-dev-content
-ms.date: 06/19/2017
+ms.date: 10/31/2018
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp
 ms.localizationpriority: medium
 ---
-
 # VAT info
 
 
-If you’re required to provide a VAT ID number during the Dev Center registration process, here’s some info to get you started.
+If you’re required to provide a VAT ID number during the Partner Center registration process, here’s some info to get you started.
 
 ## Understanding VAT numbers
 
 
-A value added tax (VAT) number is an identifier used for countries or regions in the European Union. For more info, see the European Union’s official [VIES site](http://go.microsoft.com/fwlink/p/?LinkId=258372).
+A value added tax (VAT) number is an identifier used for countries or regions in the European Union. For more info, see the European Union’s official [VIES site](http://ec.europa.eu/taxation_customs/vies/vieshome.do).
 
 ## Accepted formats for VAT numbers
 
@@ -69,7 +64,7 @@ Note that Microsoft doesn’t provide tax advice, and the following table is pro
 <li>Example: 12345678, 123456789, or 0123456789</li>
 </ul>
 </td></tr>
-<tr><td data-th="Country/region">Czech Republic</td><td data-th="VAT info">
+<tr><td data-th="Country/region">Czechia</td><td data-th="VAT info">
 <ul>
 <li>VAT Number Format: 8, 9, or 10 digits</li>
 <li>Country/region code: CZ</li>

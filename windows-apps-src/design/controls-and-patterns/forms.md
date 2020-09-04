@@ -1,16 +1,11 @@
 ---
-author: serenaz
-Description: Layout guidelines for forms in UWP apps.
 title: Forms
+description: Learn the guidelines for designing and creating XAML layouts for forms in a Universal Windows Platform (UWP) app.
 template: detail.hbs
-ms.author: sezhen
 ms.date: 11/07/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp, fluent
 ---
-
 # Forms
 A form is a group of controls that collect and submit data from users. Forms are typically used for settings pages, surveys, creating accounts, and much more. 
 
@@ -29,7 +24,7 @@ A form is a dedicated page for collecting data inputs that are clearly related t
 
 ## Types of forms
 
-When thinking about how user input is submittted and displayed, there are two types of forms:
+When thinking about how user input is submitted and displayed, there are two types of forms:
 
 ### 1. Instantly updating
 ![settings page](images/control-examples/toggle-switch-news.png)
@@ -41,11 +36,11 @@ The other type of form allows the user to choose when to submit data with a clic
 
 ![calendar add new event page](images/calendar-form.png)
 
-This type of form gives the user flexibility in responding. Typically, this type of form contains more free form input fields, and thus recieves a greater variety of responses. To ensure valid user input and properly formatted data upon submission, consider the following recommendations:
+This type of form gives the user flexibility in responding. Typically, this type of form contains more free form input fields, and thus receives a greater variety of responses. To ensure valid user input and properly formatted data upon submission, consider the following recommendations:
 
 - Make it impossible to submit invalid information by using the correct control (i.e., use a CalendarDatePicker rather than a TextBox for calendar dates). See more on selecting the appropriate input controls in your form in the Input Controls section later.
-- When using TextBox controls, provide users a hint of the desired input format with the [PlaceholderText](https://docs.microsoft.com/uwp/api/Windows.UI.Xaml.Controls.TextBox.PlaceholderText) property.
-- Provide users with the appropriate on-screen keyboard by stating the expected input of a control with the [InputScope](https://docs.microsoft.com/uwp/api/windows.ui.xaml.input.inputscope) property.
+- When using TextBox controls, provide users a hint of the desired input format with the [PlaceholderText](/uwp/api/Windows.UI.Xaml.Controls.TextBox.PlaceholderText) property.
+- Provide users with the appropriate on-screen keyboard by stating the expected input of a control with the [InputScope](/uwp/api/windows.ui.xaml.input.inputscope) property.
 - Mark required input with an asterisk * on the label.
 - Disable the submit button until all required information is filled in.
 - If there is invalid data upon submission, mark the controls with invalid input with highlighted fields or borders, and require the user to resubmit the form.
@@ -57,11 +52,11 @@ This type of form gives the user flexibility in responding. Typically, this type
 To facilitate the user experience and ensure that users are able to enter the correct input, consider the following recommendations for designing layouts for forms. 
 
 ### Labels
-[Labels](labels.md) should be left-aligned and placed above the input control. Many controls have a built-in Header property to display the label. For controls that don't have a Header property, or to label groups of controls, you can use a [TextBlock](https://docs.microsoft.com/en-us/uwp/api/Windows.UI.Xaml.Controls.TextBlock) instead.
+[Labels](labels.md) should be left-aligned and placed above the input control. Many controls have a built-in Header property to display the label. For controls that don't have a Header property, or to label groups of controls, you can use a [TextBlock](/uwp/api/Windows.UI.Xaml.Controls.TextBlock) instead.
 
 To [design for accessibility](../accessibility/accessibility.md), label all individual and groups of controls for clarity for both human and screen readers. 
 
-For font styles, use the default [UWP type ramp](../style/typography.md). Use `TitleTextBlockStyle` for page titles, `SubtitleTextBlockStyle` for group headings, and `BodyTextBlockStyle` for control labels.
+For font styles, use the default [Windows type ramp](../style/typography.md). Use `TitleTextBlockStyle` for page titles, `SubtitleTextBlockStyle` for group headings, and `BodyTextBlockStyle` for control labels.
 
 <div class="mx-responsive-img">
 <table>
@@ -126,9 +121,9 @@ Control | Use | Example
 ### Lists
 Control | Use | Example
 - | - | -
-[ComboBox](https://docs.microsoft.com/windows/uwp/controls-and-patterns/lists.md#drop-down-lists) | Start in compact state and expand to show list of selectable items | Select from a long list of items, such as states or countries
-[ListView](https://docs.microsoft.com/windows/uwp/controls-and-patterns/lists#list-views) | Categorize items and assign group headers, drag and drop items, curate content, and reorder items | Rank options
-[GridView](https://docs.microsoft.com/windows/uwp/controls-and-patterns/lists#grid-views) | Arrange and browse image-based collections | Pick a photo, color, display theme
+[ComboBox](combo-box.md) | Start in compact state and expand to show list of selectable items | Select from a long list of items, such as states or countries
+[ListView](./lists.md#list-views) | Categorize items and assign group headers, drag and drop items, curate content, and reorder items | Rank options
+[GridView](./lists.md#grid-views) | Arrange and browse image-based collections | Pick a photo, color, display theme
 
 ### Numeric input
 Control | Use | Example
@@ -148,12 +143,12 @@ Control | Use
 ### Additional Controls 
 For a complete list of UWP controls, see [index of controls by function](controls-by-function.md).
 
-For more complex and custom UI controls, look at UWP resources available from companies such as [Telerik](http://www.telerik.com/), [SyncFusion](https://www.syncfusion.com/products/uwp), [DevExpress](https://www.devexpress.com/Products/NET/Controls/Win10Apps/),
-[Infragistics](http://www.infragistics.com/products/universal-windows-platform), [ComponentOne](https://www.componentone.com/Studio/Platform/UWP), and [ActiPro](http://www.actiprosoftware.com/products/controls/universal).
+For more complex and custom UI controls, look at resources available from companies such as [Telerik](https://www.telerik.com/), [SyncFusion](https://www.syncfusion.com/uwp-ui-controls), [DevExpress](https://www.devexpress.com/Products/NET/Controls/Win10Apps/),
+[Infragistics](https://www.infragistics.com/products/universal-windows-platform), [ComponentOne](https://www.componentone.com/Studio/Platform/UWP), and [ActiPro](https://www.actiprosoftware.com/products/controls/universal).
 
 ## One column form example
 This example uses an Acrylic [master/detail](master-details.md) [list view](lists.md) and [NavigationView](navigationview.md) control.
-![Screenshot of another form exmaple](images/FormExample2.png)
+![Screenshot of another form example](images/FormExample2.png)
 ```xaml
 <StackPanel>
     <TextBlock Text="New Customer" Style="{StaticResource TitleTextBlockStyle}"/>
@@ -178,7 +173,7 @@ This example uses an Acrylic [master/detail](master-details.md) [list view](list
 ```
 
 ## Two column form example
-This example uses the [Pivot](tabs-pivot.md) control, [Acrylic](../style/acrylic.md) background, and [CommandBar](app-bars.md) in addition to input controls.
+This example uses the [Pivot](pivot.md) control, [Acrylic](../style/acrylic.md) background, and [CommandBar](app-bars.md) in addition to input controls.
 ![Screenshot of form example](images/FormExample.png)
 ```xaml
 <Grid>

@@ -1,19 +1,15 @@
 ---
-author: mijacobs
 Description: Learn how to use tiles, badges, toasts, and notifications to provide entry points into your app and keep users up-to-date.
-title: Badge notifications for UWP apps
+title: Badge notifications for Windows apps
 ms.assetid: 48ee4328-7999-40c2-9354-7ea7d488c538
 label: Tiles, badges, and notifications
 template: detail.hbs
-ms.author: mijacobs
 ms.date: 05/19/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp
 ms.localizationpriority: medium
 ---
-# Badge notifications for UWP apps
+# Badge notifications for Windows apps
 
  
 
@@ -126,7 +122,7 @@ Instead of a number, a badge can display one of a non-extensible set of status g
 
 ## Create a badge
 
-These examples show you how to to create a badge update.
+These examples show you how to create a badge update.
 
 ### Create a numeric badge
 
@@ -194,7 +190,7 @@ private void clearBadge()
 
 ## Get the sample code
 
-* [Notifications sample](https://github.com/Microsoft/Windows-universal-samples/blob/master/Samples/Notifications)<br/> Shows how to create live tiles, send badge updates, and display toast notifications. 
+* [Notifications sample](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/Notifications)<br/> Shows how to create live tiles, send badge updates, and display toast notifications. 
 
 ## Related articles
 

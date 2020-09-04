@@ -1,15 +1,11 @@
 ---
-author: serenaz
 Description: The master/detail pattern displays a master list and the details for the currently selected item. This pattern is frequently used for email and contact lists/address books.
 title: Master/details
 ms.assetid: 45C9FE8B-ECA6-44BF-8DDE-7D12ED34A7F7
 label: Master/details
 template: detail.hbs
-ms.author: sezhen
 ms.date: 05/19/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp
 ms.localizationpriority: medium
 ---
@@ -19,9 +15,12 @@ ms.localizationpriority: medium
 
 The master/details pattern has a master pane (usually with a [list view](lists.md)) and a details pane for content. When an item in the master list is selected, the details pane is updated. This pattern is frequently used for email and address books.
 
-> **Important APIs**: [ListView class](https://docs.microsoft.com/en-us/uwp/api/Windows.UI.Xaml.Controls.ListView), [SplitView class](https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.splitview)
+> **Important APIs**: [ListView class](/uwp/api/Windows.UI.Xaml.Controls.ListView), [SplitView class](/uwp/api/windows.ui.xaml.controls.splitview)
 
 ![Example of master-details pattern](images/HIGSecOne_MasterDetail.png)
+
+> [!TIP]
+> If you'd like to use a XAML control that implements this pattern for you, we recommend the [MasterDetailsView XAML Control](/windows/communitytoolkit/controls/masterdetailsview) from the Windows Community Toolkit.
 
 ## Is this the right pattern?
 
@@ -59,7 +58,7 @@ For the master view page, a [list view](lists.md) control works well for present
 
 For the details view page, use the [content element](../layout/layout-panels.md) that makes the most sense. If you have a lot of separate fields, consider using a **Grid** layout to arrange elements into a form.
 
-For navigation between pages, see [navigation history and backwards navigation for UWP apps](../basics/navigation-history-and-backwards-navigation.md).
+For navigation between pages, see [navigation history and backwards navigation for Windows apps](../basics/navigation-history-and-backwards-navigation.md).
 
 ## Side-by-side style
 
@@ -86,7 +85,7 @@ To implement a master/details pattern for any screen size, create a responsive U
 ![adaptive master detail layout](images/patterns_masterdetail.png)
 
 ### Create an adaptive master/details pattern
-To create an adaptive layout, define different [**VisualStates**](https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.visualstate) for your UI, and declare breakpoints for the different states with [**AdaptiveTriggers**](https://docs.microsoft.com/en-us/uwp/api/Windows.UI.Xaml.AdaptiveTrigger).
+To create an adaptive layout, define different [**VisualStates**](/uwp/api/windows.ui.xaml.visualstate) for your UI, and declare breakpoints for the different states with [**AdaptiveTriggers**](/uwp/api/Windows.UI.Xaml.AdaptiveTrigger).
 
 ## Get the sample code
 
@@ -97,10 +96,13 @@ The following samples implement the master/details pattern with adaptive layouts
 - [Customer orders database sample](https://github.com/Microsoft/Windows-appsample-customers-orders-database)
 - [RSS Reader sample](https://github.com/Microsoft/Windows-appsample-rssreader)
 
+> [!TIP]
+> If you'd like to use a XAML control that implements this pattern for you, we recommend the [MasterDetailsView XAML Control](/windows/communitytoolkit/controls/masterdetailsview) from the Windows Community Toolkit.
+
 ## Related articles
 
 - [Lists](lists.md)
 - [Search](search.md)
 - [App and command bars](app-bars.md)
-- [ListView class](https://docs.microsoft.com/en-us/uwp/api/Windows.UI.Xaml.Controls.ListView)
-- [SplitView class](https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.controls.splitview)
+- [ListView class](/uwp/api/Windows.UI.Xaml.Controls.ListView)
+- [SplitView class](/uwp/api/windows.ui.xaml.controls.splitview)

@@ -1,36 +1,33 @@
 ---
-author: Karl-Bridge-Microsoft
-Description: Identify the input devices connected to a Universal Windows Platform (UWP) device and identify their capabilities and attributes.
+Description: Identify the input devices connected to a Windows app device and identify their capabilities and attributes.
 title: Identify input devices
 ms.assetid: B2E93FBF-C508-44D9-BA46-ECFDAA8746F4
 label: Identify input devices
 template: detail.hbs
 keywords: device, digitizer, input, interaction
-ms.author: kbridge
 ms.date: 02/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
+
+
 ms.localizationpriority: medium
 ---
-
 # Identify input devices
 
 
-Identify the input devices connected to a Universal Windows Platform (UWP) device and identify their capabilities and attributes.
+Identify the input devices connected to a Windows app device and identify their capabilities and attributes.
 
-> **Important APIs**: [**Windows.Devices.Input**](https://msdn.microsoft.com/library/windows/apps/br225648), [**Windows.UI.Input**](https://msdn.microsoft.com/library/windows/apps/br208383), [**Windows.UI.Xaml.Input**](https://msdn.microsoft.com/library/windows/apps/br242084)
+> **Important APIs**: [**Windows.Devices.Input**](/uwp/api/Windows.Devices.Input), [**Windows.UI.Input**](/uwp/api/Windows.UI.Core), [**Windows.UI.Xaml.Input**](/uwp/api/Windows.UI.Input)
 
 ## Retrieve mouse properties
 
 
-The [**Windows.Devices.Input**](https://msdn.microsoft.com/library/windows/apps/br225648) namespace contains the [**MouseCapabilities**](https://msdn.microsoft.com/library/windows/apps/br225626) class used to retrieve the properties exposed by one or more connected mice. Just create a new **MouseCapabilities** object and get the properties you're interested in.
+The [**Windows.Devices.Input**](/uwp/api/Windows.Devices.Input) namespace contains the [**MouseCapabilities**](/uwp/api/Windows.Devices.Input.MouseCapabilities) class used to retrieve the properties exposed by one or more connected mice. Just create a new **MouseCapabilities** object and get the properties you're interested in.
 
 **Note**  The values returned by the properties discussed here are based on all detected mice: Boolean properties return non-zero if at least one mouse supports a specific capability, and numeric properties return the maximum value exposed by any one mouse.
 
  
 
-The following code uses a series of [**TextBlock**](https://msdn.microsoft.com/library/windows/apps/br209652) elements to display the individual mouse properties and values.
+The following code uses a series of [**TextBlock**](/uwp/api/Windows.UI.Xaml.Controls.TextBlock) elements to display the individual mouse properties and values.
 
 ```CSharp
 private void GetMouseProperties()
@@ -47,9 +44,9 @@ private void GetMouseProperties()
 ## Retrieve keyboard properties
 
 
-The [**Windows.Devices.Input**](https://msdn.microsoft.com/library/windows/apps/br225648) namespace contains the [**KeyboardCapabilities**](https://msdn.microsoft.com/library/windows/apps/br225623) class used to retrieve whether a keyboard is connected. Just create a new **KeyboardCapabilities** object and get the [**KeyboardPresent**](https://msdn.microsoft.com/library/windows/apps/br225625) property.
+The [**Windows.Devices.Input**](/uwp/api/Windows.Devices.Input) namespace contains the [**KeyboardCapabilities**](/uwp/api/Windows.Devices.Input.KeyboardCapabilities) class used to retrieve whether a keyboard is connected. Just create a new **KeyboardCapabilities** object and get the [**KeyboardPresent**](/uwp/api/windows.devices.input.keyboardcapabilities.keyboardpresent) property.
 
-The following code uses a [**TextBlock**](https://msdn.microsoft.com/library/windows/apps/br209652) element to display the keyboard property and value.
+The following code uses a [**TextBlock**](/uwp/api/Windows.UI.Xaml.Controls.TextBlock) element to display the keyboard property and value.
 
 ```CSharp
 private void GetKeyboardProperties()
@@ -62,13 +59,13 @@ private void GetKeyboardProperties()
 ## Retrieve touch properties
 
 
-The [**Windows.Devices.Input**](https://msdn.microsoft.com/library/windows/apps/br225648) namespace contains the [**TouchCapabilities**](https://msdn.microsoft.com/library/windows/apps/br225644) class used to retrieve whether any touch digitizers are connected. Just create a new **TouchCapabilities** object and get the properties you're interested in.
+The [**Windows.Devices.Input**](/uwp/api/Windows.Devices.Input) namespace contains the [**TouchCapabilities**](/uwp/api/Windows.Devices.Input.TouchCapabilities) class used to retrieve whether any touch digitizers are connected. Just create a new **TouchCapabilities** object and get the properties you're interested in.
 
 **Note**  The values returned by the properties discussed here are based on all detected touch digitizers: Boolean properties return non-zero if at least one digitizer supports a specific capability, and numeric properties return the maximum value exposed by any one digitizer.
 
  
 
-The following code uses a series of [**TextBlock**](https://msdn.microsoft.com/library/windows/apps/br209652) elements to display the touch properties and values.
+The following code uses a series of [**TextBlock**](/uwp/api/Windows.UI.Xaml.Controls.TextBlock) elements to display the touch properties and values.
 
 ```CSharp
 private void GetTouchProperties()
@@ -82,7 +79,7 @@ private void GetTouchProperties()
 ## Retrieve pointer properties
 
 
-The [**Windows.Devices.Input**](https://msdn.microsoft.com/library/windows/apps/br225648) namespace contains the [**PointerDevice**](https://msdn.microsoft.com/library/windows/apps/br225633) class used to retrieve whether any detected devices support pointer input (touch, touchpad, mouse, or pen). Just create a new **PointerDevice** object and get the properties you're interested in.
+The [**Windows.Devices.Input**](/uwp/api/Windows.Devices.Input) namespace contains the [**PointerDevice**](/uwp/api/Windows.Devices.Input.PointerDevice) class used to retrieve whether any detected devices support pointer input (touch, touchpad, mouse, or pen). Just create a new **PointerDevice** object and get the properties you're interested in.
 
 **Note**  The values returned by the properties discussed here are based on all detected pointer devices: Boolean properties return non-zero if at least one device supports a specific capability, and numeric properties return the maximum value exposed by any one pointer device.
 
@@ -175,18 +172,12 @@ private void GetPointerDevices()
 
 ## Related articles
 
+### Samples
 
-**Samples**
-* [Basic input sample](http://go.microsoft.com/fwlink/p/?LinkID=620302)
-* [Low latency input sample](http://go.microsoft.com/fwlink/p/?LinkID=620304)
-* [User interaction mode sample](http://go.microsoft.com/fwlink/p/?LinkID=619894)
+- [Basic input sample](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/BasicInput)
+- [Low latency input sample](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/LowLatencyInput)
+- [User interaction mode sample](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/UserInteractionMode)
 
-**Archive samples**
-* [Input: Device capabilities sample](http://go.microsoft.com/fwlink/p/?linkid=231530)
- 
+### Archive samples
 
- 
-
-
-
-
+- [Input: Device capabilities sample](https://github.com/microsoftarchive/msdn-code-gallery-microsoft/tree/411c271e537727d737a53fa2cbe99eaecac00cc0/Official%20Windows%20Platform%20Sample/Windows%208%20app%20samples/%5BC%23%5D-Windows%208%20app%20samples/C%23/Windows%208%20app%20samples/Input%20Device%20capabilities%20sample%20(Windows%208))

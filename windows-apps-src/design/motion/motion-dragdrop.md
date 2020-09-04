@@ -1,19 +1,14 @@
 ---
-author: mijacobs
 Description: Use drag-and-drop animations when users move objects, such as moving an item within a list, or dropping an item on top of another.
-title: Drag animations in UWP apps
+title: Drag animations
 ms.assetid: 6064755F-6E24-4901-A4FF-263F05F0DFD6
 label: Motion--Drag and drop
 template: detail.hbs
-ms.author: mijacobs
 ms.date: 05/19/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp
 ms.localizationpriority: medium
 ---
-
 # Drag animations
 
 
@@ -21,7 +16,7 @@ ms.localizationpriority: medium
 
 Use drag-and-drop animations when users move objects, such as moving an item within a list, or dropping an item on top of another.
 
-> **Important APIs**: [**DragItemThemeAnimation class**](https://msdn.microsoft.com/library/windows/apps/br243174)
+> **Important APIs**: [**DragItemThemeAnimation class**](/uwp/api/windows.ui.xaml.media.animation.dragitemthemeanimation)
 
 
 ## Do's and don'ts
@@ -56,16 +51,12 @@ Use drag-and-drop animations when users move objects, such as moving an item wit
 ## Related articles
 
 **For developers**
-* [Animations overview](https://msdn.microsoft.com/library/windows/apps/mt187350)
-* [Animating drag-and-drop sequences](https://msdn.microsoft.com/library/windows/apps/xaml/jj649427)
-* [Quickstart: Animating your UI using library animations](https://msdn.microsoft.com/library/windows/apps/xaml/hh452703)
-* [**DragItemThemeAnimation class**](https://msdn.microsoft.com/library/windows/apps/br243174)
-* [**DropTargetItemThemeAnimation class**](https://msdn.microsoft.com/library/windows/apps/br243186)
-* [**DragOverThemeAnimation class**](https://msdn.microsoft.com/library/windows/apps/br243180)
+* [Animations overview](./xaml-animation.md)
+* [Animating drag-and-drop sequences](/previous-versions/windows/apps/jj649427(v=win.10))
+* [Quickstart: Animating your UI using library animations](/previous-versions/windows/apps/hh452703(v=win.10))
+* [**DragItemThemeAnimation class**](/uwp/api/windows.ui.xaml.media.animation.dragitemthemeanimation)
+* [**DropTargetItemThemeAnimation class**](/uwp/api/windows.ui.xaml.media.animation.droptargetitemthemeanimation)
+* [**DragOverThemeAnimation class**](/uwp/api/windows.ui.xaml.media.animation.dragoverthemeanimation)
 
 
  
-
-
-
-

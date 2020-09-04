@@ -1,18 +1,13 @@
 ---
-author: stevewhims
 Description: Design your app to be global-ready by appropriately formatting dates, times, numbers, phone numbers, and currencies. You'll then be able later to adapt your app for additional cultures, regions, and languages in the global market.
 title: Globalize your date/time/number formats
 ms.assetid: 6ECE8BA4-9A7D-49A6-81EE-AB2BE7F0254F
 template: detail.hbs
-ms.author: stwhi
 ms.date: 11/07/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp, globalization, localizability, localization
 ms.localizationpriority: medium
 ---
-
 # Globalize your date/time/number formats
 
 Design your app to be global-ready by appropriately formatting dates, times, numbers, phone numbers, and currencies. You'll then be able later to adapt your app for additional cultures, regions, and languages in the global market.
@@ -172,7 +167,7 @@ For scenarios where you wish to provide different functionality based solely on 
 
 ## Samples
 
-* [Calendar details and math sample](http://go.microsoft.com/fwlink/p/?linkid=231636)
-* [Date and time formatting sample](http://go.microsoft.com/fwlink/p/?linkid=231618)
-* [Globalization preferences sample](http://go.microsoft.com/fwlink/p/?linkid=231608)
-* [Number formatting and parsing sample](http://go.microsoft.com/fwlink/p/?linkid=231620)
+* [Calendar details and math sample](https://github.com/microsoftarchive/msdn-code-gallery-microsoft/tree/411c271e537727d737a53fa2cbe99eaecac00cc0/Official%20Windows%20Platform%20Sample/Windows%208%20app%20samples/%5BC%23%5D-Windows%208%20app%20samples/C%23/Windows%208%20app%20samples/Calendar%20details%20and%20math%20sample%20(Windows%208))
+* [Date and time formatting sample](https://github.com/microsoftarchive/msdn-code-gallery-microsoft/tree/411c271e537727d737a53fa2cbe99eaecac00cc0/Official%20Windows%20Platform%20Sample/Windows%208%20app%20samples/%5BC%23%5D-Windows%208%20app%20samples/C%23/Windows%208%20app%20samples/Date%20and%20time%20formatting%20sample%20(Windows%208))
+* [Globalization preferences sample](https://github.com/microsoftarchive/msdn-code-gallery-microsoft/tree/411c271e537727d737a53fa2cbe99eaecac00cc0/Official%20Windows%20Platform%20Sample/Windows%208%20app%20samples/%5BC%23%5D-Windows%208%20app%20samples/C%23/Windows%208%20app%20samples/Globalization%20preferences%20sample%20(Windows%208))
+* [Number formatting and parsing sample](https://github.com/microsoftarchive/msdn-code-gallery-microsoft/tree/411c271e537727d737a53fa2cbe99eaecac00cc0/Official%20Windows%20Platform%20Sample/Windows%208%20app%20samples/%5BC%23%5D-Windows%208%20app%20samples/C%23/Windows%208%20app%20samples/Number%20formatting%20and%20parsing%20sample%20(Windows%208))

@@ -1,18 +1,13 @@
 ---
-author: anbare
 Description: Learn how to use headers to visually group your toast notifications in Action Center.
 title: Toast headers
 label: Toast headers
 template: detail.hbs
-ms.author: mijacobs
-ms.date: 12/7/2017
+ms.date: 12/07/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp, toast, header, toast headers, notification, group toasts, Action Center
 ms.localizationpriority: medium
 ---
-
 # Toast headers
 
 You can visually group a set of related notifications inside Action Center by using a toast header on your notifications.
@@ -76,7 +71,7 @@ Headers are clickable by users, so that the user can click the header to find ou
 
 Therefore, apps can provide **Arguments** on the header, similar to the launch arguments on the toast itself.
 
-Activation is handled identical to [normal toast activation](send-local-toast.md#handling-activation-1), meaning you can retrieve these arguments in the **OnActivated** method of `App.xaml.cs` just like you do when the user clicks the body of your toast or a button on your toast.
+Activation is handled identical to [normal toast activation](send-local-toast.md#activation-handling), meaning you can retrieve these arguments in the **OnActivated** method of `App.xaml.cs` just like you do when the user clicks the body of your toast or a button on your toast.
 
 ```csharp
 protected override void OnActivated(IActivatedEventArgs e)

@@ -1,26 +1,21 @@
 ---
-author: stevewhims
 Description: There are several URI (Uniform Resource Identifier) schemes that you can use to refer to files that come from your app's package, your app's data folders, or the cloud. You can also use a URI scheme to refer to strings loaded from your app's Resources Files (.resw).
 title: URI schemes
 template: detail.hbs
-ms.author: stwhi
 ms.date: 10/16/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp, resource, image, asset, MRT, qualifier
 ms.localizationpriority: medium
 ---
-
 # URI schemes
 
 There are several URI (Uniform Resource Identifier) schemes that you can use to refer to files that come from your app's package, your app's data folders, or the cloud. You can also use a URI scheme to refer to strings loaded from your app's Resources Files (.resw). You can use these URI schemes in your code, in your XAML markup, in your app package manifest, or in your tile and toast notification templates.
 
 ## Common features of the URI schemes
 
-All of the schemes described in this topic follow typical URI scheme rules for normalization and resource retrieval. See [RFC 3986](http://go.microsoft.com/fwlink/p/?LinkId=263444) for the generic syntax of a URI.
+All of the schemes described in this topic follow typical URI scheme rules for normalization and resource retrieval. See [RFC 3986](https://www.ietf.org/rfc/rfc3986.txt) for the generic syntax of a URI.
 
-All of the URI schemes define the hierarchical part per [RFC 3986](http://go.microsoft.com/fwlink/p/?LinkId=263444) as the authority and path components of the URI.
+All of the URI schemes define the hierarchical part per [RFC 3986](https://www.ietf.org/rfc/rfc3986.txt) as the authority and path components of the URI.
 
 ```syntax
 URI         = scheme ":" hier-part [ "?" query ] [ "#" fragment ]
@@ -97,9 +92,11 @@ ms-appx:///images/logo.png
 
 The URI above may actually retrieve a file within the current app's package with the following physical file name.
 
-```
+<blockquote>
+<pre>
 \Images\fr-FR\logo.scale-100_contrast-white.png
-```
+</blockquote>
+</pre>
 
 You could of course also retrieve that same physical file by referring to it directly by its full name.
 
@@ -109,7 +106,7 @@ You could of course also retrieve that same physical file by referring to it dir
 
 The path component of `ms-appx(-web)` is, like generic URIs, case sensitive. However, when the underlying file system by which the resource is accessed is case insensitive, such as for NTFS, the retrieval of the resource is done case-insensitively.
 
-The normalized form of the URI maintains case, and percent-decodes (a "%" symbol followed by the two-digit hexadecimal representation) RFC 3986 unreserved characters. The characters "?", "#", "/", "*", and '”' (the double-quote character) must be percent-encoded in a path to represent data such as file or folder names. All percent-encoded characters are decoded before retrieval. Thus, to retrieve a file named Hello#World.html, use this URI.
+The normalized form of the URI maintains case, and percent-decodes (a "%" symbol followed by the two-digit hexadecimal representation) RFC 3986 unreserved characters. The characters "?", "#", "/", "*", and '"' (the double-quote character) must be percent-encoded in a path to represent data such as file or folder names. All percent-encoded characters are decoded before retrieval. Thus, to retrieve a file named Hello#World.html, use this URI.
 
 ```xml
 ms-appx:///Hello%23World.html
@@ -182,7 +179,7 @@ ms-appdata:///roaming/
 
 The path component of `ms-appdata` is, like generic URIs, case sensitive. However, when the underlying file system by which the resource is accessed is case insensitive, such as for NTFS, the retrieval of the resource is done case-insensitively.
 
-The normalized form of the URI maintains case, and percent-decodes (a "%" symbol followed by the two-digit hexadecimal representation) RFC 3986 unreserved characters. The characters "?", "#", "/", "*", and '”' (the double-quote character) must be percent-encoded in a path to represent data such as file or folder names. All percent-encoded characters are decoded before retrieval. Thus, to retrieve a local file named Hello#World.html, use this URI.
+The normalized form of the URI maintains case, and percent-decodes (a "%" symbol followed by the two-digit hexadecimal representation) RFC 3986 unreserved characters. The characters "?", "#", "/", "*", and '"' (the double-quote character) must be percent-encoded in a path to represent data such as file or folder names. All percent-encoded characters are decoded before retrieval. Thus, to retrieve a local file named Hello#World.html, use this URI.
 
 ```xml
 ms-appdata://local/Hello%23World.html
@@ -246,13 +243,13 @@ ms-resource://john:password@contoso.myapp:8080/Resources/String1
 
 ### Path (ms-resource)
 
-The path identifies the hierarchical location of the [ResourceMap](/uwp/api/Windows.ApplicationModel.Resources.Core.ResourceMap?branch=live) subtree (see [Resource Management System](https://msdn.microsoft.com/library/windows/apps/jj552947)) and the [NamedResource](/uwp/api/Windows.ApplicationModel.Resources.Core.NamedResource?branch=live) within it. Typically, this corresponds to the filename (excluding extension) of a Resources Files (.resw) and the identifier of a string resource within it.
+The path identifies the hierarchical location of the [ResourceMap](/uwp/api/Windows.ApplicationModel.Resources.Core.ResourceMap?branch=live) subtree (see [Resource Management System](/previous-versions/windows/apps/jj552947(v=win.10))) and the [NamedResource](/uwp/api/Windows.ApplicationModel.Resources.Core.NamedResource?branch=live) within it. Typically, this corresponds to the filename (excluding extension) of a Resources Files (.resw) and the identifier of a string resource within it.
 
 For examples and more info, see [Localize strings in your UI and app package manifest](localize-strings-ui-manifest.md) and [Tile and toast notification support for language, scale, and high contrast](../design/shell/tiles-and-notifications/tile-toast-language-scale-contrast.md).
 
-The path component of `ms-resource` is, like generic URIs, case sensitive. However, when the underlying retrieval.does a [CompareStringOrdinal](https://msdn.microsoft.com/library/windows/apps/br224628) with *ignoreCase* set to `true`.
+The path component of `ms-resource` is, like generic URIs, case sensitive. However, the underlying retrieval does a [CompareStringOrdinal](/windows/desktop/api/winstring/nf-winstring-windowscomparestringordinal) with *ignoreCase* set to `true`.
 
-The normalized form of the URI maintains case, and percent-decodes (a "%" symbol followed by the two-digit hexadecimal representation) RFC 3986 unreserved characters. The characters "?", "#", "/", "*", and '”' (the double-quote character) must be percent-encoded in a path to represent data such as file or folder names. All percent-encoded characters are decoded before retrieval. Thus, to retrieve a string resource from a Resources File named Hello#World.resw, use this URI.
+The normalized form of the URI maintains case, and percent-decodes (a "%" symbol followed by the two-digit hexadecimal representation) RFC 3986 unreserved characters. The characters "?", "#", "/", "*", and '"' (the double-quote character) must be percent-encoded in a path to represent data such as file or folder names. All percent-encoded characters are decoded before retrieval. Thus, to retrieve a string resource from a Resources File named `Hello#World.resw`, use this URI.
 
 ```xml
 ms-resource:///Hello%23World/String1
@@ -266,10 +263,10 @@ Developers of particular components layered above this URI parsing may choose to
 
 ## Related topics
 
-* [Uniform Resource Identifier (URI): Generic Syntax](http://go.microsoft.com/fwlink/p/?LinkId=263444)
+* [Uniform Resource Identifier (URI): Generic Syntax](https://www.ietf.org/rfc/rfc3986.txt)
 * [Packaging apps](../packaging/index.md)
 * [Reference an image or other asset from XAML markup and code](images-tailored-for-scale-theme-contrast.md#reference-an-image-or-other-asset-from-xaml-markup-and-code)
 * [Store and retrieve settings and other app data](../design/app-settings/store-and-retrieve-app-data.md)
 * [Localize strings in your UI and app package manifest](localize-strings-ui-manifest.md)
-* [Resource Management System](https://msdn.microsoft.com/library/windows/apps/jj552947)
+* [Resource Management System](/previous-versions/windows/apps/jj552947(v=win.10))
 * [Tile and toast notification support for language, scale, and high contrast](../design/shell/tiles-and-notifications/tile-toast-language-scale-contrast.md)

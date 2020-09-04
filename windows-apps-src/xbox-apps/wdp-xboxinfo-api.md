@@ -1,29 +1,24 @@
 ---
-author: M-Stahl
 title: Device Portal Xbox info API reference
-description: Learn how to access Xbox device information.
-ms.author: mstahl
-ms.date: 11/7/2017
+description: Learn how to access Xbox One device information by using the GET method of the Xbox Device Portal REST API.
+ms.date: 04/18/2019
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp, xbox, device portal
 ms.localizationpriority: medium
 ---
-
 # Xbox Info API reference   
 You can access Xbox One device information using this API.
 
 ## Get Xbox One device information
 
-**Request**
+## Request
 
 You can get device information about your Xbox One.
 
 Method      | Request URI
 :------     | :-----
 GET | /ext/xbox/info
-<br />
+
 **URI parameters**
 
 - None
@@ -36,7 +31,7 @@ GET | /ext/xbox/info
 
 - None
 
-**Response**   
+## Response
 A JSON object with the following fields:
 
 * OsVersion - (String) The version of the OS.
@@ -58,7 +53,6 @@ HTTP status code      | Description
 4XX | Error codes
 5XX | Error codes
 
-<br />
 **Available device families**
 
 * Windows Xbox

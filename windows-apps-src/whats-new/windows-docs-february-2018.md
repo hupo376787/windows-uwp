@@ -1,21 +1,18 @@
 ---
-author: QuinnRadich
 title: What's New in Windows Docs in February 2018 - Develop UWP apps
 description: New features, videos, and developer guidance have been added to the Windows 10 developer documentation for February 2018
 keywords: what's new, update, features, developer guidance, Windows 10, february
-ms.author: quradic
-ms.date: 2/5/2018
+ms.date: 02/05/2018
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
+
+
 ms.localizationpriority: medium
 ---
-
 # What's New in the Windows Developer Docs in February 2018
 
 The Windows Developer Documentation is constantly being updated with information on new features available to developers across the Windows platform. The following feature overviews, developer guidance, and videos have been made available in the month of January, containing new and updated information for Windows developers.
 
-[Install the tools and SDK](http://go.microsoft.com/fwlink/?LinkId=821431) on Windows 10 and you’re ready to either [create a new Universal Windows app](../get-started/create-uwp-apps.md) or explore how you can use your [existing app code on Windows](../porting/index.md).
+[Install the tools and SDK](https://developer.microsoft.com/windows/downloads#_blank) on Windows 10 and you’re ready to either [create a new Universal Windows app](../get-started/create-uwp-apps.md) or explore how you can use your [existing app code on Windows](../porting/index.md).
 
 
 ## Features
@@ -72,4 +69,4 @@ The Xbox Live Creators Program allows developers to quickly publish their UWP ga
 
 ### Motion controller tracking
 
-Motion controllers represent a user's hands in Windows Mixed Reality. [Watch the video](https://www.youtube.com/watch?v=rkDpRllbLII) to learn how the motion controllers work when they are both in and out of the field of view of the Mixed Reality headset, and [read more about controller tracking here.](https://developer.microsoft.com/windows/mixed-reality/motion_controllers#controller_tracking_state%E2%80%9D)
+Motion controllers represent a user's hands in Windows Mixed Reality. [Watch the video](https://www.youtube.com/watch?v=rkDpRllbLII) to learn how the motion controllers work when they are both in and out of the field of view of the Mixed Reality headset, and [read more about controller tracking here.](/windows/mixed-reality/motion-controllers#controller_tracking_state%E2%80%9D)

@@ -1,17 +1,12 @@
 ---
 title: Appendices
-description: These sections provide in-depth technical details.
+description: View a table of links to topics with technical details on floating-point rules, data type conversion, rasterization rules, and texture block compression.
 ms.assetid: 461CCE6F-BAF0-4965-90A5-FD36B511F72C
-author: michaelfromredmond
-ms.author: mithom
 ms.date: 02/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp
 ms.localizationpriority: medium
 ---
-
 # Appendices
 
 These sections provide in-depth technical details.

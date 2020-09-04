@@ -1,14 +1,10 @@
 ---
-author: mijacobs
 Description: Dialogs and flyouts display transient UI elements that appear when the user requests them or when something happens that requires notification or approval.
 title: Dialog controls
 label: Dialogs
 template: detail.hbs
-ms.author: mijacobs
 ms.date: 05/19/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp
 ms.assetid: ad6affd9-a3c0-481f-a237-9a1ecd561be8
 pm-contact: yulikl
@@ -17,33 +13,37 @@ dev-contact: niallm
 doc-status: Published
 ms.localizationpriority: medium
 ---
-
-## Dialog controls
+# Dialog controls
 
 Dialog controls are modal UI overlays that provide contextual app information. They block interactions with the app window until being explicitly dismissed. They often request some kind of action from the user.
 
 ![Example of a dialog](../images/dialogs/dialog_RS2_delete_file.png)
 
+**Get the Windows UI Library**
 
-> **Important APIs**: [ContentDialog class](/uwp/api/Windows.UI.Xaml.Controls.ContentDialog)
+|  |  |
+| - | - |
+| ![WinUI logo](../images/winui-logo-64x64.png) | Windows UI Library 2.2 or later includes a new template for this control that uses rounded corners. For more info, see [Corner radius](../../style/rounded-corner.md). WinUI is a NuGet package that contains new controls and UI features for Windows apps. For more info, including installation instructions, see [Windows UI Library](/uwp/toolkits/winui/). |
+
+> **Platform APIs:** [ContentDialog class](/uwp/api/Windows.UI.Xaml.Controls.ContentDialog)
 
 ## Is this the right control?
 
 Use dialogs to notify users of important information or to request confirmation or additional info before an action can be completed.
 
-For recommendations on when to use a dialog vs. when to use a flyout (a similar control), see [Dialogs and flyouts](index.md). 
+For recommendations on when to use a dialog vs. when to use a flyout (a similar control), see [Dialogs and flyouts](index.md).
 
 ## Examples
 
 <table>
 <th align="left">XAML Controls Gallery<th>
 <tr>
-<td><img src="../images/xaml-controls-gallery-sm.png" alt="XAML controls gallery"></img></td>
+<td><img src="../images/xaml-controls-gallery-app-icon-sm.png" alt="XAML controls gallery"></img></td>
 <td>
     <p>If you have the <strong style="font-weight: semi-bold">XAML Controls Gallery</strong> app installed, click here to open the app and see the <a href="xamlcontrolsgallery:/item/ContentDialog">ContentDialog</a> or <a href="xamlcontrolsgallery:/item/Flyout">Flyout</a> in action.</p>
     <ul>
     <li><a href="https://www.microsoft.com/store/productId/9MSVH128X2ZT">Get the XAML Controls Gallery app (Microsoft Store)</a></li>
-    <li><a href="https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/XamlUIBasics">Get the source code (GitHub)</a></li>
+    <li><a href="https://github.com/Microsoft/Xaml-Controls-Gallery">Get the source code (GitHub)</a></li>
     </ul>
 </td>
 </tr>
@@ -64,8 +64,8 @@ For recommendations on when to use a dialog vs. when to use a flyout (a similar 
     -   Use specific responses to the main instruction or content as button text. An example is, "Do you want to allow AppName to access your location?", followed by "Allow" and "Block" buttons. Specific responses can be understood more quickly, resulting in efficient decision making.
     - Ensure that the text of the action buttons is concise. Short strings enable the user to make a choice quickly and confidently.
     - In addition to the safe, nondestructive action, you may optionally present the user with one or two action buttons related to the main instruction. These "do it" action buttons confirm the main point of the dialog. Use the PrimaryButton and SecondaryButton APIs to add these "do it" actions.
-    - The "do it" action button(s) should appears as the leftmost buttons. The safe, nondestructive action should appear as the rightmost button.
-    - You may optionally choose to differentiate one of the three buttons as the dialog's default button. Use the DefaultButton API to differentiate one of the buttons.  
+    - The "do it" action button(s) should appear as the leftmost buttons. The safe, nondestructive action should appear as the rightmost button.
+    - You may optionally choose to differentiate one of the three buttons as the dialog's default button. Use the DefaultButton API to differentiate one of the buttons.
 -   Don't use dialogs for errors that are contextual to a specific place on the page, such as validation errors (in password fields, for example), use the app's canvas itself to show inline errors.
 - Use the [ContentDialog class](/uwp/api/Windows.UI.Xaml.Controls.ContentDialog) to build your dialog experience. Don't use the deprecated MessageDialog API.
 
@@ -134,7 +134,7 @@ private async void DisplayNoWifiDialog()
 }
 ```
 
-When dialogs are used to display a blocking question, your dialog should present the user with action buttons related to the question. The "safe" and nondestructive button may be accompanied by one or two "do it" action buttons. When presenting the user with multiple options, ensure that the buttons clearly explain the "do it" and safe/"don’t do it" actions related to the question proposed.
+When dialogs are used to display a blocking question, your dialog should present the user with action buttons related to the question. The "safe" and nondestructive button may be accompanied by one or two "do it" action buttons. When presenting the user with multiple options, ensure that the buttons clearly explain the "do it" and safe/"don't do it" actions related to the question proposed.
 
 ![A two button dialog](../images/dialogs/dialog_RS2_two_button.png)
 
@@ -153,7 +153,7 @@ private async void DisplayLocationPromptDialog()
 }
 ```
 
-Three button dialogs are used when you present the user with two "do it" actions and a "don’t do it" action. Three button dialogs should be used sparingly with clear distinctions between the secondary action and the safe/close action.
+Three button dialogs are used when you present the user with two "do it" actions and a "don't do it" action. Three button dialogs should be used sparingly with clear distinctions between the secondary action and the safe/close action.
 
 ![A three button dialog](../images/dialogs/dialog_RS2_three_button.png)
 
@@ -211,7 +211,7 @@ You may optionally choose to differentiate one of the three buttons as the defau
 - The button will respond to the ENTER key automatically
     - When the user presses the ENTER key on the keyboard, the click handler associated with the Default Button will fire and the ContentDialogResult will return the value associated with the Default Button
     - If the user has placed Keyboard Focus on a control that handles ENTER, the Default Button will not respond to ENTER presses
-- The button will receive focus automatically when the Dialog is opened unless the dialog’s content contains focusable UI
+- The button will receive focus automatically when the Dialog is opened unless the dialog's content contains focusable UI
 
 Use the ContentDialog.DefaultButton property to indicate the default button. By default, no default button is set.
 
@@ -235,8 +235,8 @@ private async void DisplaySubscribeDialog()
 ```
 
 ## Confirmation dialogs (OK/Cancel)
-A confirmation dialog gives users the chance to confirm that they want to perform an action. They can affirm the action, or choose to cancel.  
-A typical confirmation dialog has two buttons: an affirmation ("OK") button and a cancel button.  
+A confirmation dialog gives users the chance to confirm that they want to perform an action. They can affirm the action, or choose to cancel.
+A typical confirmation dialog has two buttons: an affirmation ("OK") button and a cancel button.
 
 <ul>
     <li>
@@ -249,13 +249,41 @@ A typical confirmation dialog has two buttons: an affirmation ("OK") button and 
 
 > Some platforms put the affirmation button on the right instead of the left. So why do we recommend putting it on the left?  If you assume that the majority of users are right-handed and they hold their phone with that hand, it's actually more comfortable to press the affirmation button when it's on the left, because the button is more likely to be within the user's thumb-arc. Buttons on the right-side of the screen require the user to pull their thumb inward into a less-comfortable position.
 
+## ContentDialog in AppWindow or Xaml Islands
 
+> NOTE: This section applies only to apps that target Windows 10, version 1903 or later. AppWindow and XAML Islands are not available in earlier versions. For more info about versioning, see [Version adaptive apps](../../../debug-test-perf/version-adaptive-apps.md).
 
+By default, content dialogs display modally relative to the root [ApplicationView](/uwp/api/windows.ui.viewmanagement.applicationview). When you use ContentDialog inside of either an [AppWindow](/uwp/api/windows.ui.windowmanagement.appwindow) or a [XAML Island](/windows/apps/desktop/modernize/xaml-islands), you need to manually set the [XamlRoot](/uwp/api/windows.ui.xaml.uielement.xamlroot) on the dialog to the root of the XAML host.
 
+To do so, set the ContentDialog's XamlRoot property to the same XamlRoot as an element already in the AppWindow or XAML Island, as shown here.
+
+```csharp
+private async void DisplayNoWifiDialog()
+{
+    ContentDialog noWifiDialog = new ContentDialog
+    {
+        Title = "No wifi connection",
+        Content = "Check your connection and try again.",
+        CloseButtonText = "Ok"
+    };
+
+    // Use this code to associate the dialog to the appropriate AppWindow by setting
+    // the dialog's XamlRoot to the same XamlRoot as an element that is already present in the AppWindow.
+    if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 8))
+    {
+        noWifiDialog.XamlRoot = elementAlreadyInMyAppWindow.XamlRoot;
+    }
+
+    ContentDialogResult result = await noWifiDialog.ShowAsync();
+}
+```
+
+> [!WARNING]
+> There can only be one ContentDialog open per thread at a time. Attempting to open two ContentDialogs will throw an exception, even if they are attempting to open in separate AppWindows.
 
 ## Get the sample code
 
-- [XAML Controls Gallery sample](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/XamlUIBasics) - See all the XAML controls in an interactive format.
+- [XAML Controls Gallery sample](https://github.com/Microsoft/Xaml-Controls-Gallery) - See all the XAML controls in an interactive format.
 
 ## Related articles
 - [Tooltips](../tooltips.md)

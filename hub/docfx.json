@@ -1,36 +1,106 @@
 {
   "build": {
-    "content": [
-      {
-        "files": [
-          "**/*.md"
-        ],
-        "exclude": [
-          "**/obj/**",
-          "**/includes/**",
-          "README.md",
-          "LICENSE",
-          "LICENSE-CODE"
-        ]
-      }
-    ],
+    "content":
+      [
+        {
+          "files": ["**/**.md", "**/**.yml"],
+          "exclude": ["**/obj/**", "**/includes/**", "README.md", "LICENSE", "LICENSE-CODE"]
+        }
+      ],
     "resource": [
-      {
-        "files": [
-          "**/*.png",
-          "**/*.jpg"
-        ],
-        "exclude": [
-          "**/obj/**",
-          "**/includes/**"
-        ]
-      }
+        {
+          "files": ["**/images/**"],
+          "exclude": ["**/obj/**"]
+        }
     ],
     "overwrite": [],
     "externalReference": [],
-    "globalMetadata": {},
-    "fileMetadata": {},
+    "globalMetadata": {
+      "ROBOTS": "INDEX, FOLLOW",
+      "author": "GrantMeStrength",
+      "ms.author": "jken",
+      "ms.prod": "uwp",
+      "Search.Product": "eADQiWindows 10XVcnh",
+      "uhfHeaderId": "MSDocsHeader-WinDevCenter",
+      "breadcrumb_path":  "/windows/breadcrumbs/toc.json",
+      "feedback_system": "GitHub",
+      "feedback_github_repo": "MicrosoftDocs/windows-uwp",
+      "feedback_product_url": "https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app",
+      "extendBreadcrumb": false,
+      "_op_documentIdPathDepotMapping": {
+          "./": {
+          "depot_name": "MSDN.hub",
+          "folder_relative_path_in_docset": "./"
+          }
+        }		  
+      },
+    "fileMetadata": {
+      "ms.prod":
+      {
+        "apps/trace-processing/**.md": "traceprocessor",
+        "python/**.md": "dev-environment",
+        "nodejs/**.md": "dev-environment",
+        "android/**.md": "dev-environment",
+        "dev-environment/**.md": "dev-environment",
+        "package-manager/**.md": "dev-environment"
+      },
+      "ms.technology":
+      {
+        "apps/**.md": "apps",
+        "apps/winui/*.md": "winui", 
+        "apps/trace-processing/**.md": "",
+        "python/**.md": "windows-python",
+        "nodejs/**.md": "windows-nodejs",
+        "android/**.md": "windows-nodejs",
+        "package-manager/**.md": ""
+      },	 
+      "feedback_product_url": 
+      {
+        "apps/winui/*.md": "https://github.com/microsoft/microsoft-ui-xaml/issues/new/choose",
+        "apps/trace-processing/**.md": "https://github.com/microsoft/eventtracing-processing/issues",
+        "package-manager/**.md": "https://github.com/microsoft/winget-cli/issues"
+      },
+      "author":
+      {
+        "apps/10x/*.md": "QuinnRadich",
+        "apps/desktop/*.md": "mcleanbyron",
+        "apps/trace-processing/*.md": "maiak",
+        "apps/whats-new/*.md": "QuinnRadich",
+        "apps/winui/*.md": "Karl-Bridge-Microsoft",
+        "apps/winui/winui2/*.md": "Karl-Bridge-Microsoft",
+        "apps/winui/winui2/release-notes/*.md": "Karl-Bridge-Microsoft",
+        "apps/winui/winui3/*.md": "Karl-Bridge-Microsoft",
+        "accessibility.md": "Karl-Bridge-Microsoft",
+        "features-and-technologies.md": "mcleanbyron",
+        "speech.md": "Karl-Bridge-Microsoft",
+        "dev-environment/*.md": "mattwojo",
+        "android/*.md": "mattwojo",
+        "nodejs/*.md": "mattwojo",
+        "python/*.md": "mattwojo",
+        "package-manager/*.md": "KevinLaMS"
+      },
+      "ms.author":
+      {
+        "apps/10x/*.md": "quradic",
+        "apps/desktop/*.md": "mcleans",
+        "apps/trace-processing/*.md": "maiak",
+        "apps/whats-new/*.md": "quradic",
+        "apps/winui/*.md": "kbridge",
+        "apps/winui/winui2/*.md": "kbridge",
+        "apps/winui/winui2/release-notes/*.md": "kbridge",
+        "apps/winui/winui3/*.md": "kbridge",
+        "accessibility.md": "kbridge",
+        "features-and-technologies.md": "mcleans",
+        "speech.md": "kbridge",
+        "dev-environment/*.md": "mattwoj",
+        "android/*.md": "mattwoj",
+        "nodejs/*.md": "mattwoj",
+        "python/*.md": "mattwoj",
+        "package-manager/*.md": "kevinla"
+      }
+    },
     "template": [],
-    "dest": "hub"
+    "dest": "hub",
+    "markdownEngineName": "markdig"
   }
 }

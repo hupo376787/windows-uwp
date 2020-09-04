@@ -1,19 +1,16 @@
 ---
-author: Karl-Bridge-Microsoft
 Description: Incorporate speech into your apps using Cortana voice commands, speech recognition, and speech synthesis.
 title: Speech interactions
 ms.assetid: 646DB3CE-FA81-4727-8C21-936C81079439
 label: Speech interactions
 template: detail.hbs
 keywords: speech, voice, speech recognition, natural language, dictation, input, user interaction
-ms.author: kbridge
 ms.date: 02/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
+
+
 ms.localizationpriority: medium
 ---
-
 # Speech interactions
 
 Integrate speech recognition and text-to-speech (also known as TTS, or speech synthesis) directly into the user experience of your app.
@@ -25,7 +22,7 @@ Speech recognition converts words spoken by the user into text for form input, f
 TTS uses a speech synthesis engine (voice) to convert a text string into spoken words. The input string can be either basic, unadorned text or more complex Speech Synthesis Markup Language (SSML). SSML provides a standard way to control characteristics of speech output, such as pronunciation, volume, pitch, rate or speed, and emphasis.
 
 **Other speech-related components:**
-**Cortana** in Windows applications uses customized voice commands (spoken or typed) to launch your app to the foreground (the app takes focus, just as if it was launched from the Start menu) or activate as a background service (**Cortana** retains focus but provides results from the app). See the [Cortana voice command (VCD) guidelines](https://docs.microsoft.com/en-us/cortana/voice-commands/vcd) if you are exposing app functionality in the **Cortana** UI.
+**Cortana** in Windows applications uses customized voice commands (spoken or typed) to launch your app to the foreground (the app takes focus, just as if it was launched from the Start menu) or activate as a background service (**Cortana** retains focus but provides results from the app). See the [Cortana voice command (VCD) guidelines](/cortana/voice-commands/vcd) if you are exposing app functionality in the **Cortana** UI.
 
 ## Speech interaction design
 
@@ -59,7 +56,7 @@ Stop recognition if input is detected from a device other than speech recognitio
 
 Specify the length of time for which no speech input indicates that recognition is over. Do not automatically restart recognition after this period of time as it typically indicates the user has stopped engaging with your app.
 
-Disable all continuous recognition UI and terminate the recognition session if a network connection is not available. Continuous recogntion requires a network connection.
+Disable all continuous recognition UI and terminate the recognition session if a network connection is not available. Continuous recognition requires a network connection.
 
 ## Commanding
 
@@ -158,14 +155,14 @@ These predefined grammars can be used to recognize up to 10 seconds of speech in
 A custom grammar is designed and authored by you and is installed with your app. Speech recognition using a custom constraint is performed on the device.
 
 -   Programmatic list constraints provide a lightweight approach to creating simple grammars using a list of words or phrases. A list constraint works well for recognizing short, distinct phrases. Explicitly specifying all words in a grammar also improves recognition accuracy, as the speech recognition engine must only process speech to confirm a match. The list can also be programmatically updated.
--   An SRGS grammar is a static document that, unlike a programmatic list constraint, uses the XML format defined by the [SRGS Version 1.0](http://go.microsoft.com/fwlink/p/?LinkID=262302). An SRGS grammar provides the greatest control over the speech recognition experience by letting you capture multiple semantic meanings in a single recognition.
+-   An SRGS grammar is a static document that, unlike a programmatic list constraint, uses the XML format defined by the [SRGS Version 1.0](https://www.w3.org/TR/speech-grammar/). An SRGS grammar provides the greatest control over the speech recognition experience by letting you capture multiple semantic meanings in a single recognition.
 
     Here are some tips for authoring SRGS grammars:
 
     -   Keep each grammar small. Grammars that contain fewer phrases tend to provide more accurate recognition than larger grammars that contain many phrases. It's better to have several smaller grammars for specific scenarios than to have a single grammar for your entire app.
     -   Let users know what to say for each app context and enable and disable grammars as needed.
     -   Design each grammar so users can speak a command in a variety of ways. For example, you can use the **GARBAGE** rule to match speech input that your grammar does not define. This lets users speak additional words that have no meaning to your app. For example, "give me", "and", "uh", "maybe", and so on.
-    -   Use the [sapi:subset](http://msdn.microsoft.com/library/windowsphone/design/jj572474.aspx) element to help match speech input. This is a Microsoft extension to the SRGS specification to help match partial phrases.
+    -   Use the [sapi:subset](/previous-versions/office/developer/speech-technologies/jj572474(v=office.14)) element to help match speech input. This is a Microsoft extension to the SRGS specification to help match partial phrases.
     -   Try to avoid defining phrases in your grammar that contain only one syllable. Recognition tends to be more accurate for phrases containing two or more syllables.
     -   Avoid using phrases that sound similar. For example, phrases such as "hello", "bellow", and "fellow" can confuse the recognition engine and result in poor recognition accuracy.
 
@@ -176,9 +173,9 @@ A custom grammar is designed and authored by you and is installed with your app.
 
 If your app contains specialized vocabulary with unusual or fictional words, or words with uncommon pronunciations, you might be able to improve recognition performance for those words by defining custom pronunciations.
 
-For a small list of words and phrases, or a list of infrequently used words and phrases, you can create custom pronunciations in a SRGS grammar. See [token Element](http://msdn.microsoft.com/library/windowsphone/design/hh361600.aspx) for more info.
+For a small list of words and phrases, or a list of infrequently used words and phrases, you can create custom pronunciations in a SRGS grammar. See [token Element](/previous-versions/office/developer/speech-technologies/hh361600(v=office.14)) for more info.
 
-For larger lists of words and phrases, or frequently used words and phrases, you can create separate pronunciation lexicon documents. See [About Lexicons and Phonetic Alphabets](http://msdn.microsoft.com/library/windowsphone/design/hh361646.aspx) for more info.
+For larger lists of words and phrases, or frequently used words and phrases, you can create separate pronunciation lexicon documents. See [About Lexicons and Phonetic Alphabets](/previous-versions/office/developer/speech-technologies/hh361646(v=office.14)) for more info.
 
 ## Testing
 
@@ -201,7 +198,7 @@ You should listen to all TTS strings to ensure they are intelligible and sound n
 -   Stringing together an unusual sequence of words or speaking part numbers or punctuation might cause a phrase to become unintelligible.
 -   Speech can sound unnatural when the prosody or cadence is different from how a native speaker would say a phrase.
 
-Both issues can be addressed bu using SSML instead of plain text as input to the speech synthesizer. For more info about SSML, see [Use SSML to Control Synthesized Speech](http://msdn.microsoft.com/library/windowsphone/design/hh378454.aspx) and [Speech Synthesis Markup Language Reference](http://msdn.microsoft.com/library/windowsphone/design/hh378377.aspx).
+Both issues can be addressed by using SSML instead of plain text as input to the speech synthesizer. For more info about SSML, see [Use SSML to Control Synthesized Speech](/previous-versions/office/developer/speech-technologies/hh378454(v=office.14)) and [Speech Synthesis Markup Language Reference](/previous-versions/office/developer/speech-technologies/hh378377(v=office.14)).
 
 ## Other articles in this section 
 
@@ -216,15 +213,12 @@ Both issues can be addressed bu using SSML instead of plain text as input to the
 
 ## Related articles
 
-* [Speech interactions](https://msdn.microsoft.com/library/windows/apps/mt185614)
-* [Cortana interactions](https://msdn.microsoft.com/library/windows/apps/mt185598)
+* [Speech interactions]()
+* [Cortana interactions](./cortana-interactions.md)
 
  **Samples**
 
-* [Speech recognition and speech synthesis sample](http://go.microsoft.com/fwlink/p/?LinkID=619897)
+* [Speech recognition and speech synthesis sample](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/SpeechRecognitionAndSynthesis)
  
 
  
-
-
-

@@ -1,28 +1,20 @@
 ---
-author: serenaz
-Description: Learn how to implement backwards navigation for traversing the user's navigation history within an UWP app.
-title: Navigation history and backwards navigation (Windows apps)
-ms.assetid: e9876b4c-242d-402d-a8ef-3487398ed9b3
-isNew: true
-label: History and backwards navigation
+Description: Learn how to implement backwards navigation for traversing the user's navigation history within a Windows app.
+title: Navigation history and backwards navigation
 template: detail.hbs
 op-migration-status: ready
-ms.author: sezhen
-ms.date: 06/21/2018
+ms.date: 04/09/2019
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp
 ms.localizationpriority: medium
 ---
+# Navigation history and backwards navigation for Windows apps
 
-# Navigation history and backwards navigation for UWP apps
+> **Important APIs**: [BackRequested event](/uwp/api/Windows.UI.Core.SystemNavigationManager.BackRequested), [SystemNavigationManager class](/uwp/api/Windows.UI.Core.SystemNavigationManager), [OnNavigatedTo](/uwp/api/windows.ui.xaml.controls.page.onnavigatedto#Windows_UI_Xaml_Controls_Page_OnNavigatedTo_Windows_UI_Xaml_Navigation_NavigationEventArgs_)
 
-> **Important APIs**: [BackRequested event](https://docs.microsoft.com/uwp/api/Windows.UI.Core.SystemNavigationManager.BackRequested), [SystemNavigationManager class](https://docs.microsoft.com/uwp/api/Windows.UI.Core.SystemNavigationManager), [OnNavigatedTo](https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.page.onnavigatedto#Windows_UI_Xaml_Controls_Page_OnNavigatedTo_Windows_UI_Xaml_Navigation_NavigationEventArgs_)
+The Windows app provides a consistent back navigation system for traversing the user's navigation history within an app and, depending on the device, from app to app.
 
-The Universal Windows Platform (UWP) provides a consistent back navigation system for traversing the user's navigation history within an app and, depending on the device, from app to app.
-
-To implement backwards navigation in your app, place a [back button](#Back-button) at the top left corner of your app's UI. If your app uses the [NavigationView](../controls-and-patterns/navigationview.md) control, then you can use [NavigationView's built-in back button](../controls-and-patterns/navigationview.md#backwards-navigation).
+To implement backwards navigation in your app, place a [back button](#back-button) at the top left corner of your app's UI. If your app uses the [NavigationView](../controls-and-patterns/navigationview.md) control, then you can use [NavigationView's built-in back button](../controls-and-patterns/navigationview.md#backwards-navigation).
 
 The user expects the back button to navigate to the previous location in the app's navigation history. Note that it's up to you to decide which navigation actions to add to the navigation history and how to respond to the back button press.
 
@@ -33,7 +25,17 @@ To create a back button, use the [Button](../controls-and-patterns/buttons.md) c
 ![Back button in the top left of the app's UI](images/back-nav/BackEnabled.png)
 
 ```xaml
-<Button Style="{StaticResource NavigationBackButtonNormalStyle}"/>
+<Page>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Button Style="{StaticResource NavigationBackButtonNormalStyle}"/>
+
+    </Grid>
+</Page>
 ```
 
 If your app has a top [CommandBar](../controls-and-patterns/app-bars.md), the Button control that is 44px in height will not align with 48px AppBarButtons very nicely. However, to avoid inconsistency, align the top of the Button control inside the 48px bounds.
@@ -41,17 +43,32 @@ If your app has a top [CommandBar](../controls-and-patterns/app-bars.md), the Bu
 ![Back button on top command bar](images/back-nav/CommandBar.png)
 
 ```xaml
-<Button VerticalAlignment="Top" HorizontalAlignment="Left" 
-Style="{StaticResource NavigationBackButtonNormalStyle}"/>
+<Page>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <CommandBar>
+            <CommandBar.Content>
+                <Button Style="{StaticResource NavigationBackButtonNormalStyle}" VerticalAlignment="Top"/>
+            </CommandBar.Content>
+	    
+            <AppBarButton Icon="Delete" Label="Delete"/>
+            <AppBarButton Icon="Save" Label="Save"/>
+        </CommandBar>
+    </Grid>
+</Page>
 ```
 
-In order to minimize UI elements moving around in your app, show a disabled back button when there is nothing in the backstack (see code example below).
+In order to minimize UI elements moving around in your app, show a disabled back button when there is nothing in the backstack (see code example below). However, if you expect your app will never have a backstack, you donâ€™t need to display the back button at all.
 
 ![Back button states](images/back-nav/BackDisabled.png)
 
 ## Code example
 
-The following code example demonstrates how to implement backwards navigation behavior with a back button. The code responds to the Button [**Click**](https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.primitives.buttonbase.Click) event and disables/enables the button visibility in [**OnNavigatedTo**](https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.page.onnavigatedto#Windows_UI_Xaml_Controls_Page_OnNavigatedTo_Windows_UI_Xaml_Navigation_NavigationEventArgs_), which is called when navigating to a new page. The code example also handles inputs from hardware and software system back keys by registering a listener for the [**BackRequested**](https://docs.microsoft.com/uwp/api/windows.ui.core.systemnavigationmanager.BackRequested) event.
+The following code example demonstrates how to implement backwards navigation behavior with a back button. The code responds to the Button [**Click**](/uwp/api/windows.ui.xaml.controls.primitives.buttonbase.Click) event and disables/enables the button visibility in [**OnNavigatedTo**](/uwp/api/windows.ui.xaml.controls.page.onnavigatedto#Windows_UI_Xaml_Controls_Page_OnNavigatedTo_Windows_UI_Xaml_Navigation_NavigationEventArgs_), which is called when navigating to a new page. The code example also handles inputs from hardware and software system back keys by registering a listener for the [**BackRequested**](/uwp/api/windows.ui.core.systemnavigationmanager.BackRequested) event.
 
 ```xaml
 <!-- MainPage.xaml -->
@@ -171,14 +188,14 @@ namespace winrt::PageNavTest::implementation
 
 Above, we handle backwards navigation for a single page. You can handle navigation in each page if you want to exclude specific pages from back navigation, or you want to execute page-level code before displaying the page.
 
-To handle backwards navigation for an entire app, you'll register a global listener for the [**BackRequested**](https://docs.microsoft.com/uwp/api/windows.ui.core.systemnavigationmanager.BackRequested) event in the `App.xaml` code-behind file.
+To handle backwards navigation for an entire app, you'll register a global listener for the [**BackRequested**](/uwp/api/windows.ui.core.systemnavigationmanager.BackRequested) event in the `App.xaml` code-behind file.
 
 App.xaml code-behind:
 
 ```csharp
 // App.xaml.cs
 Windows.UI.Core.SystemNavigationManager.GetForCurrentView().BackRequested += App_BackRequested;
-Frame rootFrame = Window.Current.Content;
+Frame rootFrame = Window.Current.Content as Frame;
 rootFrame.PointerPressed += On_PointerPressed;
 
 private void App_BackRequested(object sender, Windows.UI.Core.BackRequestedEventArgs e)
@@ -284,28 +301,11 @@ The code examples provided above demonstrate how to handle all of these inputs.
 
 ## System back behavior for backward compatibilities
 
-Previously, UWP apps used [AppViewBackButtonVisibility](https://docs.microsoft.com/uwp/api/windows.ui.core.appviewbackbuttonvisibility) for backwards navigation. The API will continue to be supported for backward compatibility, but we no longer recommend relying on the title bar back button. Instead, your app should draw its own in-app back button.
+Previously, UWP apps used [AppViewBackButtonVisibility](/uwp/api/windows.ui.core.appviewbackbuttonvisibility) for backwards navigation. The API will continue to be supported to ensure backward compatibility, but we no longer recommend relying on [AppViewBackButtonVisibility](/uwp/api/windows.ui.core.appviewbackbuttonvisibility). Instead, your app should draw its own in-app back button.
 
-If your app continues to use [AppViewBackButtonVisibility](https://docs.microsoft.com/uwp/api/windows.ui.core.appviewbackbuttonvisibility), then the back button will be rendered inside the title bar as usual.
+If your app continues using [AppViewBackButtonVisibility](/uwp/api/windows.ui.core.appviewbackbuttonvisibility), then the system UI will render the system back button inside the title bar. (The appearance and user interactions for the back button are unchanged from previous builds.)
 
-- If your app is **not tabbed**, then the back button is rendered inside the title bar. The visual experience and user interactions for the back button are unchanged from previous builds.
-
-    ![Title bar back button](images/nav-back-pc.png)
-
-- If an app is **tabbed**, then the back button is rendered inside a new system back bar.
-
-    ![System drawn back button bar](images/back-nav/tabs.png)
-
-### System back bar
-
-> [!NOTE]
-> "System back bar" is only a description, not an official name.
-
-The system back bar is a “band” that is inserted between the tab band and the app’s content area. The band goes across the width of the app, with the back button on the left edge. The band has a vertical height of 32 pixels to ensure adequate touch target size for the back button.
-
-The system back bar is displayed dynamically, based on back button visibility. When the back button is visible, the system back bar is inserted, shifting app content down by 32 pixels below the tab band. When the back button is hidden, the system back bar is dynamically removed, shifting app content up by 32 pixels to meet the tab band. To avoid having your app's UI shift up or down, we recommend drawing an [in-app back button](#back-button).
-
-[Title bar customizations](../shell/title-bar.md) will carry over to both the app tab and the system back bar. If your app specifies background and foreground color properties with [ApplicationViewTitleBar](https://docs.microsoft.com/uwp/api/windows.ui.viewmanagement.applicationviewtitlebar), then the colors will be applied to the tab and system back bar.
+![Title bar back button](images/nav-back-pc.png)
 
 ## Guidelines for custom back navigation behavior
 
@@ -330,14 +330,14 @@ If you choose to provide your own back stack navigation, the experience should b
 </tr>
 <tr class="even">
 <td style="vertical-align:top;"><strong>Page to page, same peer group, no on-screen navigation element</strong>
-<p>The user navigates from one page to another with the same peer group. There is no on-screen navigation element (such as [NavigationView](../controls-and-patterns/navigationview.md)) that provides direct navigation to both pages.</p></td>
+<p>The user navigates from one page to another with the same peer group. There is no on-screen navigation element (such as <a href="https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/navigationview">NavigationView</a>) that provides direct navigation to both pages.</p></td>
 <td style="vertical-align:top;"><strong>Yes</strong>
 <p>In the following illustration, the user navigates between two pages in the same peer group, and the navigation should be added to the navigation history.</p>
 <p><img src="images/back-nav/nav-pagetopage-samepeer-noosnavelement.png" alt="Navigation within a peer group" /></p></td>
 </tr>
 <tr class="odd">
 <td style="vertical-align:top;"><strong>Page to page, same peer group, with an on-screen navigation element</strong>
-<p>The user navigates from one page to another in the same peer group. Both pages are shown in the same navigation element, such as [NavigationView](../controls-and-patterns/navigationview.md).</p></td>
+<p>The user navigates from one page to another in the same peer group. Both pages are shown in the same navigation element, such as <a href="https://docs.microsoft.com/windows/uwp/design/controls-and-patterns/navigationview">NavigationView</a>.</p></td>
 <td style="vertical-align:top;"><strong>It depends</strong>
 <p>Yes, add to the navigation history, with two notable exceptions. If you expect users of your app to switch between pages in the peer group frequently, or if you wish to preserve the navigational hierarchy, then do not add to the navigation history. In this case, when the user presses back, go back to the last page before the user navigated to the current peer group. </p>
 <p><img src="images/back-nav/nav-pagetopage-samepeer-yesosnavelement.png" alt="Navigation across peer groups when a navigation element is present" /></p></td>

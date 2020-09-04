@@ -1,17 +1,12 @@
 ---
-author: mcleanbyron
 ms.assetid: c5246681-82c7-44df-87e1-a84a926e6496
 description: Use this method in the Microsoft Store promotions API to manage creatives for promotional ad campaigns.
 title: Manage creatives
-ms.author: mcleans
 ms.date: 02/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp, Microsoft Store promotions API, ad campaigns
 ms.localizationpriority: medium
 ---
-
 # Manage creatives
 
 Use these methods in the Microsoft Store promotions API to upload your own custom creatives to use in promotional ad campaigns or get an existing creative. A creative may be associated with one or more delivery lines, even across ad campaigns, provided it always represents the same app.
@@ -119,7 +114,7 @@ The request and response bodies for these methods contain the following fields. 
 |  content   |  string   |  The content of the creative image, in Base64-encoded format.<br/><br/>**Note**&nbsp;&nbsp;The maximum allowed size for your creative is 40 KB. If you submit a creative file larger than this, this API will not return an error, but the campaign will not successfully be created.     |  No     |      |   Yes    |       
 |  height   |  integer   |   The height of the creative.    |    No    |      |   Yes    |       
 |  width   |  integer   |  The width of the creative.     |  No    |     |    Yes   |       
-|  landingUrl   |  string   |  If you are using a campaign tracking service such as Kochava, AppsFlyer or Tune to measure install analytics for your app, assign your tracking URL in this field when you call the POST method (if specified, this value must be a valid URI). If you are not using a campaign tracking service, omit this value when you call the POST method (in this case, this URL will be created automatically).   |  No    |     |   Yes    |       
+|  landingUrl   |  string   |  If you are using a campaign tracking service such as AppsFlyer, Kochava, Tune, or Vungle to measure install analytics for your app, assign your tracking URL in this field when you call the POST method (if specified, this value must be a valid URI). If you are not using a campaign tracking service, omit this value when you call the POST method (in this case, this URL will be created automatically).   |  No    |     |   Yes    |
 |  format   |  string   |   The ad format. Currently, the only supported value is **Banner**.    |   No    |  Banner   |  No     |       
 |  imageAttributes   | [ImageAttributes](#image-attributes)    |   Provides attributes for the creative.     |   No    |      |   Yes    |       
 |  storeProductId   |  string   |   The [Store ID](in-app-purchases-and-trials.md#store-ids) for the app that this ad campaign is associated with. An example Store ID for a product is 9nblggh42cfd.    |   No    |    |  No     |   |  

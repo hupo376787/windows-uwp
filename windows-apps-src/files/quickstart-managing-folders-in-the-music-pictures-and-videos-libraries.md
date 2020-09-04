@@ -1,17 +1,12 @@
 ---
-author: laurenhughes
 ms.assetid: 1AE29512-7A7D-4179-ADAC-F02819AC2C39
-title: Files and folders in the Music, Pictures, and Videos libraries
+title: Managing the Music, Pictures, and Videos libraries
 description: Add existing folders of music, pictures, or videos to the corresponding libraries. You can also remove folders from libraries, get the list of folders in a library, and discover stored photos, music, and videos.
-ms.author: lahugh
 ms.date: 06/18/2018
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp
 ms.localizationpriority: medium
 ---
-
 # Files and folders in the Music, Pictures, and Videos libraries
 
 Add existing folders of music, pictures, or videos to the corresponding libraries. You can also remove folders from libraries, get the list of folders in a library, and discover stored photos, music, and videos.
@@ -23,7 +18,7 @@ A library is a virtual collection of folders, which includes a known folder by d
 
 -   **Understand async programming for Universal Windows Platform (UWP) apps**
 
-    You can learn how to write asynchronous apps in C# or Visual Basic, see [Call asynchronous APIs in C# or Visual Basic](https://msdn.microsoft.com/library/windows/apps/mt187337). To learn how to write asynchronous apps in C++, see [Asynchronous programming in C++](https://msdn.microsoft.com/library/windows/apps/mt187334).
+    You can learn how to write asynchronous apps in C# or Visual Basic, see [Call asynchronous APIs in C# or Visual Basic](../threading-async/call-asynchronous-apis-in-csharp-or-visual-basic.md). To learn how to write asynchronous apps in C++, see [Asynchronous programming in C++](../threading-async/asynchronous-programming-in-cpp-universal-windows-platform-apps.md).
 
 -   **Access permissions to the location**
 
@@ -38,14 +33,14 @@ A library is a virtual collection of folders, which includes a known folder by d
 ## Get a reference to a library
 
 > [!NOTE]
-> Remember to declare the appropriate capability. See [App capability declarations](https://docs.microsoft.com/windows/uwp/packaging/app-capability-declarations) for more information.
+> Remember to declare the appropriate capability. See [App capability declarations](../packaging/app-capability-declarations.md) for more information.
  
 
-To get a reference to the user's Music, Pictures, or Video library, call the [**StorageLibrary.GetLibraryAsync**](https://msdn.microsoft.com/library/windows/apps/dn251725) method. Provide the corresponding value from the [**KnownLibraryId**](https://msdn.microsoft.com/library/windows/apps/dn298399) enumeration.
+To get a reference to the user's Music, Pictures, or Video library, call the [**StorageLibrary.GetLibraryAsync**](/uwp/api/windows.storage.storagelibrary.getlibraryasync) method. Provide the corresponding value from the [**KnownLibraryId**](/uwp/api/Windows.Storage.KnownLibraryId) enumeration.
 
--   [**KnownLibraryId.Music**](https://msdn.microsoft.com/library/windows/apps/br227155)
--   [**KnownLibraryId.Pictures**](https://msdn.microsoft.com/library/windows/apps/br227156)
--   [**KnownLibraryId.Videos**](https://msdn.microsoft.com/library/windows/apps/br227159)
+-   [**KnownLibraryId.Music**](/uwp/api/windows.storage.knownfolders.musiclibrary)
+-   [**KnownLibraryId.Pictures**](/uwp/api/windows.storage.knownfolders.pictureslibrary)
+-   [**KnownLibraryId.Videos**](/uwp/api/windows.storage.knownfolders.videoslibrary)
 
 ```cs
 var myPictures = await Windows.Storage.StorageLibrary.GetLibraryAsync(Windows.Storage.KnownLibraryId.Pictures);
@@ -54,7 +49,7 @@ var myPictures = await Windows.Storage.StorageLibrary.GetLibraryAsync(Windows.St
 ## Get the list of folders in a library
 
 
-To get the list of folders in a library, get the value of the [**StorageLibrary.Folders**](https://msdn.microsoft.com/library/windows/apps/dn251724) property.
+To get the list of folders in a library, get the value of the [**StorageLibrary.Folders**](/uwp/api/windows.storage.storagelibrary.folders) property.
 
 ```cs
 using Windows.Foundation.Collections;
@@ -64,7 +59,7 @@ IObservableVector<Windows.Storage.StorageFolder> myPictureFolders = myPictures.F
 ## Get the folder in a library where new files are saved by default
 
 
-To get the folder in a library where new files are saved by default, get the value of the [**StorageLibrary.SaveFolder**](https://msdn.microsoft.com/library/windows/apps/dn251728) property.
+To get the folder in a library where new files are saved by default, get the value of the [**StorageLibrary.SaveFolder**](/uwp/api/windows.storage.storagelibrary.savefolder) property.
 
 ```cs
 Windows.Storage.StorageFolder savePicturesFolder = myPictures.SaveFolder;
@@ -72,7 +67,7 @@ Windows.Storage.StorageFolder savePicturesFolder = myPictures.SaveFolder;
 
 ## Add an existing folder to a library
 
-To add a folder to a library, you call the [**StorageLibrary.RequestAddFolderAsync**](https://msdn.microsoft.com/library/windows/apps/dn251726). Taking the Pictures Library as an example, calling this method causes a folder picker to be shown to the user with an **Add this folder to Pictures** button. If the user picks a folder then the folder remains in its original location on disk and it becomes an item in the [**StorageLibrary.Folders**](https://msdn.microsoft.com/library/windows/apps/dn251724) property (and in the built-in Photos app), but the folder does not appear as a child of the Pictures folder in File Explorer.
+To add a folder to a library, you call the [**StorageLibrary.RequestAddFolderAsync**](/uwp/api/windows.storage.storagelibrary.requestaddfolderasync). Taking the Pictures Library as an example, calling this method causes a folder picker to be shown to the user with an **Add this folder to Pictures** button. If the user picks a folder then the folder remains in its original location on disk and it becomes an item in the [**StorageLibrary.Folders**](/uwp/api/windows.storage.storagelibrary.folders) property (and in the built-in Photos app), but the folder does not appear as a child of the Pictures folder in File Explorer.
 
 
 ```cs
@@ -81,11 +76,11 @@ Windows.Storage.StorageFolder newFolder = await myPictures.RequestAddFolderAsync
 
 ## Remove a folder from a library
 
-To remove a folder from a library, call the [**StorageLibrary.RequestRemoveFolderAsync**](https://msdn.microsoft.com/library/windows/apps/dn251727) method and specify the folder to be removed. You could use [**StorageLibrary.Folders**](https://msdn.microsoft.com/library/windows/apps/dn251724) and a [**ListView**](https://msdn.microsoft.com/library/windows/apps/br242878) control (or similar) for the user to select a folder to remove.
+To remove a folder from a library, call the [**StorageLibrary.RequestRemoveFolderAsync**](/uwp/api/windows.storage.storagelibrary.requestremovefolderasync) method and specify the folder to be removed. You could use [**StorageLibrary.Folders**](/uwp/api/windows.storage.storagelibrary.folders) and a [**ListView**](/uwp/api/Windows.UI.Xaml.Controls.ListView) control (or similar) for the user to select a folder to remove.
 
-When you call [**StorageLibrary.RequestRemoveFolderAsync**](https://msdn.microsoft.com/library/windows/apps/dn251727), the user sees a confirmation dialog saying that the folder "won't appear in Pictures anymore, but won't be deleted." What this means is that the folder remains in its original location on disk, is removed from the [**StorageLibrary.Folders**](https://msdn.microsoft.com/library/windows/apps/dn251724) property, and will no longer included in the built-in Photos app.
+When you call [**StorageLibrary.RequestRemoveFolderAsync**](/uwp/api/windows.storage.storagelibrary.requestremovefolderasync), the user sees a confirmation dialog saying that the folder "won't appear in Pictures anymore, but won't be deleted." What this means is that the folder remains in its original location on disk, is removed from the [**StorageLibrary.Folders**](/uwp/api/windows.storage.storagelibrary.folders) property, and will no longer included in the built-in Photos app.
 
-The following example assumes that the user has selected the folder to remove from a [**ListView**](https://msdn.microsoft.com/library/windows/apps/br242878) control named **lvPictureFolders**.
+The following example assumes that the user has selected the folder to remove from a [**ListView**](/uwp/api/Windows.UI.Xaml.Controls.ListView) control named **lvPictureFolders**.
 
 
 ```cs
@@ -95,7 +90,7 @@ bool result = await myPictures.RequestRemoveFolderAsync(folder);
 ## Get notified of changes to the list of folders in a library
 
 
-To get notified about changes to the list of folders in a library, register a handler for the [**StorageLibrary.DefinitionChanged**](https://msdn.microsoft.com/library/windows/apps/dn251723) event of the library.
+To get notified about changes to the list of folders in a library, register a handler for the [**StorageLibrary.DefinitionChanged**](/uwp/api/windows.storage.storagelibrary.definitionchanged) event of the library.
 
 
 ```cs
@@ -157,7 +152,7 @@ private async void getSongs()
 
 Users can choose to store files by default on the optional SD card. Apps, however, can opt out of allowing files to be stored on the SD card. As a result, the media libraries can be split across the device's internal storage and the SD card.
 
-You don't have to write additional code to handle this possibility. The methods in the [**Windows.Storage**](https://msdn.microsoft.com/library/windows/apps/br227346) namespace that query known folders transparently combine the query results from both locations. You don't have to specify the **removableStorage** capability in the app manifest file to get these combined results, either.
+You don't have to write additional code to handle this possibility. The methods in the [**Windows.Storage**](/uwp/api/Windows.Storage) namespace that query known folders transparently combine the query results from both locations. You don't have to specify the **removableStorage** capability in the app manifest file to get these combined results, either.
 
 Consider the state of the device's storage shown in the following image:
 
@@ -174,7 +169,7 @@ The Camera Roll and the Saved Pictures folder do not support the deep queries.
 
 **Opening a photo in the app that captured it**
 
-If you want to let the user open a photo again later in the app that captured it, you can save the **CreatorAppId** with the photo's metadata by using code similar to the following example. In this example, **testPhoto** is a [**StorageFile**](https://msdn.microsoft.com/library/windows/apps/br227171).
+If you want to let the user open a photo again later in the app that captured it, you can save the **CreatorAppId** with the photo's metadata by using code similar to the following example. In this example, **testPhoto** is a [**StorageFile**](/uwp/api/Windows.Storage.StorageFile).
 
 ```cs
 IDictionary<string, object> propertiesToSave = new Dictionary<string, object>();

@@ -1,17 +1,14 @@
-﻿---
-author: TylerMSFT
+---
 title: Enable apps for websites using app URI handlers
 description: Drive user engagement with your app by supporting the Apps for Websites feature.
 keywords: Deep Linking Windows
-ms.author: twhitney
 ms.date: 08/25/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
+
+
 ms.assetid: 260cf387-88be-4a3d-93bc-7e4560f90abc
 ms.localizationpriority: medium
 ---
-
 # Enable apps for websites using app URI handlers
 
 Apps for Websites associates your app with a website so that when someone opens a link to your website, your app is launched instead of opening the browser. If your app is not installed, your website opens in the browser as usual. Users can trust this experience because only verified content owners can register for a link. Users will be able to check all of their registered web-to-app links by going to Settings > Apps > Apps for websites.
@@ -22,7 +19,7 @@ To enable web-to-app linking you will need to:
 - Handle the activation in the app.
 
 > [!Note]
-> Starting with the Windows 10 Creators update, supported links clicked in Microsoft Edge will launch the corresponding app. Supported links clicked in other browsers (e.g. Internet Explorer, etc.), will keep you in the browsing experience.
+> Starting with the Windows 10 Creators update, supported links clicked in Microsoft Edge will launch the corresponding app. Supported links clicked in other browsers (for example, Internet Explorer, etc.), will keep you in the browsing experience.
 
 ## Register to handle http and https links in the app manifest
 
@@ -45,7 +42,7 @@ For example, if your website’s address is “msn.com” you would make the fol
 </Applications>
 ```
 
-The declaration above registers your app to handle links from the specified host. If your website has multiple addresses (for example: m.example.com, www.example.com, and example.com) then add a separate `<uap3:Host Name=... />` entry inside of the `<uap3:AppUriHandler>` for each address.
+The declaration above registers your app to handle links from the specified host. If your website has multiple addresses (for example: m.example.com, www\.example.com, and example.com) then add a separate `<uap3:Host Name=... />` entry inside of the `<uap3:AppUriHandler>` for each address.
 
 ## Associate your app and website with a JSON file
 
@@ -75,7 +72,7 @@ The JSON file example above demonstrates the use of wildcards. Wildcards allow y
 | **\***       | Represents any substring      |
 | **?**        | Represents a single character |
 
-For example, given `"excludePaths" : [ "/news/*", "/blog/*" ]` in the example above, your app will support all paths that start with your website’s address (e.g. msn.com), **except** those under `/news/` and `/blog/`. **msn.com/weather.html** will be supported, but not ****msn.com/news/topnews.html****.
+For example, given `"excludePaths" : [ "/news/*", "/blog/*" ]` in the example above, your app will support all paths that start with your website’s address (for example, msn.com), **except** those under `/news/` and `/blog/`. **msn.com/weather.html** will be supported, but not **msn.com/news/topnews.html**.
 
 ### Multiple apps
 
@@ -88,7 +85,7 @@ If you have two apps that you would like to link to your website, list both of t
   "excludePaths" : [ "/news/*", "/blog/*" ]
  },
  {
-  "packageFamilyName": "Your second app's package family name, e.g. MyApp2_8jmtgj2pbbz6e",
+  "packageFamilyName": "Your second app's package family name, for example, MyApp2_8jmtgj2pbbz6e",
   "paths": [ "/example/*", "/links/*" ]
  }]
 ```
@@ -159,9 +156,9 @@ Test the configuration of your app and website by running this tool with the fol
 
 **AppHostRegistrationVerifier.exe** *hostname packagefamilyname filepath*
 
--   Hostname: Your website (e.g. microsoft.com)
+-   Hostname: Your website (for example, microsoft.com)
 -   Package Family Name (PFN): Your app’s PFN
--   File path: The JSON file for local validation (e.g. C:\\SomeFolder\\windows-app-web-link)
+-   File path: The JSON file for local validation (for example, C:\\SomeFolder\\windows-app-web-link)
 
 If the tool does not return anything, validation will work on that file when uploaded. If there is an error code, it will not work.
 
@@ -179,23 +176,23 @@ Close your application to verify that the app is activated when you click a link
 
 Verify that your app is closed. Press **Windows Key + R** to open the **Run** dialog box and paste the link in the window. Your app should launch instead of the web browser.
 
-Additionally, you can test your app by launching it from another app using the [LaunchUriAsync](https://msdn.microsoft.com/library/windows/apps/hh701480.aspx) API. You can use this API to test on phones as well.
+Additionally, you can test your app by launching it from another app using the [LaunchUriAsync](/uwp/api/windows.system.launcher.launchuriasync) API. You can use this API to test on phones as well.
 
 If you would like to follow the protocol activation logic, set a breakpoint in the **OnActivated** event handler.
 
 ## AppUriHandlers tips:
 
 - Make sure to only specify links that your app can handle.
-- List all of the hosts that you will support.  Note that www.example.com and example.com are different hosts.
+- List all of the hosts that you will support.  Note that www\.example.com and example.com are different hosts.
 - Users can choose which app they prefer to handle websites in Settings.
 - Your JSON file must be uploaded to an https server.
 - If you need to change the paths that you wish to support, you can republish your JSON file without republishing your app. Users will see the changes in 1-8 days.
 - All sideloaded apps with AppUriHandlers will have validated links for the host on install. You do not need to have a JSON file uploaded to test the feature.
-- This feature works whenever your app is a UWP app launched with  [LaunchUriAsync](https://msdn.microsoft.com/library/windows/apps/hh701480.aspx) or a Windows desktop app launched with  [ShellExecuteEx](https://msdn.microsoft.com/library/windows/desktop/bb762154(v=vs.85).aspx). If the URL corresponds to a registered App URI handler, the app will be launched instead of the browser.
+- This feature works whenever your app is a UWP app launched with  [LaunchUriAsync](/uwp/api/windows.system.launcher.launchuriasync) or a Windows desktop app launched with  [ShellExecuteEx](/windows/desktop/api/shellapi/nf-shellapi-shellexecuteexa). If the URL corresponds to a registered App URI handler, the app will be launched instead of the browser.
 
 ## See also
 
 [Web-to-App example project](https://github.com/project-rome/AppUriHandlers/tree/master/NarwhalFacts)
-[windows.protocol registration](https://msdn.microsoft.com/library/windows/apps/br211458.aspx)
-[Handle URI Activation](https://msdn.microsoft.com/windows/uwp/launch-resume/handle-uri-activation)
+[windows.protocol registration](/uwp/schemas/appxpackage/appxmanifestschema/element-protocol)
+[Handle URI Activation](./handle-uri-activation.md)
 [Association Launching sample](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/AssociationLaunching) illustrates how to use the LaunchUriAsync() API.

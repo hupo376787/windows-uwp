@@ -1,22 +1,17 @@
 ---
-author: Mtoepke
 title: Frequently asked questions
-description: FAQ about UWP on Xbox.
-ms.author: mstahl
+description: If things aren't working as you expected, look through this page of frequently asked questions about UWP on Xbox.
 ms.date: 03/29/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp
 ms.assetid: 265fe827-bd4a-48d4-b362-8793b9b25705
 ms.localizationpriority: medium
 ---
-
 # Frequently asked questions
 
 Things not working the way you expected? 
 Look through this page of frequently asked questions. 
-Also check out the [Known issues](known-issues.md) topic and the [Developing Universal Windows apps](https://go.microsoft.com/fwlink/?linkid=839446) forum. 
+Also check out the [Known issues](known-issues.md) topic and the [Developing Universal Windows apps](https://social.msdn.microsoft.com/Forums/windowsapps/en-US/home?forum=wpdevelop) forum. 
 
 ### Why aren't my games and apps working?
 
@@ -67,21 +62,21 @@ See the [Xbox One Developer Mode Deactivation](devkit-deactivation.md) topic for
 
 ### I sold my Xbox One and left it in Developer Mode. How do I deactivate Developer Mode?
 
-If you no longer have access to your Xbox One, you can deactivate it in Windows Dev Center. 
-For details, see the **Deactivate your console using Windows Dev Center** section in the [Xbox One Developer Mode Deactivation](devkit-deactivation.md#deactivate-your-console-using-windows-dev-center) topic. 
+If you no longer have access to your Xbox One, you can deactivate it in Windows Partner Center. 
+For details, see the **Deactivate your console using Partner Center** section in the [Xbox One Developer Mode Deactivation](devkit-deactivation.md#deactivate-your-console-using-partner-center) topic. 
 
-### I left the Developer Program using Windows Dev Center but I'm in still Developer Mode. What do I do?
+### I left the Developer Program using Partner Center but I'm in still Developer Mode. What do I do?
 
 Start Dev Home and select the **Leave developer mode** button. 
 This will restart your console in Retail Mode. 
 
 ### Can I publish my app?
 
-You can [publish apps](../publish/index.md) through Dev Center if you have a [developer account](https://developer.microsoft.com/store/register). UWP apps created and tested on a retail Xbox One console will go through the same ingestion, review, and publication process that Windows conducts today, with additional reviews to meet today's Xbox One standards.
+You can [publish apps](../publish/index.md) through Partner Center if you have a [developer account](https://developer.microsoft.com/store/register). UWP apps created and tested on a retail Xbox One console will go through the same ingestion, review, and publication process that Windows conducts today, with additional reviews to meet today's Xbox One standards.
 
 ### Can I publish my game?
 
-You can use UWP and your Xbox One in Developer Mode to build and test your games on Xbox One. To publish UWP games, you must register with [ID@XBOX](http://www.xbox.com/Developers/id) or be part of the [Xbox Live Creators Program](https://developer.microsoft.com/games/xbox/xboxlive/creator). For more info, see [Developer Program Overview](https://developer.microsoft.com/games/xbox/docs/xboxlive/get-started/developer-program-overview.html).
+You can use UWP and your Xbox One in Developer Mode to build and test your games on Xbox One. To publish UWP games, you must register with [ID@XBOX](https://www.xbox.com/Developers/id) or be part of the [Xbox Live Creators Program](https://developer.microsoft.com/games/xbox/xboxlive/creator). For more info, see [Developer Program Overview](https://developer.microsoft.com/games/xbox/docs/xboxlive/get-started/developer-program-overview.html).
 
 ### Will the standard Game engines work?
 

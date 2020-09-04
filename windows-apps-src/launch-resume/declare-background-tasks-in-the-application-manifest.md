@@ -1,17 +1,12 @@
 ---
-author: TylerMSFT
 title: Declare background tasks in the application manifest
 description: Enable the use of background tasks by declaring them as extensions in the app manifest.
 ms.assetid: 6B4DD3F8-3C24-4692-9084-40999A37A200
-ms.author: twhitney
 ms.date: 02/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
-keywords: windows 10, uwp
+keywords: windows 10, uwp, background task
 ms.localizationpriority: medium
 ---
-
 # Declare background tasks in the application manifest
 
 
@@ -19,8 +14,8 @@ ms.localizationpriority: medium
 
 **Important APIs**
 
--   [**BackgroundTasks Schema**](https://msdn.microsoft.com/library/windows/apps/br224794)
--   [**Windows.ApplicationModel.Background**](https://msdn.microsoft.com/library/windows/apps/br224847)
+-   [**BackgroundTasks Schema**](/uwp/api/Windows.ApplicationModel.Background.IBackgroundTask)
+-   [**Windows.ApplicationModel.Background**](/uwp/api/Windows.ApplicationModel.Background)
 
 Enable the use of background tasks by declaring them as extensions in the app manifest.
 
@@ -36,7 +31,7 @@ This topic assumes you have a created one or more background task classes, and t
 
 Open the application manifest (Package.appxmanifest) and go to the Application element. Create an Extensions element (if one doesn't already exist).
 
-The following snippet is taken from the [background task sample](http://go.microsoft.com/fwlink/p/?LinkId=618666):
+The following snippet is taken from the [background task sample](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/BackgroundTask):
 
 ```xml
 <Application Id="App"
@@ -89,7 +84,7 @@ Copy this code into the Extensions element (you will add attributes in the follo
 
 2.  Change the list of Task Type attribute to indicate the type of task registration used with this background task. If the background task is registered with multiple trigger types, add additional Task elements and Type attributes for each one.
 
-    **Note**  Make sure to list each of the trigger types you're using, or the background task will not register with the undeclared trigger types (the [**Register**](https://msdn.microsoft.com/library/windows/apps/br224772) method will fail and throw an exception).
+    **Note**  Make sure to list each of the trigger types you're using, or the background task will not register with the undeclared trigger types (the [**Register**](/uwp/api/windows.applicationmodel.background.backgroundtaskbuilder.register) method will fail and throw an exception).
 
     This snippet example indicates the use of system event triggers and push notifications:
 
@@ -106,7 +101,7 @@ Copy this code into the Extensions element (you will add attributes in the follo
 
 Repeat step 2 for each additional background task class registered by your app.
 
-The following example is the complete Application element from the [background task sample]( http://go.microsoft.com/fwlink/p/?linkid=227509). This shows the use of 2 background task classes with a total of 3 trigger types. Copy the Extensions section of this example, and modify it as needed, to declare background tasks in your application manifest.
+The following example is the complete Application element from the [background task sample](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/BackgroundTask). This shows the use of 2 background task classes with a total of 3 trigger types. Copy the Extensions section of this example, and modify it as needed, to declare background tasks in your application manifest.
 
 ```xml
 <Applications>
@@ -170,7 +165,7 @@ Here is example XML that declares a background task that runs in the same proces
 </Extensions>
 ```
 
-When you specify **EntryPoint**, your application receives a callback to the specified method when the trigger fires. If you do not specify an **EntryPoint**, your application receives the callback via  [OnBackgroundActivated()](https://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.application.onbackgroundactivated.aspx).  See [Create and register an in-process background task](create-and-register-an-inproc-background-task.md) for details.
+When you specify **EntryPoint**, your application receives a callback to the specified method when the trigger fires. If you do not specify an **EntryPoint**, your application receives the callback via  [OnBackgroundActivated()](/uwp/api/windows.ui.xaml.application.onbackgroundactivated).  See [Create and register an in-process background task](create-and-register-an-inproc-background-task.md) for details.
 
 ### Specify where your background task runs with the ResourceGroup attribute.
 
@@ -212,14 +207,14 @@ This example declares a background task that runs in a new process that gets its
 
 ```xml
 <Package
-    xmlns:uap4="http://schemas.microsoft.com/appx/manifest/uap/windows10/4"
+    xmlns:uap4="https://schemas.microsoft.com/appx/manifest/uap/windows10/4"
     ...
     <Applications>
         <Application ...>
             ...
             <Extensions>
                 <Extension Category="windows.backgroundTasks" EntryPoint="BackgroundTasks.TimerTriggerTask">
-                    <BackgroundTasks uap4:SupportsMultipleInstances=“True”>
+                    <BackgroundTasks uap4:SupportsMultipleInstances="True">
                         <Task Type="timer" />
                     </BackgroundTasks>
                 </Extension>

@@ -1,27 +1,24 @@
 ---
-author: QuinnRadich
 title: What's New in Windows Docs in December 2017 - Develop UWP apps
 description: New features, videos, and developer guidance have been added to the Windows 10 developer documentation for December 2017
 keywords: what's new, update, features, developer guidance, Windows 10, december
-ms.author: quradic
 ms.date: 12/14/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
+
+
 ms.localizationpriority: medium
 ---
-
 # What's New in the Windows Developer Docs in December 2017
 
 The Windows Developer Documentation is constantly being updated with information on new features available to developers across the Windows platform. The following feature overviews, developer guidance, and samples have been made available after the release of the Fall Creators Update, containing new and updated information for Windows developers.
 
-[Install the tools and SDK](http://go.microsoft.com/fwlink/?LinkId=821431) on Windows 10 and you’re ready to either [create a new Universal Windows app](../get-started/create-uwp-apps.md) or explore how you can use your [existing app code on Windows](../porting/index.md).
+[Install the tools and SDK](https://developer.microsoft.com/windows/downloads#_blank) on Windows 10 and you’re ready to either [create a new Universal Windows app](../get-started/create-uwp-apps.md) or explore how you can use your [existing app code on Windows](../porting/index.md).
 
 ## Features
 
 ### Windows Mixed Reality: Enthusiast's Guide
 
-Targeting tech enthusiasts diving in to the world of Mixed Reality, the [Enthusiast Guide](https://docs.microsoft.com/en-us/windows/mixed-reality/enthusiast-guide/) answers the top questions people have about Windows Mixed Reality. 
+Targeting tech enthusiasts diving in to the world of Mixed Reality, the [Enthusiast Guide](/windows/mixed-reality/enthusiast-guide/) answers the top questions people have about Windows Mixed Reality. 
 
 In the guide you will find: 
 - Before you buy FAQs, 
@@ -37,27 +34,27 @@ In the guide you will find:
 
 Design and optimize your UWP apps to provide both an accessible experience and features for power users with updated [Keyboard interactions](../design/input/keyboard-interactions.md). We've updated our recommendations and guidance to reflect the new improvements to these interactions added in the Fall Creators Update.
 
-See [Keyboard accelerators](../design/input/keyboard-accelerators.md) and [Custom keyboard interactions](../design/input/custom-keyboard-interactions.md) to expand the keyboard functionality of your apps.
+See [Keyboard accelerators](../design/input/keyboard-accelerators.md) and [Custom keyboard interactions](../design/input/focus-navigation.md) to expand the keyboard functionality of your apps.
 
 On devices that support touch interactions, add keyboard functionality with the [Respond to the presence of the touch keyboard](../design/input/respond-to-the-presence-of-the-touch-keyboard.md) and [Use input scope to change the touch keyboard](../design/input/use-input-scope-to-change-the-touch-keyboard.md) articles.
 
 ### Microsoft Collaborate
 
-The Microsoft Collaborate portal provides tools and services to streamline engineering collaboration within the Microsoft ecosystem by enabling the sharing of engineering system work items (bugs, feature requests, etc.) and the distribution of content (builds, documents, specs). [Learn more](https://docs.microsoft.com/en-us/collaborate).
+The Microsoft Collaborate portal provides tools and services to streamline engineering collaboration within the Microsoft ecosystem by enabling the sharing of engineering system work items (bugs, feature requests, etc.) and the distribution of content (builds, documents, specs). [Learn more](/collaborate/).
 
-![Microsoft Collaborate in Dev Center Dashboard](images/microsoft_collaborate_screenshot.PNG)
+![Microsoft Collaborate in Partner Center](images/microsoft_collaborate_screenshot.PNG)
 
 ### Package desktop applications with UWP projects
 
 Visual Studio 2017 version 15.5 has updated the **Windows Application Packaging Project** template so that it's much easier to include a UWP project. You no longer have to use a JavaScript-based packaging project, and then manually tweak the package manifest.  
 
-See [Package an app by using Visual Studio](https://docs.microsoft.com/en-us/windows/uwp/porting/desktop-to-uwp-packaging-dot-net) for guidance on how to use this new template to package your desktop application.
+See [Package an app by using Visual Studio](/windows/msix/desktop/desktop-to-uwp-packaging-dot-net) for guidance on how to use this new template to package your desktop application.
 
-See [Extend your desktop application with modern UWP components](https://docs.microsoft.com/windows/uwp/porting/desktop-to-uwp-extend) for guidance about how to add a UWP project to your package.
+See [Extend your desktop application with modern UWP components](/windows/apps/desktop/modernize/desktop-to-uwp-extend) for guidance about how to add a UWP project to your package.
 
 ### Subscription add-ons are now available to developers in the Windows Dev Center Insider program
 
-All developers who have joined the [Dev Center Insider program](../publish/dev-center-insider-program.md) can now use subscription add-ons to sell digital products in their apps app (such as app features or digital content) with automated recurring billing periods. For more details, see [Enable subscription add-ons for your app](../monetize/enable-subscription-add-ons-for-your-app.md).
+All developers who have joined the Dev Center Insider program can now use subscription add-ons to sell digital products in their apps app (such as app features or digital content) with automated recurring billing periods. For more details, see [Enable subscription add-ons for your app](../monetize/enable-subscription-add-ons-for-your-app.md).
 
 ## Developer Guidance
 
@@ -96,4 +93,4 @@ The [Customer Orders Database](https://github.com/Microsoft/Windows-appsample-cu
 
 ### Package a .NET app in Visual Studio
 
-It's easier than ever to bring your desktop app to the Universal Windows Platform. [Watch the video](https://www.youtube.com/watch?v=fJkbYPyd08w) to learn how to package your .NET app for distribution, then [check out this page](../porting/desktop-to-uwp-packaging-dot-net.md) for more information.
+It's easier than ever to bring your desktop app to the Universal Windows Platform. [Watch the video](https://www.youtube.com/watch?v=fJkbYPyd08w) to learn how to package your .NET app for distribution, then [check out this page](/windows/msix/desktop/desktop-to-uwp-packaging-dot-net) for more information.

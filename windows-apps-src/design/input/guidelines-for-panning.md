@@ -1,25 +1,20 @@
 ---
-author: Karl-Bridge-Microsoft
 Description: Panning or scrolling lets users navigate within a single view, to display the content of the view that does not fit within the viewport. Examples of views include the folder structure of a computer, a library of documents, or a photo album.
 title: Panning
 ms.assetid: b419f538-c7fb-4e7c-9547-5fb2494c0b71
 label: Panning
 template: detail.hbs
-ms.author: kbridge
 ms.date: 02/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp
 ms.localizationpriority: medium
 ---
-
 # Guidelines for panning
 
 
 Panning or scrolling lets users navigate within a single view, to display the content of the view that does not fit within the viewport. Examples of views include the folder structure of a computer, a library of documents, or a photo album.
 
-> **Important APIs**: [**Windows.UI.Input**](https://msdn.microsoft.com/library/windows/apps/br242084), [**Windows.UI.Xaml.Input**](https://msdn.microsoft.com/library/windows/apps/br227994)
+> **Important APIs**: [**Windows.UI.Input**](/uwp/api/Windows.UI.Input), [**Windows.UI.Xaml.Input**](/uwp/api/Windows.UI.Xaml.Input)
 
 
 ## Dos and don'ts
@@ -65,7 +60,7 @@ Panning or scrolling lets users navigate within a single view, to display the co
 
 **Chaining embedded or nested content**
 
--   Use single-axis panning (typically horizontal) and column layouts for text and grid-based content. In these cases, content typically wraps and flows naturally from column to column and keeps the user experience consistent and discoverable across UWP apps.
+-   Use single-axis panning (typically horizontal) and column layouts for text and grid-based content. In these cases, content typically wraps and flows naturally from column to column and keeps the user experience consistent and discoverable across Windows apps.
 
 -   Don't use embedded pannable regions to display text or item lists. Because the panning indicators and scroll bars are displayed only when the input contact is detected within the region, it is not an intuitive or discoverable user experience.
 
@@ -79,9 +74,9 @@ Panning with touch, by using a swipe or slide gesture with one or more fingers, 
 
 > <div id="main">
 > <strong>Windows 10 Fall Creators Update - Behavior change</strong>
+> By default, instead of text selection, an active pen now scrolls/pans in Windows apps (like touch, touchpad, and passive pen).  
+> If your app depends on the previous behavior, you can override pen scrolling and revert to the previous behavior. For details, see the API reference topic for the <a href="https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.scrollviewer">Scroll​Viewer Class</a>.
 > </div>
-> By default, instead of text selection, an active pen now scrolls/pans in UWP apps (like touch, touchpad, and passive pen).  
-> If your app depends on the previous behavior, you can override pen scrolling and revert to the previous behavior. See the [Scroll​Viewer Class] (https://docs.microsoft.com/uwp/api/windows.ui.xaml.controls.scrollviewer) API reference topic for details.
 
 Depending on the input device, the user pans within a pannable region by using one of these:
 
@@ -109,7 +104,7 @@ Windows 8 supports three types of panning:
 The interaction experience for panning is unique to the input device while still providing similar functionality.
 
 **Pannable regions**
-Pannable region behaviors are exposed to UWP app using JavaScript developers at design time through Cascading Style Sheets (CSS).
+Pannable region behaviors are exposed to Windows app using JavaScript developers at design time through Cascading Style Sheets (CSS).
 
 There are two panning display modes based on the input device detected:
 
@@ -174,30 +169,22 @@ This guidance is also useful for apps such as photo albums or mapping apps that 
 
 ## Related articles
 
-
-* [Custom user interactions](https://msdn.microsoft.com/library/windows/apps/mt185599)
-* [Optimize ListView and GridView](https://msdn.microsoft.com/library/windows/apps/mt204776)
-* [Keyboard accessibility](https://msdn.microsoft.com/library/windows/apps/mt244347)
+- [Custom user interactions](../layout/index.md)
+- [Optimize ListView and GridView](../../debug-test-perf/optimize-gridview-and-listview.md)
+- [Keyboard accessibility](../accessibility/keyboard-accessibility.md)
 
 **Samples**
-* [Basic input sample](http://go.microsoft.com/fwlink/p/?LinkID=620302)
-* [Low latency input sample](http://go.microsoft.com/fwlink/p/?LinkID=620304)
-* [User interaction mode sample](http://go.microsoft.com/fwlink/p/?LinkID=619894)
-* [Focus visuals sample](http://go.microsoft.com/fwlink/p/?LinkID=619895)
+- [Basic input sample](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/BasicInput)
+- [Low latency input sample](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/LowLatencyInput)
+- [User interaction mode sample](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/UserInteractionMode)
+- [Focus visuals sample](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/XamlFocusVisuals)
 
 **Archive samples**
-* [Input: XAML user input events sample](http://go.microsoft.com/fwlink/p/?linkid=226855)
-* [Input: Device capabilities sample](http://go.microsoft.com/fwlink/p/?linkid=231530)
-* [Input: Touch hit testing sample](http://go.microsoft.com/fwlink/p/?linkid=231590)
-* [XAML scrolling, panning, and zooming sample](http://go.microsoft.com/fwlink/p/?linkid=251717)
-* [Input: Simplified ink sample](http://go.microsoft.com/fwlink/p/?linkid=246570)
-* [Input: Windows 8 gestures sample](http://go.microsoft.com/fwlink/p/?LinkId=264995)
-* [Input: Manipulations and gestures (C++) sample](http://go.microsoft.com/fwlink/p/?linkid=231605)
-* [DirectX touch input sample](http://go.microsoft.com/fwlink/p/?LinkID=231627)
- 
-
- 
-
-
-
-
+- [Input: XAML user input events sample](https://github.com/microsoftarchive/msdn-code-gallery-microsoft/tree/411c271e537727d737a53fa2cbe99eaecac00cc0/Official%20Windows%20Platform%20Sample/Input%20XAML%20user%20input%20events%20sample)
+- [Input: Device capabilities sample](https://github.com/microsoftarchive/msdn-code-gallery-microsoft/tree/411c271e537727d737a53fa2cbe99eaecac00cc0/Official%20Windows%20Platform%20Sample/Windows%208%20app%20samples/%5BC%23%5D-Windows%208%20app%20samples/C%23/Windows%208%20app%20samples/Input%20Device%20capabilities%20sample%20(Windows%208))
+- [Input: Touch hit testing sample](https://github.com/microsoftarchive/msdn-code-gallery-microsoft/tree/411c271e537727d737a53fa2cbe99eaecac00cc0/Official%20Windows%20Platform%20Sample/Windows%208%20desktop%20samples/%5BC%2B%2B%5D-Windows%208%20desktop%20samples/C%2B%2B/Windows%208%20desktop%20samples/Input%20Touch%20hit%20testing%20sample)
+- [XAML scrolling, panning, and zooming sample](https://github.com/microsoftarchive/msdn-code-gallery-microsoft/tree/411c271e537727d737a53fa2cbe99eaecac00cc0/Official%20Windows%20Platform%20Sample/Universal%20Windows%20app%20samples/111487-Universal%20Windows%20app%20samples/XAML%20scrolling%2C%20panning%2C%20and%20zooming%20sample)
+- [Input: Simplified ink sample](https://github.com/microsoftarchive/msdn-code-gallery-microsoft/tree/411c271e537727d737a53fa2cbe99eaecac00cc0/Official%20Windows%20Platform%20Sample/Input%20Simplified%20ink%20sample)
+- [Input: Windows 8 gestures sample](/samples/browse/?redirectedfrom=MSDN-samples)
+- [Input: Manipulations and gestures sample](https://github.com/microsoftarchive/msdn-code-gallery-microsoft/tree/411c271e537727d737a53fa2cbe99eaecac00cc0/Official%20Windows%20Platform%20Sample/Input%20Gestures%20and%20manipulations%20with%20GestureRecognizer)
+- [DirectX touch input sample](https://github.com/microsoftarchive/msdn-code-gallery-microsoft/tree/411c271e537727d737a53fa2cbe99eaecac00cc0/Official%20Windows%20Platform%20Sample/Windows%208%20app%20samples/%5BC%2B%2B%5D-Windows%208%20app%20samples/C%2B%2B/Windows%208%20app%20samples/DirectX%20touch%20input%20sample%20(Windows%208))

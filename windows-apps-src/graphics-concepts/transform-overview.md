@@ -2,18 +2,13 @@
 title: Transform overview
 description: Matrix transformations handle a lot of the low level math of 3D graphics.
 ms.assetid: B5220EE8-2533-4B55-BF58-A3F9F612B977
-author: michaelfromredmond
-ms.author: mithom
 ms.date: 02/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp
 ms.localizationpriority: medium
 ---
 
 # Transform overview
-
 
 Matrix transformations handle a lot of the low level math of 3D graphics.
 
@@ -60,9 +55,9 @@ Matrices are written in row-column order. A matrix that evenly scales vertices a
 
 ![equation of a matrix for uniform scaling](images/matrix.png)
 
-In C++, Direct3D declares matrices as a two-dimensional array, using a matrix struct. The following example shows how to initialize a [**D3DMATRIX**](https://msdn.microsoft.com/library/windows/desktop/bb172573) structure to act as a uniform scaling matrix (scale factor "s").
+In C++, Direct3D declares matrices as a two-dimensional array, using a matrix struct. The following example shows how to initialize a [**D3DMATRIX**](/windows/desktop/direct3d9/d3dmatrix) structure to act as a uniform scaling matrix (scale factor "s").
 
-```
+```cpp
 D3DMATRIX scale = {
     5.0f,            0.0f,            0.0f,            0.0f,
     0.0f,            5.0f,            0.0f,            0.0f,
@@ -80,7 +75,7 @@ The following equation translates the point (x, y, z) to a new point (x', y', z'
 
 You can manually create a translation matrix in C++. The following example shows the source code for a function that creates a matrix to translate vertices.
 
-```
+```cpp
 D3DXMATRIX Translate(const float dx, const float dy, const float dz) {
     D3DXMATRIX ret;
 
@@ -120,7 +115,7 @@ In these example matrices, the Greek letter theta stands for the angle of rotati
 
 The following code shows a function to handle rotation about the X axis.
 
-```
+```cpp
     // Inputs are a pointer to a matrix (pOut) and an angle in radians.
     float sin, cos;
     sincosf(angle, &sin, &cos);  // Determine sin and cos of angle
@@ -161,7 +156,3 @@ No matter what type of matrix you are creating, remember the left-to-right rule 
  
 
  
-
-
-
-

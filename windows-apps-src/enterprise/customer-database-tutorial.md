@@ -1,16 +1,13 @@
 ---
-author: QuinnRadich
 title: Create a customer database application
 description: Create a customer database application, and learn how to implement basic enterprise app functions.
 keywords: enterprise, tutorial, customer, data, create read update delete, REST, authentication
-ms.author: quradic
-ms.date: 5/7/2018
+ms.date: 05/07/2018
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
+
+
 ms.localizationpriority: med
 ---
-
 # Tutorial: Create a customer database application
 
 This tutorial creates a simple app for managing a list of customers. In doing so, it introduces a selection of basic concepts for enterprise apps in UWP. You'll learn how to:
@@ -26,7 +23,7 @@ The starting point for this tutorial is a single-page app with minimal UI and fu
 ### Prerequisites
 
 * [Ensure you have the latest version of Visual Studio and the Windows 10 SDK](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
-* [Clone or download the Customer Database Tutorial sample](https://aka.ms/customer-database-tutorial)
+* [Clone or download the Customer Database Tutorial sample](https://github.com/microsoft/windows-tutorials-customer-database)
 
 After you've cloned/downloaded the repo, you can edit the project by opening **CustomerDatabaseTutorial.sln** with Visual Studio.
 
@@ -247,7 +244,7 @@ Adding a new customer presents a challenge, as the customer will appear as a bla
         get => _newCustomer;
         set
         {
-            if {_newCustomer != value}
+            if (_newCustomer != value)
             {
                 _newCustomer = value;
                 OnPropertyChanged();

@@ -1,17 +1,12 @@
 ---
-author: jwmsft
 description: Configures XAML compilation to join partial classes between markup and code-behind. The code partial class is defined in a separate code file, and the markup partial class is created by code generation during XAML compilation.
 title: xClass attribute
 ms.assetid: 40A7C036-133A-44DF-9D11-0D39232C948F
-ms.author: jimwalk
 ms.date: 02/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp
 ms.localizationpriority: medium
 ---
-
 # x:Class attribute
 
 
@@ -35,7 +30,7 @@ Configures XAML compilation to join partial classes between markup and code-behi
 
 ## Remarks
 
-**x:Class** can be declared as an attribute for any element that is the root of a XAML file/object tree and is being compiled by build actions, or for the [**Application**](https://msdn.microsoft.com/library/windows/apps/br242324) root in the application definition of a compiled application. Declaring **x:Class** on any element other than a root node, and under any circumstances for a XAML file that is not compiled with the **Page** build action, results in a compile-time error.
+**x:Class** can be declared as an attribute for any element that is the root of a XAML file/object tree and is being compiled by build actions, or for the [**Application**](/uwp/api/Windows.UI.Xaml.Application) root in the application definition of a compiled application. Declaring **x:Class** on any element other than a root node, and under any circumstances for a XAML file that is not compiled with the **Page** build action, results in a compile-time error.
 
 The class used as **x:Class** cannot be a nested class.
 
@@ -44,4 +39,3 @@ The value of the **x:Class** attribute must be a string that specifies the fully
 ## CLR language rules
 
 Although your code-behind file can be a C++ file, there are certain conventions that still follow the CLR language form, so that there is no difference in the XAML syntax. In particular, the separator between the namespace and classname components of any **x:Class** value is always a dot ("."), even though the separator between namespace and classname in the C++ code file associated with the XAML is "::". If you declare nested namespaces in C++, then the separator between the successive nested namespace strings should also be "." rather than "::" when you specify the *namespace* part of the **x:Class** value.
-

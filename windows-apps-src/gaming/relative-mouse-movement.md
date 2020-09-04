@@ -1,17 +1,12 @@
 ---
-author: scottmill
 title: Relative mouse movement
 description: Use relative mouse controls, which don't use the system cursor and don't return absolute screen coordinates, to track the pixel delta between mouse movements in games.
-ms.author: scotmi
 ms.date: 02/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp, games, mouse, input
 ms.assetid: 08c35e05-2822-4a01-85b8-44edb9b6898f
 ms.localizationpriority: medium
 ---
-
 # Relative mouse movement and CoreWindow
 
 In games, the mouse is a common control option that is familiar to many players, and is likewise essential to many genres of games, including first- and third-person shooters, and real-time strategy games. Here we discuss the implementation of relative mouse controls, which don't use the system cursor and don't return absolute screen coordinates; instead, they track the pixel delta between mouse movements.
@@ -38,7 +33,7 @@ With this pattern, the location of the absolute mouse cursor is preserved on ent
 ## Handling relative mouse movement
 
 
-To access relative mouse delta values, register for the [MouseDevice::MouseMoved](https://msdn.microsoft.com/library/windows/apps/xaml/windows.devices.input.mousedevice.mousemoved.aspx) event as shown here.
+To access relative mouse delta values, register for the [MouseDevice::MouseMoved](/uwp/api/windows.devices.input.mousedevice.mousemoved) event as shown here.
 
 
 ```cpp
@@ -84,13 +79,13 @@ void MoveLookController::OnMouseMoved(
 
 ```
 
-The event handler in this code example, **OnMouseMoved**, renders the view based on the movements of the mouse. The position of the mouse pointer is passed to the handler as a [MouseEventArgs](https://msdn.microsoft.com/library/windows/apps/xaml/windows.devices.input.mouseeventargs.aspx) object. 
+The event handler in this code example, **OnMouseMoved**, renders the view based on the movements of the mouse. The position of the mouse pointer is passed to the handler as a [MouseEventArgs](/uwp/api/Windows.Devices.Input.MouseEventArgs) object. 
 
-Skip over processing of absolute mouse data from the [CoreWindow::PointerMoved](https://msdn.microsoft.com/library/windows/apps/xaml/windows.ui.core.corewindow.pointermoved.aspx) event when your app changes to handling relative mouse movement values. However, only skip this input if the **CoreWindow::PointerMoved** event occurred as the result of mouse input (as opposed to touch input). The cursor is hidden by setting the [CoreWindow::PointerCursor](https://msdn.microsoft.com/library/windows/apps/xaml/windows.ui.core.corewindow.pointercursor.aspx) to **nullptr**. 
+Skip over processing of absolute mouse data from the [CoreWindow::PointerMoved](/uwp/api/windows.ui.core.corewindow.pointermoved) event when your app changes to handling relative mouse movement values. However, only skip this input if the **CoreWindow::PointerMoved** event occurred as the result of mouse input (as opposed to touch input). The cursor is hidden by setting the [CoreWindow::PointerCursor](/uwp/api/windows.ui.core.corewindow.pointercursor) to **nullptr**. 
 
 ## Returning to absolute mouse movement
 
-When the app exits the 3-D object or scene manipulation mode and no longer uses relative mouse movement (such as when it returns to a menu screen), return to normal processing of absolute mouse movement. At this time, stop reading relative mouse data, restart the processing of standard mouse (and pointer) events, and set [CoreWindow::PointerCursor](https://msdn.microsoft.com/library/windows/apps/xaml/windows.ui.core.corewindow.pointercursor.aspx) to non-null value. 
+When the app exits the 3-D object or scene manipulation mode and no longer uses relative mouse movement (such as when it returns to a menu screen), return to normal processing of absolute mouse movement. At this time, stop reading relative mouse data, restart the processing of standard mouse (and pointer) events, and set [CoreWindow::PointerCursor](/uwp/api/windows.ui.core.corewindow.pointercursor) to non-null value. 
 
 > **Note**  
 When your app is in the 3-D object/scene manipulation mode (processing relative mouse movements with the cursor off), the mouse cannot invoke edge UI such as the charms, back stack, or app bar. Therefore, it is important to provide a mechanism to exit this particular mode, such as the commonly used **Esc** key.

@@ -1,17 +1,12 @@
 ---
-author: TylerMSFT
 title: Launch the People app
 description: This topic describes the ms-people URI scheme. Your app can use this URI scheme to launch the People app for specific actions.
 ms.assetid: 1E604599-26EF-421C-932F-E9935CDB248E
-ms.author: twhitney
 ms.date: 02/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp
 ms.localizationpriority: medium
 ---
-
 # Launch the People app
 
 This topic describes the **ms-people:** URI scheme. Your app can use this URI scheme to launch the People app for specific actions.
@@ -57,7 +52,7 @@ This topic describes the **ms-people:** URI scheme. Your app can use this URI sc
 </div>
 <div> 
 </div></td>
-<td align="left">ms-people:viewcontact:?ContactId=&lt;contactid&gt;&amp;AggregatedId=&lt;aggid&gt;&amp;PhoneNumber= &lt;phonenum&gt;&amp;Email=&lt;email&gt;&amp;ContactName=&lt;name&gt;&amp;Contact=&lt;contactobj&gt;</td>
+<td align="left">ms-people:viewcontact?ContactId=&lt;contactid&gt;&amp;AggregatedId=&lt;aggid&gt;&amp;PhoneNumber= &lt;phonenum&gt;&amp;Email=&lt;email&gt;&amp;ContactName=&lt;name&gt;&amp;Contact=&lt;contactobj&gt;</td>
 </tr>
 <tr class="odd">
 <td align="left">Launches to a Save-contact page within the People app to save the given contact with the supplied phone number or email address.
@@ -71,7 +66,7 @@ This topic describes the **ms-people:** URI scheme. Your app can use this URI sc
 </tr>
 <tr class="even">
 <td align="left">Launches to the add a new contact page within the People app to save the given contact.
-<div class="alert"><p>Use <a href="https://docs.microsoft.com/uwp/api/Windows.System.Launcher#Windows_System_Launcher_LaunchUriForResultsAsync_Windows_Foundation_Uri_Windows_System_LauncherOptions_Windows_Foundation_Collections_ValueSet_">LaunchUriForResultsAsync</a> to open the save new contact page. Using <strong>LaunchUriAsync</strong> will only launch the People app Main page.</p>
+<div class="alert"><p>Use <a href="/uwp/api/Windows.System.Launcher#Windows_System_Launcher_LaunchUriForResultsAsync_Windows_Foundation_Uri_Windows_System_LauncherOptions_Windows_Foundation_Collections_ValueSet_">LaunchUriForResultsAsync</a> to open the save new contact page. Using <strong>LaunchUriAsync</strong> will only launch the People app Main page.</p>
 <p>The parameters are case sensitive.</p>
 <p>The order of the parameters doesn’t matter.</p>
 <p>You can use any combination of supported parameters.</p>

@@ -1,16 +1,11 @@
 ---
-author: TerryWarwick
 title: Camera Barcode Scanner
 description: This article lists the camera barcode scanner features that are available for UWP apps and links to the how-to articles that show how to use them.
-ms.author: jken
-ms.date: 05/1/2018
+ms.date: 05/02/2018
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp, point of service, pos
 ms.localizationpriority: medium
 ---
-
 # Camera barcode scanner
 A camera barcode scanner is created dynamically as Windows pairs the camera(s) attached to your computer with a software decoder.  Each camera - decoder pair is a fully functional barcode scanner.   
 
@@ -26,3 +21,9 @@ A camera barcode scanner is created dynamically as Windows pairs the camera(s) a
 
 > [!NOTE]
 > The software decoder built into Windows 10 is provided courtesy of  [*Digimarc Corporation*](https://www.digimarc.com/)
+
+## See also
+
+### Samples
+
+- [Barcode scanner sample](https://github.com/microsoft/Windows-universal-samples/tree/master/Samples/BarcodeScanner)

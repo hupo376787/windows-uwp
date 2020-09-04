@@ -1,18 +1,13 @@
 ---
-author: anbare
-Description: Learn how to use a progress bar within your toast notification.
+description: Use a progress bar inside your toast notification to convey the status of long-running operations to the user.
 title: Toast progress bar and data binding
 label: Toast progress bar and data binding
 template: detail.hbs
-ms.author: mijacobs
-ms.date: 12/7/2017
+ms.date: 12/07/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp, toast, progress bar, toast progress bar, notification, toast data binding
 ms.localizationpriority: medium
 ---
-
 # Toast progress bar and data binding
 
 Using a progress bar inside your toast notification allows you to convey the status of long-running operations to the user, like downloads, video rendering, exercise goals, and more.
@@ -20,9 +15,9 @@ Using a progress bar inside your toast notification allows you to convey the sta
 > [!IMPORTANT]
 > **Requires Creators Update and 1.4.0 of Notifications library**: You must target SDK 15063 and be running build 15063 or higher to use progress bars on toasts. You must use version 1.4.0 or higher of the [UWP Community Toolkit Notifications NuGet library](https://www.nuget.org/packages/Microsoft.Toolkit.Uwp.Notifications/) to construct the progress bar in your toast's content.
 
-A progress bar inside a toast can either be "indetermindate" (no specific value, animated dots indicate an operation is occurring) or "determinate" (a specific percent of the bar is filled, like 60%).
+A progress bar inside a toast can either be "indeterminate" (no specific value, animated dots indicate an operation is occurring) or "determinate" (a specific percent of the bar is filled, like 60%).
 
-> **Important APIs**: [NotificationData class](https://docs.microsoft.com/uwp/api/windows.ui.notifications.notificationdata), [ToastNotifier.Update method](https://docs.microsoft.com/uwp/api/Windows.UI.Notifications.ToastNotifier.Update), [ToastNotification class](https://docs.microsoft.com/uwp/api/Windows.UI.Notifications.ToastNotification)
+> **Important APIs**: [NotificationData class](/uwp/api/windows.ui.notifications.notificationdata), [ToastNotifier.Update method](/uwp/api/Windows.UI.Notifications.ToastNotifier.Update), [ToastNotification class](/uwp/api/Windows.UI.Notifications.ToastNotification)
 
 > [!NOTE]
 > Only Desktop supports progress bars in toast notifications. On other devices, the progress bar will be dropped from your notification.
@@ -156,7 +151,7 @@ public void SendUpdatableToastWithProgress()
 }
 ```
 
-Then, when you want to change your **Data** values, use the [**Update**](https://docs.microsoft.com/uwp/api/Windows.UI.Notifications.ToastNotifier.Update) method to provide the new data without re-constructing the entire toast payload.
+Then, when you want to change your **Data** values, use the [**Update**](/uwp/api/Windows.UI.Notifications.ToastNotifier.Update) method to provide the new data without re-constructing the entire toast payload.
 
 ```csharp
 using Windows.UI.Notifications;
@@ -187,7 +182,7 @@ public void UpdateProgress()
 
 Using the **Update** method rather than replacing the entire toast also ensures that the toast notification stays in the same position in Action Center and doesn't move up or down. It would be quite confusing to the user if the toast kept jumping to the top of Action Center every few seconds while the progress bar filled!
 
-The **Update** method returns an enum, [**NotificationUpdateResult**](https://docs.microsoft.com/uwp/api/windows.ui.notifications.notificationupdateresult), which lets you know whether the update succeeded or whether the notification couldn't be found (which means the user has likely dismissed your notification and you should stop sending updates to it). We do not recommend popping another toast until your progress operation has been completed (like when the download completes).
+The **Update** method returns an enum, [**NotificationUpdateResult**](/uwp/api/windows.ui.notifications.notificationupdateresult), which lets you know whether the update succeeded or whether the notification couldn't be found (which means the user has likely dismissed your notification and you should stop sending updates to it). We do not recommend popping another toast until your progress operation has been completed (like when the download completes).
 
 
 ## Elements that support data binding

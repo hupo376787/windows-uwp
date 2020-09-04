@@ -1,28 +1,26 @@
-﻿---
-author: jnHs
-Description: Here’s some important info you’ll need to ensure that you receive payment for your apps, in-app products (IAPs), and advertising earnings.
+---
+Description: Learn about receiving payments for your apps, add-ons (in-app products), and advertising earnings.
 title: Getting paid
 ms.assetid: 37D1EF45-C4A8-4849-8819-3D4A4898215C
-ms.author: wdg-dev-content
-ms.date: 02/05/2018
+ms.date: 05/29/2020
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp, payments, app sales, app proceeds, payout, store fee, payout hold, percentage
 ms.localizationpriority: medium
 ---
-
 # Getting paid
-Here’s some important info you’ll need to ensure that you receive payment for your apps, add-ons, and advertising earnings.
+Here’s some important info about receiving payment for your apps, add-ons, and advertising earnings.
 
 > [!IMPORTANT]
-> Before you can receive money from app sales in the Microsoft Store, you need to [set up your payout account and and fill out the necessary tax forms](setting-up-your-payout-account-and-tax-forms.md).
+> Before you can receive money from app sales in the Microsoft Store, you need to [set up your payout account and fill out the necessary tax forms](setting-up-your-payout-account-and-tax-forms.md).
+
+> [!NOTE]
+> If you're looking for support regarding payouts, including configuring payout accounts, missing payouts, putting payouts on hold, or anything else, contact support [here](https://developer.microsoft.com/windows/support).
 
 ## Store fee
 
-When you [sign up for a developer account](http://go.microsoft.com/fwlink/p/?LinkID=615100), you accept the [App Developer Agreement](https://docs.microsoft.com/legal/windows/agreements/app-developer-agreement). This agreement explains the relationship between you and Microsoft as it pertains to selling apps in the Microsoft Store, including the Store fee that Microsoft charges for every sale made.
+When you [sign up for a developer account](https://developer.microsoft.com/store/register), you accept the [App Developer Agreement](/legal/windows/agreements/app-developer-agreement). This agreement explains the relationship between you and Microsoft as it pertains to selling apps in the Microsoft Store, including the Store fee that Microsoft charges for every sale made.
 
-In most cases, the Store fee is 30%. Fees are officially defined in the [App Developer Agreement](https://docs.microsoft.com/legal/windows/agreements/app-developer-agreement). Always review that document if you have any questions.
+Fees are officially defined in the [App Developer Agreement](/legal/windows/agreements/app-developer-agreement). Always review that document if you have any questions.
 
 The Store fee is applied to all app sales collected by the Microsoft Store, including add-ons.
 
@@ -36,7 +34,7 @@ You can offer your app for free, or you can pick a price that customers must pay
 > [!NOTE] 
 > These price tiers also apply to any add-ons that you offer from within your app.
 
-Each price tier has a corresponding value in each of the currencies offered by the Store. We use these values to help you sell your apps at a comparable price point worldwide. However, due to changes in foreign exchange rates, the exact sales amount may vary slightly from one currency to another.
+Each price tier has a corresponding value in each of the currencies offered by the Store. We use these values to help you sell your apps at a comparable price point worldwide. However, due to changes in foreign exchange rates, the exact sales amount may vary slightly from one currency to another. Exchange rates are calculated monthly. Based on when your transaction took place, the appropriate exchange rate is applied. The exchange rate and the date range for which it was in force are indicated on your payout report in the columns exchangeRate and exchangeRateDate respectively.
 
 You also have the option to enter a free-form price of your choosing in a specific market’s local currency. When you do this, the price will not be adjusted (even if conversion rates change) unless you submit an update with a new price. 
 
@@ -45,7 +43,7 @@ Keep in mind that the price you select may include sales or value-added tax that
 
 ## Payout reporting
 
-You can access details about your payment info and download reports in the **Payout summary** of the Windows Dev Center dashboard. For more about the info shown here, and how we categorize the money you earn, see [Payout summary](payout-summary.md).
+You can access details about your payment info and download reports in the **Payout summary** of [Partner Center](https://partner.microsoft.com/dashboard). For more about the info shown here, and how we categorize the money you earn, see [Payout summary](payout-summary.md).
 
 
 ## Payout timeframe
@@ -55,20 +53,16 @@ Payments are made on a monthly basis (provided the applicable payment threshold 
 
 ##  Payout hold status
 
-By default, we’ll send payments on a monthly basis as described above. However, you have the option to put your payouts on hold, which will prevent us from sending payments to your account. If you choose to put your payouts on hold, we’ll continue to record any revenue that you earn and provide the details in your **Payout summary**. However, we won’t send any payments to your account until you remove the hold. 
+By default, we’ll send payments on a monthly basis as described above. However, you have the option to put your payouts for a program on hold, which will prevent us from sending payments to your account. If you choose to put your payouts on hold, we’ll continue to record any revenue that you earn and provide the details in your **Payout summary**. However, we won’t send any payments to your account until you remove the hold.
 
-To place your payments on hold, go to **Account settings**. Under **Financial details**, in the **Payout hold status** section, toggle the slider to **On**. You can change your payout hold status at any time, but be aware that your decision will impact the next monthly payout. For example, if you want to hold April’s payout, make sure to set your payout hold status to **On** before the end of March.
+To place your payments on hold, go to **Developer settings**. Under **Payout and tax**, in the **Payout and tax profile assignment** section, locate the program for which you would like payments held. Click the **Hold my Payment** checkbox to hold payments for this program. You can change your payout hold status at any time, but be aware that your decision will impact the next monthly payout. For example, if you want to hold April’s payout, make sure to set your payout hold status to **On** before the end of March.
 
-Once you have set your payout hold status to **On**, all payouts will be on hold until you toggle the slider back to **Off**. When you do so, you’ll be included during the next monthly payout cycle (provided any applicable payment thresholds have been met). For example, if you’ve had your payouts on hold, but would like to have a payout generated in June, then make sure to toggle the payout hold status to **Off** before the end of May.
+Once you have set your payout hold status to **On**, all payouts for this program will be on hold until you toggle the slider back to **Off**. When you do so, you’ll be included during the next monthly payout cycle (provided any applicable payment thresholds have been met). For example, if you’ve had your payouts on hold, but would like to have a payout generated in June, then make sure to toggle the payout hold status to **Off** before the end of May.
 
 > [!NOTE]
-> Your **Payout hold status** selection applies to **all** revenue sources that are paid through Windows Dev Center (Microsoft Store, advertising, Azure Marketplace, etc.). You cannot select different hold statuses for each revenue source.
+> Your **Payout hold status** applies to each program individually (Microsoft Store, advertising, Azure Marketplace, etc.). If you wish to hold payments on all of your programs, you must hold payments on each program individually.
 
 
  
 
  
-
-
-
-

@@ -1,19 +1,14 @@
 ---
-author: lex
 Description: The following article describes all of the properties and elements within the toast content XML payload.
 title: Toast content XML schema
 ms.assetid: AF49EFAC-447E-44C3-93C3-CCBEDCF07D22
 label: Toast content XML schema
 template: detail.hbs
-ms.author: mijacobs
 ms.date: 05/19/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp
 ms.localizationpriority: medium
 ---
-
 # Toast content XML schema
 
  
@@ -78,15 +73,15 @@ scenario?
 
 lang?
 
--   See [this element schema article](https://msdn.microsoft.com/library/windows/apps/br230847) for details on this optional attribute.
+-   See [this element schema article](/uwp/schemas/tiles/toastschema/element-visual) for details on this optional attribute.
 
 baseUri?
 
--   See [this element schema article](https://msdn.microsoft.com/library/windows/apps/br230847) for details on this optional attribute.
+-   See [this element schema article](/uwp/schemas/tiles/toastschema/element-visual) for details on this optional attribute.
 
 addImageQuery?
 
--   See [this element schema article](https://msdn.microsoft.com/library/windows/apps/br230847) for details on this optional attribute.
+-   See [this element schema article](/uwp/schemas/tiles/toastschema/element-visual) for details on this optional attribute.
 
 **Attributes in &lt;binding&gt;**
 
@@ -98,27 +93,27 @@ template?
 
 lang?
 
--   See [this element schema article](https://msdn.microsoft.com/library/windows/apps/br230847) for details on this optional attribute.
+-   See [this element schema article](/uwp/schemas/tiles/toastschema/element-visual) for details on this optional attribute.
 
 baseUri?
 
--   See [this element schema article](https://msdn.microsoft.com/library/windows/apps/br230847) for details on this optional attribute.
+-   See [this element schema article](/uwp/schemas/tiles/toastschema/element-visual) for details on this optional attribute.
 
 addImageQuery?
 
--   See [this element schema article](https://msdn.microsoft.com/library/windows/apps/br230847) for details on this optional attribute.
+-   See [this element schema article](/uwp/schemas/tiles/toastschema/element-visual) for details on this optional attribute.
 
 **Attributes in &lt;text&gt;**
 
 lang?
 
--   See [this element schema article](https://msdn.microsoft.com/library/windows/apps/br230847) for details on this optional attribute.
+-   See [this element schema article](/uwp/schemas/tiles/toastschema/element-visual) for details on this optional attribute.
 
 **Attributes in &lt;image&gt;**
 
 src
 
--   See [this element schema article](https://msdn.microsoft.com/library/windows/apps/br230844) for details on this required attribute.
+-   See [this element schema article](/uwp/schemas/tiles/toastschema/element-image) for details on this required attribute.
 
 placement?
 
@@ -130,11 +125,11 @@ placement?
 
 alt?
 
--   See [this element schema article](https://msdn.microsoft.com/library/windows/apps/br230844) for details on this optional attribute.
+-   See [this element schema article](/uwp/schemas/tiles/toastschema/element-image) for details on this optional attribute.
 
 addImageQuery?
 
--   See [this element schema article](https://msdn.microsoft.com/library/windows/apps/br230844) for details on this optional attribute.
+-   See [this element schema article](/uwp/schemas/tiles/toastschema/element-image) for details on this optional attribute.
 
 hint-crop?
 
@@ -147,15 +142,15 @@ hint-crop?
 
 src?
 
--   See [this element schema article](https://msdn.microsoft.com/library/windows/apps/br230842) for details on this optional attribute.
+-   See [this element schema article](/uwp/schemas/tiles/toastschema/element-audio) for details on this optional attribute.
 
 loop?
 
--   See [this element schema article](https://msdn.microsoft.com/library/windows/apps/br230842) for details on this optional attribute.
+-   See [this element schema article](/uwp/schemas/tiles/toastschema/element-audio) for details on this optional attribute.
 
 silent?
 
--   See [this element schema article](https://msdn.microsoft.com/library/windows/apps/br230842) for details on this optional attribute.
+-   See [this element schema article](/uwp/schemas/tiles/toastschema/element-audio) for details on this optional attribute.
 
 ## Schemas: &lt;action&gt;
 

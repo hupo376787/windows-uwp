@@ -4,15 +4,12 @@ description: Streaming resources can be used in shader resource views (SRV), ren
 ms.assetid: 18DA5D61-930D-4466-8EFE-0CED566EA4A6
 keywords:
 - Pipeline access to streaming resources
-author: michaelfromredmond
-ms.author: mithom
 ms.date: 02/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
+
+
 ms.localizationpriority: medium
 ---
-
 # Pipeline access to streaming resources
 
 
@@ -59,7 +56,7 @@ If all tiles behind a memory access footprint from a shader are mapped to unique
 </tr>
 <tr class="even">
 <td align="left"><p><a href="hlsl-streaming-resources-exposure.md">HLSL streaming resources exposure</a></p></td>
-<td align="left"><p>A specific Microsoft High Level Shader Language (HLSL) syntax is required to support streaming resources in <a href="https://msdn.microsoft.com/library/windows/desktop/ff471356">Shader Model 5</a>.</p></td>
+<td align="left"><p>A specific Microsoft High Level Shader Language (HLSL) syntax is required to support streaming resources in <a href="https://docs.microsoft.com/windows/desktop/direct3dhlsl/d3d11-graphics-reference-sm5">Shader Model 5</a>.</p></td>
 </tr>
 </tbody>
 </table>

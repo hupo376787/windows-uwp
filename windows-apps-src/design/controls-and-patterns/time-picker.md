@@ -1,15 +1,11 @@
 ---
-author: muhsinking
 Description: The time picker gives you a standardized way to let users pick a time value using touch, mouse, or keyboard input.
 title: Time picker
 ms.assetid: 5124ecda-09e6-449e-9d4a-d969dca46aa3
 label: Time picker
 template: detail.hbs
-ms.author: mukin
 ms.date: 05/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp
 pm-contact: kisai
 design-contact: ksulliv
@@ -20,9 +16,17 @@ ms.localizationpriority: medium
 # Time picker
  
 
-The time picker gives you a standardized way to let users pick a time value using touch, mouse, or keyboard input. 
+The time picker gives you a standardized way to let users pick a time value using touch, mouse, or keyboard input.
 
-> **Important APIs**: [TimePicker class](https://msdn.microsoft.com/library/windows/apps/xaml/windows.ui.xaml.controls.timepicker.aspx), [Time property](https://msdn.microsoft.com/library/windows/apps/xaml/windows.ui.xaml.controls.timepicker.time.aspx)
+![Example of time picker](images/time-picker-closed.png)
+
+**Get the Windows UI Library**
+
+|  |  |
+| - | - |
+| ![WinUI logo](images/winui-logo-64x64.png) | Windows UI Library 2.2 or later includes a new template for this control that uses rounded corners. For more info, see [Corner radius](../style/rounded-corner.md). WinUI is a NuGet package that contains new controls and UI features for Windows apps. For more info, including installation instructions, see [Windows UI Library](/uwp/toolkits/winui/). |
+
+> **Platform APIs**: [TimePicker class](/uwp/api/Windows.UI.Xaml.Controls.TimePicker), [Time property](/uwp/api/windows.ui.xaml.controls.timepicker.time)
 
 
 ## Is this the right control?
@@ -35,12 +39,12 @@ For more info about choosing the right control, see the [Date and time controls]
 <table>
 <th align="left">XAML Controls Gallery<th>
 <tr>
-<td><img src="images/xaml-controls-gallery-sm.png" alt="XAML controls gallery"></img></td>
+<td><img src="images/xaml-controls-gallery-app-icon-sm.png" alt="XAML controls gallery"></img></td>
 <td>
     <p>If you have the <strong style="font-weight: semi-bold">XAML Controls Gallery</strong> app installed, click here to <a href="xamlcontrolsgallery:/item/TimePicker">open the app and see the TimePicker in action</a>.</p>
     <ul>
     <li><a href="https://www.microsoft.com/store/productId/9MSVH128X2ZT">Get the XAML Controls Gallery app (Microsoft Store)</a></li>
-    <li><a href="https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/XamlUIBasics">Get the source code (GitHub)</a></li>
+    <li><a href="https://github.com/Microsoft/Xaml-Controls-Gallery">Get the source code (GitHub)</a></li>
     </ul>
 </td>
 </tr>
@@ -55,7 +59,7 @@ The entry point displays the chosen time, and when the user selects the entry po
 This example shows how to create a simple time picker with a header.
 
 ```xaml
-<TimePicker x:Name=arrivalTimePicker Header="Arrival time"/>
+<TimePicker x:Name="arrivalTimePicker" Header="Arrival time"/>
 ```
 
 ```csharp
@@ -72,7 +76,7 @@ The resulting time picker looks like this:
 
 ## Get the sample code
 
-- [XAML Controls Gallery sample](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/XamlUIBasics) - See all the XAML controls in an interactive format.
+- [XAML Controls Gallery sample](https://github.com/Microsoft/Xaml-Controls-Gallery) - See all the XAML controls in an interactive format.
 
 ## Related topics
 

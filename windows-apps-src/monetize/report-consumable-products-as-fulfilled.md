@@ -1,17 +1,12 @@
 ---
-author: mcleanbyron
 ms.assetid: E9BEB2D2-155F-45F6-95F8-6B36C3E81649
 description: Use this method in the Microsoft Store collection API to report a consumable product as fulfilled for a given customer. Before a user can repurchase a consumable product, your app or service must report the consumable product as fulfilled for that user.
 title: Report consumable products as fulfilled
-ms.author: mcleans
-ms.date: 03/16/2018
+ms.date: 03/19/2018
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp, Microsoft Store collection API, fulfill, consumable
 ms.localizationpriority: medium
 ---
-
 # Report consumable products as fulfilled
 
 Use this method in the Microsoft Store collection API to report a consumable product as fulfilled for a given customer. Before a user can repurchase a consumable product, your app or service must report the consumable product as fulfilled for that user.
@@ -59,7 +54,7 @@ For more information, see [Manage product entitlements from a service](view-and-
 | itemId        | string       | The *itemId* value returned by a [query for products](query-for-products.md). Use this parameter with *trackingId*      | No       |
 | trackingId    | guid         | A unique tracking ID provided by developer. Use this parameter with *itemId*.         | No       |
 | productId     | string       | The *productId* value returned by a [query for products](query-for-products.md). Use this parameter with *transactionId*   | No       |
-| transactionId | guid         | A transaction ID value that is obtained from one of the following sources. Use this parameter with *productId*.<ul><li>The [TransactionID](https://docs.microsoft.com/uwp/api/windows.applicationmodel.store.purchaseresults.transactionid) property of the [PurchaseResults](https://msdn.microsoft.com/library/windows/apps/dn263392) class.</li><li>The app or product receipt that is returned by [RequestProductPurchaseAsync](https://docs.microsoft.com/uwp/api/windows.applicationmodel.store.currentapp.requestproductpurchaseasync), [RequestAppPurchaseAsync](https://docs.microsoft.com/uwp/api/windows.applicationmodel.store.currentapp.requestapppurchaseasync), or [GetAppReceiptAsync](https://docs.microsoft.com/uwp/api/windows.applicationmodel.store.currentapp.getappreceiptasync).</li><li>The *transactionId* parameter returned by a [query for products](query-for-products.md).</li></ul>   | No       |
+| transactionId | guid         | A transaction ID value that is obtained from one of the following sources. Use this parameter with *productId*.<ul><li>The [TransactionID](/uwp/api/windows.applicationmodel.store.purchaseresults.transactionid) property of the [PurchaseResults](/uwp/api/Windows.ApplicationModel.Store.PurchaseResults) class.</li><li>The app or product receipt that is returned by [RequestProductPurchaseAsync](/uwp/api/windows.applicationmodel.store.currentapp.requestproductpurchaseasync), [RequestAppPurchaseAsync](/uwp/api/windows.applicationmodel.store.currentapp.requestapppurchaseasync), or [GetAppReceiptAsync](/uwp/api/windows.applicationmodel.store.currentapp.getappreceiptasync).</li><li>The *transactionId* parameter returned by a [query for products](query-for-products.md).</li></ul>   | No       |
 
 
 The UserIdentity object contains the following parameters.

@@ -1,19 +1,14 @@
 ---
-author: stevewhims
 Description: In this scenario, we'll make a new app to represent our custom build system. We'll create a resource indexer and add strings and other kinds of resources to it. Then we'll generate and dump a PRI file.
 title: Scenario 1 Generate a PRI file from string resources and asset files
 template: detail.hbs
-ms.author: stwhi
 ms.date: 05/07/2018
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp, resource, image, asset, MRT, qualifier
 ms.localizationpriority: medium
 ---
-
 # Scenario 1: Generate a PRI file from string resources and asset files
-In this scenario, we'll use the [package resource indexing (PRI) APIs](https://msdn.microsoft.com/library/windows/desktop/mt845690) to make a new app to represent our custom build system. The purpose of this custom build system, remember, is to create PRI files for a target UWP app. So, as part of this walkthrough, we'll create some sample resource files (containing strings, and other kinds of resources) to represent that target UWP app's resources.
+In this scenario, we'll use the [package resource indexing (PRI) APIs](/windows/desktop/menurc/pri-indexing-reference) to make a new app to represent our custom build system. The purpose of this custom build system, remember, is to create PRI files for a target UWP app. So, as part of this walkthrough, we'll create some sample resource files (containing strings, and other kinds of resources) to represent that target UWP app's resources.
 
 ## New project
 Begin by creating a new project in Microsoft Visual Studio. Create a **Visual C++ Windows Console Application** project, and name it *CBSConsoleApp* (for "custom build system console app").
@@ -118,7 +113,7 @@ std::wstring filePathPRIDumpBasic{ generatedPRIsFolder + L"\\resources-pri-dump-
 ::CreateDirectory(generatedPRIsFolder.c_str(), nullptr);
 ```
 
-Immediately after the call to Initialize COM, declare a resource indexer handle and then call [**MrmCreateResourceIndexer**]() to create a resource indexer.
+Immediately after the call to Initialize COM, declare a resource indexer handle and then call [**MrmCreateResourceIndexer**](/windows/desktop/menurc/mrmcreateresourceindexer) to create a resource indexer.
 
 ```cppwinrt
 MrmResourceIndexerHandle indexer;
@@ -138,7 +133,7 @@ Here's an explanation of the arguments being passed to **MrmCreateResourceIndexe
 - A list of default resource qualifiers.
 - A pointer to our resource indexer handle so that the function can set it.
 
-The next step is to add our resources to the resource indexer that we just created. `resources.resw` is a Resources File (.resw) that contains the neutral strings for our target UWP app. Scroll up (in this topic) if you want to see its contents. `de-DE\resources.resw` contains our German strings, and `en-US\resources.resw` our English strings. To add the string resources inside a Resources File to a resource indexer, you call [**MrmIndexResourceContainerAutoQualifiers**](). Thirdly, we call the [**MrmIndexFile**]() function to a file containing a neutral image resource to the resource indexer.
+The next step is to add our resources to the resource indexer that we just created. `resources.resw` is a Resources File (.resw) that contains the neutral strings for our target UWP app. Scroll up (in this topic) if you want to see its contents. `de-DE\resources.resw` contains our German strings, and `en-US\resources.resw` our English strings. To add the string resources inside a Resources File to a resource indexer, you call [**MrmIndexResourceContainerAutoQualifiers**](/windows/desktop/menurc/mrmindexresourcecontainerautoqualifiers). Thirdly, we call the [**MrmIndexFile**](/windows/desktop/menurc/mrmindexfile) function to a file containing a neutral image resource to the resource indexer.
 
 ```cppwinrt
 ::ThrowIfFailed(::MrmIndexResourceContainerAutoQualifiers(indexer, L"resources.resw"));
@@ -149,19 +144,19 @@ The next step is to add our resources to the resource indexer that we just creat
 
 In the call to **MrmIndexFile**, the value L"ms-resource:///Files/sample-image.png" is the resource uri. The first path segment is "Files", and that's what will be used as the resource map subtree name when we later generate a PRI file from this resource indexer.
 
-Having briefed the resource indexer about our resource files, it's time to have it generate us a PRI file on disk by calling the [**MrmCreateResourceFile**]() function.
+Having briefed the resource indexer about our resource files, it's time to have it generate us a PRI file on disk by calling the [**MrmCreateResourceFile**](/windows/desktop/menurc/mrmcreateresourcefile) function.
 
 ```cppwinrt
 ::ThrowIfFailed(::MrmCreateResourceFile(indexer, MrmPackagingModeStandaloneFile, MrmPackagingOptionsNone, generatedPRIsFolder.c_str()));
 ```
 
-At this point, a PRI file named `resources.pri` has been created inside a folder named `Generated PRIs`. Now that we're done with the resource indexer, we call [**MrmDestroyIndexerAndMessages**]() to destroy its handle and release any machine resources that it allocated.
+At this point, a PRI file named `resources.pri` has been created inside a folder named `Generated PRIs`. Now that we're done with the resource indexer, we call [**MrmDestroyIndexerAndMessages**](/windows/desktop/menurc/mrmdestroyindexerandmessages) to destroy its handle and release any machine resources that it allocated.
 
 ```cppwinrt
 ::ThrowIfFailed(::MrmDestroyIndexerAndMessages(indexer));
 ```
 
-Since a PRI file is binary, it's going to be easier to view what we've just generated if we dump the binary PRI file to its XML equivalent. A call to [**MrmDumpPriFile**]()does just that.
+Since a PRI file is binary, it's going to be easier to view what we've just generated if we dump the binary PRI file to its XML equivalent. A call to [**MrmDumpPriFile**](/windows/desktop/menurc/mrmdumpprifile) does just that.
 
 ```cppwinrt
 ::ThrowIfFailed(::MrmDumpPriFile(filePathPRI.c_str(), nullptr, MrmDumpType::MrmDumpType_Basic, filePathPRIDumpBasic.c_str()));
@@ -227,10 +222,10 @@ The info begins with a resource map, which is named with the package family name
 The first string resource is *EnOnlyString* from `en-US\resources.resw`, and it has just one candidate (which matches the *language-en-US* qualifier). Next comes *LocalizedString1* from both `resources.resw` and `en-US\resources.resw`. Consequently, it has two candidates: one matching *language-en-US*, and a fallback neutral candidate that matches any context. Similarly, *LocalizedString2* has two candidates: *language-de-DE*, and neutral. And, finally, *NeutralOnlyString* only exists in neutral form. I gave it that name to make it clear that it's not meant to be localized.
 
 ## Summary
-In this scenario, we showed how to use the [package resource indexing (PRI) APIs](https://msdn.microsoft.com/library/windows/desktop/mt845690) to create a resource indexer. We added string resources and asset files to the resource indexer. Then, we used the resource indexer to generated a binary PRI file. And finally we dumped the binary PRI file in the form of XML so that we could confirm that it contains the info we expected.
+In this scenario, we showed how to use the [package resource indexing (PRI) APIs](/windows/desktop/menurc/pri-indexing-reference) to create a resource indexer. We added string resources and asset files to the resource indexer. Then, we used the resource indexer to generated a binary PRI file. And finally we dumped the binary PRI file in the form of XML so that we could confirm that it contains the info we expected.
 
 ## Important APIs
-* [Package resource indexing (PRI) reference](https://msdn.microsoft.com/library/windows/desktop/mt845690)
+* [Package resource indexing (PRI) reference](/windows/desktop/menurc/pri-indexing-reference)
 
 ## Related topics
 * [Package resource indexing (PRI) APIs and custom build systems](pri-apis-custom-build-systems.md)

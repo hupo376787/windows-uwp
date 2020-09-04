@@ -1,17 +1,12 @@
 ---
-author: mtoepke
 title: Walkthrough-- Direct3D 11 shadow volume depth buffers
 description: This walkthrough demonstrates how to render shadow volumes using depth maps, using Direct3D 11 on devices of all Direct3D feature levels.
 ms.assetid: d15e6501-1a1d-d99c-d1d8-ad79b849db90
-ms.author: mtoepke
 ms.date: 02/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp, games, directx, shadow volumes, depth buffers, directx 11
 ms.localizationpriority: medium
 ---
-
 # Walkthrough: Implement shadow volumes using depth buffers in Direct3D 11
 
 
@@ -74,18 +69,14 @@ You should [Prepare your dev environment for Universal Windows Platform (UWP) Di
 
 **Direct3D**
 
-* [Writing HLSL Shaders in Direct3D 9](https://msdn.microsoft.com/library/windows/desktop/bb944006)
+* [Writing HLSL Shaders in Direct3D 9](/windows/desktop/direct3dhlsl/dx-graphics-hlsl-writing-shaders-9)
 * [Create a new DirectX 11 project for UWP](user-interface.md)
 
 **Shadow mapping technical articles**
 
-* [Common Techniques to Improve Shadow Depth Maps](https://msdn.microsoft.com/library/windows/desktop/ee416324)
-* [Cascaded Shadow Maps](https://msdn.microsoft.com/library/windows/desktop/ee416307)
+* [Common Techniques to Improve Shadow Depth Maps](/windows/desktop/DxTechArts/common-techniques-to-improve-shadow-depth-maps)
+* [Cascaded Shadow Maps](/windows/desktop/DxTechArts/cascaded-shadow-maps)
 
  
 
  
-
-
-
-

@@ -1,16 +1,12 @@
 ---
-author: QuinnRadich
 title: Learning track - Construct and configure a form
-description: Learn what you need to do to create a robust form in your app.
-ms.author: quradic
+description: Learn how to construct and configure a robust form  in a Universal Windows Platform (UWP) app for handling the input of a significant amount of information.
 ms.date: 05/07/2018
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: get started, uwp, windows 10, learning track, layout, form
 ms.localizationpriority: medium
+ms.custom: RS5
 ---
-
 # Create and customize a form
 
 If you're creating an app that requires users to input a significant amount of information, chances are you'll want to create a form for them to fill out. This article will show you what you need to know in order to create a form that is useful and robust.
@@ -49,7 +45,7 @@ You'll need to fill your form with an assortment of [XAML Controls](../design/co
 * [ToggleSwitch](../design/controls-and-patterns/toggles.md) lets a user choose between two options.
 * [DatePicker](../design/controls-and-patterns/date-picker.md) lets a user select a date value.
 * [TimePicker](../design/controls-and-patterns/time-picker.md) lets a user select a time value.
-* [ComboBox](https://docs.microsoft.com/uwp/api/Windows.UI.Xaml.Controls.ComboBox) expand to display a list of selectable items. You can learn more about them [here](../design/controls-and-patterns/lists.md#drop-down-lists)
+* [ComboBox](/uwp/api/Windows.UI.Xaml.Controls.ComboBox) expand to display a list of selectable items. You can learn more about them [here](../design/controls-and-patterns/combo-box.md)
 
 You also might want to add [buttons](../design/controls-and-patterns/buttons.md), so the user can save or cancel.
 
@@ -97,26 +93,35 @@ The basic form outline that we've put together is already a **fluid layout**, as
 More important to responsive layouts are **visual states.** A visual state defines property values that are applied to a given element when a given condition is true. [Read up on how to do this in xaml](../design/layout/layouts-with-xaml.md#set-visual-states-in-xaml-markup), and then implement them into your form. Here's what a *very* basic one might look like in our previous sample:
 
 ```xaml
-<VisualStateManager.VisualStateGroups>
-    <VisualStateGroup>
-        <VisualState>
-            <VisualState.StateTriggers>
-                <AdaptiveTrigger MinWindowWidth="640" />
-            </VisualState.StateTriggers>
+<Page ...>
+    <Grid>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="640" />
+                    </VisualState.StateTriggers>
 
-            <VisualState.Setters>
-                <Setter Target="Associate.(RelativePanel.RightOf)" Value="Customer"/>
-                <Setter Target="Associate.(RelativePanel.Below)" Value=""/>
-                <Setter Target="Save.(RelativePanel.Below)" Value="Customer"/>
-            </VisualState.Setters>
-        </VisualState>
-    </VisualStateGroup>
-</VisualStateManager.VisualStateGroups>
+                    <VisualState.Setters>
+                        <Setter Target="Associate.(RelativePanel.RightOf)" Value="Customer"/>
+                        <Setter Target="Associate.(RelativePanel.Below)" Value=""/>
+                        <Setter Target="Save.(RelativePanel.Below)" Value="Customer"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
 
-<RelativePanel>
-    <!--Previous 3 stack panels-->
-</RelativePanel>
+        <RelativePanel>
+            <!-- Customer StackPanel -->
+            <!-- Associate StackPanel -->
+            <!-- Save StackPanel -->
+        </RelativePanel>
+    </Grid>
+</Page>
 ```
+
+> [!IMPORTANT]
+> When you use StateTriggers, always ensure that VisualStateGroups is attached to the first child of the root. Here, **Grid** is the first child of the root **Page** element.
 
 It's not practical to create visual states for a wide array of screen sizes, nor are more than a couple likely to have significant impact on the user experience of your app. We recommend designing instead for a few key breakpoints - you can [read more here](../design/layout/screen-sizes-and-breakpoints-for-responsive-design.md).
 
@@ -133,7 +138,7 @@ When you're creating more complex layouts with more visual elements, you'll want
 
 Though you've created a form here, the concepts of layouts and controls are applicable across all XAML UIs you might construct. Feel free to go back through the docs we've linked you to and experiment with the form you have, adding new UI features and further refining the user experience. If you want step-by-step guidance through more detailed layout features, see our [adaptive layout tutorial](../design/basics/xaml-basics-adaptive-layout.md)
 
-Forms also don't have to exist in a vacuum - you could go one step forward and embed yours within a [master/details pattern](../design/controls-and-patterns/master-details.md) or a [pivot control](../design/controls-and-patterns/tabs-pivot.md). Or if you want to get to work on the code-behind for your form, you might want to get started with our [events overview](../xaml-platform/events-and-routed-events-overview.md).
+Forms also don't have to exist in a vacuum - you could go one step forward and embed yours within a [master/details pattern](../design/controls-and-patterns/master-details.md) or a [pivot control](../design/controls-and-patterns/pivot.md). Or if you want to get to work on the code-behind for your form, you might want to get started with our [events overview](../xaml-platform/events-and-routed-events-overview.md).
 
 ## Useful APIs and docs
 
@@ -144,10 +149,10 @@ Here's a quick summary of APIs and other useful documentation to help you get st
 | API | Description |
 |------|---------------|
 | [Controls useful for forms](../design/controls-and-patterns/forms.md#input-controls) | A list of useful input controls for creating forms, and basic guidance of where to use them. |
-| [Grid](https://docs.microsoft.com/uwp/api/Windows.UI.Xaml.Controls.Grid) | A panel for arranging elements in multi-row and multi-column layouts. |
-| [RelativePanel](https://docs.microsoft.com/uwp/api/Windows.UI.Xaml.Controls.RelativePanel) | A panel for arraging items in relation to other elements and to the panel's boundaries. |
-| [StackPanel](https://docs.microsoft.com/uwp/api/Windows.UI.Xaml.Controls.StackPanel) | A panel for arranging elements into a single horizontal or vertical line. |
-| [VisualState](https://docs.microsoft.com/uwp/api/Windows.UI.Xaml.VisualState) | Allows you to set the appearance of UI elements when they're in particular states. |
+| [Grid](/uwp/api/Windows.UI.Xaml.Controls.Grid) | A panel for arranging elements in multi-row and multi-column layouts. |
+| [RelativePanel](/uwp/api/Windows.UI.Xaml.Controls.RelativePanel) | A panel for arraging items in relation to other elements and to the panel's boundaries. |
+| [StackPanel](/uwp/api/Windows.UI.Xaml.Controls.StackPanel) | A panel for arranging elements into a single horizontal or vertical line. |
+| [VisualState](/uwp/api/Windows.UI.Xaml.VisualState) | Allows you to set the appearance of UI elements when they're in particular states. |
 
 ### Useful docs
 
@@ -159,8 +164,8 @@ Here's a quick summary of APIs and other useful documentation to help you get st
 | [Forms](../design/controls-and-patterns/forms.md) | Overall guidance for creating forms. |
 | [Layout panels](../design/layout/layout-panels.md) | Provides an overview of the types of layout panels and where to use them. |
 | [Master/details pattern](../design/controls-and-patterns/master-details.md) | A design pattern that can be implemented around one or multiple forms. |
-| [Pivot control](../design/controls-and-patterns/tabs-pivot.md) | A control that can contain one or multiple forms. |
-| [Responsive design](../design/layout/responsive-design.md) | An overview of large-scale responsive design principles. | 
+| [Pivot control](../design/controls-and-patterns/pivot.md) | A control that can contain one or multiple forms. |
+| [Responsive design](../design/layout/responsive-design.md) | An overview of large-scale responsive design principles. |
 | [Responsive layouts with XAML](../design/layout/layouts-with-xaml.md) | Specific information on visual states and other implementations of responsive design. |
 | [Screen sizes for responsive design](../design/layout/screen-sizes-and-breakpoints-for-responsive-design.md) | Guidance on which screen sizes to which responsive layouts should be scoped. |
 
@@ -168,7 +173,7 @@ Here's a quick summary of APIs and other useful documentation to help you get st
 
 | Code sample | Description |
 |-----------------|---------------|
-| [Adaptive layout tutorial](../design/basics/xaml-basics-adaptive-layout.md) | A step-by-step guided experience through adaptive layouts and responsive design. | 
+| [Adaptive layout tutorial](../design/basics/xaml-basics-adaptive-layout.md) | A step-by-step guided experience through adaptive layouts and responsive design. |
 | [Customer Orders Database](https://github.com/Microsoft/Windows-appsample-customers-orders-database) | See layout and forms in action on a multi-page enterprise sample. |
-| [XAML Controls Gallery](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/XamlUIBasics) | See a selection of XAML controls, and how they're implemented. |
-| [Additional code samples](https://developer.microsoft.com//windows/samples) | Choose **Controls, layout, and text** in the category drop-down list to see related code samples. |
+| [XAML Controls Gallery](https://github.com/Microsoft/Xaml-Controls-Gallery) | See a selection of XAML controls, and how they're implemented. |
+| [Additional code samples](https://developer.microsoft.com/windows/samples) | Choose **Controls, layout, and text** in the category drop-down list to see related code samples. |

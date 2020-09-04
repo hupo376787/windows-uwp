@@ -1,17 +1,12 @@
 ---
-author: mcleanbyron
 ms.assetid: E322DFFE-8EEC-499D-87BC-EDA5CFC27551
 description: Each Microsoft Store transaction that results in a successful product purchase can optionally return a transaction receipt.
 title: Use receipts to verify product purchases
-ms.author: mcleans
 ms.date: 04/16/2018
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp, in-app purchases, IAPs, receipts, Windows.ApplicationModel.Store
 ms.localizationpriority: medium
 ---
-
 # Use receipts to verify product purchases
 
 Each Microsoft Store transaction that results in a successful product purchase can optionally return a transaction receipt. This receipt provides information about the listed product and monetary cost to the customer.
@@ -19,15 +14,15 @@ Each Microsoft Store transaction that results in a successful product purchase c
 Having access to this information supports scenarios where your app needs to verify that a user purchased your app, or has made add-on (also called in-app product or IAP) purchases from the Microsoft Store. For example, imagine a game that offers downloaded content. If the user who purchased the game content wants to play it on a different device, you need to verify that the user already owns the content. Here's how.
 
 > [!IMPORTANT]
-> This article shows how to use members of the [Windows.ApplicationModel.Store](https://docs.microsoft.com/uwp/api/Windows.ApplicationModel.Store) namespace to get and validate a receipt for an in-app purchase. If you are using the [Windows.Services.Store](https://docs.microsoft.com/uwp/api/Windows.Services.Store) namespace for in-app purchases (introduced in Windows 10, version 1607, and available to projects that target **Windows 10 Anniversary Edition (10.0; Build 14393)** or a later release in Visual Studio), this namespace does not provide an API for getting purchase receipts for in-app purchases. However, you can use a REST method in the Microsoft Store collection API to get data for a purchase transaction. For more information, see [Receipts for in-app purchases](in-app-purchases-and-trials.md#receipts).
+> This article shows how to use members of the [Windows.ApplicationModel.Store](/uwp/api/Windows.ApplicationModel.Store) namespace to get and validate a receipt for an in-app purchase. If you are using the [Windows.Services.Store](/uwp/api/Windows.Services.Store) namespace for in-app purchases (introduced in Windows 10, version 1607, and available to projects that target **Windows 10 Anniversary Edition (10.0; Build 14393)** or a later release in Visual Studio), this namespace does not provide an API for getting purchase receipts for in-app purchases. However, you can use a REST method in the Microsoft Store collection API to get data for a purchase transaction. For more information, see [Receipts for in-app purchases](in-app-purchases-and-trials.md#receipts).
 
 ## Requesting a receipt
 
 
 The **Windows.ApplicationModel.Store** namespace supports several ways to get a receipt:
 
-* When you make a purchase by using [CurrentApp.RequestAppPurchaseAsync](https://docs.microsoft.com/uwp/api/windows.applicationmodel.store.currentapp.requestapppurchaseasync) or [CurrentApp.RequestProductPurchaseAsync](https://docs.microsoft.com/uwp/api/windows.applicationmodel.store.currentapp.requestproductpurchaseasync) (or one of the other overloads of this method), the return value contains the receipt.
-* You can call the [CurrentApp.GetAppReceiptAsync](https://docs.microsoft.com/uwp/api/windows.applicationmodel.store.currentapp.getappreceiptasync) method to retrieve the current receipt info for your app and any add-ons in your app.
+* When you make a purchase by using [CurrentApp.RequestAppPurchaseAsync](/uwp/api/windows.applicationmodel.store.currentapp.requestapppurchaseasync) or [CurrentApp.RequestProductPurchaseAsync](/uwp/api/windows.applicationmodel.store.currentapp.requestproductpurchaseasync) (or one of the other overloads of this method), the return value contains the receipt.
+* You can call the [CurrentApp.GetAppReceiptAsync](/uwp/api/windows.applicationmodel.store.currentapp.getappreceiptasync) method to retrieve the current receipt info for your app and any add-ons in your app.
 
 An app receipt looks something like this.
 
@@ -86,12 +81,12 @@ You can use either of these receipt examples to test your validation code. For m
 
 ## Validating a receipt
 
-To validate a receipt's authenticity, you need your back-end system (a web service or something similar) to check the receipt's signature using the public certificate. To get this certificate, use the URL ```https://go.microsoft.com/fwlink/p/?linkid=246509&cid=CertificateId```, where ```CertificateId``` is the **CertificateId** value in the receipt.
+To validate a receipt's authenticity, you need your back-end system (a web service or something similar) to check the receipt's signature using the public certificate. To get this certificate, use the URL ```https://lic.apps.microsoft.com/licensing/certificateserver/?cid=CertificateId%60%60%60, where ```CertificateId``` is the **CertificateId** value in the receipt.
 
 Here's an example of that validation process. This code runs in a .NET Framework console application that includes a reference to the **System.Security** assembly.
 
 > [!div class="tabbedCodeSnippets"]
-[!code-cs[ReceiptVerificationSample](./code/ReceiptVerificationSample/cs/Program.cs#ReceiptVerificationSample)]
+:::code language="csharp" source="~/../snippets-windows/windows-uwp/monetize/ReceiptVerificationSample/cs/Program.cs" id="ReceiptVerificationSample":::
 
 <span id="receipt-descriptions" />
 
@@ -107,7 +102,7 @@ The root element of this file is the **Receipt** element, which contains informa
 |-------------|------------|--------|--------|
 |  [AppReceipt](#appreceipt)  |    No        |  0 or 1  |  Contains purchase information for the current app.            |
 |  [ProductReceipt](#productreceipt)  |     No       |  0 or more    |   Contains information about an in-app purchase for the current app.     |
-|  Signature  |      Yes      |  1   |   This element is a standard [XML-DSIG construct](http://go.microsoft.com/fwlink/p/?linkid=251093). It contains a **SignatureValue** element, which contains the signature you can use to validate the receipt, and a **SignedInfo** element.      |
+|  Signature  |      Yes      |  1   |   This element is a standard [XML-DSIG construct](https://www.w3.org/TR/xmldsig-core/). It contains a **SignatureValue** element, which contains the signature you can use to validate the receipt, and a **SignedInfo** element.      |
 
 **Receipt** has the following attributes.
 

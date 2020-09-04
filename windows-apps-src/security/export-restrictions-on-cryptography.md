@@ -2,16 +2,11 @@
 title: Export restrictions on cryptography
 description: Use this info to determine if your app uses cryptography in a way that might prevent it from being listed in the Microsoft Store.
 ms.assetid: 204C7D1D-6F08-4AEE-A333-434D715E7617
-author: msatranjr
-ms.author: misatran
 ms.date: 02/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
-keywords: windows 10, uwp
+keywords: windows 10, uwp, security
 ms.localizationpriority: medium
 ---
-
 # Export restrictions on cryptography
 
 
@@ -24,9 +19,9 @@ The Bureau of Industry and Security in the United States Department of Commerce 
 
  
 
-For more info about the U.S. Department of Commerce and the Bureau of Industry and Security, see [About the Bureau of Industry and Security](http://go.microsoft.com/fwlink/p/?LinkID=245644).
+For more info about the U.S. Department of Commerce and the Bureau of Industry and Security, see [About the Bureau of Industry and Security](https://www.bis.doc.gov/about/index.htm).
 
-For info about the Export Administration Regulations (EAR) that govern the export of technology that includes encryption, see [EAR Controls for Items That Use Encryption](http://go.microsoft.com/fwlink/p/?LinkID=245645).
+For info about the Export Administration Regulations (EAR) that govern the export of technology that includes encryption, see [EAR Controls for Items That Use Encryption](https://www.bis.doc.gov/index.php/policy-guidance/encryption).
 
 ## Governed uses
 
@@ -42,7 +37,7 @@ First, determine if your app uses a type of cryptography that is governed by the
 -   Copy protection or digital rights management (DRM)
 -   Antivirus protection
 
-For the complete and current list of cryptographic applications, see [EAR Controls for Items That Use Encryption](http://go.microsoft.com/fwlink/p/?LinkID=245645).
+For the complete and current list of cryptographic applications, see [EAR Controls for Items That Use Encryption](https://www.bis.doc.gov/index.php/policy-guidance/encryption).
 
 ## Non-restricted uses
 
@@ -54,8 +49,8 @@ Note that some of the applications of cryptography are not restricted. Here are 
 -   Digital rights management
 -   Using digital signatures
 
-For the complete and current list of cryptographic applications, see [EAR Controls for Items That Use Encryption](http://go.microsoft.com/fwlink/p/?LinkID=245645).
+For the complete and current list of cryptographic applications, see [EAR Controls for Items That Use Encryption](https://www.bis.doc.gov/index.php/policy-guidance/encryption).
 
 If your app calls, supports, contains, or uses cryptography or encryption for any task that is not in this list, it needs an Export Commodity Classification Number (ECCN).
 
-If you don't have an ECCN, see [ECCN Questions and Answers](http://go.microsoft.com/fwlink/p/?LinkID=245646).
+If you don't have an ECCN, see [ECCN Questions and Answers](https://www.bis.doc.gov/licensing/do_i_needaneccn.html).

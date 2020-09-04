@@ -1,14 +1,10 @@
 ---
-author: jwmsft
-Description: Use content links to embed rich data in your text controls.
 title: Content links in text controls
+description: Learn how to use content links to embed rich data in the TextBlock, RichTextBlock, and RichEditBox controls.
 label: Content links
 template: detail.hbs
-ms.author: jimwalk
 ms.date: 03/07/2018
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp
 pm-contact: miguelrb
 design-contact: 
@@ -19,12 +15,12 @@ ms.localizationpriority: medium
 
 Content links provide a way to embed rich data in your text controls, which lets a user find and use more information about a person or place without leaving the context of your app.
 
-When the user prefixes an entry with an ampersand (@) symbol in a RichEditBox, they’re shown a list of people and/or place suggestions that matches the entry. Then, for example, when the user picks a place, a ContentLink for that place is inserted into the text. When the user invokes the content link from the RichEditBox, a flyout is shown with a map and additional info about the place.
+When the user prefixes an entry with the at (@) symbol in a RichEditBox, they’re shown a list of people and/or place suggestions that matches the entry. Then, for example, when the user picks a place, a ContentLink for that place is inserted into the text. When the user invokes the content link from the RichEditBox, a flyout is shown with a map and additional info about the place.
 
 > **Important APIs**: [ContentLink class](/uwp/api/windows.ui.xaml.documents.contentlink), [ContentLinkInfo class](/uwp/api/windows.ui.text.contentlinkinfo), [RichEditTextRange class](/uwp/api/windows.ui.text.richedittextrange)
 
 > [!NOTE]
-> The APIs for content links are spread accross the following namespaces: Windows.UI.Xaml.Controls, Windows.UI.Xaml.Documents, and Windows.UI.Text.
+> The APIs for content links are spread across the following namespaces: Windows.UI.Xaml.Controls, Windows.UI.Xaml.Documents, and Windows.UI.Text.
 
 
 
@@ -160,7 +156,7 @@ The People picker creates a ContentLinkInfo with a Uri that uses the **ms-people
 - If LinkContentKind is not "People", it opens the **People** app. For example, this can happen if you’ve modified the LinkContentKind in the ContentLinkChanged event handler.
 
 > [!TIP]
-> For more info about opening other apps and websites from your app, see the topics under [Launch an app with a Uri] (/windows/uwp/launch-resume/launch-app-with-uri).
+> For more info about opening other apps and websites from your app, see the topics under [Launch an app with a Uri](../../launch-resume/launch-app-with-uri.md).
 
 #### Invoked
 
@@ -301,7 +297,7 @@ private void Button_Click(object sender, RoutedEventArgs e)
 ```
 
 > [!TIP]
-> When you use a ContentLink in a text control with other text elements in XAML, place the content in a [Span](https://msdn.microsoft.com/library/windows/apps/windows.ui.xaml.documents.span.aspx) container and apply the `xml:space="preserve"` attribute to the Span to keep the white space between the ContentLink and other elements.
+> When you use a ContentLink in a text control with other text elements in XAML, place the content in a [Span](/uwp/api/windows.ui.xaml.documents.span) container and apply the `xml:space="preserve"` attribute to the Span to keep the white space between the ContentLink and other elements.
 
 ## Examples
 

@@ -1,13 +1,9 @@
 ---
-author: laurenhughes
 ms.assetid: 4C59D5AC-58F7-4863-A884-E9E54228A5AD
 title: Enumerate and query files and folders
 description: Access files and folders in either a folder, library, device, or network location. You can also query the files and folders in a location by constructing file and folder queries.
-ms.author: lahugh
-ms.date: 06/28/2018
+ms.date: 12/19/2018
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp
 ms.localizationpriority: medium
 dev_langs:
@@ -16,7 +12,6 @@ dev_langs:
   - cpp
   - vb
 ---
-
 # Enumerate and query files and folders
 
 Access files and folders in either a folder, library, device, or network location. You can also query the files and folders in a location by constructing file and folder queries.
@@ -24,13 +19,13 @@ Access files and folders in either a folder, library, device, or network locatio
 For guidance on how to store your Universal Windows Platform app's data, see the [ApplicationData](/uwp/api/windows.storage.applicationdata) class.
 
 > [!NOTE]
-> Also see the [Folder enumeration sample](http://go.microsoft.com/fwlink/p/?linkid=619993).
+> For a complete sample, see the [Folder enumeration sample](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/FolderEnumeration).
 
 ## Prerequisites
 
 -   **Understand async programming for Universal Windows Platform (UWP) apps**
 
-    You can learn how to write asynchronous apps in C# or Visual Basic, see [Call asynchronous APIs in C# or Visual Basic](/windows/uwp/threading-async/call-asynchronous-apis-in-csharp-or-visual-basic). To learn how to write asynchronous apps in C++/WinRT, see [Concurrency and asynchronous operations with C++/WinRT](/windows/uwp/cpp-and-winrt-apis/concurrency). To learn how to write asynchronous apps in C++/CX, see [Asynchronous programming in C++/CX](/windows/uwp/threading-async/asynchronous-programming-in-cpp-universal-windows-platform-apps).
+    You can learn how to write asynchronous apps in C# or Visual Basic, see [Call asynchronous APIs in C# or Visual Basic](../threading-async/call-asynchronous-apis-in-csharp-or-visual-basic.md). To learn how to write asynchronous apps in C++/WinRT, see [Concurrency and asynchronous operations with C++/WinRT](../cpp-and-winrt-apis/concurrency.md). To learn how to write asynchronous apps in C++/CX, see [Asynchronous programming in C++/CX](../threading-async/asynchronous-programming-in-cpp-universal-windows-platform-apps.md).
 
 -   **Access permissions to the location**
 
@@ -47,7 +42,7 @@ In this example we first use the [**StorageFolder.GetFilesAsync**](/uwp/api/wind
 StorageFolder picturesFolder = KnownFolders.PicturesLibrary;
 StringBuilder outputText = new StringBuilder();
 
-IReadOnlyList<StorageFilefileList = await picturesFolder.GetFilesAsync();
+IReadOnlyList<StorageFile> fileList = await picturesFolder.GetFilesAsync();
 
 outputText.AppendLine("Files:");
 foreach (StorageFile file in fileList)
@@ -55,7 +50,7 @@ foreach (StorageFile file in fileList)
     outputText.Append(file.Name + "\n");
 }
 
-IReadOnlyList<StorageFolderfolderList = await picturesFolder.GetFoldersAsync();
+IReadOnlyList<StorageFolder> folderList = await picturesFolder.GetFoldersAsync();
            
 outputText.AppendLine("Folders:");
 foreach (StorageFolder folder in folderList)
@@ -182,7 +177,7 @@ Alternatively, you can use the [**StorageFolder.GetItemsAsync**](/uwp/api/window
 StorageFolder picturesFolder = KnownFolders.PicturesLibrary;
 StringBuilder outputText = new StringBuilder();
 
-IReadOnlyList<IStorageItemitemsList = await picturesFolder.GetItemsAsync();
+IReadOnlyList<IStorageItem> itemsList = await picturesFolder.GetItemsAsync();
 
 foreach (var item in itemsList)
 {
@@ -289,14 +284,14 @@ StorageFolder picturesFolder = KnownFolders.PicturesLibrary;
 StorageFolderQueryResult queryResult =
     picturesFolder.CreateFolderQuery(CommonFolderQuery.GroupByMonth);
         
-IReadOnlyList<StorageFolderfolderList =
+IReadOnlyList<StorageFolder> folderList =
     await queryResult.GetFoldersAsync();
 
 StringBuilder outputText = new StringBuilder();
 
 foreach (StorageFolder folder in folderList)
 {
-    IReadOnlyList<StorageFilefileList = await folder.GetFilesAsync();
+    IReadOnlyList<StorageFile> fileList = await folder.GetFilesAsync();
 
     // Print the month and number of files in this group.
     outputText.AppendLine(folder.Name + " (" + fileList.Count + ")");

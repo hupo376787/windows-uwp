@@ -1,26 +1,23 @@
 ---
-author: normesta
 description: This topic shows you how to launch the compose SMS dialog to allow the user to send an SMS message. You can pre-populate the fields of the SMS with data before showing the dialog. The message will not be sent until the user taps the send button.
 title: Send an SMS message
 ms.assetid: 4D7B509B-1CF0-4852-9691-E96D8352A4D6
 keywords: contacts, SMS, send
-ms.author: normesta
 ms.date: 02/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
+
+
 ms.localizationpriority: medium
 ---
-
 # Send an SMS message
 
 This topic shows you how to launch the compose SMS dialog to allow the user to send an SMS message. You can pre-populate the fields of the SMS with data before showing the dialog. The message will not be sent until the user taps the send button.
 
-To call this code, declare the **chat**, **smsSend**, and **chatSystem** capabilities in your package manifest. These are [restricted capabilities](https://docs.microsoft.com/windows/uwp/packaging/app-capability-declarations#special-and-restricted-capabilities) but you can use them in your app. You need approval only if you intend to publish your app to the Store. See [Account types, locations, and fees](https://docs.microsoft.com/windows/uwp/publish/account-types-locations-and-fees).
+To call this code, declare the **chat**, **smsSend**, and **chatSystem** capabilities in your package manifest. These are [restricted capabilities](../packaging/app-capability-declarations.md#special-and-restricted-capabilities) but you can use them in your app. You need approval only if you intend to publish your app to the Store. See [Account types, locations, and fees](../publish/account-types-locations-and-fees.md).
 
 ## Launch the compose SMS dialog
 
-Create a new [**ChatMessage**](https://msdn.microsoft.com/library/windows/apps/windows.applicationmodel.chat.chatmessage) object and set the data that you want to be pre-populated in the compose email dialog. Call [**ShowComposeSmsMessageAsync**](https://msdn.microsoft.com/library/windows/apps/windows.applicationmodel.chat.chatmessagemanager.showcomposesmsmessageasync) to show the dialog.
+Create a new [**ChatMessage**](/uwp/api/windows.applicationmodel.chat.chatmessage) object and set the data that you want to be pre-populated in the compose email dialog. Call [**ShowComposeSmsMessageAsync**](/uwp/api/windows.applicationmodel.chat.chatmessagemanager.showcomposesmsmessageasync) to show the dialog.
 
 ```cs
 private async void ComposeSms(Windows.ApplicationModel.Contacts.Contact recipient,
@@ -62,7 +59,7 @@ if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.Applicatio
 
 ## Summary and next steps
 
-This topic has shown you how to launch the compose SMS dialog. For information on selecting contacts to use as recipients for an SMS message, see [Select contacts](selecting-contacts.md). Download the [Universal Windows app samples](http://go.microsoft.com/fwlink/p/?linkid=619979) from GitHub to see more examples of how to send and receive SMS messages by using a background task.
+This topic has shown you how to launch the compose SMS dialog. For information on selecting contacts to use as recipients for an SMS message, see [Select contacts](selecting-contacts.md). Download the [Universal Windows app samples](https://github.com/Microsoft/Windows-universal-samples) from GitHub to see more examples of how to send and receive SMS messages by using a background task.
 
 ## Related topics
 

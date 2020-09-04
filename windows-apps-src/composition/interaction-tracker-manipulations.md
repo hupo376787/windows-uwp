@@ -1,12 +1,8 @@
 ---
-author: jwmsft
 title: Custom manipulations with InteractionTracker
 description: Use the InteractionTracker APIs to create custom manipulation experiences.
-ms.author: jimwalk
 ms.date: 10/10/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp, animation
 ms.localizationpriority: medium
 ---
@@ -46,8 +42,8 @@ InteractionTracker was introduced to the Windows.UI.Composition.Interactions nam
 
 When creating custom manipulation experiences, there are two primary components you interact with. We’ll discuss these first:
 
-- [InteractionTracker](https://docs.microsoft.com/uwp/api/windows.ui.composition.interactions.interactiontracker) – the core object maintaining a state machine whose properties are driven by active user input or direct updates and animations. It is intended to then tie to a CompositionAnimation to create the custom manipulation motion.
-- [VisualInteractionSource](https://docs.microsoft.com/uwp/api/windows.ui.composition.interactions.visualinteractionsource) – a complement object that defines when and under what conditions input gets sent to InteractionTracker. It defines both the CompositionVisual used for Hit-testing as well as other input configuration properties.
+- [InteractionTracker](/uwp/api/windows.ui.composition.interactions.interactiontracker) – the core object maintaining a state machine whose properties are driven by active user input or direct updates and animations. It is intended to then tie to a CompositionAnimation to create the custom manipulation motion.
+- [VisualInteractionSource](/uwp/api/windows.ui.composition.interactions.visualinteractionsource) – a complement object that defines when and under what conditions input gets sent to InteractionTracker. It defines both the CompositionVisual used for Hit-testing as well as other input configuration properties.
 
 As a state machine, properties of InteractionTracker can be driven by any of the following:
 
@@ -57,7 +53,7 @@ As a state machine, properties of InteractionTracker can be driven by any of the
 
 ### InteractionTracker State Machine
 
-As mentioned previously, InteractionTracker is a state machine with 4 states – each of which can transition to any of the other four states. (For more info about how InteractionTracker transitions between these states, see the [InteractionTracker](https://docs.microsoft.com/uwp/api/windows.ui.composition.interactions.interactiontracker) class documentation.)
+As mentioned previously, InteractionTracker is a state machine with 4 states – each of which can transition to any of the other four states. (For more info about how InteractionTracker transitions between these states, see the [InteractionTracker](/uwp/api/windows.ui.composition.interactions.interactiontracker) class documentation.)
 
 | State | Description |
 |-------|-------------|
@@ -66,7 +62,7 @@ As mentioned previously, InteractionTracker is a state machine with 4 states –
 | Inertia | Active motion resulting from active input or programmatic velocity |
 | CustomAnimation | Active motion resulting from a custom animation |
 
-In each of the cases where the state of InteractionTracker changes, an event (or callback) is generated that you can listen for. In order for you to listen for these events, they must implement the [IInteractionTrackerOwner](https://docs.microsoft.com/uwp/api/windows.ui.composition.interactions.iinteractiontrackerowner) interface and create their InteractionTracker object with the CreateWithOwner method. The following diagram also outlines when the different events get triggered.
+In each of the cases where the state of InteractionTracker changes, an event (or callback) is generated that you can listen for. In order for you to listen for these events, they must implement the [IInteractionTrackerOwner](/uwp/api/windows.ui.composition.interactions.iinteractiontrackerowner) interface and create their InteractionTracker object with the CreateWithOwner method. The following diagram also outlines when the different events get triggered.
 
 ![InteractionTracker state machine](images/animation/interaction-tracker-diagram.png)
 
@@ -149,7 +145,7 @@ private void InteractionTrackerSetup(Compositor compositor, Visual hitTestRoot)
     tracker.MinPosition = new Vector3(-1000f);
     tracker.MaxPosition = new Vector3(1000f);
 
-    // #3 Setup the VisualInteractionSourc
+    // #3 Setup the VisualInteractionSource
     var source = VisualInteractionSource.Create(hitTestRoot);
 
     // #4 Set the properties for the VisualInteractionSource

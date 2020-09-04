@@ -1,17 +1,12 @@
 ---
-author: mtoepke
 title: How to resume an app (DirectX and C++)
 description: This topic shows how to restore important application data when the system resumes your Universal Windows Platform (UWP) DirectX app.
 ms.assetid: 5e6bb673-6874-ace5-05eb-f88c045f2178
-ms.author: mtoepke
 ms.date: 02/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp, resuming, directx
 ms.localizationpriority: medium
 ---
-
 # How to resume an app (DirectX and C++)
 
 
@@ -21,9 +16,9 @@ This topic shows how to restore important application data when the system resum
 ## Register the resuming event handler
 
 
-Register to handle the [**CoreApplication::Resuming**](https://msdn.microsoft.com/library/windows/apps/br205859) event, which indicates that the user switched away from your app and then back to it.
+Register to handle the [**CoreApplication::Resuming**](/uwp/api/windows.applicationmodel.core.coreapplication.resuming) event, which indicates that the user switched away from your app and then back to it.
 
-Add this code to your implementation of the [**IFrameworkView::Initialize**](https://msdn.microsoft.com/library/windows/apps/hh700495) method of your view provider:
+Add this code to your implementation of the [**IFrameworkView::Initialize**](/uwp/api/windows.applicationmodel.core.iframeworkview.initialize) method of your view provider:
 
 ```cpp
 // The first method is called when the IFrameworkView is being created.
@@ -42,7 +37,7 @@ void App::Initialize(CoreApplicationView^ applicationView)
 ## Refresh displayed content after suspension
 
 
-When your app handles the Resuming event, it has the opportunity to refresh its displayed content. Restore any app you have saved with your handler for [**CoreApplication::Suspending**](https://msdn.microsoft.com/library/windows/apps/br205860), and restart processing. Game devs: if you've suspended your audio engine, now's the time to restart it.
+When your app handles the Resuming event, it has the opportunity to refresh its displayed content. Restore any app you have saved with your handler for [**CoreApplication::Suspending**](/uwp/api/windows.applicationmodel.core.coreapplication.suspending), and restart processing. Game devs: if you've suspended your audio engine, now's the time to restart it.
 
 ```cpp
 void App::OnResuming(Platform::Object^ sender, Platform::Object^ args)
@@ -55,7 +50,7 @@ void App::OnResuming(Platform::Object^ sender, Platform::Object^ args)
 }
 ```
 
-This callback occurs as an event message processed by the [**CoreDispatcher**](https://msdn.microsoft.com/library/windows/apps/br208211) for the app's [**CoreWindow**](https://msdn.microsoft.com/library/windows/apps/br208225). This callback will not be invoked if you do not call [**CoreDispatcher::ProcessEvents**](https://msdn.microsoft.com/library/windows/apps/br208215) from your app's main loop (implemented in the [**IFrameworkView::Run**](https://msdn.microsoft.com/library/windows/apps/hh700505) method of your view provider).
+This callback occurs as an event message processed by the [**CoreDispatcher**](/uwp/api/Windows.UI.Core.CoreDispatcher) for the app's [**CoreWindow**](/uwp/api/Windows.UI.Core.CoreWindow). This callback will not be invoked if you do not call [**CoreDispatcher::ProcessEvents**](/uwp/api/windows.ui.core.coredispatcher.processevents) from your app's main loop (implemented in the [**IFrameworkView::Run**](/uwp/api/windows.applicationmodel.core.iframeworkview.run) method of your view provider).
 
 ``` syntax
 // This method is called after the window becomes active.
@@ -95,7 +90,3 @@ The system suspends your app whenever the user switches to another app or to the
  
 
  
-
-
-
-

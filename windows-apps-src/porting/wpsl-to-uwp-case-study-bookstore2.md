@@ -1,17 +1,12 @@
 ---
-author: stevewhims
 ms.assetid: 333f67f5-f012-4981-917f-c6fd271267c6
 description: This case study, which builds on the info given in Bookstore, begins with a Windows Phone Silverlight app that displays grouped data in a LongListSelector.
 title: Windows Phone Silverlight to UWP case study, Bookstore2
-ms.author: stwhi
 ms.date: 02/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp
 ms.localizationpriority: medium
 ---
-
 # Windows Phone Silverlight to UWP case study: Bookstore2
 
 
@@ -21,9 +16,9 @@ This case study—which builds on the info given in [Bookstore1](wpsl-to-uwp-cas
 
 ## Downloads
 
-[Download the Bookstore2WPSL8 Windows Phone Silverlight app](http://go.microsoft.com/fwlink/p/?linkid=522601).
+[Download the Bookstore2WPSL8 Windows Phone Silverlight app](https://codeload.github.com/MicrosoftDocs/windows-topic-specific-samples/zip/Bookstore2WPSL8).
 
-[Download the Bookstore2Universal\_10 Windows 10 app](http://go.microsoft.com/fwlink/?linkid=532952).
+[Download the Bookstore2Universal\_10 Windows 10 app](https://codeload.github.com/MicrosoftDocs/windows-topic-specific-samples/zip/Bookstore2Universal_10).
 
 ##  The Windows Phone Silverlight app
 
@@ -57,7 +52,7 @@ In MainPage.xaml, these initial porting changes are needed.
 -   Change "clr-namespace" to "using" in the remaining namespace prefix declaration.
 -   Delete `SupportedOrientations="Portrait"`, and `Orientation="Portrait"`, and configure **Portrait** in the app package manifest in the new project.
 -   Delete `shell:SystemTray.IsVisible="True"`.
--   The types of the jump list item converters (which are present in the markup as resources) have moved to the [**Windows.UI.Xaml.Controls.Primitives**](https://msdn.microsoft.com/library/windows/apps/br209818) namespace. So, add the namespace prefix declaration Windows\_UI\_Xaml\_Controls\_Primitives and map it to **Windows.UI.Xaml.Controls.Primitives**. On the jump list item converter resources, change the prefix from `phone:` to `Windows_UI_Xaml_Controls_Primitives:`.
+-   The types of the jump list item converters (which are present in the markup as resources) have moved to the [**Windows.UI.Xaml.Controls.Primitives**](/uwp/api/Windows.UI.Xaml.Controls.Primitives) namespace. So, add the namespace prefix declaration Windows\_UI\_Xaml\_Controls\_Primitives and map it to **Windows.UI.Xaml.Controls.Primitives**. On the jump list item converter resources, change the prefix from `phone:` to `Windows_UI_Xaml_Controls_Primitives:`.
 -   Just as we did for [Bookstore1](wpsl-to-uwp-case-study-bookstore1.md), replace all references to the `PhoneTextExtraLargeStyle` **TextBlock** style with a reference to `SubtitleTextBlockStyle`, replace `PhoneTextSubtleStyle` with `SubtitleTextBlockStyle`, replace `PhoneTextNormalStyle` with `CaptionTextBlockStyle`, and replace `PhoneTextTitle1Style` with `HeaderTextBlockStyle`.
 -   There is one exception in `BookTemplate`. The style of the second **TextBlock** should reference `CaptionTextBlockStyle`.
 -   Remove the FontFamily attribute from the **TextBlock** inside `AuthorGroupHeaderTemplate` and set the Background of the **Border** to reference `SystemControlBackgroundAccentBrush` instead of `PhoneAccentBrush`.
@@ -66,7 +61,7 @@ In MainPage.xaml, these initial porting changes are needed.
 ## Replacing the LongListSelector
 
 
-Replacing the **LongListSelector** with a [**SemanticZoom**](https://msdn.microsoft.com/library/windows/apps/hh702601) control will take several steps, so let's make a start on that. A **LongListSelector** binds directly to the grouped data source, but a **SemanticZoom** contains [**ListView**](https://msdn.microsoft.com/library/windows/apps/br242878) or [**GridView**](https://msdn.microsoft.com/library/windows/apps/br242705) controls, which bind indirectly to the data via a [**CollectionViewSource**](https://msdn.microsoft.com/library/windows/apps/br209833) adapter. The **CollectionViewSource** needs to be present in the markup as a resource, so let's begin by adding that to the markup in MainPage.xaml inside `<Page.Resources>`.
+Replacing the **LongListSelector** with a [**SemanticZoom**](/uwp/api/Windows.UI.Xaml.Controls.SemanticZoom) control will take several steps, so let's make a start on that. A **LongListSelector** binds directly to the grouped data source, but a **SemanticZoom** contains [**ListView**](/uwp/api/Windows.UI.Xaml.Controls.ListView) or [**GridView**](/uwp/api/Windows.UI.Xaml.Controls.GridView) controls, which bind indirectly to the data via a [**CollectionViewSource**](/uwp/api/Windows.UI.Xaml.Data.CollectionViewSource) adapter. The **CollectionViewSource** needs to be present in the markup as a resource, so let's begin by adding that to the markup in MainPage.xaml inside `<Page.Resources>`.
 
 ```xml
     <CollectionViewSource
@@ -141,7 +136,7 @@ A minimum window width of 548 epx is appropriate for this use case because that'
 
 Before tackling the adaptive Visual State Manager piece, we first need to design the wide state and that means adding some new visual elements and templates to our markup. These steps describe how to do that. By way of naming conventions for visual elements and templates, we'll include the word "wide" in the name of any element or template that is for the wide state. If an element or template does not contain the word "wide", then you can assume that it is for the narrow state, which is the default state and whose property values are set as local values on visual elements in the page. Only the property values for the wide state are set via an actual Visual State in the markup.
 
--   Make a copy of the [**SemanticZoom**](https://msdn.microsoft.com/library/windows/apps/hh702601) control in the markup and set `x:Name="narrowSeZo"` on the copy. On the original, set `x:Name="wideSeZo"` and also set `Visibility="Collapsed"` so that the wide one is not visible by default.
+-   Make a copy of the [**SemanticZoom**](/uwp/api/Windows.UI.Xaml.Controls.SemanticZoom) control in the markup and set `x:Name="narrowSeZo"` on the copy. On the original, set `x:Name="wideSeZo"` and also set `Visibility="Collapsed"` so that the wide one is not visible by default.
 -   In `wideSeZo`, change the **ListView**s to **GridView**s in both the zoomed-in view and the zoomed-out view.
 -   Make a copy of these three resources `AuthorGroupHeaderTemplate`, `ZoomedOutAuthorTemplate`, and `BookTemplate` and append the word `Wide` to the keys of the copies. Also, update `wideSeZo` so that it references the keys of these new resources.
 -   Replace the contents of `AuthorGroupHeaderTemplateWide` with `<TextBlock Style="{StaticResource SubheaderTextBlockStyle}" Text="{Binding Name}"/>`.
@@ -219,7 +214,7 @@ All that remains are some final styling tweaks.
 
 -   In `AuthorGroupHeaderTemplate`, set `Foreground="White"` on the **TextBlock** so that it looks correct when running on the mobile device family.
 -   Add `FontWeight="SemiBold"` to the **TextBlock** in both `AuthorGroupHeaderTemplate` and `ZoomedOutAuthorTemplate`.
--   In `narrowSeZo`, the group headers and the authors in the zoomed-out view are left-aligned instead of stretched, so let's work on that. We'll create a [**HeaderContainerStyle**](https://msdn.microsoft.com/library/windows/apps/dn251841) for the zoomed-in view with [**HorizontalContentAlignment**](https://msdn.microsoft.com/library/windows/apps/br209417) set to `Stretch`. And we'll create an [**ItemContainerStyle**](https://msdn.microsoft.com/library/windows/apps/br242817) for the zoomed-out view containing that same [**Setter**](https://msdn.microsoft.com/library/windows/apps/br208817). Here's what that looks like.
+-   In `narrowSeZo`, the group headers and the authors in the zoomed-out view are left-aligned instead of stretched, so let's work on that. We'll create a [**HeaderContainerStyle**](/uwp/api/windows.ui.xaml.controls.groupstyle.headercontainerstyle) for the zoomed-in view with [**HorizontalContentAlignment**](/uwp/api/windows.ui.xaml.controls.control.horizontalcontentalignment) set to `Stretch`. And we'll create an [**ItemContainerStyle**](/uwp/api/windows.ui.xaml.controls.itemscontrol.itemcontainerstyle) for the zoomed-out view containing that same [**Setter**](/uwp/api/Windows.UI.Xaml.Setter). Here's what that looks like.
 
 ```xml
    <Style x:Key="AuthorGroupHeaderContainerStyle" TargetType="ListViewHeaderItem">
@@ -273,8 +268,8 @@ This section contains an example of facilities that open up to us by virtue of h
 When we bind **CollectionViewSource.Source** to Authors, the only thing we're communicating is that each Author in Authors is a group of *something*. We leave it to the **CollectionViewSource** to determine that Author is, in this case, a group of BookSku. That works: but it's not flexible. What if we want Author to be *both* a group of BookSku *and* a group of the addresses where the author has lived? Author can't *be* both of those groups. But, Author can *have* any number of groups. And that's the solution: use the *has-a-group* pattern instead of, or in addition to, the *is-a-group* pattern that we're using currently. Here's how:
 
 -   Change Author so that it no longer derives from **List&lt;T&gt;**.
--   Add this field to Author: `private ObservableCollection<BookSku> bookSkus = new ObservableCollection<BookSku>();`.
--   Add this property to Author: `public ObservableCollection<BookSku> BookSkus { get { return this.bookSkus; } }`.
+-   Add this field to 
+-   Add this property to 
 -   And of course we can repeat the above two steps to add as many groups to Author as we need.
 -   Change the implementation of the AddBookSku method to `this.BookSkus.Add(bookSku);`.
 -   Now that Author *has* at least one group, we need to communicate to the **CollectionViewSource** which of those groups it should use. To do that, add this property to the **CollectionViewSource**: `ItemsPath="BookSkus"`

@@ -1,34 +1,31 @@
 ---
-author: Karl-Bridge-Microsoft
 Description: Learn how to tailor the UI of your app when showing or hiding the touch keyboard.
 title: Respond to the presence of the touch keyboard
 ms.assetid: 70C6130E-23A2-4F9D-88E7-7060062DA988
 label: Respond to the presence of the touch keyboard
 template: detail.hbs
 keywords: keyboard, accessibility, navigation, focus, text, input, user interactions
-ms.author: kbridge
 ms.date: 07/13/2018
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
----
 
+
+---
 # Respond to the presence of the touch keyboard
 
 Learn how to tailor the UI of your app when showing or hiding the touch keyboard.
 
 ### Important APIs
 
-- [AutomationPeer](https://docs.microsoft.com/uwp/api/Windows.UI.Xaml.Automation.Peers.AutomationPeer)
-- [InputPane](https://docs.microsoft.com/uwp/api/Windows.UI.ViewManagement.InputPane)
+- [AutomationPeer](/uwp/api/Windows.UI.Xaml.Automation.Peers.AutomationPeer)
+- [InputPane](/uwp/api/Windows.UI.ViewManagement.InputPane)
 
 ![the touch keyboard in default layout mode](images/keyboard/default.png)
 
 <sup>The touch keyboard in default layout mode</sup>
 
-The touch keyboard enables text entry for devices that support touch. Universal Windows Platform (UWP) text input controls invoke the touch keyboard by default when a user taps on an editable input field. The touch keyboard typically remains visible while the user navigates between controls in a form, but this behavior can vary based on the other control types within the form.
+The touch keyboard enables text entry for devices that support touch. Windows app text input controls invoke the touch keyboard by default when a user taps on an editable input field. The touch keyboard typically remains visible while the user navigates between controls in a form, but this behavior can vary based on the other control types within the form.
 
-To support corresponding touch keyboard behavior in a custom text input control that does not derive from a standard text input control, you must use the [AutomationPeer]((https://docs.microsoft.com/uwp/api/Windows.UI.Xaml.Automation.Peers.AutomationPeer) class to expose your controls to Microsoft UI Automation and implement the correct UI Automation control patterns. See [Keyboard accessibility](https://docs.microsoft.com/windows/uwp/design/accessibility/keyboard-accessibility) and [Custom automation peers](https://docs.microsoft.com/windows/uwp/design/accessibility/custom-automation-peers).
+To support corresponding touch keyboard behavior in a custom text input control that does not derive from a standard text input control, you must use the <a href="/uwp/api/Windows.UI.Xaml.Automation.Peers.AutomationPeer">AutomationPeer</a> class to expose your controls to Microsoft UI Automation and implement the correct UI Automation control patterns. See [Keyboard accessibility](../accessibility/keyboard-accessibility.md) and [Custom automation peers](../accessibility/custom-automation-peers.md).
 
 Once this support has been added to your custom control, you can respond appropriately to the presence of the touch keyboard.
 
@@ -38,14 +35,14 @@ This topic builds on [Keyboard interactions](keyboard-interactions.md).
 
 You should have a basic understanding of standard keyboard interactions, handling keyboard input and events, and UI Automation.
 
-If you're new to developing Universal Windows Platform (UWP) apps, have a look through these topics to get familiar with the technologies discussed here.
+If you're new to developing Windows apps, have a look through these topics to get familiar with the technologies discussed here.
 
-- [Create your first app](https://docs.microsoft.com/windows/uwp/get-started/your-first-app)
-- Learn about events with [Events and routed events overview](https://docs.microsoft.com/windows/uwp/xaml-platform/events-and-routed-events-overview)
+- [Create your first app](../../get-started/your-first-app.md)
+- Learn about events with [Events and routed events overview](../../xaml-platform/events-and-routed-events-overview.md)
 
 **User experience guidelines:**
 
-For helpful tips about designing a useful and engaging app optimized for keyboard input, see [Keyboard interactions](https://docs.microsoft.com/windows/uwp/design/input/keyboard-interactions) .
+For helpful tips about designing a useful and engaging app optimized for keyboard input, see [Keyboard interactions](./keyboard-interactions.md) .
 
 ## Touch keyboard and a custom UI
 
@@ -53,15 +50,15 @@ Here are a few basic recommendations for custom text input controls.
 
 - Display the touch keyboard throughout the entire interaction with your form.
 
-- Ensure that your custom controls have the appropriate UI Automation [AutomationControlType](https://docs.microsoft.com/uwp/api/Windows.UI.Xaml.Automation.Peers.AutomationControlType) for the keyboard to persist when focus moves from a text input field while in the context of text entry. For example, if you have a menu that's opened in the middle of a text-entry scenario, and you want the keyboard to persist, the menu must have the **AutomationControlType** of Menu.
+- Ensure that your custom controls have the appropriate UI Automation [AutomationControlType](/uwp/api/Windows.UI.Xaml.Automation.Peers.AutomationControlType) for the keyboard to persist when focus moves from a text input field while in the context of text entry. For example, if you have a menu that's opened in the middle of a text-entry scenario, and you want the keyboard to persist, the menu must have the **AutomationControlType** of Menu.
 
 - Don't manipulate UI Automation properties to control the touch keyboard. Other accessibility tools rely on the accuracy of UI Automation properties.
 
 - Ensure that users can always see the input field that they're interacting with.
 
-    Because the touch keyboard occludes a large portion of the screen, the UWP ensures that the input field with focus scrolls into view as a user navigates through the controls on the form, including controls that are not currently in view.
+    Because the touch keyboard occludes a large portion of the screen, Windows ensures that the input field with focus scrolls into view as a user navigates through the controls on the form, including controls that are not currently in view.
 
-    When customizing your UI, provide similar behavior on the appearance of the touch keyboard by handling the [Showing](https://docs.microsoft.com/uwp/api/windows.ui.viewmanagement.inputpane.showing) and [Hiding](https://docs.microsoft.com/uwp/api/windows.ui.viewmanagement.inputpane.hiding) events exposed by the [**InputPane**](https://docs.microsoft.com/uwp/api/Windows.UI.ViewManagement.InputPane) object.
+    When customizing your UI, provide similar behavior on the appearance of the touch keyboard by handling the [Showing](/uwp/api/windows.ui.viewmanagement.inputpane.showing) and [Hiding](/uwp/api/windows.ui.viewmanagement.inputpane.hiding) events exposed by the [**InputPane**](/uwp/api/Windows.UI.ViewManagement.InputPane) object.
 
     ![a form with and without the touch keyboard showing](images/touch-keyboard-pan1.png)
 
@@ -71,7 +68,7 @@ Here are a few basic recommendations for custom text input controls.
 
 ## Handling the Showing and Hiding events
 
-Here's an example of attaching event handlers for the [Showing](https://docs.microsoft.com/uwp/api/windows.ui.viewmanagement.inputpane.showing) and [Hiding](https://docs.microsoft.com/uwp/api/windows.ui.viewmanagement.inputpane.hiding) events of the touch keyboard.
+Here's an example of attaching event handlers for the [Showing](/uwp/api/windows.ui.viewmanagement.inputpane.showing) and [Hiding](/uwp/api/windows.ui.viewmanagement.inputpane.hiding) events of the touch keyboard.
 
 ```csharp
 using Windows.UI.ViewManagement;
@@ -210,16 +207,16 @@ void Scenario2_ShowHideEvents::OnHiding(InputPane^ /*sender*/, InputPaneVisibili
 ## Related articles
 
 - [Keyboard interactions](keyboard-interactions.md)
-- [Keyboard accessibility](https://msdn.microsoft.com/library/windows/apps/mt244347)
-- [Custom automation peers](https://msdn.microsoft.com/library/windows/apps/mt297667)
+- [Keyboard accessibility](../accessibility/keyboard-accessibility.md)
+- [Custom automation peers](../accessibility/custom-automation-peers.md)
 
-**Samples**
+### Samples
 
 - [Touch keyboard sample](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/TouchKeyboard)
 
-**Archive samples**
+### Archive samples
 
-- [Input: Touch keyboard sample](http://go.microsoft.com/fwlink/p/?linkid=246019)
-- [Responding to the appearance of the on-screen keyboard sample](http://go.microsoft.com/fwlink/p/?linkid=231633)
-- [XAML text editing sample](http://go.microsoft.com/fwlink/p/?LinkID=251417)
-- [XAML accessibility sample](http://go.microsoft.com/fwlink/p/?linkid=238570)
+- [Input: Touch keyboard sample](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/TouchKeyboard)
+- [Responding to the appearance of the on-screen keyboard sample](https://github.com/microsoftarchive/msdn-code-gallery-microsoft/tree/411c271e537727d737a53fa2cbe99eaecac00cc0/Official%20Windows%20Platform%20Sample/Responding%20to%20the%20appearance%20of%20the%20on-screen%20keyboard%20sample)
+- [XAML text editing sample](https://github.com/microsoftarchive/msdn-code-gallery-microsoft/tree/411c271e537727d737a53fa2cbe99eaecac00cc0/Official%20Windows%20Platform%20Sample/Windows%208%20app%20samples/%5BVB%5D-Windows%208%20app%20samples/VB/Windows%208%20app%20samples/XAML%20text%20editing%20sample%20(Windows%208))
+- [XAML accessibility sample](https://github.com/microsoftarchive/msdn-code-gallery-microsoft/tree/411c271e537727d737a53fa2cbe99eaecac00cc0/Official%20Windows%20Platform%20Sample/XAML%20accessibility%20sample)

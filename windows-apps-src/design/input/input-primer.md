@@ -1,26 +1,21 @@
 ---
-author: Karl-Bridge-Microsoft
-Description: User interactions in the Universal Windows Platform (UWP) are a combination of input and output sources (such as mouse, keyboard, pen, touch, touchpad, speech, Cortana, controller, gesture, gaze, and so on), along with various modes or modifiers that enable extended experiences (including mouse wheel and buttons, pen eraser and barrel buttons, touch keyboard, and background app services).
+Description: User interactions in the Windows app are a combination of input and output sources (such as mouse, keyboard, pen, touch, touchpad, speech, Cortana, controller, gesture, gaze, and so on), along with various modes or modifiers that enable extended experiences (including mouse wheel and buttons, pen eraser and barrel buttons, touch keyboard, and background app services).
 title: Interaction primer
 ms.assetid: 73008F80-FE62-457D-BAEC-412ED6BAB0C8
 label: Interaction primer
 template: detail.hbs
-ms.author: kbridge
 ms.date: 02/08/2017
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp
 ms.localizationpriority: medium
 ---
-
 # Interaction primer
 
 ![windows input types](images/input-interactions/icons-inputdevices03.png)
 
-User interactions in the Universal Windows Platform (UWP) are a combination of input and output sources (such as mouse, keyboard, pen, touch, touchpad, speech, **Cortana**, controller, gesture, gaze, and so on), along with various modes or modifiers that enable extended experiences (including mouse wheel and buttons, pen eraser and barrel buttons, touch keyboard, and background app services).
+User interactions in the Windows app are a combination of input and output sources (such as mouse, keyboard, pen, touch, touchpad, speech, **Cortana**, controller, gesture, gaze, and so on), along with various modes or modifiers that enable extended experiences (including mouse wheel and buttons, pen eraser and barrel buttons, touch keyboard, and background app services).
 
-The UWP uses a "smart" contextual interaction system that, in most cases, eliminates the need to individually handle the unique types of input received by your app. This includes handling touch, touchpad, mouse, and pen input as a generic pointer type to support static gestures such as tap or press-and-hold, manipulation gestures such as slide for panning, or rendering digital ink.
+UWP uses a "smart" contextual interaction system that, in most cases, eliminates the need to individually handle the unique types of input received by your app. This includes handling touch, touchpad, mouse, and pen input as a generic pointer type to support static gestures such as tap or press-and-hold, manipulation gestures such as slide for panning, or rendering digital ink.
 
 Familiarize yourself with each input device type and its behaviors, capabilities, and limitations when paired with certain form factors. This can help you decide whether the platform controls and affordances are sufficient for your app, or require you to provide customized interaction experiences.
 
@@ -29,7 +24,7 @@ Familiarize yourself with each input device type and its behaviors, capabilities
 For **Windows 10 April 2018 Update**, we introduced support for Gaze input using eye and head tracking input devices. 
 
 > [!NOTE]
-> Support for eye tracking hardware was introduced in **Windows 10 Fall Creators Update** along with [Eye control](https://support.microsoft.com/en-us/help/4043921/windows-10-get-started-eye-control), a built-in feature that lets you use your eyes to control the on-screen pointer, type with the on-screen keyboard, and communicate with people using text-to-speech.
+> Support for eye tracking hardware was introduced in **Windows 10 Fall Creators Update** along with [Eye control](https://support.microsoft.com/help/4043921/windows-10-get-started-eye-control), a built-in feature that lets you use your eyes to control the on-screen pointer, type with the on-screen keyboard, and communicate with people using text-to-speech.
 
 ### Device support
 
@@ -38,7 +33,7 @@ For **Windows 10 April 2018 Update**, we introduced support for Gaze input using
 
 ### Typical usage
 
-Track a user's gaze, attention, and presence based on the location and movement of their eyes. This powerful new way to use and interact with your UWP apps is especially useful as an assistive technology for users with neuro-muscular diseases (such as ALS) and other disabilities involving impaired muscle or nerve functions. Gaze input also provides compelling opportunities for both gaming (including target acquisition and tracking) and traditional productivity applications, kiosks, and other interactive scenarios where traditional input devices (keyboard, mouse, touch) are not available, or where it might be useful/helpful to free up the user's hands for other tasks (such as holding shopping bags).
+Track a user's gaze, attention, and presence based on the location and movement of their eyes. This powerful new way to use and interact with Windows apps is especially useful as an assistive technology for users with neuro-muscular diseases (such as ALS) and other disabilities involving impaired muscle or nerve functions. Gaze input also provides compelling opportunities for both gaming (including target acquisition and tracking) and traditional productivity applications, kiosks, and other interactive scenarios where traditional input devices (keyboard, mouse, touch) are not available, or where it might be useful/helpful to free up the user's hands for other tasks (such as holding shopping bags).
 
 ### More info
 
@@ -81,11 +76,11 @@ In Windows 10, **Cortana** extensibility lets you handle voice commands from a 
 
 A voice command is a single utterance, defined in a Voice Command Definition (VCD) file, directed at an installed app through **Cortana**. The app can be launched in the foreground or background, depending on the level and complexity of the interaction. For instance, voice commands that require additional context or user input are best handled in the foreground, while basic commands can be handled in the background.
 
-Integrating the basic functionality of your app, and providing a central entry point for the user to accomplish most of the tasks without opening your app directly, lets **Cortana** become a liaison between your app and the user. In many cases, this can save the user significant time and effort. For more info, see [Cortana design guidelines](https://msdn.microsoft.com/library/windows/apps/dn974233).
+Integrating the basic functionality of your app, and providing a central entry point for the user to accomplish most of the tasks without opening your app directly, lets **Cortana** become a liaison between your app and the user. In many cases, this can save the user significant time and effort. For more info, see [Cortana design guidelines](/cortana/skills/cortana-design-guidelines).
 
 ### More info
 
-[Cortana design guidelines](https://msdn.microsoft.com/library/windows/apps/dn974233)
+[Cortana design guidelines](/cortana/skills/cortana-design-guidelines)
  
 
 ## Speech
@@ -134,7 +129,7 @@ Dictation is typically used when an app doesn’t need to understand meaning or 
 
 ### More info
 
-[Speech design guidelines](https://msdn.microsoft.com/library/windows/apps/dn596121)
+[Speech design guidelines](./speech-interactions.md)
  
 
 ## Pen
@@ -167,7 +162,7 @@ You should provide pen-specific UI commands, or affordances, to support these in
 
 ### More info
 
-[Pen design guidelines](https://msdn.microsoft.com/library/windows/apps/dn456352)
+[Pen design guidelines](./pen-and-stylus-interactions.md)
  
 
 ## Touch
@@ -202,7 +197,7 @@ In general, touch is:
 
 ### More info
 
-[Touch design guidelines](https://msdn.microsoft.com/library/windows/apps/hh465370)
+[Touch design guidelines](./touch-interactions.md)
  
 
 ## Touchpad
@@ -226,14 +221,14 @@ You should provide mouse-specific UI commands, or affordances, to support these 
 
 ### More info
 
-[Touchpad design guidelines](https://msdn.microsoft.com/library/windows/apps/dn456353)
+[Touchpad design guidelines](./touch-interactions.md)
  
 
 ## Keyboard
 
 A keyboard is the primary input device for text, and is often indispensable to people with certain disabilities or users who consider it a faster and more efficient way to interact with an app.
 
-With [Continuum for Phone](http://go.microsoft.com/fwlink/p/?LinkID=699431), a new experience for compatible Windows 10 mobile devices, users can connect their phones to a mouse and keyboard to make their phones work like a laptop.
+With [Continuum for Phone](/windows-hardware/design/device-experiences/continuum-phone), a new experience for compatible Windows 10 mobile devices, users can connect their phones to a mouse and keyboard to make their phones work like a laptop.
 
 ### Device support
 
@@ -266,7 +261,7 @@ In general, a keyboard is:
 
 ### More info
 
-[Keyboard design guidelines](https://msdn.microsoft.com/library/windows/apps/hh972345)
+[Keyboard design guidelines](./keyboard-interactions.md)
  
 
 ## Mouse
@@ -293,7 +288,7 @@ You should provide mouse-specific UI commands, or affordances, to support these 
 
 ### More info
 
-[Mouse design guidelines](https://msdn.microsoft.com/library/windows/apps/dn456351)
+[Mouse design guidelines](./mouse-interactions.md)
  
 
 ## Gesture

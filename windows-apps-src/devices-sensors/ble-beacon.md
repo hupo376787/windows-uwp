@@ -1,34 +1,34 @@
 ---
-author: msatranjr
 title: Bluetooth Advertisements
 description: This section contains articles on how to integrate Bluetooth Low Energy (LE) Advertisements into Universal Windows Platform (UWP) apps through the user of AdvertisementWatcher and AdvertisementPublisher APIs.
-ms.author: misatran
-ms.date: 02/08/2017
+ms.date: 06/26/2020
 ms.topic: article
-ms.prod: windows
-ms.technology: uwp
 keywords: windows 10, uwp
 ms.assetid: ff10bbc0-03a7-492c-b5fe-c5b9ce8ca32e
 ms.localizationpriority: medium
 ---
-
 # Bluetooth LE Advertisements
 
 
 **Important APIs**
 
--   [**Windows.Devices.Bluetooth.Advertisement**](https://msdn.microsoft.com/library/windows/apps/windows.devices.bluetooth.advertisement.aspx)
+-   [**Windows.Devices.Bluetooth.Advertisement**](/uwp/api/windows.devices.bluetooth.advertisement)
 
 This article provides an overview of Bluetooth Low Energy (LE) Advertisement beacons for Universal Windows Platform (UWP) apps.  
+
+> [!Important]
+> You must declare the "bluetooth" capability in *Package.appxmanifest*.
+>
+> `<Capabilities> <DeviceCapability Name="bluetooth" /> </Capabilities>`
 
 ## Overview
 
 There are two main functions that a developer can perform using the LE Advertisement APIs:
 
--   [Advertisement Watcher](https://msdn.microsoft.com/library/windows/apps/windows.devices.bluetooth.advertisement.bluetoothleadvertisementwatcher.aspx): listen for nearby beacons and filter them out based on payload or proximity.  
--   [Advertisement Publisher](https://msdn.microsoft.com/library/windows/apps/windows.devices.bluetooth.advertisement.bluetoothleadvertisementpublisher.aspx): define a payload for Windows to advertise on a developers behalf.  
+-   [Advertisement Watcher](/uwp/api/windows.devices.bluetooth.advertisement.bluetoothleadvertisementwatcher): listen for nearby beacons and filter them out based on payload or proximity.  
+-   [Advertisement Publisher](/uwp/api/windows.devices.bluetooth.advertisement.bluetoothleadvertisementpublisher): define a payload for Windows to advertise on a developers behalf.  
 
-Full sample code is found in the [Bluetooth Advertisement Sample](http://go.microsoft.com/fwlink/p/?LinkId=619990) on Github
+Full sample code is found in the [Bluetooth Advertisement Sample](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/BluetoothAdvertisement) on Github
 
 ## Basic Setup
 
@@ -42,7 +42,7 @@ To use basic Bluetooth LE functionality in a Universal Windows Platform app, you
 
 Bluetooth LE Advertisements allow your device to constantly beacon out a specific payload, called an advertisement. This advertisement can be seen by any nearby Bluetooth LE capable device, if they are set up to listen for this specific advertisment.
 
-> **Note**: For user privacy, the lifespan of your advertisement is tied to that of your app. You can create a BluetoothLEAdvertisementPublisher and call Start in a background task for advertisement in the background. For more information about background tasks, see [Launching, resuming, and background tasks](https://msdn.microsoft.com/windows/uwp/launch-resume/index).
+> **Note**: For user privacy, the lifespan of your advertisement is tied to that of your app. You can create a BluetoothLEAdvertisementPublisher and call Start in a background task for advertisement in the background. For more information about background tasks, see [Launching, resuming, and background tasks](../launch-resume/index.md).
 
 ### Basic Publishing
 
